@@ -1,0 +1,16 @@
+# /pages/en/guides/migrate-to-astro — directory listing
+
+- [Migrating from Create React App (CRA) | Docs](/pages/en/guides/migrate-to-astro/from-create-react-app.md)
+- [Migrating from Docusaurus | Docs](/pages/en/guides/migrate-to-astro/from-docusaurus.md)
+- [Migrating from Eleventy | Docs](/pages/en/guides/migrate-to-astro/from-eleventy.md)
+- [Migrating from Gatsby | Docs](/pages/en/guides/migrate-to-astro/from-gatsby.md)
+- [Migrating from GitBook | Docs](/pages/en/guides/migrate-to-astro/from-gitbook.md)
+- [Migrating from Gridsome | Docs](/pages/en/guides/migrate-to-astro/from-gridsome.md)
+- [Migrating from Hugo | Docs](/pages/en/guides/migrate-to-astro/from-hugo.md)
+- [Migrating from Jekyll | Docs](/pages/en/guides/migrate-to-astro/from-jekyll.md)
+- [Migrating from Next.js | Docs](/pages/en/guides/migrate-to-astro/from-nextjs.md)
+- [Migrating from NuxtJS | Docs](/pages/en/guides/migrate-to-astro/from-nuxtjs.md)
+- [Migrating from Pelican | Docs](/pages/en/guides/migrate-to-astro/from-pelican.md)
+- [Migrating from SvelteKit | Docs](/pages/en/guides/migrate-to-astro/from-sveltekit.md)
+- [Migrating from VuePress | Docs](/pages/en/guides/migrate-to-astro/from-vuepress.md)
+- [Migrating from WordPress | Docs](/pages/en/guides/migrate-to-astro/from-wordpress.md)

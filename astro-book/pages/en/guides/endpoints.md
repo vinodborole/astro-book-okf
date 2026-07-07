@@ -1,0 +1,75 @@
+---
+type: Web Page
+title: Endpoints | Docs
+description: Learn how to create endpoints that serve any kind of data
+resource: https://docs.astro.build/en/guides/endpoints
+timestamp: '2026-07-07T10:59:34.007706+00:00'
+---
+
+# Endpoints
+
+Astro lets you create custom endpoints to serve any kind of data. You can use this to generate images, expose an RSS document, or use them as API Routes to build a full API for your site.
+
+In statically-generated sites, your custom endpoints are called at build time to produce static files. If you opt in to SSR mode, custom endpoints turn into live server endpoints that are called on request. Static and SSR endpoints are defined similarly, but SSR endpoints support additional features.
+
+## Static File Endpoints
+
+Section titled “Static File Endpoints”To create a custom endpoint, add a `.js` or `.ts` file to the `/pages` directory. The `.js` or `.ts` extension will be removed during the build process, so the name of the file should include the extension of the data you want to create. For example, `src/pages/data.json.ts` will build a `/data.json` endpoint.
+
+Endpoints export a `GET` function (optionally `async`) that receives a context object with properties similar to the `Astro` global. Here, it returns a `Response` object with a `name` and `url`, and Astro will call this at build time and use the contents of the body to generate the file.
+
+Since Astro v3.0, the returned `Response` object doesn’t have to include the `encoding` property anymore. For example, to produce a binary `.png` image:
+
+You can also get type safety in your endpoint functions using the `APIRoute` type with the `satisfies` operator:
+
+Note that endpoints whose URLs include a file extension (e.g. `src/pages/sitemap.xml.ts`) can only be accessed without a trailing slash (e.g. `/sitemap.xml`), regardless of your `build.trailingSlash` configuration.
+
+`params` and Dynamic routing
+
+Section titled “params and Dynamic routing”Endpoints support the same dynamic routing features that pages do. Name your file with a bracketed parameter name and export a `getStaticPaths()` function. Then, you can access the parameter using the `params` property passed to the endpoint function:
+
+This will generate four JSON endpoints at build time: `/api/0.json`, `/api/1.json`, `/api/2.json` and `/api/3.json`. Dynamic routing with endpoints works the same as it does with pages. In static mode, you can pass props to the endpoint using `getStaticPaths()`. However, with on-demand rendering, since the endpoint is a function and not a component, passing props is not supported.
+
+`request`
+
+Section titled “request”All endpoints receive a `request` property, but in static mode, you only have access to `request.url`. This returns the full URL of the current endpoint and works the same as Astro.request.url does for pages.
+
+## Server Endpoints (API Routes)
+
+Section titled “Server Endpoints (API Routes)”Everything described in the static file endpoints section can also be used in SSR mode: files can export a `GET` function which receives a context object with properties similar to the `Astro` global.
+
+But, unlike in `static` mode, when you enable on-demand rendering for a route, the endpoint will be built when it is requested. This unlocks new features that are unavailable at build time, and allows you to build API routes that listen for requests and securely execute code on the server at runtime.
+
+Your routes will be rendered on demand by default in `server` mode. In `static` mode, you must opt out of prerendering for each custom endpoint with `export const prerender = false`.
+
+**Related recipe:**Call endpoints from the server
+
+Be sure to enable an on-demand rendering mode before trying these examples, and opt out of prerendering in `static` mode.
+
+Server endpoints can access `params` without exporting `getStaticPaths`, and they can return a `Response` object, allowing you to set status codes and headers:
+
+This will respond to any request that matches the dynamic route. For example, if we navigate to `/helmet.json`, `params.id` will be set to `helmet`. If `helmet` exists in the mock product database, the endpoint will use a `Response` object to respond with JSON and return a successful HTTP status code. If not, it will use a `Response` object to respond with a `404`.
+
+In SSR mode, certain providers require the `Content-Type` header to return an image. In this case, use a `Response` object to specify a `headers` property. For example, to produce a binary `.png` image:
+
+### HTTP methods
+
+Section titled “HTTP methods”In addition to the `GET` function, you can export a function with the name of any HTTP method. When a request comes in, Astro will check the method and call the corresponding function.
+
+You can also export an `ALL` function to match any method that doesn’t have a corresponding exported function. If there is a request with no matching method, it will redirect to your site’s 404 page.
+
+If you define a `GET` function but no `HEAD` function, Astro will automatically handle `HEAD` requests by calling the `GET` function and stripping the body from the response.
+
+**Related recipes**
+
+`request`
+
+Section titled “request”In SSR mode, the `request` property returns a fully usable `Request` object that refers to the current request. This allows you to accept data and check headers:
+
+### Redirects
+
+Section titled “Redirects”The endpoint context exports a `redirect()` utility similar to `Astro.redirect`:
+
+# Citations
+
+1. Source page: https://docs.astro.build/en/guides/endpoints

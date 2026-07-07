@@ -1,0 +1,121 @@
+---
+type: Web Page
+title: Pages | Docs
+description: An introduction to Astro pages.
+resource: https://docs.astro.build/en/basics/astro-pages
+timestamp: '2026-07-07T10:59:34.007706+00:00'
+---
+
+# Pages
+
+**Pages** are files that live in the `src/pages/` subdirectory of your Astro project. They are responsible for handling routing, data loading, and overall page layout for every page in your website.
+
+## Supported page files
+
+Section titled “Supported page files”Astro supports the following file types in the `src/pages/` directory:
+
+- `.astro`
+- `.md`
+- `.mdx`(with the MDX Integration installed)
+- `.html`
+- `.js`/- `.ts`(as endpoints)
+
+## File-based routing
+
+Section titled “File-based routing”Astro leverages a routing strategy called **file-based routing**. Each file in your `src/pages/` directory becomes an endpoint on your site based on its file path.
+
+A single file can also generate multiple pages using dynamic routing. This allows you to create pages even if your content lives outside of the special `/pages/` directory, such as in a content collection or a CMS.
+
+### Link between pages
+
+Section titled “Link between pages”Write standard HTML `<a>` elements in your Astro pages to link to other pages on your site. Use a **URL path relative to your root domain** as your link, not a relative file path.
+
+For example, to link to `https://example.com/authors/sonali/` from any other page on `example.com`:
+
+## Astro Pages
+
+Section titled “Astro Pages”Astro pages use the `.astro` file extension and support the same features as Astro components.
+
+A page must produce a full HTML document. If not explicitly included, Astro will add the necessary `<!DOCTYPE html>` declaration and `<head>` content to any `.astro` component located within `src/pages/` by default. You can opt-out of this behavior on a per-component basis by marking it as a partial page.
+
+To avoid repeating the same HTML elements on every page, you can move common `<head>` and `<body>` elements into your own layout components. You can use as many or as few layout components as you’d like.
+
+## Markdown/MDX Pages
+
+Section titled “Markdown/MDX Pages”Astro also treats any Markdown (`.md`) files inside of `src/pages/` as pages in your final website. If you have the MDX Integration installed, it also treats MDX (`.mdx`) files the same way.
+
+Consider creating content collections instead of pages for directories of related Markdown files that share a similar structure, such as blog posts or product items.
+
+Markdown files can use the special `layout` frontmatter property to specify a layout component that will wrap their Markdown content in a full `<html>...</html>` page document.
+
+## HTML Pages
+
+Section titled “HTML Pages”Files with the `.html` file extension can be placed in the `src/pages/` directory and used directly as pages on your site. Note that some key Astro features are not supported in HTML Components.
+
+## Custom 404 Error Page
+
+Section titled “Custom 404 Error Page”For a custom 404 error page, you can create a `404.astro` or `404.md` file in `src/pages`.
+
+This will build to a `404.html` page. Most deploy services will find and use it.
+
+## Custom 500 Error Page
+
+Section titled “Custom 500 Error Page”For a custom 500 error page to show for pages that are rendered on demand, create the file `src/pages/500.astro`. This custom page is not available for prerendered pages.
+
+If an error occurs rendering this page, your host’s default 500 error page will be shown to your visitor.
+
+	**Added in:**
+	`astro@4.10.3`
+	
+	
+
+During development, if you have a `500.astro`, the error thrown at runtime is logged in your terminal, as opposed to being shown in the error overlay.
+
+	**Added in:**
+	`astro@4.11.0`
+	
+	
+
+`src/pages/500.astro` is a special page that is automatically passed an `error` prop for any error thrown during rendering. This allows you to use the details of an error (e.g. from a page, from middleware, etc.) to display information to your visitor.
+
+The `error` prop’s data type can be anything, which may affect how you type or use the value in your code:
+
+To avoid leaking sensitive information when displaying content from the `error` prop, consider evaluating the error first, and returning appropriate content based on the error thrown. For example, you should avoid displaying the error’s stack as it contains information about how your code is structured on the server.
+
+## Page Partials
+
+Section titled “Page Partials”
+	**Added in:**
+	`astro@3.4.0`
+	
+	
+
+Page partials are intended to be used in conjunction with a front-end library, such as htmx or Unpoly. You can also use them if you are comfortable writing low-level front-end JavaScript. For this reason they are an advanced feature.
+
+Additionally, partials should not be used if the component contains scoped styles or scripts, as these elements will be stripped from the HTML output. If you need scoped styles, it is better to use regular, non-partial pages along with a frontend library that knows how to merge the contents into the head.
+
+Partials are page components located within `src/pages/` that are not intended to render as full pages.
+
+Like components located outside of this folder, these files do not automatically include the `<!DOCTYPE html>` declaration, nor any `<head>` content such as scoped styles and scripts.
+
+However, because they are located in the special `src/pages/` directory, the generated HTML is available at a URL corresponding to its file path. This allows a rendering library (e.g. htmx, Stimulus, jQuery) to access it on the client and load sections of HTML dynamically on a page without a browser refresh or page navigation.
+
+Partials, when combined with a rendering library, provide an alternative to Astro islands and `<script>` tags for building dynamic content in Astro.
+
+Page files that can export a value for `partial` (e.g. `.astro` and `.mdx`, but not `.md`) can be marked as partials.
+
+### Using with a library
+
+Section titled “Using with a library”Partials are used to dynamically update a section of a page using a library such as htmx.
+
+The following example shows an `hx-post` attribute set to a partial’s URL. The content from the partial page will be used to update the targeted HTML element on this page.
+
+The `.astro` partial must exist at the corresponding file path, and include an export defining the page as a partial:
+
+See the htmx documentation for more details on using htmx.
+
+Learn
+
+# Citations
+
+1. Source page: https://docs.astro.build/en/basics/astro-pages

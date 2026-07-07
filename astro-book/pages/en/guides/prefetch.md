@@ -1,0 +1,140 @@
+---
+type: Web Page
+title: Prefetch | Docs
+description: Prefetch links for snappier navigation between pages.
+resource: https://docs.astro.build/en/guides/prefetch
+timestamp: '2026-07-07T10:59:34.007706+00:00'
+---
+
+# Prefetch
+
+Page load times play a big role in the usability and overall enjoyment of a site. Astro’s **opt-in prefetching** brings the benefits of near-instant page navigations to your multi-page application (MPA) as your visitors interact with the site.
+
+## Enable prefetching
+
+Section titled “Enable prefetching”You can enable prefetching with the `prefetch` config:
+
+A prefetch script will be added to all pages of your site. You can then add the `data-astro-prefetch` attribute to any `<a />` links on your site to opt-in to prefetching. When you hover over the link, the script will fetch the page in the background.
+
+Note that prefetching only works for links within your site, and not external links.
+
+## Prefetch configuration
+
+Section titled “Prefetch configuration”The `prefetch` config also accepts an option object to further customize prefetching.
+
+### Prefetch strategies
+
+Section titled “Prefetch strategies”Astro supports 4 prefetch strategies for various use cases:
+
+- `hover`(default): Prefetch when you hover over or focus on the link.
+- `tap`: Prefetch just before you click on the link.
+- `viewport`: Prefetch as the links enter the viewport.
+- `load`: Prefetch all links on the page after the page is loaded.
+
+You can specify a strategy for an individual link by passing it to the `data-astro-prefetch` attribute:
+
+Each strategy is fine-tuned to only prefetch when needed and save your users’ bandwidth. For example:
+
+- If a visitor is using data saver mode or has a slow connection, prefetch will fallback to the `tap`strategy.
+- Quickly hovering or scrolling over links will not prefetch them.
+
+### Default prefetch strategy
+
+Section titled “Default prefetch strategy”The default prefetch strategy when adding the `data-astro-prefetch` attribute is `hover`. To change it, you can configure `prefetch.defaultStrategy` in your `astro.config.mjs` file:
+
+### Prefetch all links by default
+
+Section titled “Prefetch all links by default”If you want to prefetch all links, including those without the `data-astro-prefetch` attribute, you can set `prefetch.prefetchAll` to `true`:
+
+You can then opt-out of prefetching for individual links by setting `data-astro-prefetch="false"`:
+
+The default prefetch strategy for all links can be changed with `prefetch.defaultStrategy` as shown in the Default prefetch strategy section.
+
+## Prefetch programmatically
+
+Section titled “Prefetch programmatically”As some navigation might not always appear as `<a />` links, you can also prefetch programmatically with the `prefetch()` API from the `astro:prefetch` module:
+
+The `prefetch()` API includes the same data saver mode and slow connection detection so that it only prefetches when needed.
+
+To ignore slow connection detection, you can use the `ignoreSlowConnection` option:
+
+`eagerness`
+
+Section titled “eagerness”**Type:** `'immediate' | 'eager' | 'moderate' | 'conservative'`
+
+**Default:** `'immediate'`
+
+**Added in:**
+
+`astro@5.6.0`
+	
+	
+With the experimental `clientPrerender` flag enabled, you can use the `eagerness` option on `prefetch()` to suggest to the browser how eagerly it should prefetch/prerender link targets.
+
+This follows the same API described in the Speculation Rules API and defaults to `immediate` (the most eager option). In decreasing order of eagerness, the other options are `eager`, `moderate`, and `conservative`.
+
+The `eagerness` option allows you to balance the benefit of reduced wait times against bandwidth, memory, and CPU costs for your site visitors. Some browsers, such as Chrome, have limits in place to guard against over-speculating  (prerendering/prefetching too many links).
+
+To use `prefetch()` programmatically with large sets of links, you can set `eagerness: 'moderate'` to take advantage of First In, First Out (FIFO) strategies and browser heuristics to let the browser decide when to prerender/prefetch them and in what order:
+
+Make sure to only import `prefetch()` in client-side scripts as it relies on browser APIs.
+
+## Using with View Transitions
+
+Section titled “Using with View Transitions”When you use Astro’s `<ClientRouter />`  on a page, prefetching will also be enabled by default. It sets a default configuration of `{ prefetchAll: true }` which enables prefetching for all links on the page.
+
+You can customize the prefetch configuration in `astro.config.mjs` to override the default. For example:
+
+## Browser support
+
+Section titled “Browser support”Astro’s prefetching uses `<link rel="prefetch">` if supported by the browser, and falls back to the `fetch()` API otherwise.
+
+The most common browsers support Astro’s prefetching with subtle differences:
+
+### Chrome
+
+Section titled “Chrome”Chrome supports `<link rel="prefetch">`. Prefetching works as intended.
+
+It also fully supports `<script type="speculationrules">` from the Speculation Rules API, which can be used to further describe prefetching strategies and rules, enhancing user experience for your Chrome users. You’ll need to enable `clientPrerender` experiment to utilize this functionality with `prefetch()`
+
+### Firefox
+
+Section titled “Firefox”Firefox supports `<link rel="prefetch">` but may display errors or fail entirely:
+
+- Without an explicit cache header (e.g. `Cache-Control`or`Expires`), prefetching will error with`NS_BINDING_ABORTED`.
+- Even in the event of an error, if the response has a proper `ETag`header, it will be re-used on navigation.
+- Otherwise, if it errors with no other cache headers, the prefetch will not work.
+
+### Safari
+
+Section titled “Safari”Safari does not support `<link rel="prefetch">` and will fall back to the `fetch()` API which requires cache headers (e.g. `Cache-Control`, `Expires`, and `ETag`) to be set. Otherwise, the prefetch will not work.
+
+**Edge case:** `ETag` headers do not work in private windows.
+
+### Recommendations
+
+Section titled “Recommendations”To best support all browsers, make sure your pages have the proper cache headers.
+
+For static or prerendered pages, the `ETag` header is often automatically set by the deployment platform and is expected to work out of the box.
+
+For dynamic and server-side rendered pages, set the appropriate cache headers yourself based on the page content. Visit the MDN documentation on HTTP caching for more information.
+
+## Migrating from `@astrojs/prefetch`
+
+Section titled “Migrating from @astrojs/prefetch”The `@astrojs/prefetch` integration was deprecated in v3.5.0 and is no longer maintained. Use the following instructions to migrate to Astro’s built-in prefetching which replaces this integration.
+
+- 
+Remove the `@astrojs/prefetch`integration and enable the`prefetch`config in`astro.config.mjs`:
+- 
+Convert from `@astrojs/prefetch`’s configuration options:- 
+The deprecated integration used the `selector`config option to specify which links should be prefetched upon entering the viewport.Add `data-astro-prefetch="viewport"`to these individual links instead.
+- 
+The deprecated integration used the `intentSelector`config option to specify which links should be prefetched when they were hovered over or focused.Add `data-astro-prefetch`or`data-astro-prefetch="hover"`to these individual links instead:
+- 
+The `throttles`option from`@astrojs/prefetch`is no longer needed as the new prefetch feature will automatically schedule and prefetch optimally.
+ 
+-
+
+# Citations
+
+1. Source page: https://docs.astro.build/en/guides/prefetch

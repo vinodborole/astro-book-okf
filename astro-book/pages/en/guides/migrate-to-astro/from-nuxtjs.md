@@ -1,0 +1,255 @@
+---
+type: Web Page
+title: Migrating from NuxtJS | Docs
+description: Tips for migrating an existing NuxtJS project to Astro
+resource: https://docs.astro.build/en/guides/migrate-to-astro/from-nuxtjs
+timestamp: '2026-07-07T10:59:34.007706+00:00'
+---
+
+# Migrating from NuxtJS
+
+Here are some key concepts and migration strategies to help you get started. Use the rest of our docs and our Discord community to keep going!
+
+This guide is referring to Nuxt 2, not the newer Nuxt 3. While some of the concepts are similar, Nuxt 3 is a newer version of the framework and may require different strategies for parts of your migration.
+
+## Key Similarities between Nuxt and Astro
+
+Section titled “Key Similarities between Nuxt and Astro”Nuxt and Astro share some similarities that will help you migrate your project:
+
+- Astro projects can also be SSG or SSR with page level prerendering.
+- Astro uses file-based routing, and allows specially named pages to create dynamic routes.
+- Astro is component-based, and your markup structure will be similar before and after your migration.
+- Astro has an official integration for using Vue components.
+- Astro has support for installing NPM packages, including Vue libraries. You may be able to keep some or all of your existing Vue components and dependencies.
+
+## Key Differences between Nuxt and Astro
+
+Section titled “Key Differences between Nuxt and Astro”When you rebuild your Nuxt site in Astro, you will notice some important differences:
+
+- 
+Nuxt is a Vue-based SPA (single-page application). Astro sites are multi-page apps built using `.astro`components, but can also support React, Preact, Vue.js, Svelte, SolidJS, AlpineJS, and raw HTML templating.
+- 
+Page Routing: Nuxt uses `vue-router`for SPA routing, and`vue-meta`for managing`<head>`. In Astro, you will create separate HTML page routes and control your page`<head>`directly, or in a layout component.
+- 
+content-driven: Astro was designed to showcase your content and to allow you to opt-in to interactivity only as needed. An existing Nuxt app may be built for high client-side interactivity. Astro has built-in capabilities for working with your content, such as page generation, but may require advanced Astro techniques to include items that are more challenging to replicate using `.astro`components, such as dashboards.
+
+## Convert your NuxtJS Project
+
+Section titled “Convert your NuxtJS Project”Each project migration will look different, but there are some common actions you will perform when converting from Nuxt to Astro.
+
+### Create a new Astro project
+
+Section titled “Create a new Astro project”Use the `create astro` command for your package manager to launch Astro’s CLI wizard or choose a community theme from the Astro Theme Showcase.
+
+You can pass a `--template` argument to the `create astro` command to start a new Astro project with one of our official starters (e.g. `docs`, `blog`, `portfolio`). Or, you can start a new project from any existing Astro repository on GitHub.
+
+Then, copy your existing Nuxt project files over to your new Astro project in a separate folder outside of `src`.
+
+Visit https://astro.new for the full list of official starter templates, and links for opening a new project in StackBlitz or CodeSandbox.
+
+### Install integrations (optional)
+
+Section titled “Install integrations (optional)”You may find it useful to install some of Astro’s optional integrations to use while converting your Nuxt project to Astro:
+
+- 
+**@astrojs/vue**: to reuse some existing Vue UI components in your new Astro site, or keep writing with Vue components.
+- 
+**@astrojs/mdx**: to bring existing MDX files from your Nuxt project, or to use MDX in your new Astro site.
+
+### Put your source code in `src`
+
+Section titled “Put your source code in src”- 
+**Move**the contents of Nuxt’s`static/`folder into`public/`.Astro uses the `public/`directory for static assets, similar to Nuxt’s`static/`folder.
+- 
+**Copy or Move**Nuxt’s other files and folders (e.g.`pages`,`layouts`etc.) into Astro’s`src/`folder.Like Nuxt, Astro’s `src/pages/`folder is a special folder used for file-based routing. All other folders are optional, and you can organize the contents of your`src/`folder any way you like. Other common folders in Astro projects include`src/layouts/`,`src/components`,`src/styles`,`src/scripts`.
+
+### Convert Vue SFC pages to `.astro` files
+
+Section titled “Convert Vue SFC pages to .astro files”Here are some tips for converting a Nuxt `.vue` component into a `.astro` component:
+
+- 
+Use the `<template>`of the existing NuxtJS component function as the basis for your HTML template.
+- 
+Change any Nuxt or Vue syntax to Astro or to HTML web standards. This includes `<NuxtLink>`,`:class`,`{{variable}}`, and`v-if`, for example.
+- 
+Move `<script>`JavaScript, into a “code fence” (`---`). Convert your component’s data-fetching properties to server-side JavaScript - see Nuxt data fetching to Astro.
+- 
+Use `Astro.props`to access any additional props that were previously passed to your Vue component.
+- 
+Decide whether any imported components also need to be converted to Astro. With the official integration installed, you can use existing Vue components in your Astro file. But, you may want to convert them to Astro, especially if they do not need to be interactive! 
+
+See an example from a Nuxt app converted step-by-step.
+
+#### Compare: Vue vs Astro
+
+Section titled “Compare: Vue vs Astro”Compare the following Nuxt component and a corresponding Astro component:
+
+### Migrating Layout Files
+
+Section titled “Migrating Layout Files”You may find it helpful to start by converting your Nuxt layouts and templates into Astro layout components.
+
+Each Astro page explicitly requires `<html>`, `<head>`, and `<body>` tags to be present. Your Nuxt `layout.vue` and templates will not include these.
+
+Note the standard HTML templating, and direct access to `<head>`:
+
+You may also wish to reuse code from your Nuxt’s page’s `head` property to include additional site metadata. Notice that Astro uses neither `vue-meta` nor a component’s `head` property but instead creates `<head>` directly. You may import and use components, even within `<head>`, to separate and organize your page content.
+
+### Migrating Pages and Posts
+
+Section titled “Migrating Pages and Posts”In NuxtJS, your pages live in `/pages`. In Astro, all your page content must live within `src/` unless you are using content collections.
+
+#### Vue Pages
+
+Section titled “Vue Pages”Your existing Nuxt Vue (`.vue`) pages will need to be converted from Vue files to `.astro` pages. You cannot use an existing Vue page file in Astro.
+
+These `.astro` pages must be located within `src/pages/` and will have page routes generated automatically based on their file path.
+
+##### Dynamic File Path Naming
+
+Section titled “Dynamic File Path Naming”In Nuxt, your dynamic pages use an underscore to represent a dynamic page property that’s then passed to the page generation:
+
+- ## Directorypages/- ## Directorypokemon/- _name.vue
+ 
+- index.vue
+ 
+- nuxt.config.js
+
+To convert to Astro, change this underscored dynamic path property (e.g. `_name.vue`) to be wrapped in a pair of square brackets (e.g. `[name].astro`):
+
+- ## Directorysrc/- ## Directorypages/- ## Directorypokemon/- [name].astro
+ 
+- index.astro
+ 
+ 
+- astro.config.mjs
+
+#### Markdown and MDX pages
+
+Section titled “Markdown and MDX pages”Astro has built-in support for Markdown and an optional integration for MDX files. You can reuse any existing Markdown and MDX pages, but they may require some adjustments to their frontmatter, such as adding Astro’s special `layout` frontmatter property.
+
+You will no longer need to manually create pages for each Markdown-generated route or use an external package like `@nuxt/content`. These files can be placed within `src/pages/` to take advantage of automatic file-based routing.
+
+When part of a content collection, you will generate pages dynamically from your content entries.
+
+### Migrating Tests
+
+Section titled “Migrating Tests”As Astro outputs raw HTML, it is possible to write end-to-end tests using the output of the build step. Any end-to-end tests written previously might work out-of-the-box, if you have been able to match the markup of your Nuxt site. Testing libraries such as Jest and Vue Testing Library can be imported and used in Astro to test your Vue components.
+
+See Astro’s testing guide for more.
+
+## Reference: Convert NuxtJS Syntax to Astro
+
+Section titled “Reference: Convert NuxtJS Syntax to Astro”### Nuxt Local Variables to Astro
+
+Section titled “Nuxt Local Variables to Astro”To use local variables in an Astro component’s HTML, change the set of two curly braces to one set of curly braces:
+
+### Nuxt Property Passing to Astro
+
+Section titled “Nuxt Property Passing to Astro”To bind an attribute or component property in an Astro component, change this syntax to the following:
+
+### Nuxt Links to Astro
+
+Section titled “Nuxt Links to Astro”Convert any Nuxt `<NuxtLink to="">` components to HTML `<a href="">` tags.
+
+Astro does not use any special component for links, although you are welcome to build custom link components. You can then import and use this `<Link>` just as you would any other component.
+
+### Nuxt Imports to Astro
+
+Section titled “Nuxt Imports to Astro”If necessary, update any file imports to reference relative file paths exactly. This can be done using import aliases, or by writing out a relative path in full.
+
+Note that `.astro` and several other file types must be imported with their full file extension.
+
+### Nuxt Dynamic Page Generation to Astro
+
+Section titled “Nuxt Dynamic Page Generation to Astro”In Nuxt, to generate a dynamic page you either must:
+
+- Use SSR.
+- Use the `generate`function in`nuxt.config.js`to define all possible static routes.
+
+In Astro, you similarly have two choices:
+
+- Use SSR.
+- Export a `getStaticPaths()`function in the frontmatter of an Astro page to tell the framework which static routes to generate dynamically.
+
+#### Convert a `generate` function in Nuxt to a `getStaticPaths` function in Astro.
+
+Section titled “Convert a generate function in Nuxt to a getStaticPaths function in Astro.”To generate multiple pages, replace the function to create routes in your `nuxt.config.js` with `getStaticPaths()` directly inside a dynamic routing page itself:
+
+### Nuxt Data Fetching to Astro
+
+Section titled “Nuxt Data Fetching to Astro”Nuxt has two methods of fetching server-side data:
+
+In Astro, fetch data inside of your page’s code fence.
+
+Migrate the following:
+
+To a code fence without a wrapper function:
+
+### Nuxt Styling to Astro
+
+Section titled “Nuxt Styling to Astro”Nuxt utilizes Vue’s component styling to generate a page’s style.
+
+Similarly, in Astro you can drop in a `<style>` element in your page’s template to provide scoped styles to the component.
+
+#### Global Styling
+
+Section titled “Global Styling”`<style>`  tags are `scoped` by default in Astro. To make a `<style>` tag global, mark it with the `is:global` attribute:
+
+#### Pre-processor support
+
+Section titled “Pre-processor support”Astro supports the most popular CSS preprocessors by installing them as a dev dependency. For example, to use SCSS:
+
+After doing so, you’re then able to use `.scss` or `.sass` styled without modification from your Vue components.
+
+See more about Styling in Astro.
+
+### Nuxt Image Plugin to Astro
+
+Section titled “Nuxt Image Plugin to Astro”Convert any Nuxt `<nuxt-img/>` or `<nuxt-picture/>` components to Astro’s own image component in `.astro` or `.mdx` files, or to a standard HTML `<img>` or `<picture>` tag as appropriate in your Vue components.
+
+Astro’s `<Image />` component works in `.astro` and `.mdx` files only. See a full list of its component attributes and note that several will differ from Nuxt’s attributes.
+
+In Vue (`.vue`) components within your Astro app, use standard JSX image syntax (`<img />`). Astro will not optimize these images, but you can install and use NPM packages for more flexibility.
+
+You can learn more about using images in Astro in the Images Guide.
+
+## Guided example: See the steps!
+
+Section titled “Guided example: See the steps!”Here is an example of Nuxt Pokédex data fetch converted to Astro.
+
+`pages/index.vue` fetches and displays a list of the first 151 Pokémon using the REST PokéAPI.
+
+Here’s how to recreate that in `src/pages/index.astro`, replacing `asyncData()` with `fetch()`.
+
+- 
+Identify the `<template>`and`<style>`in the Vue SFC.
+- 
+Create `src/pages/index.astro`Use the `<template>`and`<style>`tags of the Nuxt SFC. Convert any Nuxt or Vue syntax to Astro.Note that: - 
+`<template>`is removed
+- 
+`<style>`has its`scoped`attribute removed
+- 
+`v-for`becomes`.map`.
+- 
+`:attr="val"`becomes`attr={val}`
+- 
+`<NuxtLink>`becomes`<a>`.
+- 
+The `<> </>`fragment is not required in Astro templating.
+ 
+- 
+- 
+Add any needed imports, props and JavaScript Note that: - The `asyncData`function is no longer needed. Data from the API is fetched directly in the code fence.
+- A `<Layout>`component is imported, and wraps the page templating.- Our `head()`Nuxt method is passed to the`<Layout>`component, which is passed to the`<title>`element as a property.
+ 
+- Our 
+ 
+- The 
+
+## Community Resources
+
+Section titled “Community Resources”If you found (or made!) a helpful video or blog post about converting a Nuxt site to Astro, add it to this list!
+
+# Citations
+
+1. Source page: https://docs.astro.build/en/guides/migrate-to-astro/from-nuxtjs
