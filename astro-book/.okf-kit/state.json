@@ -2,7 +2,7 @@
   "generator": "okf-kit",
   "okf_version": "0.1",
   "root_url": "https://docs.astro.build/en/getting-started",
-  "updated_at": "2026-07-07T10:59:34.059430+00:00",
+  "updated_at": "2026-07-09T12:16:56.840801+00:00",
   "config": {
     "max_depth": 3,
     "max_pages": 90,
@@ -550,7 +550,7 @@
       "path": "pages/en/upgrade-astro.md",
       "url": "https://docs.astro.build/en/upgrade-astro",
       "title": "Upgrade Astro | Docs",
-      "hash": "4d3da47441048c79e42e00c1d4304142cffb77bf88af43dfaf62ab7a125791ed"
+      "hash": "d81e753d2cde1f7a6467725e41d64bf0202311f1fbc85cb978daa6285fd2b2ae"
     }
   ],
   "edges": [
@@ -2934,5 +2934,12 @@
       "pages/en/upgrade-astro.md",
       "pages/en/guides/upgrade-to/v7.md"
     ]
-  ]
+  ],
+  "last_sync": {
+    "synced_at": "2026-07-09T12:16:56.791023+00:00",
+    "added": 0,
+    "changed": 1,
+    "removed": 0,
+    "pages": 90
+  }
 }

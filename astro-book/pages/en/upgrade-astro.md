@@ -3,7 +3,7 @@ type: Web Page
 title: Upgrade Astro | Docs
 description: Learn how to upgrade Astro
 resource: https://docs.astro.build/en/upgrade-astro
-timestamp: '2026-07-07T10:59:34.007706+00:00'
+timestamp: '2026-07-09T12:16:56.788922+00:00'
 ---
 
 # Upgrade Astro
@@ -12,7 +12,7 @@ This guide covers how to update your version of Astro and related dependencies, 
 
 ## What has changed?
 
-Section titled “What has changed?”The latest release of Astro is v7.0.6.
+Section titled “What has changed?”The latest release of Astro is v7.0.7.
 
 You can find an exhaustive list of all changes in Astro’s changelog, and important instructions for upgrading to each new major version in our upgrade guides.
 
