@@ -3,7 +3,7 @@ type: Web Page
 title: Actions | Docs
 description: Learn how to create type-safe server functions you can call from anywhere.
 resource: https://docs.astro.build/en/guides/actions
-timestamp: '2026-07-07T10:59:34.007706+00:00'
+timestamp: '2026-07-13T09:18:12.222139+00:00'
 ---
 
 # Actions
@@ -13,41 +13,48 @@ timestamp: '2026-07-07T10:59:34.007706+00:00'
 	
 	
 
-Astro Actions allow you to define and call backend functions with type-safety. Actions perform data fetching, JSON parsing, and input validation for you. This can greatly reduce the amount of boilerplate needed compared to using an API endpoint.
+Astro Actions allow you to define and call backend functions with type-safety. Actions perform data fetching, JSON parsing, and input validation for you. This can greatly reduce the amount of boilerplate needed compared to using an [API endpoint](/en/guides/endpoints/).
 
 Use actions instead of API endpoints for seamless communication between your client and server code and to:
 
-- Automatically validate JSON and form data inputs using Zod validation.
-- Generate type-safe functions to call your backend from the client and even from HTML form actions. No need for manual `fetch()`calls.
-- Standardize backend errors with the `ActionError`object.
+- Automatically validate JSON and form data inputs using [Zod validation](/en/reference/modules/astro-zod/).
+- Generate type-safe functions to call your backend from the client and even [from HTML form actions](#call-actions-from-an-html-form-action). No need for manual`fetch()`calls.
+- Standardize backend errors with the `ActionError`
 
 ## Basic usage
 
-Section titled “Basic usage”Actions are defined in a `server` object exported from `src/actions/index.ts`:
+[Section titled “Basic usage”](#basic-usage)
 
-Your actions are available as functions from the `astro:actions` module. Import `actions` and call them client-side within a UI framework component, a form POST request, or by using a `<script>` tag in an Astro component.
+Actions are defined in a `server` object exported from `src/actions/index.ts`:
+
+Your actions are available as functions from the `astro:actions` module. Import `actions` and call them client-side within a [UI framework component](/en/guides/framework-components/), [a form POST request](#call-actions-from-an-html-form-action), or by using a `<script>` tag in an Astro component.
 
 When you call an action, it returns an object with either `data` containing the JSON-serialized result, or `error` containing thrown errors.
 
 ### Write your first action
 
-Section titled “Write your first action”Follow these steps to define an action and call it in a `script` tag in your Astro page.
+[Section titled “Write your first action”](#write-your-first-action)
+
+Follow these steps to define an action and call it in a `script` tag in your Astro page.
 
 - 
 Create a `src/actions/index.ts`file and export a`server`object.
 - 
 Import the `defineAction()`utility from`astro:actions`, and the`z`object from`astro/zod`.
 - 
-Use the `defineAction()`utility to define a`getGreeting`action. The`input`property will be used to validate input parameters with a Zod schema and the`handler()`function includes the backend logic to run on the server.
+Use the `defineAction()`utility to define a`getGreeting`action. The`input`property will be used to validate input parameters with a[Zod schema](/en/reference/modules/astro-zod/#common-data-type-validators)and the`handler()`function includes the backend logic to run on the server.
 - 
 Create an Astro component with a button that will fetch a greeting using your `getGreeting`action when clicked.
 - 
 To use your action, import `actions`from`astro:actions`and then call`actions.getGreeting()`in the click handler. The`name`option will be sent to your action’s`handler()`on the server and, if there are no errors, the result will be available as the`data`property.
 
-`defineAction()` and its properties.
-## Organizing actions
+[and its properties.](/en/reference/modules/astro-actions/#defineaction)
 
-Section titled “Organizing actions”All actions in your project must be exported from the `server` object in the `src/actions/index.ts` file. You can define actions inline or you can move action definitions to separate files and import them. You can even group related functions in nested objects.
+`defineAction()`## Organizing actions
+
+[Section titled “Organizing actions”](#organizing-actions)
+
+All actions in your project must be exported from the `server` object in the `src/actions/index.ts` file. You can define actions inline or you can move action definitions to separate files and import them. You can even group related functions in nested objects.
 
 For example, to colocate all of your user actions, you can create a `src/actions/user.ts` file and nest the definitions of both `getUser` and `createUser` inside a single `user` object.
 
@@ -60,24 +67,33 @@ Now, all of your user actions are callable from the `actions.user` object:
 
 ## Handling returned data
 
-Section titled “Handling returned data”Actions return an object containing either `data` with the type-safe return value of your `handler()`, or an `error` with any backend errors. Errors may come from validation errors on the `input` property or thrown errors within the `handler()`.
+[Section titled “Handling returned data”](#handling-returned-data)
 
-Actions return a custom data format that can handle Dates, Maps, Sets, and URLs using the Devalue library. Therefore, you can’t easily inspect the response from the network like you can with regular JSON. For debugging, you can instead inspect the `data` object returned by actions.
+Actions return an object containing either `data` with the type-safe return value of your `handler()`, or an `error` with any backend errors. Errors may come from validation errors on the `input` property or thrown errors within the `handler()`.
 
-`handler()` API reference for full details.
-### Checking for errors
+Actions return a custom data format that can handle Dates, Maps, Sets, and URLs [using the Devalue library](https://github.com/Rich-Harris/devalue). Therefore, you can’t easily inspect the response from the network like you can with regular JSON. For debugging, you can instead inspect the `data` object returned by actions.
 
-Section titled “Checking for errors”It’s best to check if an `error` is present before using the `data` property. This allows you to handle errors in advance and ensures `data` is defined without an `undefined` check.
+[See the](/en/reference/modules/astro-actions/#handler-property)for full details.
+
+`handler()` API reference### Checking for errors
+
+[Section titled “Checking for errors”](#checking-for-errors)
+
+It’s best to check if an `error` is present before using the `data` property. This allows you to handle errors in advance and ensures `data` is defined without an `undefined` check.
 
 ### Accessing `data` directly without an error check
 
-Section titled “Accessing data directly without an error check”To skip error handling, for example while prototyping or using a library that will catch errors for you, use the `.orThrow()` property on your action call to throw errors instead of returning an `error`. This will return the action’s `data` directly.
+[Section titled “Accessing data directly without an error check”](#accessing-data-directly-without-an-error-check)
+
+To skip error handling, for example while prototyping or using a library that will catch errors for you, use the `.orThrow()` property on your action call to throw errors instead of returning an `error`. This will return the action’s `data` directly.
 
 This example calls a `likePost()` action that returns the updated number of likes as a `number` from the action `handler`:
 
 ### Handling backend errors in your action
 
-Section titled “Handling backend errors in your action”You can use the provided `ActionError` to throw an error from your action `handler()`, such as “not found” when a database entry is missing, or “unauthorized” when a user is not logged in. This has two main benefits over returning `undefined`:
+[Section titled “Handling backend errors in your action”](#handling-backend-errors-in-your-action)
+
+You can use the provided `ActionError` to throw an error from your action `handler()`, such as “not found” when a database entry is missing, or “unauthorized” when a user is not logged in. This has two main benefits over returning `undefined`:
 
 - 
 You can set a status code like `404 - Not found`or`401 - Unauthorized`. This improves debugging errors in both development and in production by letting you see the status code of each request.
@@ -86,29 +102,39 @@ In your application code, all errors are passed to the `error`object on an actio
 
 #### Creating an `ActionError`
 
-Section titled “Creating an ActionError”To throw an error, import the `ActionError()` class from the `astro:actions` module. Pass it a human-readable status `code` (e.g. `"NOT_FOUND"` or `"BAD_REQUEST"`), and an optional `message` to provide further information about the error.
+[Section titled “Creating an ActionError”](#creating-an-actionerror)
 
-This example throws an error from a `likePost` action when a user is not logged in, after checking a hypothetical “user-session” cookie for authentication:
+To throw an error, import the [ ActionError() class](/en/reference/modules/astro-actions/#actionerror) from the 
+
+`astro:actions` module. Pass it a human-readable status `code` (e.g. `"NOT_FOUND"` or `"BAD_REQUEST"`), and an optional `message` to provide further information about the error.This example throws an error from a `likePost` action when a user is not logged in, after checking a hypothetical “user-session” cookie for authentication:
 
 #### Handling an `ActionError`
 
-Section titled “Handling an ActionError”To handle this error, you can call the action from your application and check whether an `error` property is present. This property will be of type `ActionError` and will contain your `code` and `message`.
+[Section titled “Handling an ActionError”](#handling-an-actionerror)
+
+To handle this error, you can call the action from your application and check whether an `error` property is present. This property will be of type `ActionError` and will contain your `code` and `message`.
 
 In the following example, a `LikeButton.tsx` component calls the `likePost()` action when clicked. If an authentication error occurs, the `error.code` attribute is used to determine whether to display a login link:
 
 ### Handling client redirects
 
-Section titled “Handling client redirects”When calling actions from the client, you can integrate with a client-side library like `react-router`, or you can use Astro’s `navigate()` function to redirect to a new page when an action succeeds.
+[Section titled “Handling client redirects”](#handling-client-redirects)
+
+When calling actions from the client, you can integrate with a client-side library like `react-router`, or you can use Astro’s [ navigate() function](/en/guides/view-transitions/#trigger-navigation) to redirect to a new page when an action succeeds.
 
 This example navigates to the homepage after a `logout` action returns successfully:
 
 ## Accepting form data from an action
 
-Section titled “Accepting form data from an action”Actions accept JSON data by default. To accept form data from an HTML form, set `accept: 'form'` in your `defineAction()` call:
+[Section titled “Accepting form data from an action”](#accepting-form-data-from-an-action)
+
+Actions accept JSON data by default. To accept form data from an HTML form, set `accept: 'form'` in your `defineAction()` call:
 
 ### Using validators with form inputs
 
-Section titled “Using validators with form inputs”When your action is configured to accept form data, you can use any Zod validators to validate your fields (e.g. `z.coerce.date()` for date inputs). Extension functions including `.refine()`, `.transform()`, and `.pipe()` are also supported on the `z.object()` validator.
+[Section titled “Using validators with form inputs”](#using-validators-with-form-inputs)
+
+When your action is [configured to accept form data](/en/reference/modules/astro-actions/#accept-property), you can use any Zod validators to validate your fields (e.g. `z.coerce.date()` for date inputs). Extension functions including `.refine()`, `.transform()`, and `.pipe()` are also supported on the `z.object()` validator.
 
 Additionally, Astro provides special handling under the hood for your convenience to validate the following types of field inputs:
 
@@ -124,7 +150,9 @@ To apply a union of different validators, use the `z.discriminatedUnion()` wrapp
 
 ### Validating form data
 
-Section titled “Validating form data”Actions will parse submitted form data to an object, using the value of each input’s `name` attribute as the object keys. For example, a form containing `<input name="search">` will be parsed to an object like `{ search: 'user input' }`. Your action’s `input` schema will be used to validate this object.
+[Section titled “Validating form data”](#validating-form-data)
+
+Actions will parse submitted form data to an object, using the value of each input’s `name` attribute as the object keys. For example, a form containing `<input name="search">` will be parsed to an object like `{ search: 'user input' }`. Your action’s `input` schema will be used to validate this object.
 
 To receive the raw `FormData` object in your action handler instead of a parsed object, omit the `input` property in your action definition.
 
@@ -133,13 +161,15 @@ The following example shows a validated newsletter registration form that accept
 - 
 Create an HTML form component with unique `name`attributes on each input:
 - 
-Define a `newsletter`action to handle the submitted form. Validate the`email`field using the`z.email()`validator, and the`terms`checkbox using`z.boolean()`:See the`input`API reference for all available form validators.
+Define a `newsletter`action to handle the submitted form. Validate the`email`field using the`z.email()`validator, and the`terms`checkbox using`z.boolean()`:See the`input`API reference
 - 
-Add a `<script>`to the HTML form to submit the user input. This example overrides the form’s default submit behavior to call`actions.newsletter()`, and redirects to`/confirmation`using the`navigate()`function:See “Call actions from an HTML form action” for an alternative way to submit form data.
+Add a `<script>`to the HTML form to submit the user input. This example overrides the form’s default submit behavior to call`actions.newsletter()`, and redirects to`/confirmation`using the`navigate()`function:See[“Call actions from an HTML form action”](#call-actions-from-an-html-form-action)for an alternative way to submit form data.
 
 ### Displaying form input errors
 
-Section titled “Displaying form input errors”You can validate form inputs before submission using native HTML form validation attributes like `required`, `type="email"`, and `pattern`. For more complex `input` validation on the backend, you can use the provided `isInputError()` utility function.
+[Section titled “Displaying form input errors”](#displaying-form-input-errors)
+
+You can validate form inputs before submission using [native HTML form validation attributes](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation#using_built-in_form_validation) like `required`, `type="email"`, and `pattern`. For more complex `input` validation on the backend, you can use the provided [ isInputError()](/en/reference/modules/astro-actions/#isinputerror) utility function.
 
 To retrieve input errors, use the `isInputError()` utility to check whether an error was caused by invalid input. Input errors contain a `fields` object with messages for each input name that failed to validate. You can use these messages to prompt your user to correct their submission.
 
@@ -147,11 +177,13 @@ The following example checks the error with `isInputError()`, then checks whethe
 
 ## Call actions from an HTML form action
 
-Section titled “Call actions from an HTML form action”Pages must be on-demand rendered when calling actions using a form action. Ensure prerendering is disabled on the page before using this API.
+[Section titled “Call actions from an HTML form action”](#call-actions-from-an-html-form-action)
+
+Pages must be on-demand rendered when calling actions using a form action. [Ensure prerendering is disabled on the page](/en/guides/on-demand-rendering/#enabling-on-demand-rendering) before using this API.
 
 You can enable zero-JS form submissions with standard attributes on any `<form>` element.  Form submissions without client-side JavaScript may be useful both as a fallback for when JavaScript fails to load, or if you prefer to handle forms entirely from the server.
 
-Calling Astro.getActionResult() on the server returns the result of your form submission (`data` or `error`), and can be used to dynamically redirect, handle form errors, update the UI, and more.
+Calling [Astro.getActionResult()](/en/reference/api-reference/#getactionresult) on the server returns the result of your form submission (`data` or `error`), and can be used to dynamically redirect, handle form errors, update the UI, and more.
 
 To call an action from an HTML form, add `method="POST"` to your `<form>`, then set the form’s `action` attribute using your action, for example `action={actions.logout}`. This will set the `action` attribute to use a query string that is handled by the server automatically.
 
@@ -161,7 +193,9 @@ Additional attributes on the `<form>` element may be necessary for proper schema
 
 ### Redirect on action success
 
-Section titled “Redirect on action success”If you need to redirect to a new route on success, you can use an action’s result on the server. A common example is creating a product record and redirecting to the new product’s page, e.g. `/products/[id]`.
+[Section titled “Redirect on action success”](#redirect-on-action-success)
+
+If you need to redirect to a new route on success, you can use an action’s result on the server. A common example is creating a product record and redirecting to the new product’s page, e.g. `/products/[id]`.
 
 For example, say you have a `createProduct` action that returns the generated product id:
 
@@ -171,27 +205,34 @@ Use the `data` property to construct a URL to use with `Astro.redirect()`:
 
 ### Handle form action errors
 
-Section titled “Handle form action errors”Calling `Astro.getActionResult()` in the Astro component containing your form gives you access to the `data` and `error` objects for custom error handling.
+[Section titled “Handle form action errors”](#handle-form-action-errors)
+
+Calling `Astro.getActionResult()` in the Astro component containing your form gives you access to the `data` and `error` objects for custom error handling.
 
 The following example displays a general failure message when a `newsletter` action fails:
 
-For more customization, you can use the `isInputError()` utility to check whether an error is caused by invalid input.
+For more customization, you can [use the  isInputError() utility](#displaying-form-input-errors) to check whether an error is caused by invalid input.
 
 The following example renders an error banner under the `email` input field when an invalid email is submitted:
 
 #### Preserve input values on error
 
-Section titled “Preserve input values on error”Inputs will be cleared whenever a form is submitted. To persist input values, you can enable view transitions and apply the `transition:persist` directive to each input:
+[Section titled “Preserve input values on error”](#preserve-input-values-on-error)
+
+Inputs will be cleared whenever a form is submitted. To persist input values, you can [enable view transitions](/en/guides/view-transitions/#enabling-view-transitions-spa-mode) and apply the `transition:persist` directive to each input:
 
 ### Update the UI with a form action result
 
-Section titled “Update the UI with a form action result”To use an action’s return value to display a notification to the user on success, pass the action to `Astro.getActionResult()`. Use the returned `data` property to render the UI you want to display.
+[Section titled “Update the UI with a form action result”](#update-the-ui-with-a-form-action-result)
+
+To use an action’s return value to display a notification to the user on success, pass the action to `Astro.getActionResult()`. Use the returned `data` property to render the UI you want to display.
 
 This example uses the `productName` property returned by an `addToCart` action to show a success message.
 
 ### Advanced: Persist action results with a session
 
-Section titled “Advanced: Persist action results with a session”
+[Section titled “Advanced: Persist action results with a session”](#advanced-persist-action-results-with-a-session)
+
 	**Added in:**
 	`astro@5.0.0`
 	
@@ -201,25 +242,30 @@ Action results are displayed as a POST submission. This means that the result wi
 
 To customize this behavior, you can add middleware to handle the result of the action manually. You may choose to persist the action result using a cookie or session storage.
 
-Start by creating a middleware file and importing the `getActionContext()` utility from `astro:actions`. This function returns an `action` object with information about the incoming action request, including the action handler and whether the action was called from an HTML form. `getActionContext()` also returns the `setActionResult()` and `serializeActionResult()` functions to programmatically set the value returned by `Astro.getActionResult()`:
+Start by [creating a middleware file](/en/guides/middleware/) and importing [the  getActionContext() utility](/en/reference/modules/astro-actions/#getactioncontext) from 
 
-A common practice to persist HTML form results is the POST / Redirect / GET pattern. This redirect removes the “confirm form resubmission?” dialog when the page is refreshed, and allows action results to be persisted throughout the user’s session.
+`astro:actions`. This function returns an `action` object with information about the incoming action request, including the action handler and whether the action was called from an HTML form. `getActionContext()` also returns the `setActionResult()` and `serializeActionResult()` functions to programmatically set the value returned by `Astro.getActionResult()`:A common practice to persist HTML form results is the [POST / Redirect / GET pattern](https://en.wikipedia.org/wiki/Post/Redirect/Get). This redirect removes the “confirm form resubmission?” dialog when the page is refreshed, and allows action results to be persisted throughout the user’s session.
 
-This example applies the POST / Redirect / GET pattern to all form submissions using session storage with the Netlify server adapter installed. Action results are written to a session store using Netlify Blob, and retrieved after a redirect using a session ID:
+This example applies the POST / Redirect / GET pattern to all form submissions using session storage with the [Netlify server adapter](/en/guides/integrations-guide/netlify/) installed. Action results are written to a session store using [Netlify Blob](https://docs.netlify.com/blobs/overview/), and retrieved after a redirect using a session ID:
 
 ## Security when using actions
 
-Section titled “Security when using actions”Actions are accessible as public endpoints based on the name of the action. For example, the action `blog.like()` will be accessible from `/_actions/blog.like`. This is useful for unit testing action results and debugging production errors. However, this means you **must** use the same authorization checks that you would consider for API endpoints and on-demand rendered pages.
+[Section titled “Security when using actions”](#security-when-using-actions)
+
+Actions are accessible as public endpoints based on the name of the action. For example, the action `blog.like()` will be accessible from `/_actions/blog.like`. This is useful for unit testing action results and debugging production errors. However, this means you **must** use the same authorization checks that you would consider for API endpoints and on-demand rendered pages.
 
 ### Authorize users from an action handler
 
-Section titled “Authorize users from an action handler”To authorize action requests, add an authentication check to your action handler. You may want to use an authentication library to handle session management and user information.
+[Section titled “Authorize users from an action handler”](#authorize-users-from-an-action-handler)
 
-Actions expose a subset of the `APIContext` object to access properties passed from middleware using `context.locals`. When a user is not authorized, you can raise an `ActionError` with the `UNAUTHORIZED` code:
+To authorize action requests, add an authentication check to your action handler. You may want to use [an authentication library](/en/guides/authentication/) to handle session management and user information.
 
-### Gate actions from middleware
+Actions expose [a subset of the  APIContext object](/en/reference/modules/astro-actions/#actionapicontext) to access properties passed from middleware using 
 
-Section titled “Gate actions from middleware”
+`context.locals`. When a user is not authorized, you can raise an `ActionError` with the `UNAUTHORIZED` code:### Gate actions from middleware
+
+[Section titled “Gate actions from middleware”](#gate-actions-from-middleware)
+
 	**Added in:**
 	`astro@5.0.0`
 	
@@ -227,15 +273,23 @@ Section titled “Gate actions from middleware”
 
 Astro recommends authorizing user sessions from your action handler to respect permission levels and rate-limiting on a per-action basis. However, you can also gate requests to all actions (or a subset of actions) from middleware.
 
-Use the `getActionContext()` function from your middleware to retrieve information about any inbound action requests. This includes the action name and whether that action was called using a client-side remote procedure call (RPC) function (e.g. `actions.blog.like()`) or an HTML form.
+Use the [ getActionContext() function](/en/reference/modules/astro-actions/#getactioncontext) from your middleware to retrieve information about any inbound action requests. This includes the action name and whether that action was called using a client-side remote procedure call (RPC) function (e.g. 
 
-The following example rejects all action requests that do not have a valid session token. If the check fails, a “Forbidden” response is returned. Note: this method ensures that actions are only accessible when a session is present, but is *not* a substitute for secure authorization.
+`actions.blog.like()`) or an HTML form.The following example rejects all action requests that do not have a valid session token. If the check fails, a “Forbidden” response is returned. Note: this method ensures that actions are only accessible when a session is present, but is *not* a substitute for secure authorization.
 
 ## Call actions from Astro components and server endpoints
 
-Section titled “Call actions from Astro components and server endpoints”You can call actions directly from Astro component scripts using the `Astro.callAction()` wrapper (or `context.callAction()` when using a server endpoint). This is common to reuse logic from your actions in other server code.
+[Section titled “Call actions from Astro components and server endpoints”](#call-actions-from-astro-components-and-server-endpoints)
+
+You can call actions directly from Astro component scripts using the `Astro.callAction()` wrapper (or `context.callAction()` when using a [server endpoint](/en/guides/endpoints/#server-endpoints-api-routes)). This is common to reuse logic from your actions in other server code.
 
 Pass the action as the first argument and any input parameters as the second argument. This returns the same `data` and `error` objects you receive when calling actions on the client:
+
+[Contribute](/en/contribute/)
+
+[Community](https://astro.build/chat)
+
+[Sponsor](https://opencollective.com/astrodotbuild)
 
 # Citations
 

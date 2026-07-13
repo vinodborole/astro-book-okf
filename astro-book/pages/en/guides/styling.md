@@ -4,20 +4,24 @@ title: Styles and CSS | Docs
 description: Learn how to style components in Astro with scoped styles, external CSS,
   and tooling like Sass and PostCSS.
 resource: https://docs.astro.build/en/guides/styling
-timestamp: '2026-07-07T10:59:34.007706+00:00'
+timestamp: '2026-07-13T09:18:12.222139+00:00'
 ---
 
 # Styles and CSS
 
-Astro was designed to make styling and writing CSS a breeze. Write your own CSS directly inside of an Astro component or import your favorite CSS library like Tailwind. Advanced styling languages like Sass and Less are also supported.
+Astro was designed to make styling and writing CSS a breeze. Write your own CSS directly inside of an Astro component or import your favorite CSS library like [Tailwind](https://tailwindcss.com/docs/installation/framework-guides/astro). Advanced styling languages like [Sass](https://sass-lang.com/) and [Less](https://lesscss.org/) are also supported.
 
 ## Styling in Astro
 
-Section titled “Styling in Astro”Styling an Astro component is as easy as adding a `<style>` tag to your component or page template. When you place a `<style>` tag inside of an Astro component, Astro will detect the CSS and handle your styles for you, automatically.
+[Section titled “Styling in Astro”](#styling-in-astro)
+
+Styling an Astro component is as easy as adding a `<style>` tag to your component or page template. When you place a `<style>` tag inside of an Astro component, Astro will detect the CSS and handle your styles for you, automatically.
 
 ### Scoped Styles
 
-Section titled “Scoped Styles”Astro `<style>` CSS rules are automatically **scoped by default**. Scoped styles are compiled behind-the-scenes to only apply to HTML written inside of that same component. The CSS that you write inside of an Astro component is automatically encapsulated inside of that component.
+[Section titled “Scoped Styles”](#scoped-styles)
+
+Astro `<style>` CSS rules are automatically **scoped by default**. Scoped styles are compiled behind-the-scenes to only apply to HTML written inside of that same component. The CSS that you write inside of an Astro component is automatically encapsulated inside of that component.
 
 This CSS:
 
@@ -31,7 +35,9 @@ The specificity of scoped styles is preserved, allowing them to work consistentl
 
 ### Global Styles
 
-Section titled “Global Styles”While we recommend scoped styles for most components, you may eventually find a valid reason to write global, unscoped CSS. You can opt-out of automatic CSS scoping with the `<style is:global>` attribute.
+[Section titled “Global Styles”](#global-styles)
+
+While we recommend scoped styles for most components, you may eventually find a valid reason to write global, unscoped CSS. You can opt-out of automatic CSS scoping with the `<style is:global>` attribute.
 
 You can also mix global & scoped CSS rules together in the same `<style>` tag using the `:global()` selector. This becomes a powerful pattern for applying CSS styles to children of your component.
 
@@ -41,12 +47,17 @@ Scoped styles should be used as often as possible. Global styles should be used 
 
 ### Combining classes with `class:list`
 
-Section titled “Combining classes with class:list”If you need to combine classes on an element dynamically, you can use the `class:list` utility attribute in `.astro` files.
+[Section titled “Combining classes with class:list”](#combining-classes-with-classlist)
+
+If you need to combine classes on an element dynamically, you can use the `class:list` utility attribute in `.astro` files.
+
+[directives reference](/en/reference/directives-reference/#classlist)page to learn more about
 
 `class:list`.
 ### CSS Variables
 
-Section titled “CSS Variables”
+[Section titled “CSS Variables”](#css-variables)
+
 	**Added in:**
 	`astro@0.21.0`
 	
@@ -54,12 +65,16 @@ Section titled “CSS Variables”
 
 The Astro `<style>` can reference any CSS variables available on the page. You can also pass CSS variables directly from your component frontmatter using the `define:vars` directive.
 
+[directives reference](/en/reference/directives-reference/#definevars)page to learn more about
+
 `define:vars`.
 ### Passing a `class` to a child component
 
-Section titled “Passing a class to a child component”In Astro, HTML attributes like `class` do not automatically pass through to child components.
+[Section titled “Passing a class to a child component”](#passing-a-class-to-a-child-component)
 
-Instead, accept a `class` prop in the child component and apply it to the root element. When destructuring, you must rename it, because `class` is a reserved word in JavaScript.
+In Astro, HTML attributes like `class` do not automatically pass through to child components.
+
+Instead, accept a `class` prop in the child component and apply it to the root element. When destructuring, you must rename it, because `class` is a [reserved word](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#reserved_words) in JavaScript.
 
 Using the default scoped style strategy, you must also pass the `data-astro-cid-*` attribute. You can do this by passing the `...rest` of the props to the component. If you have changed `scopedStyleStrategy` to `'class'` or `'where'`, the `...rest` prop is not necessary.
 
@@ -67,42 +82,56 @@ Because the `data-astro-cid-*` attribute includes the child in its parent’s sc
 
 ### Inline styles
 
-Section titled “Inline styles”You can style HTML elements inline using the `style` attribute. This can be a CSS string or an object of CSS properties:
+[Section titled “Inline styles”](#inline-styles)
+
+You can style HTML elements inline using the `style` attribute. This can be a CSS string or an object of CSS properties:
 
 ## External Styles
 
-Section titled “External Styles”There are two ways to resolve external global stylesheets: an ESM import for files located within your project source, and an absolute URL link for files in your `public/` directory, or hosted outside of your project.
+[Section titled “External Styles”](#external-styles)
+
+There are two ways to resolve external global stylesheets: an ESM import for files located within your project source, and an absolute URL link for files in your `public/` directory, or hosted outside of your project.
+
+[static assets](/en/guides/imports/)located in
 
 `public/` or `src/`.
 ### Import a local stylesheet
 
-Section titled “Import a local stylesheet”You may need to update your `astro.config` when importing from npm packages. See the “import stylesheets from an npm package” section below.
+[Section titled “Import a local stylesheet”](#import-a-local-stylesheet)
 
-You can import stylesheets in your Astro component frontmatter using ESM import syntax. CSS imports work like any other ESM import in an Astro component, which should be referenced as **relative to the component** and must be written at the **top** of your component script, with any other imports.
+You may need to update your `astro.config` when importing from npm packages. See the [“import stylesheets from an npm package” section](#import-a-stylesheet-from-an-npm-package) below.
+
+You can import stylesheets in your Astro component frontmatter using ESM import syntax. CSS imports work like [any other ESM import in an Astro component](/en/basics/astro-components/#the-component-script), which should be referenced as **relative to the component** and must be written at the **top** of your component script, with any other imports.
 
 CSS `import` via ESM are supported inside of any JavaScript file, including JSX components like React & Preact.  This can be useful for writing granular, per-component styles for your React components.
 
 ### Import a stylesheet from an npm package
 
-Section titled “Import a stylesheet from an npm package”You may also need to load stylesheets from an external npm package. This is especially common for utilities like Open Props. If your package **recommends using a file extension** (i.e. `package-name/styles.css` instead of `package-name/styles`), this should work like any local stylesheet:
+[Section titled “Import a stylesheet from an npm package”](#import-a-stylesheet-from-an-npm-package)
+
+You may also need to load stylesheets from an external npm package. This is especially common for utilities like [Open Props](https://open-props.style/). If your package **recommends using a file extension** (i.e. `package-name/styles.css` instead of `package-name/styles`), this should work like any local stylesheet:
 
 If your package **does not suggest using a file extension** (i.e. `package-name/styles`), you’ll need to update your Astro config first!
 
-Say you are importing a CSS file from `package-name` called `normalize` (with the file extension omitted). To ensure we can prerender your page correctly, add `package-name` to the `vite.ssr.noExternal` array:
+Say you are importing a CSS file from `package-name` called `normalize` (with the file extension omitted). To ensure we can prerender your page correctly, add `package-name` to [the  vite.ssr.noExternal array](https://vite.dev/config/ssr-options.html#ssr-noexternal):
 
-This is a Vite-specific setting that does *not* relate to (or require) Astro SSR.
+This is a [Vite-specific setting](https://vite.dev/config/ssr-options.html#ssr-noexternal) that does *not* relate to (or require) [Astro SSR](/en/guides/on-demand-rendering/).
 
 Now, you are free to import `package-name/normalize`. This will be bundled and optimized by Astro like any other local stylesheet.
 
 ### Load a static stylesheet via “link” tags
 
-Section titled “Load a static stylesheet via “link” tags”You can also use the `<link>` element to load a stylesheet on the page. This should be an absolute URL path to a CSS file located in your `/public` directory, or an URL to an external website. Relative `<link>` href values are not supported.
+[Section titled “Load a static stylesheet via “link” tags”](#load-a-static-stylesheet-via-link-tags)
 
-Because this approach uses the `public/` directory, it skips the normal CSS processing, bundling and optimizations that are provided by Astro. If you need these transformations, use the Import a Stylesheet method above.
+You can also use the `<link>` element to load a stylesheet on the page. This should be an absolute URL path to a CSS file located in your `/public` directory, or an URL to an external website. Relative `<link>` href values are not supported.
+
+Because this approach uses the `public/` directory, it skips the normal CSS processing, bundling and optimizations that are provided by Astro. If you need these transformations, use the [Import a Stylesheet](#import-a-local-stylesheet) method above.
 
 ## Cascading Order
 
-Section titled “Cascading Order”Astro components will sometimes have to evaluate multiple sources of CSS. For example, your component might import a CSS stylesheet, include its own `<style>` tag, *and* be rendered inside a layout that imports CSS.
+[Section titled “Cascading Order”](#cascading-order)
+
+Astro components will sometimes have to evaluate multiple sources of CSS. For example, your component might import a CSS stylesheet, include its own `<style>` tag, *and* be rendered inside a layout that imports CSS.
 
 When conflicting CSS rules apply to the same element, browsers first use *specificity* and then *order of appearance* to determine which value to show.
 
@@ -118,35 +147,47 @@ Astro CSS rules are evaluated in this order of appearance:
 
 ### Scoped Styles
 
-Section titled “Scoped Styles”Depending on your chosen value for `scopedStyleStrategy`, scoped styles may or may not increase the CLASS column specificity.
+[Section titled “Scoped Styles”](#scoped-styles-1)
 
-However, scoped styles will always come last in the order of appearance. These styles will therefore take precedence over other styles of the same specificity. For example, if you import a stylesheet that conflicts with a scoped style, the scoped style’s value will apply:
+Depending on your chosen value for [ scopedStyleStrategy](/en/reference/configuration-reference/#scopedstylestrategy), scoped styles may or may not increase the 
+
+[CLASS column specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascade/Specificity#class_column).
+
+However, [scoped styles](#scoped-styles) will always come last in the order of appearance. These styles will therefore take precedence over other styles of the same specificity. For example, if you import a stylesheet that conflicts with a scoped style, the scoped style’s value will apply:
 
 Scoped styles will be overwritten if the imported style is more specific. The style with a higher specificity will take precedence over the scoped style:
 
 ### Import Order
 
-Section titled “Import Order”When importing multiple stylesheets in an Astro component, the CSS rules are evaluated in the order that they are imported. A higher specificity will always determine which styles to show, no matter when the CSS is evaluated. But, when conflicting styles have the same specificity, the *last one imported* wins:
+[Section titled “Import Order”](#import-order)
+
+When importing multiple stylesheets in an Astro component, the CSS rules are evaluated in the order that they are imported. A higher specificity will always determine which styles to show, no matter when the CSS is evaluated. But, when conflicting styles have the same specificity, the *last one imported* wins:
 
 While `<style>` tags are scoped and only apply to the component that declares them, *imported* CSS can “leak”. Importing a component applies any CSS it imports, even if the component is never used:
 
-A common pattern in Astro is to import global CSS inside a Layout component. Be sure to import the Layout component before other imports so that it has the lowest precedence.
+A common pattern in Astro is to import global CSS inside a [Layout component](/en/basics/layouts/). Be sure to import the Layout component before other imports so that it has the lowest precedence.
 
 ### Link Tags
 
-Section titled “Link Tags”Style sheets loaded via link tags are evaluated in order, before any other styles in an Astro file. Therefore, these styles will have lower precedence than imported stylesheets and scoped styles:
+[Section titled “Link Tags”](#link-tags)
+
+Style sheets loaded via [link tags](#load-a-static-stylesheet-via-link-tags) are evaluated in order, before any other styles in an Astro file. Therefore, these styles will have lower precedence than imported stylesheets and scoped styles:
 
 ## Tailwind
 
-Section titled “Tailwind”Astro comes with support for adding popular CSS libraries, tools, and frameworks to your project like Tailwind and more!
+[Section titled “Tailwind”](#tailwind)
 
-Astro supports both Tailwind 3 and 4. You can add Tailwind 4 support through a Vite plugin to your project with a CLI command, or install legacy dependencies manually to add Tailwind 3 support through an Astro integration.
+Astro comes with support for adding popular CSS libraries, tools, and frameworks to your project like [Tailwind](https://tailwindcss.com) and more!
 
-To upgrade your Astro project from Tailwind 3 to 4 you will need to both add Tailwind 4 support, and remove legacy Tailwind 3 support.
+Astro supports both Tailwind 3 and 4. You can [add Tailwind 4 support through a Vite plugin](#add-tailwind-4) to your project with a CLI command, or install legacy dependencies manually to add [Tailwind 3 support through an Astro integration](#legacy-tailwind-3-support).
+
+To [upgrade your Astro project from Tailwind 3 to 4](#upgrade-from-tailwind-3) you will need to both add Tailwind 4 support, and remove legacy Tailwind 3 support.
 
 ### Add Tailwind 4
 
-Section titled “Add Tailwind 4”In Astro `>=5.2.0`, use the `astro add tailwind` command for your package manager to install the official Vite Tailwind plugin. To add Tailwind 4 support to earlier versions of Astro, follow the instructions in the Tailwind docs to add the `@tailwindcss/vite` Vite plugin manually.
+[Section titled “Add Tailwind 4”](#add-tailwind-4)
+
+In Astro `>=5.2.0`, use the `astro add tailwind` command for your package manager to install the official Vite Tailwind plugin. To add Tailwind 4 support to earlier versions of Astro, follow the [instructions in the Tailwind docs](https://tailwindcss.com/docs/installation/framework-guides/astro) to add the `@tailwindcss/vite` Vite plugin manually.
 
 Then, import `tailwindcss` into `src/styles/global.css` (or another CSS file of your choosing) to make Tailwind classes available to your Astro project. This file including the import will be created by default if you used the `astro add tailwind` command to install the Vite plugin.
 
@@ -154,20 +195,24 @@ Import this file in the pages where you want Tailwind to apply. This is often do
 
 ### Upgrade from Tailwind 3
 
-Section titled “Upgrade from Tailwind 3”Follow the steps to update an existing Astro project using Tailwind v3 (using the `@astrojs/tailwind` integration) to Tailwind 4 (using the `@tailwindcss/vite` plugin).
+[Section titled “Upgrade from Tailwind 3”](#upgrade-from-tailwind-3)
+
+Follow the steps to update an existing Astro project using Tailwind v3 (using the `@astrojs/tailwind` integration) to Tailwind 4 (using [the  @tailwindcss/vite plugin](https://tailwindcss.com/docs/installation/framework-guides/astro)).
 
 - 
-Add Tailwind 4 support to your project through the CLI for the latest version of Astro, or by adding the Vite plugin manually. 
+[Add Tailwind 4 support to your project](#add-tailwind-4)through the CLI for the latest version of Astro, or by adding the Vite plugin manually.
 - 
 Uninstall the `@astrojs/tailwind`integration from your project:
 - 
 Remove the `@astrojs/tailwind`integration from your`astro.config.mjs`:
 - 
-Then, upgrade your project according to Tailwind’s v4 upgrade guide. 
+Then, upgrade your project according to [Tailwind’s v4 upgrade guide](https://tailwindcss.com/docs/upgrade-guide#changes-from-v3).
 
 ### Legacy Tailwind 3 support
 
-Section titled “Legacy Tailwind 3 support”To add (or keep) support for Tailwind 3, you will need to have both `tailwindcss@3` and the official Astro Tailwind integration `@astrojs/tailwind` installed. Installing these dependencies manually is only used for legacy Tailwind 3 compatibility, and is not required for Tailwind 4. You will also need a legacy Tailwind configuration:
+[Section titled “Legacy Tailwind 3 support”](#legacy-tailwind-3-support)
+
+To add (or keep) support for Tailwind 3, you will need to have both `tailwindcss@3` and the official Astro Tailwind integration `@astrojs/tailwind` installed. Installing these dependencies manually is only used for legacy Tailwind 3 compatibility, and is not required for Tailwind 4. You will also need a [legacy Tailwind configuration](https://v3.tailwindcss.com/docs/configuration#creating-your-configuration-file):
 
 - 
 Install Tailwind and the Astro Tailwind integration to your project dependencies using your preferred package manager: 
@@ -178,29 +223,41 @@ Create a `tailwind.config.mjs`file in your project’s root directory. You can u
 - 
 Add the following basic configuration to your `tailwind.config.mjs`file:
 
-**Related recipe:**Style rendered Markdown with Tailwind Typography
+**Related recipe:**
+
+[Style rendered Markdown with Tailwind Typography](/en/recipes/tailwind-rendered-markdown/)
 
 ## CSS Preprocessors
 
-Section titled “CSS Preprocessors”Astro supports CSS preprocessors such as Sass, Stylus, and Less through Vite.
+[Section titled “CSS Preprocessors”](#css-preprocessors)
+
+Astro supports CSS preprocessors such as [Sass](https://sass-lang.com/), [Stylus](https://stylus-lang.com/), and [Less](https://lesscss.org/) through [Vite](https://vite.dev/guide/features.html#css-pre-processors).
 
 ### Sass and SCSS
 
-Section titled “Sass and SCSS”Use `<style lang="scss">` or `<style lang="sass">` in `.astro` files.
+[Section titled “Sass and SCSS”](#sass-and-scss)
+
+Use `<style lang="scss">` or `<style lang="sass">` in `.astro` files.
 
 ### Stylus
 
-Section titled “Stylus”Use `<style lang="styl">` or `<style lang="stylus">` in `.astro` files.
+[Section titled “Stylus”](#stylus)
+
+Use `<style lang="styl">` or `<style lang="stylus">` in `.astro` files.
 
 Use `<style lang="less">` in `.astro` files.
 
 ### LightningCSS
 
-Section titled “LightningCSS”Update your `vite` configuration in `astro.config.mjs`:
+[Section titled “LightningCSS”](#lightningcss)
+
+Update your `vite` configuration in `astro.config.mjs`:
 
 ### In framework components
 
-Section titled “In framework components”You can also use all of the above CSS preprocessors within JS frameworks as well! Be sure to follow the patterns each framework recommends:
+[Section titled “In framework components”](#in-framework-components)
+
+You can also use all of the above CSS preprocessors within JS frameworks as well! Be sure to follow the patterns each framework recommends:
 
 - **React**/- **Preact**:- `import Styles from './styles.module.scss';`
 - **Vue**:- `<style lang="scss">`
@@ -208,33 +265,49 @@ Section titled “In framework components”You can also use all of the above CS
 
 ## PostCSS
 
-Section titled “PostCSS”Astro comes with PostCSS included as part of Vite. To configure PostCSS for your project, create a `postcss.config.cjs` file in the project root. You can import plugins using `require()` after installing them (for example `npm install autoprefixer`).
+[Section titled “PostCSS”](#postcss)
+
+Astro comes with PostCSS included as part of [Vite](https://vite.dev/guide/features.html#postcss). To configure PostCSS for your project, create a `postcss.config.cjs` file in the project root. You can import plugins using `require()` after installing them (for example `npm install autoprefixer`).
 
 ## Frameworks and Libraries
 
-Section titled “Frameworks and Libraries”### 📘 React / Preact
+[Section titled “Frameworks and Libraries”](#frameworks-and-libraries)
 
-Section titled “📘 React / Preact”`.jsx` files support both global CSS and CSS Modules. To enable the latter, use the `.module.css` extension (or `.module.scss`/`.module.sass` if using Sass).
+### 📘 React / Preact
+
+[Section titled “📘 React / Preact”](#-react--preact)
+
+`.jsx` files support both global CSS and CSS Modules. To enable the latter, use the `.module.css` extension (or `.module.scss`/`.module.sass` if using Sass).
 
 Vue in Astro supports the same methods as `vue-loader` does:
 
 ### 📕 Svelte
 
-Section titled “📕 Svelte”Svelte in Astro also works exactly as expected: Svelte Styling Docs.
+[Section titled “📕 Svelte”](#-svelte)
+
+Svelte in Astro also works exactly as expected: [Svelte Styling Docs](https://svelte.dev/docs#component-format-style).
 
 ## Markdown Styling
 
-Section titled “Markdown Styling”Any Astro styling methods are available to a Markdown layout component, but different methods will have different styling effects on your page.
+[Section titled “Markdown Styling”](#markdown-styling)
 
-You can apply global styles to your Markdown content by adding imported stylesheets to the layout that wraps your page content. It is also possible to style your Markdown with `<style is:global>` tags in the layout component.  Note that any styles added are subject to Astro’s cascading order, and you should check your rendered page carefully to ensure your styles are being applied as intended.
+Any Astro styling methods are available to a [Markdown layout component](/en/basics/layouts/#markdown-layouts), but different methods will have different styling effects on your page.
 
-You can also add CSS integrations including Tailwind. If you are using Tailwind, the typography plugin can be useful for styling Markdown.
+You can apply global styles to your Markdown content by adding [imported stylesheets](#external-styles) to the layout that wraps your page content. It is also possible to style your Markdown with [ <style is:global> tags](#global-styles) in the layout component.  Note that any styles added are subject to 
+
+[Astro’s cascading order](#cascading-order), and you should check your rendered page carefully to ensure your styles are being applied as intended.
+
+You can also add CSS integrations including [Tailwind](/en/recipes/tailwind-rendered-markdown/). If you are using Tailwind, the [typography plugin](https://tailwindcss.com/docs/typography-plugin) can be useful for styling Markdown.
 
 ## Production
 
-Section titled “Production”### Bundle control
+[Section titled “Production”](#production)
 
-Section titled “Bundle control”When Astro builds your site for production deployment, it minifies and combines your CSS into chunks. Each page on your site gets its own chunk, and additionally, CSS that is shared between multiple pages is further split off into their own chunks for reuse.
+### Bundle control
+
+[Section titled “Bundle control”](#bundle-control)
+
+When Astro builds your site for production deployment, it minifies and combines your CSS into chunks. Each page on your site gets its own chunk, and additionally, CSS that is shared between multiple pages is further split off into their own chunks for reuse.
 
 However, when you have several pages sharing styles, some shared chunks can become really small. If all of them were sent separately, it would lead to many stylesheets requests and affect site performance. Therefore, by default Astro will link only those in your HTML above 4kB in size as `<link rel="stylesheet">` tags, while inlining smaller ones into `<style type="text/css">`. This approach provides a balance between the number of additional requests and the volume of CSS that can be cached between pages.
 
@@ -246,27 +319,37 @@ You can also set this option to `'always'` which will inline all stylesheets.
 
 ## Advanced
 
-Section titled “Advanced”Be careful when bypassing Astro’s built-in CSS bundling! Styles won’t be automatically included in the built output, and it is your responsibility to make sure that the referenced file is properly included in the final page output.
+[Section titled “Advanced”](#advanced)
+
+Be careful when bypassing Astro’s built-in CSS bundling! Styles won’t be automatically included in the built output, and it is your responsibility to make sure that the referenced file is properly included in the final page output.
 
 `?raw` CSS Imports
 
-Section titled “?raw CSS Imports”For advanced use cases, CSS can be read directly from disk without being bundled or optimized by Astro. This can be useful when you need complete control over some snippet of CSS, and need to bypass Astro’s automatic CSS handling.
+[Section titled “?raw CSS Imports”](#raw-css-imports)
+
+For advanced use cases, CSS can be read directly from disk without being bundled or optimized by Astro. This can be useful when you need complete control over some snippet of CSS, and need to bypass Astro’s automatic CSS handling.
 
 This is not recommended for most users.
 
-See Vite’s docs for full details.
+See [Vite’s docs](https://vite.dev/guide/assets.html#importing-asset-as-string) for full details.
 
 `?url` CSS Imports
 
-Section titled “?url CSS Imports”For advanced use cases, you can import a direct URL reference for a CSS file inside of your project `src/` directory. This can be useful when you need complete control over how a CSS file is loaded on the page. However, this will prevent the optimization of that CSS file with the rest of your page CSS .
+[Section titled “?url CSS Imports”](#url-css-imports)
+
+For advanced use cases, you can import a direct URL reference for a CSS file inside of your project `src/` directory. This can be useful when you need complete control over how a CSS file is loaded on the page. However, this will prevent the optimization of that CSS file with the rest of your page CSS .
 
 This is not recommended for most users. Instead, place your CSS files inside of `public/` to get a consistent URL reference.
 
-Importing a smaller CSS file with `?url` may return the base64 encoded contents of the CSS file as a data URL in your final build. Either write your code to support encoded data URLs (`data:text/css;base64,...`) or set the `vite.build.assetsInlineLimit` config option to `0`  to disable this feature.
+Importing a smaller CSS file with `?url` may return the base64 encoded contents of the CSS file as a data URL in your final build. Either write your code to support encoded data URLs (`data:text/css;base64,...`) or set the [ vite.build.assetsInlineLimit](https://vite.dev/config/#build-assetsinlinelimit) config option to 
 
-See Vite’s docs for full details.
+`0`  to disable this feature.See [Vite’s docs](https://vite.dev/guide/assets.html#importing-asset-as-url) for full details.
 
-Learn
+[Contribute](/en/contribute/)
+
+[Community](https://astro.build/chat)
+
+[Sponsor](https://opencollective.com/astrodotbuild)
 
 # Citations
 

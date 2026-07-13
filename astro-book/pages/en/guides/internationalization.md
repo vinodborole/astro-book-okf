@@ -4,7 +4,7 @@ title: Internationalization (i18n) Routing | Docs
 description: Learn how to use Astro’s i18n routing features to localize your site’s
   pages.
 resource: https://docs.astro.build/en/guides/internationalization
-timestamp: '2026-07-07T10:59:34.007706+00:00'
+timestamp: '2026-07-13T09:18:12.222139+00:00'
 ---
 
 # Internationalization (i18n) Routing
@@ -15,19 +15,27 @@ Astro’s i18n routing allows you to bring your multilingual content with suppor
 
 ## Routing Logic
 
-Section titled “Routing Logic”Astro uses a middleware to implement its routing logic. This middleware function is placed in the first position where it awaits every `Response` coming from any additional middleware and each page route before finally executing its own logic.
+[Section titled “Routing Logic”](#routing-logic)
+
+Astro uses a [middleware](/en/guides/middleware/) to implement its routing logic. This middleware function is placed in the [first position](/en/guides/middleware/#chaining-middleware) where it awaits every `Response` coming from any additional middleware and each page route before finally executing its own logic.
 
 This means that operations (e.g. redirects) from your own middleware and your page logic are run first, your routes are rendered, and then the i18n middleware performs its own actions such as verifying that a localized URL corresponds to a valid route.
 
-You can also choose to add your own i18n logic in addition to or instead of Astro’s i18n middleware, giving you even more control over your routes while still having access to the `astro:i18n` helper functions.
+You can also choose to [add your own i18n logic in addition to or instead of Astro’s i18n middleware](#manual), giving you even more control over your routes while still having access to the `astro:i18n` helper functions.
 
 ## Configure i18n routing
 
-Section titled “Configure i18n routing”In your `i18n` configuration, specify the list of all supported languages (`locales`) and set one of them as the default language (`defaultLocale`). You can also configure more specific routing and fallback behavior to match your desired URLs.
+[Section titled “Configure i18n routing”](#configure-i18n-routing)
 
-### Create localized folders
+In your `i18n` configuration, specify the list of all supported languages ([ locales](/en/reference/configuration-reference/#i18nlocales)) and set one of them as the default language (
 
-Section titled “Create localized folders”Organize your content folders with localized content by language. Create individual `/[locale]/` folders anywhere within `src/pages/` and Astro’s file-based routing will create your pages at corresponding URL paths.
+[). You can also configure more specific routing and fallback behavior to match your desired URLs.](/en/reference/configuration-reference/#i18ndefaultlocale)
+
+`defaultLocale`### Create localized folders
+
+[Section titled “Create localized folders”](#create-localized-folders)
+
+Organize your content folders with localized content by language. Create individual `/[locale]/` folders anywhere within `src/pages/` and Astro’s [file-based routing](/en/guides/routing/) will create your pages at corresponding URL paths.
 
 Your folder names must match the items in `locales` exactly. Include a localized folder for your `defaultLocale` only if you configure `prefixDefaultLocale: true` to show a localized URL path for your default language (e.g. `/en/about/`).
 
@@ -46,21 +54,28 @@ The localized folders do not need to be at the root of the `/pages/` folder.
 
 ### Create links
 
-Section titled “Create links”With i18n routing configured, you can now compute links to pages within your site using the helper functions such as `getRelativeLocaleUrl()` available from the `astro:i18n` module. These generated links will always provide the correct, localized route and can help you correctly use, or check, URLs on your site.
+[Section titled “Create links”](#create-links)
 
-You can also still write the links manually.
+With i18n routing configured, you can now compute links to pages within your site using the helper functions such as [ getRelativeLocaleUrl()](/en/reference/modules/astro-i18n/#getrelativelocaleurl) available from the 
+
+[. These generated links will always provide the correct, localized route and can help you correctly use, or check, URLs on your site.](/en/reference/modules/astro-i18n/)
+
+`astro:i18n` moduleYou can also still write the links manually.
 
 `routing`
 
-Section titled “routing”Astro’s built-in file-based routing automatically creates URL routes for you based on your file structure within `src/pages/`.
+[Section titled “routing”](#routing)
+
+Astro’s built-in file-based routing automatically creates URL routes for you based on your file structure within `src/pages/`.
 
 When you configure i18n routing, information about this file structure (and the corresponding URL paths generated) is available to the i18n helper functions so they can generate, use, and verify the routes in your project. Many of these options can be used together for even more customization and per-language flexibility.
 
-You can even choose to implement your own routing logic manually for even greater control.
+You can even choose to [implement your own routing logic manually](#manual) for even greater control.
 
 `prefixDefaultLocale`
 
-Section titled “prefixDefaultLocale”
+[Section titled “prefixDefaultLocale”](#prefixdefaultlocale)
+
 	**Added in:**
 	`astro@3.5.0`
 	
@@ -79,7 +94,9 @@ This setting also determines where the page files for your default language must
 
 `prefixDefaultLocale: false`
 
-Section titled “prefixDefaultLocale: false”This is the **default** value. Set this option when URLs in your default language will **not** have a `/[locale]/` prefix and files in your default language exist at the root of `src/pages/`:
+[Section titled “prefixDefaultLocale: false”](#prefixdefaultlocale-false)
+
+This is the **default** value. Set this option when URLs in your default language will **not** have a `/[locale]/` prefix and files in your default language exist at the root of `src/pages/`:
 
 - ## Directorysrc- ## Directorypages- about.astro
 - index.astro
@@ -97,7 +114,9 @@ Section titled “prefixDefaultLocale: false”This is the **default** value. Se
 
 `prefixDefaultLocale: true`
 
-Section titled “prefixDefaultLocale: true”Set this option when all routes will have their `/locale/` prefix in their URL and when all page content files, including those for your `defaultLocale`, exist in a localized folder:
+[Section titled “prefixDefaultLocale: true”](#prefixdefaultlocale-true)
+
+Set this option when all routes will have their `/locale/` prefix in their URL and when all page content files, including those for your `defaultLocale`, exist in a localized folder:
 
 - ## Directorysrc- ## Directorypages- **index.astro**// Note: this file is always required
 - ## Directoryen- index.astro
@@ -112,17 +131,20 @@ Section titled “prefixDefaultLocale: true”Set this option when all routes wi
  
  
 
-- URLs without a locale prefix, (e.g. `example.com/about/`) will return a 404 (not found) status code unless you specify a fallback strategy.
+- URLs without a locale prefix, (e.g. `example.com/about/`) will return a 404 (not found) status code unless you specify a[fallback strategy](#fallback).
 
 #### Opting out of redirects for the home URL
 
-Section titled “Opting out of redirects for the home URL”Even with your default locale routes prefixed, this behaviour does not apply by default to your site’s index page. This allows you to have a home page that exists outside of your configured locale structure, where all of your localized routes are prefixed except the home URL of your site.
+[Section titled “Opting out of redirects for the home URL”](#opting-out-of-redirects-for-the-home-url)
+
+Even with your default locale routes prefixed, this behaviour does not apply by default to your site’s index page. This allows you to have a home page that exists outside of your configured locale structure, where all of your localized routes are prefixed except the home URL of your site.
 
 You can opt out of this behavior so that your main site URL will also redirect to a prefixed, localized route for your default locale. When `prefixDefaultLocale: true` is set, you can additionally configure `redirectToDefaultLocale: true`. This will ensure that the home URL (`/`) generated by `src/pages/index.astro` will redirect to `/[defaultLocale]/`.
 
 `manual`
 
-Section titled “manual”
+[Section titled “manual”](#manual)
+
 	**Added in:**
 	`astro@4.6.0`
 	
@@ -130,27 +152,36 @@ Section titled “manual”
 
 When this option is enabled, Astro will **disable** its i18n middleware so that you can implement your own custom logic. No other `routing` options (e.g. `prefixDefaultLocale`) may be configured with `routing: "manual"`.
 
-You will be responsible for writing your own routing logic, or executing Astro’s i18n middleware manually alongside your own.
+You will be responsible for writing your own routing logic, or [executing Astro’s i18n middleware manually](#middleware-function) alongside your own.
 
-Astro provides helper functions for your middleware so you can control your own default routing, exceptions, fallback behavior, error catching, etc: `redirectToDefaultLocale()`, `notFound()`, and `redirectToFallback()`:
+Astro provides helper functions for your middleware so you can control your own default routing, exceptions, fallback behavior, error catching, etc: [ redirectToDefaultLocale()](/en/reference/modules/astro-i18n/#redirecttodefaultlocale), 
 
-#### middleware function
+[, and](/en/reference/modules/astro-i18n/#notfound)
 
-Section titled “middleware function”The `middleware()` function manually creates Astro’s i18n middleware. This allows you to extend Astro’s i18n routing instead of completely replacing it.
+`notFound()`[:](/en/reference/modules/astro-i18n/#redirecttofallback)
 
-You can run `middleware()` with routing options in combination with your own middleware, using the `sequence()` utility to determine the order:
+`redirectToFallback()`#### middleware function
+
+[Section titled “middleware function”](#middleware-function)
+
+The [ middleware()](/en/reference/modules/astro-i18n/#middleware) function manually creates Astro’s i18n middleware. This allows you to extend Astro’s i18n routing instead of completely replacing it.
+
+You can run `middleware()` with [routing options](#routing) in combination with your own middleware, using the [ sequence()](/en/reference/modules/astro-middleware/#sequence) utility to determine the order:
 
 `domains`
 
-Section titled “domains”
+[Section titled “domains”](#domains)
+
 	**Added in:**
 	`astro@4.9.0`
 	
 	
 
-This routing option allows you to customize your domains on a per-language basis for `server` rendered projects using the `@astrojs/node` or `@astrojs/vercel` adapter with a `site` configured.
+This routing option allows you to customize your domains on a per-language basis for `server` rendered projects using the [ @astrojs/node](/en/guides/integrations-guide/node/) or 
 
-Add `i18n.domains` to map any of your supported `locales` to custom URLs:
+[adapter with a](/en/guides/integrations-guide/vercel/)
+
+`@astrojs/vercel``site` configured.Add `i18n.domains` to map any of your supported `locales` to custom URLs:
 
 All non-mapped `locales` will follow your `prefixDefaultLocales` configuration.
 
@@ -165,11 +196,19 @@ The above URLs will also be returned by the `getAbsoluteLocaleUrl()` and `getAbs
 
 ## Fallback
 
-Section titled “Fallback”When a page in one language doesn’t exist (e.g. a page that is not yet translated), instead of displaying a 404 page, you can choose to display fallback content from another `locale` on a per-language basis. This is useful when you do not yet have a page for every route, but you want to still provide some content to your visitors.
+[Section titled “Fallback”](#fallback)
 
-Your fallback strategy consists of two parts: choosing which languages should fallback to which other languages (`i18n.fallback`) and choosing whether to perform a redirect or a rewrite to show the fallback content (`i18n.routing.fallbackType` added in Astro v4.15.0).
+When a page in one language doesn’t exist (e.g. a page that is not yet translated), instead of displaying a 404 page, you can choose to display fallback content from another `locale` on a per-language basis. This is useful when you do not yet have a page for every route, but you want to still provide some content to your visitors.
 
-For example, when you configure `i18n.fallback: { fr: "es" }`, Astro will ensure that a page is built in `src/pages/fr/` for every page that exists in `src/pages/es/`.
+Your fallback strategy consists of two parts: choosing which languages should fallback to which other languages ([ i18n.fallback](/en/reference/configuration-reference/#i18nfallback)) and choosing whether to perform a 
+
+[redirect](/en/guides/routing/#redirects)or a
+
+[rewrite](/en/guides/routing/#rewrites)to show the fallback content (
+
+[added in Astro v4.15.0).](/en/reference/configuration-reference/#i18nroutingfallbacktype)
+
+`i18n.routing.fallbackType`For example, when you configure `i18n.fallback: { fr: "es" }`, Astro will ensure that a page is built in `src/pages/fr/` for every page that exists in `src/pages/es/`.
 
 If any page does not already exist, then a page will be created depending on your `fallbackType`:
 
@@ -180,17 +219,23 @@ For example, the configuration below sets `es` as the fallback locale for any mi
 
 ## Custom locale paths
 
-Section titled “Custom locale paths”In addition to defining your site’s supported `locales` as strings (e.g. “en”, “pt-br”), Astro also allows you to map an arbitrary number of browser-recognized language `codes` to a custom URL `path`. While locales can be strings of any format as long as they correspond to your project folder structure, `codes` must follow the browser’s accepted syntax.
+[Section titled “Custom locale paths”](#custom-locale-paths)
 
-Pass an object to the `locales` array with a `path` key to define a custom URL prefix, and `codes` to indicate the languages mapped to this URL. In this case, your `/[locale]/` folder name must match exactly the value of the `path` and your URLs will be generated using the `path` value.
+In addition to defining your site’s supported `locales` as strings (e.g. “en”, “pt-br”), Astro also allows you to map an arbitrary number of [browser-recognized language  codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Language#syntax) to a custom URL 
+
+`path`. While locales can be strings of any format as long as they correspond to your project folder structure, `codes` must follow the browser’s accepted syntax.Pass an object to the `locales` array with a `path` key to define a custom URL prefix, and `codes` to indicate the languages mapped to this URL. In this case, your `/[locale]/` folder name must match exactly the value of the `path` and your URLs will be generated using the `path` value.
 
 This is useful if you support multiple variations of a language (e.g. `"fr"`, `"fr-BR"`, and `"fr-CA"`) and you want to have all these variations mapped under the same URL `/fr/`, or even customize it entirely (e.g. `/french/`):
 
-When using functions from the `astro:i18n` virtual module to compute valid URL paths based on your configuration (e.g. `getRelativeLocaleUrl()`), use the `path` as the value for `locale`.
+When using functions from the [ astro:i18n virtual module](/en/reference/modules/astro-i18n/) to compute valid URL paths based on your configuration (e.g. 
 
-#### Limitations
+`getRelativeLocaleUrl()`), [use the](/en/reference/modules/astro-i18n/#getlocalebypath).
 
-Section titled “Limitations”This feature has some restrictions:
+`path` as the value for `locale`#### Limitations
+
+[Section titled “Limitations”](#limitations)
+
+This feature has some restrictions:
 
 - The `site`option is mandatory.
 - The `output`option must be set to`"server"`.
@@ -198,25 +243,33 @@ Section titled “Limitations”This feature has some restrictions:
 
 Astro relies on the following headers in order to support the feature:
 
-- `X-Forwarded-Host`and- `Host`. Astro will use the former, and if not present, will try the latter.
-- `X-Forwarded-Proto`and- `URL#protocol`of the server request.
+- `X-Forwarded-Host`- `Host`
+- `X-Forwarded-Proto`- `URL#protocol`
 
 Make sure that your server proxy/hosting platform is able to provide this information. Failing to retrieve these headers will result in a 404 (status code) page.
 
 ## Browser language detection
 
-Section titled “Browser language detection”Astro’s i18n routing allows you to access two properties for browser language detection in pages rendered on demand: `Astro.preferredLocale` and `Astro.preferredLocaleList`. All pages, including static prerendered pages, have access to `Astro.currentLocale`.
+[Section titled “Browser language detection”](#browser-language-detection)
+
+Astro’s i18n routing allows you to access two properties for browser language detection in pages rendered on demand: `Astro.preferredLocale` and `Astro.preferredLocaleList`. All pages, including static prerendered pages, have access to `Astro.currentLocale`.
 
 These combine the browser’s `Accept-Language` header, and your `locales` (strings or `codes`) to automatically respect your visitor’s preferred languages.
 
 - 
-`Astro.preferredLocale`: Astro can compute a**preferred locale**for your visitor if their browser’s preferred locale is included in your`locales`array. This value is undefined if no such match exists.
+`Astro.preferredLocale`**preferred locale**for your visitor if their browser’s preferred locale is included in your`locales`array. This value is undefined if no such match exists.
 - 
-`Astro.preferredLocaleList`: An array of all locales that are both requested by the browser and supported by your website. This produces a list of all compatible languages between your site and your visitor. The value is`[]`if none of the browser’s requested languages are found in your`locales`array. If the browser does not specify any preferred languages, then this value will be`i18n.locales`.
+`Astro.preferredLocaleList``[]`if none of the browser’s requested languages are found in your`locales`array. If the browser does not specify any preferred languages, then this value will be`i18n.locales`
 - 
-`Astro.currentLocale`: The locale computed from the current URL, using the syntax specified in your`locales`configuration. If the URL does not contain a`/[locale]/`prefix, then the value will default to`i18n.defaultLocale`.
+`Astro.currentLocale``locales`configuration. If the URL does not contain a`/[locale]/`prefix, then the value will default to`i18n.defaultLocale`
 
-In order to successfully match your visitors’ preferences, provide your `codes` using the same pattern used by the browser.
+In order to successfully match your visitors’ preferences, provide your `codes` using the same pattern [used by the browser](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Language#syntax).
+
+[Contribute](/en/contribute/)
+
+[Community](https://astro.build/chat)
+
+[Sponsor](https://opencollective.com/astrodotbuild)
 
 # Citations
 

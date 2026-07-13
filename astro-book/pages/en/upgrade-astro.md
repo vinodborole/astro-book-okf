@@ -3,7 +3,7 @@ type: Web Page
 title: Upgrade Astro | Docs
 description: Learn how to upgrade Astro
 resource: https://docs.astro.build/en/upgrade-astro
-timestamp: '2026-07-09T12:16:56.788922+00:00'
+timestamp: '2026-07-13T09:18:12.222139+00:00'
 ---
 
 # Upgrade Astro
@@ -12,25 +12,35 @@ This guide covers how to update your version of Astro and related dependencies, 
 
 ## What has changed?
 
-Section titled “What has changed?”The latest release of Astro is v7.0.7.
+[Section titled “What has changed?”](#what-has-changed)
 
-You can find an exhaustive list of all changes in Astro’s changelog, and important instructions for upgrading to each new major version in our upgrade guides.
+The latest release of Astro is v7.0.7.
+
+You can find an exhaustive list of all changes in [Astro’s changelog](https://github.com/withastro/astro/blob/main/packages/astro/CHANGELOG.md), and important instructions for upgrading to each new [major version](#major-changes) in our [upgrade guides](#upgrade-guides).
 
 ## Upgrade to the latest version
 
-Section titled “Upgrade to the latest version”Update your project’s version of Astro and all official integrations to the latest versions with one command using your package manager:
+[Section titled “Upgrade to the latest version”](#upgrade-to-the-latest-version)
+
+Update your project’s version of Astro and all official integrations to the latest versions with one command using your package manager:
 
 ### Manual Upgrading
 
-Section titled “Manual Upgrading”To update Astro and integrations to their current versions manually, use the appropriate command for your package manager.
+[Section titled “Manual Upgrading”](#manual-upgrading)
+
+To update Astro and integrations to their current versions manually, use the appropriate command for your package manager.
 
 ### Install a specific version number
 
-Section titled “Install a specific version number”To install a specific version of Astro or integrations, use the appropriate command for your package manager.
+[Section titled “Install a specific version number”](#install-a-specific-version-number)
+
+To install a specific [version of Astro](https://www.npmjs.com/package/astro?activeTab=versions) or integrations, use the appropriate command for your package manager.
 
 ## Documentation updates
 
-Section titled “Documentation updates”This documentation is updated for each minor release and major version release. When new features are added, or existing usage changes, the docs will update to reflect the **current behavior of Astro**. If your project is not updated, then you may notice some behaviors do not match the up-to-date documentation.
+[Section titled “Documentation updates”](#documentation-updates)
+
+This documentation is updated for each [minor release](#minor-changes) and [major version release](#major-changes). When new features are added, or existing usage changes, the docs will update to reflect the **current behavior of Astro**. If your project is not updated, then you may notice some behaviors do not match the up-to-date documentation.
 
 New features are added to docs with the specific version number in which they were added. This means that if you have not updated to the latest release of Astro, some documented features may be unavailable. Always check the `Added in:` version number and make sure your project is updated before attempting to use new features!
 
@@ -38,7 +48,9 @@ If you have not upgraded to the latest major version of Astro, you may encounter
 
 ### Upgrade Guides
 
-Section titled “Upgrade Guides”After every major version release, you will find an **upgrade guide** with information about important changes and instructions for upgrading your project code.
+[Section titled “Upgrade Guides”](#upgrade-guides)
+
+After every [major version release](#major-changes), you will find an **upgrade guide** with information about important changes and instructions for upgrading your project code.
 
 The main Astro documentation pages are always **accurate for the latest released version of Astro**. They do not describe or compare to how things worked in previous versions, nor do they highlight updated or changed behavior.
 
@@ -46,23 +58,29 @@ See the upgrade guides below for an explanation of changes, comparing the new ve
 
 ### Older docs (unmaintained)
 
-Section titled “Older docs (unmaintained)”Documentation for older versions of Astro is not maintained, but is available as a static snapshot. Use these versions of docs if you are unable to upgrade your project, but still wish to consult guides and reference:
+[Section titled “Older docs (unmaintained)”](#older-docs-unmaintained)
 
-- unmaintained v6.4.8 snapshot
-- unmaintained v5.18.0 snapshot
-- unmaintained v4.16.17 snapshot
-- unmaintained v3.6.3 snapshot
-- unmaintained v2.10.15 snapshot
+Documentation for older versions of Astro is not maintained, but is available as a static snapshot. Use these versions of docs if you are unable to upgrade your project, but still wish to consult guides and reference:
+
+- [unmaintained v6.4.8 snapshot](https://v6.docs.astro.build/en/getting-started/)
+- [unmaintained v5.18.0 snapshot](https://v5.docs.astro.build/en/getting-started/)
+- [unmaintained v4.16.17 snapshot](https://v4.docs.astro.build/en/getting-started/)
+- [unmaintained v3.6.3 snapshot](https://web.archive.org/web/20231203051122/https://docs.astro.build/en/getting-started/)
+- [unmaintained v2.10.15 snapshot](https://web.archive.org/web/20230822134745/https://docs.astro.build/en/getting-started)
 
 ## Semantic versioning
 
-Section titled “Semantic versioning”Astro attempts to adhere as much as possible to semantic versioning, which is a set of rules developers use to determine how to assign a version number to a release. Semantic version follows a predictable pattern to inform users of the kind of changes they can expect from one version to the next.
+[Section titled “Semantic versioning”](#semantic-versioning)
+
+Astro attempts to adhere as much as possible to [semantic versioning](https://semver.org/), which is a set of rules developers use to determine how to assign a version number to a release. Semantic version follows a predictable pattern to inform users of the kind of changes they can expect from one version to the next.
 
 Semantic versioning enforces a pattern of `X.Y.Z` for software version numbers. These values represent **major (X)**, **minor (Y)**, and **patch (Z)** updates.
 
 ### Patch changes
 
-Section titled “Patch changes”Patch changes are the least disruptive changes. They do not change the way you use Astro, and no change to your own code is required when you update.
+[Section titled “Patch changes”](#patch-changes)
+
+Patch changes are the least disruptive changes. They do not change the way you use Astro, and no change to your own code is required when you update.
 
 When Astro issues a “patch” version, the last number increases. (e.g. `astro@4.3.14` -> `astro@4.3.15`)
 
@@ -81,7 +99,9 @@ Patch changes also include **most bug fixes**, even in cases where users were ta
 
 ### Minor changes
 
-Section titled “Minor changes”Minor releases primarily introduce new features and improvements that you may wish to try, but require no changes to your code. Some existing features may also be **deprecated** (marked for deletion in a future version while continuing to function) in a minor release, giving you the opportunity to prepare for their eventual removal.
+[Section titled “Minor changes”](#minor-changes)
+
+Minor releases primarily introduce new features and improvements that you may wish to try, but require no changes to your code. Some existing features may also be **deprecated** (marked for deletion in a future version while continuing to function) in a minor release, giving you the opportunity to prepare for their eventual removal.
 
 Minor releases include changes such as:
 
@@ -94,7 +114,9 @@ A minor release may also include smaller, patch changes at the same time.
 
 ### Major changes
 
-Section titled “Major changes”Major releases will include breaking changes to at least some existing code. These breaking changes are always documented in an “Upgrade to vX” guide in Astro.
+[Section titled “Major changes”](#major-changes)
+
+Major releases will include breaking changes to at least some existing code. These breaking changes are always documented in an [“Upgrade to vX” guide](#upgrade-guides) in Astro.
 
 Major releases allow Astro to make significant changes not only to internal logic, but also to intended behavior and usage. Documentation will be updated to reflect the latest version only, and **static, unmaintained snapshots of older docs** are available as a historical record for older projects that are not yet upgraded.
 
@@ -109,22 +131,30 @@ A major release may also include some non-breaking changes and improvements that
 
 ### Exceptions
 
-Section titled “Exceptions”- 
-**Experimental features**. Releasing versions of Astro without adhering to semantic versioning allows Astro developers the greatest flexibility to explore, and even radically change course, during the development of experimental features. Therefore, the behavior of these features can break in minor and patch changes.These features are usually accompanied by an ongoing, public Request for Consideration (RFC) stage 3. It is expected that beta users will follow for updates, and leave early feedback on the discussion to help guide development of these features. Once these features are out of their experimental period, they will follow the normal semantic versioning contract. 
+[Section titled “Exceptions”](#exceptions)
+
+- 
+**Experimental features**. Releasing versions of Astro without adhering to semantic versioning allows Astro developers the greatest flexibility to explore, and even radically change course, during the development of experimental features. Therefore, the behavior of these features can break in minor and patch changes.These features are usually accompanied by an ongoing, public [Request for Consideration (RFC) stage 3](https://github.com/withastro/roadmap#stage-3-rfc--development). It is expected that beta users will follow for updates, and leave early feedback on the discussion to help guide development of these features.Once these features are out of their experimental period, they will follow the normal semantic versioning contract. 
 - 
 **Improvements to the documentation**(e.g. reference and error messages). They are built from source for the`docs`repository. This allows Astro to quickly update docs fixes and improvements in the cases where documentation source content is stored in the main`astro`repository.
 
 ### Node.js support and upgrade policies
 
-Section titled “Node.js support and upgrade policies”#### Support
+[Section titled “Node.js support and upgrade policies”](#nodejs-support-and-upgrade-policies)
 
-Section titled “Support”- Astro supports the **latest**version of Node.js.*Maintenance*LTS
+#### Support
+
+[Section titled “Support”](#support)
+
+- Astro supports the **latest**version of Node.js*Maintenance*LTS
 - Astro supports the **current**version of Node.js*Active*LTS
 - Astro can support odd versions of Node.js.
 
 #### Upgrade
 
-Section titled “Upgrade”The following rules define when Astro may deprecate, drop, or add support for versions of Node.js:
+[Section titled “Upgrade”](#upgrade)
+
+The following rules define when Astro may deprecate, drop, or add support for versions of Node.js:
 
 - Odd versions of Node.js can be deprecated and/or dropped when the next even version of Node.js published. This change can occur in a **minor**release of Astro, after a reasonable period of extended support as decided by the Astro Core team.
 - Upgrading the minimum *Maintenance*LTS`22.14.*`to`22.20.*`) version of Node.js can occur in a**minor**release of Astro.- Security exception: If a security flaw in Node.js that **affects Astro**is disclosed and fixed, the Core team can bump the minimum version of the*Maintenance*LTS**patch**release.
@@ -136,7 +166,15 @@ Section titled “Upgrade”The following rules define when Astro may deprecate,
 
 ### Extended maintenance
 
-Section titled “Extended maintenance”The Core team will provide extended maintenance **for security fixes only** for one previous major version. This means that if the current major is `v4.*`, the Core team will back port security fixes and issue a new `v3.*` release.
+[Section titled “Extended maintenance”](#extended-maintenance)
+
+The Core team will provide extended maintenance **for security fixes only** for one previous major version. This means that if the current major is `v4.*`, the Core team will back port security fixes and issue a new `v3.*` release.
+
+[Contribute](/en/contribute/)
+
+[Community](https://astro.build/chat)
+
+[Sponsor](https://opencollective.com/astrodotbuild)
 
 # Citations
 

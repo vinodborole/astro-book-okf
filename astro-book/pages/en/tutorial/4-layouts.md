@@ -5,7 +5,7 @@ description: 'Tutorial: Build your first Astro blog —
 
   Use Astro layouts to share common elements and styles across your pages and posts'
 resource: https://docs.astro.build/en/tutorial/4-layouts
-timestamp: '2026-07-07T10:59:34.007706+00:00'
+timestamp: '2026-07-13T09:18:12.222139+00:00'
 ---
 
 # Check in: Unit 4 - Layouts
@@ -14,7 +14,9 @@ Now that you can build with components, it’s time to create some custom layout
 
 ## Looking ahead
 
-Section titled “Looking ahead”In this unit, you’ll build layouts to share common elements and styles across your pages and blog posts.
+[Section titled “Looking ahead”](#looking-ahead)
+
+In this unit, you’ll build layouts to share common elements and styles across your pages and blog posts.
 
 To do this, you will:
 
@@ -22,6 +24,16 @@ To do this, you will:
 - Pass content to your layouts with `<slot />`
 - Pass data from Markdown frontmatter to your layouts
 - Nest multiple layouts
+
+## Checklist
+
+[Section titled “Checklist”](#checklist)
+
+[Contribute](/en/contribute/)
+
+[Community](https://astro.build/chat)
+
+[Sponsor](https://opencollective.com/astrodotbuild)
 
 # Citations
 

@@ -3,70 +3,79 @@ type: Web Page
 title: View transitions | Docs
 description: Enable seamless navigation between pages in Astro with view transitions.
 resource: https://docs.astro.build/en/guides/view-transitions
-timestamp: '2026-07-07T10:59:34.007706+00:00'
+timestamp: '2026-07-13T09:18:12.222139+00:00'
 ---
 
 # View transitions
 
-View transitions are animated transitions between different website views. They are a popular design choice for preserving visual continuity as visitors move between states or views of an application.
+[View transitions](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API) are animated transitions between different website views. They are a popular design choice for preserving visual continuity as visitors move between states or views of an application.
 
-Astro’s view transitions and client-side routing support is powered by the View Transitions browser API and also includes:
+Astro’s view transitions and client-side routing support is powered by the [View Transitions browser API](https://developer.chrome.com/docs/web-platform/view-transitions/) and also includes:
 
-- A few built-in animation options, such as `fade`,`slide`, and`none`.
+- A few [built-in animation options](#built-in-animation-directives), such as`fade`,`slide`, and`none`.
 - Support for both forwards and backwards navigation animations.
-- The ability to fully customize all aspects of transition animation, and build your own animations.
+- The ability to fully [customize all aspects of transition animation](#customizing-animations), and build your own animations.
 - A way to carry HTML elements from the current page to the next during navigation.
-- The option to prevent client-side navigation for non-page links.
-- Control over fallback behavior for browsers that do not yet support the View Transition APIs.
-- Automatic support for `prefers-reduced-motion`.
+- The option to [prevent client-side navigation for non-page links](#preventing-client-side-navigation).
+- [Control over fallback behavior](#fallback-control)for browsers that do not yet support the View Transition APIs.
+- Automatic support for `prefers-reduced-motion`
 
 By default, every page will use regular, full-page, browser navigation. You must opt in to view transitions and can use them either on a per-page basis or site-wide.
 
 ## Differences between browser-native view transitions and Astro’s `<ClientRouter />`
 
-Section titled “Differences between browser-native view transitions and Astro’s <ClientRouter />”Browser-native, cross-document view transitions can be used in Astro to animate the navigation between documents in a multi-page app (MPA), often providing the experience of client-side routing of single-page applications. They don’t alter the core functionality of a multi-page application, nor do they affect any existing scripts or add additional JavaScript to your page load. They simply add animations.
+[Section titled “Differences between browser-native view transitions and Astro’s <ClientRouter />”](#differences-between-browser-native-view-transitions-and-astros-clientrouter-)
 
-For enhanced client-side routing and view transition features not yet fully supported by the View Transition API, Astro provides a built-in, lightweight component to enable client-side routing and turn your multi-page app into a single-page app with smooth animations on navigation.
+[Browser-native, cross-document view transitions](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API/Using#basic_mpa_view_transition) can be used in Astro to animate the navigation between documents in a multi-page app (MPA), often providing the experience of client-side routing of single-page applications. They don’t alter the core functionality of a multi-page application, nor do they affect any existing scripts or add additional JavaScript to your page load. They simply add animations.
+
+For enhanced client-side routing and view transition features not yet fully supported by the View Transition API, Astro provides a built-in, lightweight component to enable client-side routing and turn your multi-page app into a [single-page app](#enabling-view-transitions-spa-mode) with smooth animations on navigation.
 
 That comes with some benefits, like shared state across pages and persistent elements, and some drawbacks, such as needing to manually reinitialize scripts or state after navigation.
 
 Adding Astro’s built-in `<ClientRouter />` component:
 
-- intercepts page navigation and gives you considerable control over this process.
+- [intercepts page navigation](#client-side-navigation-process)and gives you considerable control over this process.
 - extends and enhances some View Transition/Navigation API features.
-- allows you to configure fallback strategies for when native browser support is lacking.
+- allows you to [configure fallback strategies](#fallback-control)for when[native browser support is lacking](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API#browser_compatibility).
 
-However, as browser APIs and web standards evolve, using Astro’s `<ClientRouter />` for this additional functionality will increasingly become unnecessary. We recommend keeping up with the current state of browser APIs so you can decide whether you still need Astro’s client-side routing for the specific features you use.
+However, as browser APIs and web standards evolve, using Astro’s `<ClientRouter />` for this additional functionality [will increasingly become unnecessary](https://astro.build/blog/future-of-astro-zero-js-view-transitions/). We recommend keeping up with the current state of browser APIs so you can [decide whether you still need Astro’s client-side routing](https://events-3bg.pages.dev/jotter/astro-view-transitions/) for the specific features you use.
 
 ## Enabling view transitions (SPA mode)
 
-Section titled “Enabling view transitions (SPA mode)”Import and add the `<ClientRouter />` component to your common `<head>` or shared layout component. Astro will create default page animations based on the similarities between the old and new page, and will also provide fallback behavior for unsupported browsers.
+[Section titled “Enabling view transitions (SPA mode)”](#enabling-view-transitions-spa-mode)
+
+Import and add the `<ClientRouter />` component to your common `<head>` or shared layout component. Astro will create default page animations based on the similarities between the old and new page, and will also provide fallback behavior for unsupported browsers.
 
 The example below shows adding Astro’s default page navigation animations site-wide, including the default fallback control option for non-supporting browsers, by importing and adding this component to a `<CommonHead />` Astro component:
 
 No other configuration is necessary to enable Astro’s default client-side navigation!
 
-Use transition directives or override default client-side navigation on individual elements for finer control.
+Use [transition directives](#transition-directives) or [override default client-side navigation](#preventing-client-side-navigation) on individual elements for finer control.
 
 ## Transition Directives
 
-Section titled “Transition Directives”Astro will automatically assign corresponding elements found in both the old page and the new page a shared, unique `view-transition-name`. This pair of matching elements is inferred by both the type of element and its location in the DOM.
+[Section titled “Transition Directives”](#transition-directives)
+
+Astro will automatically assign corresponding elements found in both the old page and the new page a shared, unique `view-transition-name`. This pair of matching elements is inferred by both the type of element and its location in the DOM.
 
 Use optional `transition:*` directives on page elements in your `.astro` components for finer control over the page transition behaviour during navigation.
 
-- `transition:name`: Allows you to override Astro’s default element matching for old/new content animation and specify a transition name to associate a pair of DOM elements.
-- `transition:animate`: Allows you to override Astro’s default animation while replacing the old element with the new one by specifying an animation type. Use Astro’s built-in animation directives or create custom transition animations.
-- `transition:persist`: Allows you to override Astro’s default replacing old elements for new ones and instead persist components and HTML elements when navigating to another page.
+- `transition:name`: Allows you to override Astro’s default element matching for old/new content animation and- [specify a transition name](#naming-a-transition)to associate a pair of DOM elements.
+- `transition:animate`: Allows you to override Astro’s default animation while replacing the old element with the new one by specifying an animation type. Use Astro’s- [built-in animation directives](#built-in-animation-directives)or- [create custom transition animations](#customizing-animations).
+- `transition:persist`: Allows you to override Astro’s default replacing old elements for new ones and instead- [persist components and HTML elements](#maintaining-state)when navigating to another page.
 
 ### Naming a transition
 
-Section titled “Naming a transition”In some cases, you may want or need to identify the corresponding view transition elements yourself. You can specify a name for a pair of elements using the `transition:name` directive.
+[Section titled “Naming a transition”](#naming-a-transition)
+
+In some cases, you may want or need to identify the corresponding view transition elements yourself. You can specify a name for a pair of elements using the `transition:name` directive.
 
 Note that the provided `transition:name` value can only be used once on each page. Set this manually when Astro can’t infer a proper name itself, or for more fine control over matching elements.
 
 ### Maintaining State
 
-Section titled “Maintaining State”
+[Section titled “Maintaining State”](#maintaining-state)
+
 	**Added in:**
 	`astro@2.10.0`
 	
@@ -76,19 +85,22 @@ You can persist components and HTML elements (instead of replacing them) across 
 
 For example, the following `<video>` will continue to play as you navigate to another page that contains the same video element. This works for both forwards and backwards navigation.
 
-You can also place the directive on an Astro island (a UI framework component with a `client:` directive). If that component exists on the next page, the island from the old page **with its current state** will continue to be displayed, instead of replacing it with the island from the new page.
+You can also place the directive on an [Astro island](/en/concepts/islands/) (a UI framework component with a [ client: directive](/en/reference/directives-reference/#client-directives)). If that component exists on the next page, the island from the old page 
+
+**with its current state**will continue to be displayed, instead of replacing it with the island from the new page.
 
 In the example below, the component’s internal state of the count will not be reset when navigating back and forth across pages that contain the `<Counter />` component with the `transition:persist` attribute.
 
 Not all state can be preserved in this way. The restart of CSS animations and the reload of iframes cannot be avoided during view transitions even when using `transition:persist`.
 
-You can also manually identify corresponding elements if the island/element is in a different component between the two pages.
+You can also [manually identify corresponding elements](#naming-a-transition) if the island/element is in a different component between the two pages.
 
 As a convenient shorthand, `transition:persist` can alternatively take a transition name as a value.
 
 `transition:persist-props`
 
-Section titled “transition:persist-props”
+[Section titled “transition:persist-props”](#transitionpersist-props)
+
 	**Added in:**
 	`astro@4.5.0`
 	
@@ -102,7 +114,9 @@ You can override this behavior by setting `transition:persist-props` in addition
 
 ### Built-in Animation Directives
 
-Section titled “Built-in Animation Directives”Astro comes with a few built-in animations to override the default `fade` transition. Add the `transition:animate` directive to individual elements to customize the behavior of specific transitions.
+[Section titled “Built-in Animation Directives”](#built-in-animation-directives)
+
+Astro comes with a few built-in animations to override the default `fade` transition. Add the `transition:animate` directive to individual elements to customize the behavior of specific transitions.
 
 - `fade`(default): An opinionated crossfade animation. The old content fades out and the new content fades in.
 - `initial`: Opt out of Astro’s opinionated crossfade animation and use the browser’s default styling.
@@ -115,7 +129,9 @@ The example below produces a slide animation for the body content while disablin
 
 ### Customizing Animations
 
-Section titled “Customizing Animations”You can customize all aspects of a transition with any CSS animation properties.
+[Section titled “Customizing Animations”](#customizing-animations)
+
+You can customize all aspects of a transition with any CSS animation properties.
 
 To customize a built-in animation, first import the animation from `astro:transitions`, and then pass in customization options.
 
@@ -131,20 +147,24 @@ You have great flexibility when defining custom animations. To achieve your desi
 
 ## Router control
 
-Section titled “Router control”The `<ClientRouter />` router handles navigation by listening to:
+[Section titled “Router control”](#router-control)
+
+The `<ClientRouter />` router handles navigation by listening to:
 
 - Clicks on `<a>`elements.
 - Backwards and forwards navigation events.
 
 The following options allow you to further control when navigation occurs within the router:
 
-- `data-astro-reload`: an- `<a>`tag attribute to force a full-page navigation
-- `data-astro-history="auto | push | replace"`: an- `<a>`tag attribute to control the browser’s history
-- `navigate(href, options)`: a method available to any client script or client component to trigger navigation
+- `data-astro-reload`: an- `<a>`tag attribute to- [force a full-page navigation](#preventing-client-side-navigation)
+- `data-astro-history="auto | push | replace"`: an- `<a>`tag attribute to- [control the browser’s history](#replace-entries-in-the-browser-history)
+- `navigate(href, options)`: a method available to any client script or client component to- [trigger navigation](#trigger-navigation)
 
 ### Preventing client-side navigation
 
-Section titled “Preventing client-side navigation”There are some cases where you cannot navigate via client-side routing since both pages involved must use the `<ClientRouter />` router to prevent a full-page reload. You may also not want client-side routing on every navigation change and would prefer a traditional page navigation on select routes instead.
+[Section titled “Preventing client-side navigation”](#preventing-client-side-navigation)
+
+There are some cases where you cannot navigate via client-side routing since both pages involved must use the `<ClientRouter />` router to prevent a full-page reload. You may also not want client-side routing on every navigation change and would prefer a traditional page navigation on select routes instead.
 
 You can opt out of client-side routing on a per-link basis by adding the `data-astro-reload` attribute to any `<a>` or `<form>` tag. This attribute will override any existing `<ClientRouter />` component and instead trigger a browser refresh during navigation.
 
@@ -154,7 +174,11 @@ Links with the `data-astro-reload` attribute will be ignored by the router and a
 
 ### Trigger navigation
 
-Section titled “Trigger navigation”You can also trigger client-side navigation via events not normally listened to by the `<ClientRouter />` router using `navigate()`. This function from the `astro:transitions/client` module can be used in scripts, and in framework components that are hydrated with a client directive.
+[Section titled “Trigger navigation”](#trigger-navigation)
+
+You can also trigger client-side navigation via events not normally listened to by the `<ClientRouter />` router using [ navigate()](/en/reference/modules/astro-transitions/#navigate). This function from the 
+
+`astro:transitions/client` module can be used in scripts, and in framework components that are hydrated with a [client directive](/en/reference/directives-reference/#client-directives).
 
 The following example shows an Astro component that navigates a visitor to another page they select from a menu:
 
@@ -164,14 +188,17 @@ The `<Form />` component can then be rendered on an Astro page that uses the `<C
 
 For backward and forward navigation through the browser history, you can combine `navigate()` with the built-in `history.back()`, `history.forward()` and `history.go()` functions of the browser. If `navigate()` is called during the server-side render of your component, it has no effect.
 
-`astro:transitions` reference for more information about the `navigate()` options.
-### Replace entries in the browser history
+`astro:transitions` reference for more information about the [.](/en/reference/modules/astro-transitions/#navigate)
 
-Section titled “Replace entries in the browser history”Normally, each time you navigate, a new entry is written to the browser’s history. This allows navigation between pages using the browser’s `back` and `forward` buttons.
+`navigate()` options### Replace entries in the browser history
+
+[Section titled “Replace entries in the browser history”](#replace-entries-in-the-browser-history)
+
+Normally, each time you navigate, a new entry is written to the browser’s history. This allows navigation between pages using the browser’s `back` and `forward` buttons.
 
 The `<ClientRouter />` router allows you to overwrite history entries by adding the `data-astro-history` attribute to any individual `<a>` tag.
 
-The `data-astro-history` attribute can be set to the same three values as the `history` option of the `navigate()` function:
+The `data-astro-history` attribute can be set to the same three values as the [ history option of the navigate() function](/en/reference/modules/astro-transitions/#history-option):
 
 - `"push"`: the router will use- `history.pushState`to create a new entry in the browser history.
 - `"replace"`: the router will use- `history.replaceState`to update the URL without adding a new entry into navigation.
@@ -183,7 +210,8 @@ This has the effect that if you go back from the `/main` page, the browser will 
 
 ### Transitions with forms
 
-Section titled “Transitions with forms”
+[Section titled “Transitions with forms”](#transitions-with-forms)
+
 	**Added in:**
 	`astro@4.0.0`
 	
@@ -197,7 +225,9 @@ You can opt out of router transitions on any individual form using the `data-ast
 
 ### Navigating with user input
 
-Section titled “Navigating with user input”The `navigate()` API does not perform sanitization on the URLs passed to it. If you are using user input to determine the URL to navigate to, you should validate the input before passing it to `navigate()`.
+[Section titled “Navigating with user input”](#navigating-with-user-input)
+
+The `navigate()` API does not perform sanitization on the URLs passed to it. If you are using user input to determine the URL to navigate to, you should validate the input before passing it to `navigate()`.
 
 For example, a `?redirect` query parameter could be used to navigate away from your site (`?redirect=http://example.com`) or to execute arbitrary code (`?redirect=javascript:alert('Evil code')`) if the value is not sanitized before use.
 
@@ -205,12 +235,16 @@ One way to implement this safely is to ensure only a set of known paths can be r
 
 The exact kind of sanitization you need will depend on your site and what you want to allow.
 
+[Content Security Policy feature](/en/reference/configuration-reference/#securitycsp)to help protect against cross-site scripting (XSS) risks if using user input with the
+
 `navigate()` API.
 ## Fallback control
 
-Section titled “Fallback control”The `<ClientRouter />` router works best in browsers that support View Transitions (i.e. Chromium browsers), but also includes default fallback support for other browsers. Even if the browser does not support the View Transitions API, Astro’s client router can still provide in-browser navigation using one of the fallback options.
+[Section titled “Fallback control”](#fallback-control)
 
-Depending on browser support, you may need to explicitly set the `name` or `animate` transition directives on the elements you wish to animate for a comparable experience across all browsers:
+The `<ClientRouter />` router works best in browsers that support View Transitions (i.e. Chromium browsers), but also includes default fallback support for other browsers. Even if the browser does not support the View Transitions API, Astro’s client router can still provide in-browser navigation using one of the fallback options.
+
+Depending on browser support, you may need to explicitly set the `name` or `animate` [transition directives](#transition-directives) on the elements you wish to animate for a comparable experience across all browsers:
 
 You can override Astro’s default fallback support by adding a `fallback` property on the `<ClientRouter />` component and setting it to `swap` or `none`:
 
@@ -222,7 +256,9 @@ The `initial` browser animation is not simulated by Astro. So any element using 
 
 ## Client-side navigation process
 
-Section titled “Client-side navigation process”When using the `<ClientRouter />` router, the following steps occur to produce Astro’s client-side navigation:
+[Section titled “Client-side navigation process”](#client-side-navigation-process)
+
+When using the `<ClientRouter />` router, the following steps occur to produce Astro’s client-side navigation:
 
 - 
 A visitor to your site triggers navigation by any of the following actions: - Clicking an `<a>`tag linking internally to another page on your site.
@@ -235,7 +271,7 @@ The router starts fetching the next page.
 - 
 The router adds the `data-astro-transition`attribute to the HTML element with a value of`"forward"`or`"back"`as appropriate.
 - 
-The router calls `document.startViewTransition`. This triggers the browser’s own view transition process. Importantly, the browser screenshots the current state of the page.
+The router calls `document.startViewTransition`. This triggers the browser’s own[view transition process](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API/Using#the_view_transition_process). Importantly, the browser screenshots the current state of the page.
 - 
 Inside the `startViewTransition`callback, the router performs a**swap**, which consists of the following sequence of events:- 
 The contents of the `<head>`are swapped out, with some elements kept:- Stylesheet DOM nodes are left in if they exist on the new page, to prevent FOUC.
@@ -261,19 +297,25 @@ The `astro:page-load`event fires. This is the end of the navigation process.
 
 ## Script behavior with view transitions
 
-Section titled “Script behavior with view transitions”When you add view transitions to an existing Astro project, some of your scripts may no longer re-run after page navigation like they did with full-page browser refreshes. Use the following information to ensure that your scripts execute as expected.
+[Section titled “Script behavior with view transitions”](#script-behavior-with-view-transitions)
+
+When you add view transitions to an existing Astro project, some of your scripts may no longer re-run after page navigation like they did with full-page browser refreshes. Use the following information to ensure that your scripts execute as expected.
 
 ### Script order
 
-Section titled “Script order”When navigating between pages with the `<ClientRouter />` component, scripts are run in sequential order to match browser behavior.
+[Section titled “Script order”](#script-order)
+
+When navigating between pages with the `<ClientRouter />` component, scripts are run in sequential order to match browser behavior.
 
 ### Script re-execution
 
-Section titled “Script re-execution”Bundled module scripts, which are the default scripts in Astro, are only ever executed once. After initial execution they will be ignored, even if the script exists on the new page after a transition.
+[Section titled “Script re-execution”](#script-re-execution)
 
-Unlike bundled module scripts, inline scripts have the potential to be re-executed during a user’s visit to a site if they exist on a page that is visited multiple times. Inline scripts might also re-execute when a visitor navigates to a page without the script, and then back to one with the script.
+[Bundled module scripts](/en/guides/client-side-scripts/#script-processing), which are the default scripts in Astro, are only ever executed once. After initial execution they will be ignored, even if the script exists on the new page after a transition.
 
-With view transitions, some scripts may no longer re-run after page navigation like they do with full-page browser refreshes. There are several events during client-side routing that you can listen for, and fire events when they occur. You can wrap an existing script in an event listener to ensure it runs at the proper time in the navigation cycle.
+Unlike bundled module scripts, [inline scripts](/en/guides/client-side-scripts/#unprocessed-scripts) have the potential to be re-executed during a user’s visit to a site if they exist on a page that is visited multiple times. Inline scripts might also re-execute when a visitor navigates to a page without the script, and then back to one with the script.
+
+With view transitions, some scripts may no longer re-run after page navigation like they do with full-page browser refreshes. There are several [events during client-side routing that you can listen for](#lifecycle-events), and fire events when they occur. You can wrap an existing script in an event listener to ensure it runs at the proper time in the navigation cycle.
 
 The following example wraps a script for a mobile “hamburger” menu in an event listener for `astro:page-load` which runs at the end of page navigation to make the menu responsive to being clicked after navigating to a new page:
 
@@ -281,7 +323,8 @@ The following example shows a function that runs in response to the `astro:after
 
 `data-astro-rerun`
 
-Section titled “data-astro-rerun”
+[Section titled “data-astro-rerun”](#data-astro-rerun)
+
 	**Added in:**
 	`astro@4.5.0`
 	
@@ -289,13 +332,15 @@ Section titled “data-astro-rerun”
 
 To force inline scripts to re-execute after every transition, add the `data-astro-rerun` property. Adding any attribute to a script also implicitly adds `is:inline`, so this is only available for scripts that are not bundled and processed by Astro.
 
-To ensure that a script runs every time a page is loaded during client-side navigation, it should be executed by a lifecycle event. For example, event listeners for `DOMContentLoaded` can be replaced by the `astro:page-load` lifecycle event.
+To ensure that a script runs every time a page is loaded during client-side navigation, it should be executed by a [lifecycle event](#lifecycle-events). For example, event listeners for `DOMContentLoaded` can be replaced by the [ astro:page-load](/en/guides/view-transitions/#astropage-load) lifecycle event.
 
 If you have code that sets up a global state in an inline script, this state will need to take into account that the script might execute more than once. Check for the global state in your `<script>` tag, and conditionally execute your code where possible. This works because `window` is preserved.
 
 ## Lifecycle events
 
-Section titled “Lifecycle events”The `<ClientRouter />` router fires a number of events on the `document` during navigation. These events provide hooks into the lifecycle of navigation, allowing you to do things like show indicators that a new page is loading, override default behavior, and restore state as navigation is completing.
+[Section titled “Lifecycle events”](#lifecycle-events)
+
+The `<ClientRouter />` router fires a number of events on the `document` during navigation. These events provide hooks into the lifecycle of navigation, allowing you to do things like show indicators that a new page is loading, override default behavior, and restore state as navigation is completing.
 
 The navigation process involves a **preparation** phase, when new content is loaded; a **DOM swap** phase, where the old page’s content is replaced by the new page’s content; and a **completion** phase where scripts are executed, loading is reported as completed and clean-up work is carried out.
 
@@ -307,7 +352,8 @@ While some actions can be triggered during any event, some tasks can only be per
 
 `astro:before-preparation`
 
-Section titled “astro:before-preparation”
+[Section titled “astro:before-preparation”](#astrobefore-preparation)
+
 	**Added in:**
 	`astro@3.6.0`
 	
@@ -321,11 +367,12 @@ This event is used:
 - To alter loading, such as loading content you’ve defined in a template rather than from the external URL.
 - To change the `direction`of the navigation (which is usually either`forward`or`backward`) for custom animation.
 
-Here is an example of using the `astro:before-preparation` event to load a spinner before the content is loaded and stop it immediately after loading. Note that using the `loader` callback in this way allows asynchronous execution of code.
+Here is an example of using the `astro:before-preparation` event to load a spinner before the content is loaded and stop it immediately after loading. Note that using the [ loader callback](/en/reference/modules/astro-transitions/#loader) in this way allows asynchronous execution of code.
 
 `astro:after-preparation`
 
-Section titled “astro:after-preparation”
+[Section titled “astro:after-preparation”](#astroafter-preparation)
+
 	**Added in:**
 	`astro@3.6.0`
 	
@@ -339,7 +386,8 @@ This is a simpler version of loading a spinner than the example shown above: if 
 
 `astro:before-swap`
 
-Section titled “astro:before-swap”
+[Section titled “astro:before-swap”](#astrobefore-swap)
+
 	**Added in:**
 	`astro@3.6.0`
 	
@@ -355,21 +403,24 @@ At this point of the lifecycle, you could choose to define your own swap impleme
 
 #### Building a custom swap function
 
-Section titled “Building a custom swap function”
+[Section titled “Building a custom swap function”](#building-a-custom-swap-function)
+
 	**Added in:**
 	`astro@4.15.0`
 	
 	
 
-The `swapFunctions` object of the `astro:transitions/client` module provides five utility functions that handle specific swap-related tasks, including handling document attributes, page elements, and script execution. These functions can be used directly to define a custom swap implementation.
+The [ swapFunctions object](/en/reference/modules/astro-transitions/#swapfunctions) of the 
 
-The following example demonstrates how to use these functions to recreate Astro’s built-in swap implementation:
+`astro:transitions/client` module provides five utility functions that handle specific swap-related tasks, including handling document attributes, page elements, and script execution. These functions can be used directly to define a custom swap implementation.The following example demonstrates how to use these functions to recreate Astro’s built-in swap implementation:
 
 Custom swap implementations can start with this template and add or replace individual steps with custom logic as needed.
 
 `astro:after-swap`
 
-Section titled “astro:after-swap”An event that fires immediately after the new page replaces the old page. You can listen to this event on the `document` and trigger actions that will occur before the new page’s DOM elements render and scripts run.
+[Section titled “astro:after-swap”](#astroafter-swap)
+
+An event that fires immediately after the new page replaces the old page. You can listen to this event on the `document` and trigger actions that will occur before the new page’s DOM elements render and scripts run.
 
 This event, when listened to on the **outgoing page**, is useful to pass along and restore any state on the DOM that needs to transfer over to the new page.
 
@@ -380,7 +431,9 @@ Therefore, one use of targeting this event is to override the default scroll res
 
 `astro:page-load`
 
-Section titled “astro:page-load”An event that fires at the end of page navigation, after the new page is visible to the user and blocking styles and scripts are loaded. You can listen to this event on the `document`.
+[Section titled “astro:page-load”](#astropage-load)
+
+An event that fires at the end of page navigation, after the new page is visible to the user and blocking styles and scripts are loaded. You can listen to this event on the `document`.
 
 The `<ClientRouter />` component fires this event both on initial page navigation for a pre-rendered page and on any subsequent navigation, either forwards or backwards.
 
@@ -388,11 +441,14 @@ You can use this event to run code on every page navigation, for example to set 
 
 ## Accessibility
 
-Section titled “Accessibility”Enabling client-side routing and animating page transitions both come with accessibility challenges, and Astro aims to make sites opting in to View Transitions as accessible-by-default as possible.
+[Section titled “Accessibility”](#accessibility)
+
+Enabling client-side routing and animating page transitions both come with accessibility challenges, and Astro aims to make sites opting in to View Transitions as accessible-by-default as possible.
 
 ### Route announcement
 
-Section titled “Route announcement”
+[Section titled “Route announcement”](#route-announcement)
+
 	**Added in:**
 	`astro@3.2.0`
 	
@@ -412,7 +468,15 @@ We strongly recommend you always include a `<title>` in each page for accessibil
 
 `prefers-reduced-motion`
 
-Section titled “prefers-reduced-motion”Astro’s `<ClientRouter />` component includes a CSS media query that disables *all* view transition animations, including fallback animation, whenever the `prefers-reduced-motion` setting is detected. Instead, the browser will simply swap the DOM elements without an animation.
+[Section titled “prefers-reduced-motion”](#prefers-reduced-motion)
+
+Astro’s `<ClientRouter />` component includes a CSS media query that disables *all* view transition animations, including fallback animation, whenever the [ prefers-reduced-motion](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion) setting is detected. Instead, the browser will simply swap the DOM elements without an animation.
+
+[Contribute](/en/contribute/)
+
+[Community](https://astro.build/chat)
+
+[Sponsor](https://opencollective.com/astrodotbuild)
 
 # Citations
 

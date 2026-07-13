@@ -3,7 +3,7 @@ type: Web Page
 title: Server islands | Docs
 description: Combine high performance static HTML with dynamic server-rendered content.
 resource: https://docs.astro.build/en/guides/server-islands
-timestamp: '2026-07-07T10:59:34.007706+00:00'
+timestamp: '2026-07-13T09:18:12.222139+00:00'
 ---
 
 # Server islands
@@ -14,17 +14,21 @@ This means your visitor will see the most important parts of your page sooner, a
 
 ## Server island components
 
-Section titled “Server island components”A server island is a normal server-rendered Astro component that is instructed to delay rendering until its contents are available.
+[Section titled “Server island components”](#server-island-components)
 
-Your page will be rendered immediately with any specified fallback content as a placeholder. Then, the component’s own contents are fetched on the client and displayed when available.
+A server island is a normal server-rendered [Astro component](/en/basics/astro-components/) that is instructed to delay rendering until its contents are available.
 
-With an adapter installed to perform the delayed rendering, add the `server:defer` directive to any component on your page to turn it into its own island:
+Your page will be rendered immediately with any specified [fallback content as a placeholder](#server-island-fallback-content). Then, the component’s own contents are fetched on the client and displayed when available.
 
-These components can do anything you normally would in an on-demand rendered page using an adapter, such as fetch content, and access cookies:
+With [an adapter installed](/en/guides/on-demand-rendering/#server-adapters) to perform the delayed rendering, add the [ server:defer directive](/en/reference/directives-reference/#server-directives) to any component on your page to turn it into its own island:
+
+These components can do [anything you normally would in an on-demand rendered page](/en/guides/on-demand-rendering/#on-demand-rendering-features) using an adapter, such as fetch content, and access cookies:
 
 ### Passing props to server islands
 
-Section titled “Passing props to server islands”Props provided to server island components must be serializable: able to be translated into a format suitable for transfer over a network, or storage. Additionally, Astro does not serialize every type of serializable data structure. Therefore, there are some limitations on what can be passed as props to a server island.
+[Section titled “Passing props to server islands”](#passing-props-to-server-islands)
+
+Props provided to server island components must be [serializable](https://developer.mozilla.org/en-US/docs/Glossary/Serialization): able to be translated into a format suitable for transfer over a network, or storage. Additionally, Astro does not serialize every type of serializable data structure. Therefore, there are some limitations on what can be passed as props to a server island.
 
 Notably, functions cannot be passed to components marked with `server:defer` as they cannot be serialized. Objects with circular references are also not serializable.
 
@@ -33,7 +37,9 @@ plain object, `number`, `string`, `Array`, `Map`, `Set`, `RegExp`, `Date`, `BigI
 
 ## Server island fallback content
 
-Section titled “Server island fallback content”When using the `server:defer` attribute on a component to delay its rendering, you can “slot” in default loading content using the included named `"fallback"` slot.
+[Section titled “Server island fallback content”](#server-island-fallback-content)
+
+When using the `server:defer` attribute on a component to delay its rendering, you can “slot” in default loading content using the included named `"fallback"` slot.
 
 Your fallback content will be rendered along with the rest of the page initially on page load and will be replaced with your component’s content when available.
 
@@ -47,7 +53,9 @@ This fallback content can be things like:
 
 ## How it works
 
-Section titled “How it works”Server island implementation happens mostly at build-time where component content is swapped out for a small script.
+[Section titled “How it works”](#how-it-works)
+
+Server island implementation happens mostly at build-time where component content is swapped out for a small script.
 
 Each of the islands marked with `server:defer` is split off into its own special route which the script fetches at run time. When Astro builds your site it will omit the component and inject a script in its place, and any content you’ve marked with `slot="fallback"`.
 
@@ -59,23 +67,29 @@ This rendering pattern was built to be portable. It does not depend on any serve
 
 ## Caching
 
-Section titled “Caching”The data for server islands is retrieved via a `GET` request, passing props as an encrypted string in the URL query. This allows caching data with the `Cache-Control` HTTP header using standard `Cache-Control` directives.
+[Section titled “Caching”](#caching)
 
-However, the browser limits URLs to a maximum length of 2048 bytes for practical reasons and to avoid causing denial-of-service problems. If your query string causes your URL to exceed this limit, Astro will instead send a `POST` request that contains all props in the body.
+The data for server islands is retrieved via a `GET` request, passing props as an encrypted string in the URL query. This allows caching data with the [ Cache-Control HTTP header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Cache-Control) using standard 
+
+`Cache-Control` directives.However, [the browser limits URLs to a maximum length of 2048 bytes](https://chromium.googlesource.com/chromium/src/+/master/docs/security/url_display_guidelines/url_display_guidelines.md#url-length) for practical reasons and to avoid causing denial-of-service problems. If your query string causes your URL to exceed this limit, Astro will instead send a `POST` request that contains all props in the body.
 
 `POST` requests are not cached by browsers because they are used to submit data, and could cause data integrity or security issues. Therefore, any existing caching logic in your project will break. Whenever possible, pass only necessary props to your server islands and avoid sending entire data objects and arrays to keep your query small.
 
 ## Accessing the page URL in a server island
 
-Section titled “Accessing the page URL in a server island”In most cases, your server island component can get information about the page rendering it by passing props like in normal components.
+[Section titled “Accessing the page URL in a server island”](#accessing-the-page-url-in-a-server-island)
+
+In most cases, your server island component can get information about the page rendering it by [passing props](/en/basics/astro-components/#component-props) like in normal components.
 
 However, server islands run in their own isolated context outside of the page request. `Astro.url` and `Astro.request.url` in a server island component both return a URL that looks like `/_server-islands/Avatar` instead of the current page’s URL in the browser. Additionally, if you are prerendering the page you will not have access to information such as query parameters in order to pass as props.
 
-To access information from the page’s URL, you can check the Referer header, which will contain the address of the page that is loading the island in the browser:
+To access information from the page’s URL, you can check the [Referer](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referer) header, which will contain the address of the page that is loading the island in the browser:
 
 ## Reusing the encryption key
 
-Section titled “Reusing the encryption key”Astro uses cryptography to encrypt props passed to server islands, protecting sensitive data from accidental exposure. This encryption relies on a new, random key that is generated on each build and embedded in the server bundle.
+[Section titled “Reusing the encryption key”](#reusing-the-encryption-key)
+
+Astro uses [cryptography](https://developer.mozilla.org/en-US/docs/Glossary/Cryptography) to encrypt props passed to server islands, protecting sensitive data from accidental exposure. This encryption relies on a new, random key that is generated on each build and embedded in the server bundle.
 
 Most deploy hosts will handle keeping your front end and back end in sync automatically. However, you may need a constant encryption key if you are using rolling deployments, multi-region hosting or a CDN that caches pages containing server islands.
 
@@ -84,6 +98,12 @@ In environments with rolling deployments (e.g., Kubernetes) where your frontend 
 In these situations, use the Astro CLI to generate a reusable, encoded encryption key to set as an environment variable in your build environment:
 
 Use this value to configure the `ASTRO_KEY` environment variable (e.g. in a `.env` file) and include it in your CI/CD or host’s build settings. This ensures the same key is always reused in the generated bundle so that encryption and decryption remain in sync.
+
+[Contribute](/en/contribute/)
+
+[Community](https://astro.build/chat)
+
+[Sponsor](https://opencollective.com/astrodotbuild)
 
 # Citations
 

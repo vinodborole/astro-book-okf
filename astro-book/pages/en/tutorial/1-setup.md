@@ -5,14 +5,14 @@ description: 'Tutorial: Build your first Astro blog —
 
   Prepare your development environment, and create and deploy your first Astro site'
 resource: https://docs.astro.build/en/tutorial/1-setup
-timestamp: '2026-07-07T10:59:34.007706+00:00'
+timestamp: '2026-07-13T09:18:12.222139+00:00'
 ---
 
 # Check in: Unit 1 - Setup
 
 Now that you know what you’re going to build, it’s time to set up all the tools you’ll need!
 
-This unit shows you how to set up your development environment and deploy to Netlify. Skip ahead to Unit 2 if you are already comfortable with your environment and workflow.
+This unit shows you how to set up your development environment and deploy to Netlify. Skip ahead to [Unit 2](/en/tutorial/2-pages/) if you are already comfortable with your environment and workflow.
 
 Want to complete this tutorial in an online code editor instead? Follow the instructions below for getting started on StackBlitz.
 
@@ -21,7 +21,7 @@ Want to complete this tutorial in an online code editor instead? Follow the inst
 **Set up StackBlitz**
 
 - 
-Follow the external link to open the “Empty Project” template on StackBlitz. 
+Follow the external link to [open the “Empty Project” template on StackBlitz](https://astro.new/minimal?on=stackblitz).
 - 
 Click “Sign in” on the top right to log in using your GitHub credentials. 
 - 
@@ -31,7 +31,7 @@ Wait for the project to load, and you will see a live preview of the “Empty Pr
 
 **Make a Change**
 
-In the file pane, you should see `src/pages/index.astro`. Click to open it, and follow Write your first line of Astro to make a change to this file.
+In the file pane, you should see `src/pages/index.astro`. Click to open it, and follow [Write your first line of Astro](/en/tutorial/1-setup/3/) to make a change to this file.
 
 **Create a GitHub Repository**
 
@@ -42,17 +42,29 @@ When you have changes to be committed back to GitHub, a “Commit” button will
 
 **Deploy your Site**
 
-If you’d like to deploy to Netlify, and have a live published version of your site while you work, go ahead in Unit 1 to Deploy your site to the web.
+If you’d like to deploy to Netlify, and have a live published version of your site while you work, go ahead in Unit 1 to [Deploy your site to the web](/en/tutorial/1-setup/5/).
 
-Otherwise, skip to Unit 2 to start building with Astro!
+Otherwise, skip to [Unit 2](/en/tutorial/2-pages/) to start building with Astro!
 
 ## Where are you going?
 
-Section titled “Where are you going?”In this unit, you will **create a new project** that is **stored online in GitHub** and **connected to Netlify**.
+[Section titled “Where are you going?”](#where-are-you-going)
+
+In this unit, you will **create a new project** that is **stored online in GitHub** and **connected to Netlify**.
 
 As you write code, you will periodically commit your changes to GitHub. Netlify will use the files in your GitHub repository to build your website, and then publish it on the internet at a unique address where anyone can view it.
 
 Every time you commit a change to GitHub, a notification will be sent to Netlify. Then, Netlify will automatically rebuild and republish your live site to reflect those changes.
+
+## Checklist
+
+[Section titled “Checklist”](#checklist)
+
+[Contribute](/en/contribute/)
+
+[Community](https://astro.build/chat)
+
+[Sponsor](https://opencollective.com/astrodotbuild)
 
 # Citations
 

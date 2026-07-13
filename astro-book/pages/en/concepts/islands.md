@@ -3,7 +3,7 @@ type: Web Page
 title: Islands architecture | Docs
 description: Learn about how Astro's islands architecture helps keep sites fast.
 resource: https://docs.astro.build/en/concepts/islands
-timestamp: '2026-07-07T10:59:34.007706+00:00'
+timestamp: '2026-07-13T09:18:12.222139+00:00'
 ---
 
 # Islands architecture
@@ -12,7 +12,9 @@ Astro helped pioneer and popularize a new frontend architecture pattern called *
 
 ## A brief history
 
-Section titled “A brief history”The term “component island” was first coined by Etsy’s frontend architect Katie Sylor-Miller in 2019. This idea was then expanded on and documented in this post by Preact creator Jason Miller on August 11, 2020.
+[Section titled “A brief history”](#a-brief-history)
+
+The term “component island” was first coined by Etsy’s frontend architect [Katie Sylor-Miller](https://sylormiller.com/) in 2019. This idea was then expanded on and documented in [this post](https://jasonformat.com/islands-architecture/) by Preact creator Jason Miller on August 11, 2020.
 
 The general idea of an “Islands” architecture is deceptively simple: render HTML pages on the server, and inject placeholders or slots around highly dynamic regions […] that can then be “hydrated” on the client into small self-contained widgets, reusing their server-rendered initial HTML.
 
@@ -22,31 +24,37 @@ The technique that this architectural pattern builds on is also known as **parti
 
 In contrast, most JavaScript-based web frameworks hydrate & render an entire website as one large JavaScript application (also known as a single-page application, or SPA). SPAs provide simplicity and power but suffer from page-load performance problems due to heavy client-side JavaScript usage.
 
-SPAs have their place, even embedded inside an Astro page. But, SPAs lack the native ability to selectively and strategically hydrate, making them a heavy-handed choice for most projects on the web today.
+SPAs have their place, even [embedded inside an Astro page](/en/guides/migrate-to-astro/from-create-react-app/). But, SPAs lack the native ability to selectively and strategically hydrate, making them a heavy-handed choice for most projects on the web today.
 
 Astro became popular as the first mainstream JavaScript web framework with selective hydration built-in, using that same component islands pattern first coined by Sylor-Miller. We’ve since expanded and evolved on Sylor-Miller’s original work, which helped to inspire a similar component island approach to dynamically server-rendered content.
 
 ## What is an island?
 
-Section titled “What is an island?”In Astro, an island is an enhanced UI component on an otherwise static page of HTML.
+[Section titled “What is an island?”](#what-is-an-island)
 
-A **client island** is an interactive JavaScript UI component that is hydrated separately from the rest of the page, while a **server island** is a UI component that server-renders its dynamic content separately from the rest of the page.
+In Astro, an island is an enhanced UI component on an otherwise static page of HTML.
 
-Both islands run expensive or slower processes independently, on a per-component basis, for optimized page loads.
+A [ client island](#client-islands) is an interactive JavaScript UI component that is hydrated separately from the rest of the page, while a 
+
+[is a UI component that server-renders its dynamic content separately from the rest of the page.](#server-islands)
+
+**server island**Both islands run expensive or slower processes independently, on a per-component basis, for optimized page loads.
 
 ## Island components
 
-Section titled “Island components”Astro components are the building blocks of your page template. They render to static HTML with no client-side runtime.
+[Section titled “Island components”](#island-components)
+
+Astro components are the building blocks of your page template. They render to static HTML with no client-side runtime.
 
 Think of a client island as an interactive widget floating in a sea of otherwise static, lightweight, server-rendered HTML. Server islands can be added for personalized or dynamic server-rendered elements, such as a logged in visitor’s profile picture.
 
 Static content like text, images, etc.
 
-Source: Islands Architecture: Jason Miller
+Source: [Islands Architecture: Jason Miller](https://jasonformat.com/islands-architecture/)
 
 An island always runs in isolation from other islands on the page, and multiple islands can exist on a page. Client islands can still share state and communicate with each other, even though they run in different component contexts.
 
-This flexibility allows Astro to support multiple UI frameworks like React, Preact, Svelte, Vue, and SolidJS. Because they are independent, you can even mix several frameworks on each page.
+This flexibility allows Astro to support multiple UI frameworks like [React](https://react.dev/), [Preact](https://preactjs.com/), [Svelte](https://svelte.dev/), [Vue](https://vuejs.org/), and [SolidJS](https://www.solidjs.com/). Because they are independent, you can even mix several frameworks on each page.
 
 Although most developers will stick to just one UI framework, Astro supports multiple frameworks in the same project. This allows you to:
 
@@ -57,7 +65,9 @@ Although most developers will stick to just one UI framework, Astro supports mul
 
 ## Client Islands
 
-Section titled “Client Islands”By default, Astro will automatically render every UI component to just HTML & CSS, **stripping out all client-side JavaScript automatically.**
+[Section titled “Client Islands”](#client-islands)
+
+By default, Astro will automatically render every UI component to just HTML & CSS, **stripping out all client-side JavaScript automatically.**
 
 This may sound strict, but this behavior is what keeps Astro websites fast by default and protects developers from accidentally sending unnecessary or unwanted JavaScript that might slow down their website.
 
@@ -73,17 +83,21 @@ The most obvious benefit of building with Astro Islands is performance: the majo
 
 Another benefit is parallel loading. In the example illustration above, the low-priority “image carousel” island doesn’t need to block the high-priority “header” island. The two load in parallel and hydrate in isolation, meaning that the header becomes interactive immediately without having to wait for the heavier carousel lower down the page.
 
-Even better, you can tell Astro exactly how and when to render each component. If that image carousel is really expensive to load, you can attach a special client directive that tells Astro to only load the carousel when it becomes visible on the page. If the user never sees it, it never loads.
+Even better, you can tell Astro exactly how and when to render each component. If that image carousel is really expensive to load, you can attach a special [client directive](/en/reference/directives-reference/#client-directives) that tells Astro to only load the carousel when it becomes visible on the page. If the user never sees it, it never loads.
 
 In Astro, it’s up to you as the developer to explicitly tell Astro which components on the page need to also run in the browser. Astro will only hydrate exactly what’s needed on the page and leave the rest of your site as static HTML.
 
 **Client islands are the secret to Astro’s fast-by-default performance story!**
 
+[using JavaScript framework components](/en/guides/framework-components/)in your project.
+
 ## Server islands
 
-Section titled “Server islands”Server islands are a way to move expensive or slow server-side code out of the way of the main rendering process, making it easy to combine high-performance static HTML and dynamic server-generated components.
+[Section titled “Server islands”](#server-islands)
 
-Add the `server:defer` directive to any Astro component on your page to turn it into its own server island:
+Server islands are a way to move expensive or slow server-side code out of the way of the main rendering process, making it easy to combine high-performance static HTML and dynamic server-generated components.
+
+Add the [ server:defer directive](/en/reference/directives-reference/#server-directives) to any Astro component on your page to turn it into its own server island:
 
 This breaks up your page with smaller areas of server-rendered content that each load in parallel.
 
@@ -104,6 +118,14 @@ An example of a site that benefits from Astro’s server islands is an e-commerc
 - User reviews.
 
 Using server islands for these elements, your visitor will see the most important part of the page, your product, immediately. Generic avatars, loading spinners, and store announcements can be displayed as fallback content until the personalized parts are available.
+
+[using server islands](/en/guides/server-islands/)in your project.
+
+[Contribute](/en/contribute/)
+
+[Community](https://astro.build/chat)
+
+[Sponsor](https://opencollective.com/astrodotbuild)
 
 # Citations
 

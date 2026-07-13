@@ -3,7 +3,7 @@ type: Web Page
 title: Add an RSS feed | Docs
 description: Add an RSS feed to your Astro site to let users subscribe to your content.
 resource: https://docs.astro.build/en/recipes/rss
-timestamp: '2026-07-07T10:59:34.007706+00:00'
+timestamp: '2026-07-13T09:18:12.222139+00:00'
 ---
 
 # Add an RSS feed
@@ -12,19 +12,30 @@ Astro supports fast, automatic RSS feed generation for blogs and other content w
 
 ## Setting up `@astrojs/rss`
 
-Section titled “Setting up @astrojs/rss”The package `@astrojs/rss` provides helpers for generating RSS feeds using API endpoints. This unlocks both static builds *and* on-demand generation when using an SSR adapter.
+[Section titled “Setting up @astrojs/rss”](#setting-up-astrojsrss)
+
+The package [ @astrojs/rss](https://github.com/withastro/astro/tree/main/packages/astro-rss) provides helpers for generating RSS feeds using 
+
+[API endpoints](/en/guides/endpoints/#static-file-endpoints). This unlocks both static builds
+
+*and*on-demand generation when using an
+
+[SSR adapter](/en/guides/on-demand-rendering/).
 
 - 
-Install `@astrojs/rss`using your preferred package manager:Ensure you’ve configured a `site`in your project’s`astro.config`. This will be used to generate links to your RSS articles.
+Install `@astrojs/rss`using your preferred package manager:Ensure you’ve [configured a](/en/reference/configuration-reference/#site)in your project’s`site``astro.config`. This will be used to generate links to your RSS articles.
 - 
 Create a file in `src/pages/`with a name of your choice and the extension`.xml.js`to be used as the output URL for your feed. Some common RSS feed URL names are`feed.xml`or`rss.xml`.The example file below `src/pages/rss.xml.js`will create an RSS feed at`site/rss.xml`.
 - 
 Import the `rss()`helper from the`@astrojs/rss`package into your`.xml.js`file and export a function that returns it using the following parameters:
 
-`@astrojs/rss` README for the full configuration reference.
-## Generating `items`
+[for the full configuration reference.](https://github.com/withastro/astro/tree/main/packages/astro-rss)
 
-Section titled “Generating items”The `items` field accepts a list of RSS feed objects, which can be generated from content collections entries using `getCollection()` or from your page files using `pagesGlobToRssItems()`.
+`@astrojs/rss` README## Generating `items`
+
+[Section titled “Generating items”](#generating-items)
+
+The `items` field accepts a list of RSS feed objects, which can be generated from content collections entries using `getCollection()` or from your page files using `pagesGlobToRssItems()`.
 
 The RSS feed standard format includes metadata for each published item, including values such as:
 
@@ -34,10 +45,13 @@ The RSS feed standard format includes metadata for each published item, includin
 - `pubDate`: The date of publication of the entry. (optional)
 - `content`: The full content of your post. (optional)
 
-`items` configuration reference for a complete list of options.
-### Using content collections
+[for a complete list of options.](https://github.com/withastro/astro/tree/main/packages/astro-rss#items)
 
-Section titled “Using content collections”To create an RSS feed of pages managed in content collections, use the `getCollection()` function to retrieve the data required for your `items` array. You will need to specify the values for each desired property (e.g. `title`, `description`) from the returned data.
+`items` configuration reference### Using content collections
+
+[Section titled “Using content collections”](#using-content-collections)
+
+To create an RSS feed of pages managed in [content collections](/en/guides/content-collections/), use the `getCollection()` function to retrieve the data required for your `items` array. You will need to specify the values for each desired property (e.g. `title`, `description`) from the returned data.
 
 Optional: replace your existing blog collection schema to enforce the expected RSS properties.
 
@@ -45,13 +59,16 @@ To ensure that every blog entry produces a valid RSS feed item, you can optional
 
 ### Using glob imports
 
-Section titled “Using glob imports”
+[Section titled “Using glob imports”](#using-glob-imports)
+
 	**Added in:**
 	`@astrojs/rss@2.1.0`
 	
 	
 
-To create an RSS feed from documents in `src/pages/`, use the `pagesGlobToRssItems()` helper. This accepts an `import.meta.glob` result and outputs an array of valid RSS feed items (see more about writing glob patterns for specifying which pages to include).
+To create an RSS feed from documents in `src/pages/`, use the `pagesGlobToRssItems()` helper. This accepts an [ import.meta.glob](https://vite.dev/guide/features.html#glob-import) result and outputs an array of valid RSS feed items (see 
+
+[more about writing glob patterns](/en/guides/imports/#glob-patterns)for specifying which pages to include).
 
 This function assumes, but does not verify, that all necessary feed properties are present in each document’s frontmatter. If you encounter errors, verify each page frontmatter manually.
 
@@ -61,7 +78,8 @@ This method is deprecated for all versions of Astro since v2.1.0, and cannot be 
 
 ### Including full post content
 
-Section titled “Including full post content”
+[Section titled “Including full post content”](#including-full-post-content)
+
 	**Added in:**
 	`astro@1.6.14`
 	
@@ -71,31 +89,37 @@ Set the `content` key on `rss.items` to provide the full content of a post as HT
 
 When rendering full post content, you will have to consider images, relative links, styles, scripts, and other elements beyond standard Markdown text that you may have in your posts. You may need to include additional logic in your `src/pages/rss.xml.js` endpoint to account for these, or to remove elements that are unnecessary for an RSS feed (e.g. those that are used only for styling or interaction on your website).
 
-You can see one specific community implementation that addresses some of these concerns for an example of how to proceed.
+You can see [one specific community implementation](https://github.com/delucis/astro-blog-full-text-rss/blob/latest/src/pages/rss.xml.ts) that addresses some of these concerns for an example of how to proceed.
 
-A package like `sanitize-html` will make sure that your content is properly sanitized, escaped, and encoded. In the process, such a package might also remove some harmless elements and attributes, so make sure to verify the output and configure the package according to your needs.
+A package like [ sanitize-html](https://www.npmjs.com/package/sanitize-html) will make sure that your content is properly sanitized, escaped, and encoded. In the process, such a package might also remove some harmless elements and attributes, so make sure to verify the output and configure the package according to your needs.
 
-When using content collections, render the post `body` using a standard Markdown parser like `markdown-it` and sanitize the result, including any extra tags (e.g. `<img>`) needed to render your content:
+When using content collections, render the post `body` using a standard Markdown parser like [ markdown-it](https://github.com/markdown-it/markdown-it) and sanitize the result, including any extra tags (e.g. 
 
-When using glob imports with Markdown, you may use the `compiledContent()` helper to retrieve the rendered HTML for sanitization. Note: this feature is **not** supported for MDX files.
+`<img>`) needed to render your content:When using glob imports with Markdown, you may use the `compiledContent()` helper to retrieve the rendered HTML for sanitization. Note: this feature is **not** supported for MDX files.
 
 ## Removing trailing slashes
 
-Section titled “Removing trailing slashes”Astro’s RSS feed produces links with a trailing slash by default, no matter what value you have configured for `trailingSlash`. This means that your RSS links may not match your post URLs exactly.
+[Section titled “Removing trailing slashes”](#removing-trailing-slashes)
+
+Astro’s RSS feed produces links with a trailing slash by default, no matter what value you have configured for `trailingSlash`. This means that your RSS links may not match your post URLs exactly.
 
 If you have set `trailingSlash: "never"` on your `astro.config.mjs`, set `trailingSlash: false` in the `rss()` helper so that your feed matches your project configuration.
 
 ## Adding a stylesheet
 
-Section titled “Adding a stylesheet”Style your RSS feed for a more pleasant user experience when viewing the file in your browser.
+[Section titled “Adding a stylesheet”](#adding-a-stylesheet)
+
+Style your RSS feed for a more pleasant user experience when viewing the file in your browser.
 
 Use the `rss` function’s `stylesheet` option to specify an absolute path to your stylesheet.
 
-If you’d prefer not to create your own stylesheet, you may use a premade stylesheet such as the Pretty Feed v3 default stylesheet. Download the stylesheet from GitHub and save into your project’s `public/` directory.
+If you’d prefer not to create your own stylesheet, you may use a premade stylesheet such as the [Pretty Feed v3 default stylesheet](https://github.com/genmon/aboutfeeds/blob/main/tools/pretty-feed-v3.xsl). Download the stylesheet from GitHub and save into your project’s `public/` directory.
 
 ## Enabling RSS feed auto-discovery
 
-Section titled “Enabling RSS feed auto-discovery”RSS autodiscovery allows browsers and other software to automatically find a site’s RSS feed from the main URL.
+[Section titled “Enabling RSS feed auto-discovery”](#enabling-rss-feed-auto-discovery)
+
+[RSS autodiscovery](https://www.rssboard.org/rss-autodiscovery) allows browsers and other software to automatically find a site’s RSS feed from the main URL.
 
 To enable, add a `<link>` tag with the following attributes to your site’s `head` element:
 
@@ -103,7 +127,19 @@ With this tag, readers of your blog can enter your site’s base URL into their 
 
 ## Next Steps
 
-Section titled “Next Steps”After visiting your feed in the browser at `your-domain.com/rss.xml` and confirming that you can see data for each of your posts, you can now promote your feed on your website. Adding the standard RSS icon to your site lets your readers know that they can subscribe to your posts in their own feed reader.
+[Section titled “Next Steps”](#next-steps)
+
+After visiting your feed in the browser at `your-domain.com/rss.xml` and confirming that you can see data for each of your posts, you can now [promote your feed on your website](https://medium.com/samsung-internet-dev/add-rss-feeds-to-your-website-to-keep-your-core-readers-engaged-3179dca9c91e#:~:text=com/~deno%2Drss-,Advertising%20your%20RSS%20feed,-Now%20you%20have). Adding the standard RSS icon to your site lets your readers know that they can subscribe to your posts in their own feed reader.
+
+## Resources
+
+[Section titled “Resources”](#resources)
+
+[Contribute](/en/contribute/)
+
+[Community](https://astro.build/chat)
+
+[Sponsor](https://opencollective.com/astrodotbuild)
 
 # Citations
 

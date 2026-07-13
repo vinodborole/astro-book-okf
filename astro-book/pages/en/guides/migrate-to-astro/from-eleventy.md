@@ -3,50 +3,68 @@ type: Web Page
 title: Migrating from Eleventy | Docs
 description: Tips for migrating an existing Eleventy project to Astro
 resource: https://docs.astro.build/en/guides/migrate-to-astro/from-eleventy
-timestamp: '2026-07-07T10:59:34.007706+00:00'
+timestamp: '2026-07-13T09:18:12.222139+00:00'
 ---
 
 # Migrating from Eleventy
 
-Eleventy is an open-source static site generator that works with multiple template languages.
+[Eleventy](https://11ty.dev) is an open-source static site generator that works with multiple template languages.
 
 ## Key Similarities between Eleventy (11ty) and Astro
 
-Section titled “Key Similarities between Eleventy (11ty) and Astro”Eleventy (11ty) and Astro share some similarities that will help you migrate your project:
+[Section titled “Key Similarities between Eleventy (11ty) and Astro”](#key-similarities-between-eleventy-11ty-and-astro)
+
+Eleventy (11ty) and Astro share some similarities that will help you migrate your project:
 
 - 
 Both Astro and Eleventy are modern, JavaScript-based (Jamstack) site builders. 
 - 
-Astro and Eleventy both allow you to use a headless CMS, APIs or Markdown files for data. You can continue to use your preferred content authoring system, and will be able to keep your existing content. 
+Astro and Eleventy both allow you to use a [headless CMS, APIs or Markdown files for data](/en/guides/data-fetching/). You can continue to use your preferred content authoring system, and will be able to keep your existing content.
 
 ## Key Differences between Eleventy (11ty) and Astro
 
-Section titled “Key Differences between Eleventy (11ty) and Astro”When you rebuild your Eleventy (11ty) site in Astro, you will notice some important differences:
+[Section titled “Key Differences between Eleventy (11ty) and Astro”](#key-differences-between-eleventy-11ty-and-astro)
+
+When you rebuild your Eleventy (11ty) site in Astro, you will notice some important differences:
 
 - 
-Eleventy supports a variety of templating languages. Astro supports including components from several popular JS Frameworks (e.g. React, Svelte, Vue, Solid), but uses Astro layouts, pages and components for most page templating. 
+Eleventy supports a variety of templating languages. Astro supports [including components from several popular JS Frameworks (e.g. React, Svelte, Vue, Solid)](/en/guides/framework-components/), but uses[Astro layouts, pages and components](/en/basics/astro-components/)for most page templating.
 - 
-Astro uses a `src/`directory for all files, including site metadata, that are available for querying and processing during site build. Within this is a special`src/pages/`folder for file-based routing.
+Astro uses a `src/`directory[special](/en/basics/astro-pages/).`src/pages/`folder for file-based routing
 - 
-Astro uses a `public/`folder for static assets that do not need to be processed nor transformed during the build.
+Astro uses a `public/`folder for static assets
 - 
-In Eleventy, bundling CSS, JavaScript, and other assets needs to be configured manually. Astro handles this for you out-of-the-box. 
+In Eleventy, bundling CSS, JavaScript, and other assets needs to be configured manually. [Astro handles this for you out-of-the-box](/en/concepts/why-astro/#easy-to-use).
 
 ## Switch from Eleventy to Astro
 
-Section titled “Switch from Eleventy to Astro”To convert an Eleventy blog to Astro, start with our blog theme starter template, or explore more community blog themes in our theme showcase.
+[Section titled “Switch from Eleventy to Astro”](#switch-from-eleventy-to-astro)
 
-You can pass a `--template` argument to the `create astro` command to start a new Astro project with one of our official starters. Or, you can start a new project from any existing Astro repository on GitHub.
+To convert an Eleventy blog to Astro, start with our blog theme starter template, or explore more community blog themes in our [theme showcase](https://astro.build/themes/).
 
-Bring your existing Markdown (or MDX, with our optional integration) files as content to create Markdown or MDX pages.
+You can pass a `--template` argument to the `create astro` command to start a new Astro project with one of our official starters. Or, you can [start a new project from any existing Astro repository on GitHub](/en/install-and-setup/#install-from-the-cli-wizard).
 
-Your Eleventy project allowed you to use a variety of templating languages to build your site. In an Astro project, your page templating will mostly be achieved with Astro components, which can be used as UI elements, layouts and even full pages. You may want to explore Astro’s component syntax to see how to template in Astro using components.
+Bring your existing Markdown (or MDX, with our optional integration) files as content to [create Markdown or MDX pages](/en/guides/markdown-content/).
 
-To convert other types of sites, such as a portfolio or documentation site, see more official starter templates on astro.new. You’ll find a link to each project’s GitHub repository, as well as one-click links to open a working project in StackBlitz and CodeSandbox online development environments.
+Your Eleventy project allowed you to use a variety of templating languages to build your site. In an Astro project, your page templating will mostly be achieved with Astro components, which can be used as UI elements, layouts and even full pages. You may want to explore [Astro’s component syntax](/en/basics/astro-components/) to see how to template in Astro using components.
+
+To convert other types of sites, such as a portfolio or documentation site, see more official starter templates on [astro.new](https://astro.new). You’ll find a link to each project’s GitHub repository, as well as one-click links to open a working project in StackBlitz and CodeSandbox online development environments.
 
 ## Community Resources
 
-Section titled “Community Resources”If you found (or made!) a helpful video or blog post about converting an Eleventy site to Astro, add it to this list!
+[Section titled “Community Resources”](#community-resources)
+
+[This Site Is Now Built with Astro](https://aqandrew.com/blog/now-built-with-astro/)Why I switched from Eleventy.
+
+If you found (or made!) a helpful video or blog post about converting an Eleventy site to Astro, [add it to this list](https://github.com/withastro/docs/edit/main/src/content/docs/en/guides/migrate-to-astro/from-eleventy.mdx)!
+
+## More migration guides
+
+[Contribute](/en/contribute/)
+
+[Community](https://astro.build/chat)
+
+[Sponsor](https://opencollective.com/astrodotbuild)
 
 # Citations
 

@@ -3,7 +3,7 @@ type: Web Page
 title: Using streaming to improve page performance | Docs
 description: Learn how to use streaming to improve page performance.
 resource: https://docs.astro.build/en/recipes/streaming-improve-page-performance
-timestamp: '2026-07-07T10:59:34.007706+00:00'
+timestamp: '2026-07-13T09:18:12.222139+00:00'
 ---
 
 # Using streaming to improve page performance
@@ -20,10 +20,18 @@ The Astro page below using these components can render parts of the page sooner.
 
 #### Including Promises directly
 
-Section titled “Including Promises directly”You can also include promises directly in the template. Instead of blocking the entire component, it will resolve the promise in parallel and only block the markup that comes after it.
+[Section titled “Including Promises directly”](#including-promises-directly)
+
+You can also include promises directly in the template. Instead of blocking the entire component, it will resolve the promise in parallel and only block the markup that comes after it.
 
 In this example, `A name` will render while `personPromise` and `factPromise` are loading.
 Once `personPromise` has resolved, `A fact` will appear and `factPromise` will render when it’s finished loading.
+
+[Contribute](/en/contribute/)
+
+[Community](https://astro.build/chat)
+
+[Sponsor](https://opencollective.com/astrodotbuild)
 
 # Citations
 
