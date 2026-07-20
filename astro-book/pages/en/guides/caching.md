@@ -3,14 +3,14 @@ type: Web Page
 title: Route caching | Docs
 description: An intro to caching with Astro.
 resource: https://docs.astro.build/en/guides/caching
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-07-20T08:50:58.675619+00:00'
 ---
 
 # Route caching
 
 	**Added in:**
 	`astro@7.0.0`
-	New
+	
 	
 
 Astro provides a platform-agnostic API for caching responses from [on-demand rendered](/en/guides/on-demand-rendering/) pages and endpoints. Cache directives set in your routes are translated into the appropriate headers or runtime behavior depending on your configured cache provider.

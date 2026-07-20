@@ -3,7 +3,7 @@ type: Web Page
 title: Content collections | Docs
 description: Manage your content with type safety.
 resource: https://docs.astro.build/en/guides/content-collections
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-07-20T08:50:58.675619+00:00'
 ---
 
 # Content collections
@@ -441,7 +441,7 @@ You can use `instanceof` to check the type of an error at runtime:
 
 	**Added in:**
 	`astro@7.0.0`
-	New
+	
 	
 
 When live loaders provide [cache hints](/en/reference/content-loader-reference/#live-loaders), `getLiveEntry()` and `getLiveCollection()` return a `cacheHint` object. This allows you to control the [caching behavior](/en/guides/caching/) of your routes without manually setting headers.

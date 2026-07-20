@@ -3,7 +3,7 @@ type: Web Page
 title: Building Astro sites with AI tools | Docs
 description: Resources and tips for building Astro sites with AI assistance
 resource: https://docs.astro.build/en/guides/build-with-ai
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-07-20T08:50:58.675619+00:00'
 ---
 
 # Building Astro sites with AI tools
@@ -237,7 +237,7 @@ The same technology that powers Astro’s MCP server is also available as a chat
 
 	**Added in:**
 	`astro@7.0.0`
-	New
+	
 	
 
 When an AI coding agent is detected, `astro dev` automatically starts the dev server as a detached background process. This prevents the dev server from blocking the agent’s terminal and allows it to continue working while the server runs.

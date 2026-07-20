@@ -2,7 +2,7 @@
   "generator": "okf-kit",
   "okf_version": "0.1",
   "root_url": "https://docs.astro.build/en/getting-started",
-  "updated_at": "2026-07-13T09:18:12.335504+00:00",
+  "updated_at": "2026-07-20T08:50:58.734273+00:00",
   "config": {
     "max_depth": 3,
     "max_pages": 90,
@@ -82,13 +82,13 @@
       "path": "pages/en/guides/build-with-ai.md",
       "url": "https://docs.astro.build/en/guides/build-with-ai",
       "title": "Building Astro sites with AI tools | Docs",
-      "hash": "338732e276873d2030d4e10b44a22fbcdb4074d0eb64b42ac31c66f048a67ac5"
+      "hash": "24067e02bdd5caed4607e423176495ac1231d683784aee96c11b100bfc1a33a6"
     },
     {
       "path": "pages/en/guides/caching.md",
       "url": "https://docs.astro.build/en/guides/caching",
       "title": "Route caching | Docs",
-      "hash": "caad77726cc770572b3d1add3f7165ab3e04e3d139bff972a9e199ad35c067ae"
+      "hash": "7c96afba7f41db7faca91f88bd7f4faa365c918b2ad567ebf0469daba4c94bfe"
     },
     {
       "path": "pages/en/guides/client-side-scripts.md",
@@ -106,7 +106,7 @@
       "path": "pages/en/guides/content-collections.md",
       "url": "https://docs.astro.build/en/guides/content-collections",
       "title": "Content collections | Docs",
-      "hash": "38271355b8a4155e7ca99fb8a2072a87f9bb517fa2fb48b9836a687ef5c30baa"
+      "hash": "435554c42624640d4bc61cc8f8ae72dadd188b0aeb9c20d04a4f971d66832d4f"
     },
     {
       "path": "pages/en/guides/data-fetching.md",
@@ -280,7 +280,7 @@
       "path": "pages/en/guides/routing.md",
       "url": "https://docs.astro.build/en/guides/routing",
       "title": "Routing | Docs",
-      "hash": "4e9e42a389ba6bad55d3216e61f7613337eaeec06b48b4cb83bbfaf92409a0b7"
+      "hash": "ad59e6e2a3030bb32da921db4ec02c11409a10f360a77aea8b85f0016f965415"
     },
     {
       "path": "pages/en/guides/server-islands.md",
@@ -550,7 +550,7 @@
       "path": "pages/en/upgrade-astro.md",
       "url": "https://docs.astro.build/en/upgrade-astro",
       "title": "Upgrade Astro | Docs",
-      "hash": "bbd4f00e4072fb2c68c862eb9dadce2d21579ecbfa0d0a7d92f5d9408d96f81a"
+      "hash": "8e0d325cf8ec93f2a81fa7100289e86138de1707efc957c4797b1adb1ea6508d"
     }
   ],
   "edges": [
@@ -2936,9 +2936,9 @@
     ]
   ],
   "last_sync": {
-    "synced_at": "2026-07-13T09:18:12.270448+00:00",
+    "synced_at": "2026-07-20T08:50:58.680511+00:00",
     "added": 0,
-    "changed": 90,
+    "changed": 5,
     "removed": 0,
     "pages": 90
   }

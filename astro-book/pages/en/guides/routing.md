@@ -3,7 +3,7 @@ type: Web Page
 title: Routing | Docs
 description: An intro to routing with Astro.
 resource: https://docs.astro.build/en/guides/routing
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-07-20T08:50:58.675619+00:00'
 ---
 
 # Routing
@@ -276,7 +276,7 @@ In this example, only `src/pages/index.astro` and `src/pages/projects/project1.m
 
 	**Added in:**
 	`astro@7.0.0`
-	New
+	
 	
 
 By default, Astro handles every request with a built-in pipeline that runs the handlers in a fixed order: trailing-slash normalization, redirects, sessions, actions, user middleware, page rendering, i18n, and caching. This pipeline is designed to cover the most common use cases for routing and request handling, but it may not fit every project’s needs.
