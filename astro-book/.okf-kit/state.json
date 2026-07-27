@@ -2,7 +2,7 @@
   "generator": "okf-kit",
   "okf_version": "0.1",
   "root_url": "https://docs.astro.build/en/getting-started",
-  "updated_at": "2026-07-20T08:50:58.734273+00:00",
+  "updated_at": "2026-07-27T09:42:27.177009+00:00",
   "config": {
     "max_depth": 3,
     "max_pages": 90,
@@ -550,7 +550,7 @@
       "path": "pages/en/upgrade-astro.md",
       "url": "https://docs.astro.build/en/upgrade-astro",
       "title": "Upgrade Astro | Docs",
-      "hash": "8e0d325cf8ec93f2a81fa7100289e86138de1707efc957c4797b1adb1ea6508d"
+      "hash": "fcf5d81cc92af578836a8466e4778e073155a5b96fffb50ce1ccae13188bb247"
     }
   ],
   "edges": [
@@ -2936,9 +2936,9 @@
     ]
   ],
   "last_sync": {
-    "synced_at": "2026-07-20T08:50:58.680511+00:00",
+    "synced_at": "2026-07-27T09:42:27.110293+00:00",
     "added": 0,
-    "changed": 5,
+    "changed": 1,
     "removed": 0,
     "pages": 90
   }
