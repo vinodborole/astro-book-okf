@@ -3,7 +3,7 @@ type: Web Page
 title: Migrating from Gridsome | Docs
 description: Tips for migrating an existing Gridsome project to Astro
 resource: https://docs.astro.build/en/guides/migrate-to-astro/from-gridsome
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Migrating from Gridsome
@@ -17,13 +17,13 @@ timestamp: '2026-07-13T09:18:12.222139+00:00'
 Gridsome and Astro share some similarities that will help you migrate your project:
 
 - 
-Both Gridsome and Astro are modern JavaScript static-site generators with similar [project file structures](/en/basics/project-structure/#directories-and-files).
+Both Gridsome and Astro are modern JavaScript static-site generators with similar [project file structures](/en/basics/project-structure/#directories-and-files) .
 - 
-Both Gridsome and Astro use a `src/`folder for your project files and a[special](/en/basics/astro-pages/). Creating and managing pages for your site should feel familiar.`src/pages/`folder for file-based routing
+Both Gridsome and Astro use a `src/` folder for your project files and a[special `src/pages/` folder for file-based routing](/en/basics/astro-pages/) . Creating and managing pages for your site should feel familiar.
 - 
-Astro has [an official integration for using Vue components](/en/guides/integrations-guide/vue/)and supports[installing NPM packages](/en/guides/imports/#npm-packages), including several for Vue. You will be able to write Vue UI components, and may be able to keep some or all of your existing Gridsome Vue components and dependencies.
+Astro has [an official integration for using Vue components](/en/guides/integrations-guide/vue/) and supports[installing NPM packages](/en/guides/imports/#npm-packages) , including several for Vue. You will be able to write Vue UI components, and may be able to keep some or all of your existing Gridsome Vue components and dependencies.
 - 
-Astro and Gridsome both allow you to use a [headless CMS, APIs or Markdown files for data](/en/guides/data-fetching/). You can continue to use your preferred content authoring system, and will be able to keep your existing content.
+Astro and Gridsome both allow you to use a [headless CMS, APIs or Markdown files for data](/en/guides/data-fetching/) . You can continue to use your preferred content authoring system, and will be able to keep your existing content.
 
 ## Key Differences between Gridsome and Astro
 
@@ -32,11 +32,11 @@ Astro and Gridsome both allow you to use a [headless CMS, APIs or Markdown files
 When you rebuild your Gridsome site in Astro, you will notice some important differences:
 
 - 
-Gridsome is a Vue-based single-page application (SPA). Astro sites are multi-page apps built using `.astro`components[React, Preact, Vue.js, Svelte, SolidJS, AlpineJS](/en/guides/framework-components/)and raw HTML templating.
+Gridsome is a Vue-based single-page application (SPA). Astro sites are multi-page apps built using [`.astro` components](/en/basics/astro-components/) , but can also support[React, Preact, Vue.js, Svelte, SolidJS, AlpineJS](/en/guides/framework-components/) and raw HTML templating.
 - 
-As an SPA, Gridsome uses `vue-router`for SPA routing, and`vue-meta`for managing`<head>`. In Astro, you will create separate HTML pages and control your page`<head>`directly, or in a[layout component](/en/basics/layouts/).
+As an SPA, Gridsome uses `vue-router` for SPA routing, and`vue-meta` for managing`<head>` . In Astro, you will create separate HTML pages and control your page`<head>` directly, or in a[layout component](/en/basics/layouts/) .
 - 
-[Local file data](/en/guides/imports/): Gridsome uses GraphQL to retrieve data from your project files. Astro uses ESM imports and`import.meta.glob()``fetch()`API. GraphQL may be optionally added to your project, but is not included by default.
+[Local file data](/en/guides/imports/) : Gridsome uses GraphQL to retrieve data from your project files. Astro uses ESM imports and[`import.meta.glob()`](/en/guides/imports/#importmetaglob) to import data from local project files. Remote resources can be loaded using the standard`fetch()` API. GraphQL may be optionally added to your project, but is not included by default.
 
 ## Switch from Gridsome to Astro
 
@@ -50,7 +50,7 @@ Bring your existing Markdown (or MDX, with our optional integration) files as co
 
 Since Gridsome’s project structure is similar to Astro’s, you may be able to copy several existing files from your project into the same location in your new Astro project. However, the two project structures are not identical. You may want to examine [Astro’s project structure](/en/basics/project-structure/) to see what the differences are.
 
-Since Astro queries and imports your local files differently than Gridsome, you may want to read about how to load files using [ import.meta.glob()](/en/guides/imports/#importmetaglob) to understand how to work with your local files.
+Since Astro queries and imports your local files differently than Gridsome, you may want to read about how to load files using [`import.meta.glob()`](/en/guides/imports/#importmetaglob) to understand how to work with your local files.
 
 To convert other types of sites, such as a portfolio or documentation site, see more official starter templates on [astro.new](https://astro.new). You’ll find a link to each project’s GitHub repository, as well as one-click links to open a working project in StackBlitz and CodeSandbox online development environments.
 

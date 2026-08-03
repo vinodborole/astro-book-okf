@@ -3,7 +3,7 @@ type: Web Page
 title: Working with integrations | Docs
 description: Learn how to add, configure, and build integrations for your Astro project.
 resource: https://docs.astro.build/en/guides/integrations
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Working with integrations
@@ -12,8 +12,8 @@ timestamp: '2026-07-13T09:18:12.222139+00:00'
 
 Integrations can…
 
-- Unlock React, Vue, Svelte, Solid, and other popular UI frameworks with a [renderer](/en/guides/framework-components/).
-- Enable on-demand rendering with an [SSR adapter](/en/guides/on-demand-rendering/).
+- Unlock React, Vue, Svelte, Solid, and other popular UI frameworks with a [renderer](/en/guides/framework-components/) .
+- Enable on-demand rendering with an [SSR adapter](/en/guides/on-demand-rendering/) .
 - Integrate tools like MDX, and Partytown with a few lines of code.
 - Add new features to your project, like automatic sitemap generation.
 - Write custom code that hooks into the build process, dev server, and more.
@@ -52,10 +52,12 @@ Astro integrations are always added through the `integrations` property in your 
 
 There are three common ways to import an integration into your Astro project:
 
-- 
-Import your own integration from a local file inside your project. 
-- 
-Write your integration inline, directly in your config file. 
+1. 
+[Install an npm package integration](#installing-an-npm-package) .
+2. 
+Import your own integration from a local file inside your project.
+3. 
+Write your integration inline, directly in your config file.
 
 Check out the [Integration API](/en/reference/integrations-reference/) reference to learn all of the different ways that you can write an integration.
 
@@ -67,10 +69,10 @@ Install an npm package integration using a package manager, and then update `ast
 
 For example, to install the `@astrojs/sitemap` integration:
 
-- 
-Install the integration to your project dependencies using your preferred package manager: 
-- 
-Import the integration to your `astro.config.mjs`file, and add it to your`integrations[]`array, along with any configuration options:Note that different integrations may have different configuration settings. Read each integration’s documentation, and apply any necessary config options to your chosen integration in `astro.config.mjs`.
+1. 
+Install the integration to your project dependencies using your preferred package manager:
+2. 
+Import the integration to your `astro.config.mjs` file, and add it to your`integrations[]` array, along with any configuration options:Note that different integrations may have different configuration settings. Read each integration’s documentation, and apply any necessary config options to your chosen integration in `astro.config.mjs` .
 
 ### Custom options
 
@@ -104,10 +106,10 @@ To upgrade one or more integrations manually, use the appropriate command for yo
 
 [Section titled “Removing an integration”](#removing-an-integration)
 
-- 
-To remove an integration, first uninstall the integration from your project. 
-- 
-Next, remove the integration from your `astro.config.*`file:
+1. 
+To remove an integration, first uninstall the integration from your project.
+2. 
+Next, remove the integration from your `astro.config.*` file:
 
 ## Finding more integrations
 
@@ -147,15 +149,15 @@ Before diving in, it will help to have a basic understanding of:
 
 To create a new package, configure your development environment to use **workspaces** within your project. This will allow you to develop your component alongside a working copy of Astro.
 
-- ## Directorymy-new-component-directory/- ## Directorydemo/- … for testing and demonstration
- 
-- package.json
-- ## Directorypackages/- ## Directorymy-component/- index.js
-- package.json
-- … additional files used by the package
- 
- 
- 
+- ## Directorymy-new-component-directory/
+  - ## Directorydemo/
+    - … for testing and demonstration
+  - package.json
+  - ## Directorypackages/
+    - ## Directorymy-component/
+      - index.js
+      - package.json
+      - … additional files used by the package
 
 This example, named `my-project`, creates a project with a single package, named `my-component`, and a `demo/` directory for testing and demonstrating the component.
 
@@ -165,13 +167,13 @@ In this example, multiple packages can be developed together from the `packages`
 
 There are two initial files that will make up your individual package: `package.json` and `index.js`.
 
-`package.json`
+#### `package.json`
 
 [Section titled “package.json”](#packagejson)
 
 The `package.json` in the package directory includes all of the information related to your package, including its description, dependencies, and any other package metadata.
 
-`description`
+##### `description`
 
 [Section titled “description”](#description)
 
@@ -181,7 +183,7 @@ The module format used by Node.js and Astro to interpret your `index.js` files.
 
 Use `"type": "module"` so that your `index.js` can be used as an entrypoint with `import` and `export` .
 
-`homepage`
+##### `homepage`
 
 [Section titled “homepage”](#homepage)
 
@@ -189,7 +191,7 @@ The url to the project homepage.
 
 This is a great way to direct users to an online demo, documentation, or homepage for your project.
 
-`exports`
+##### `exports`
 
 [Section titled “exports”](#exports)
 
@@ -199,7 +201,7 @@ In this example, importing `my-component` would use `index.js`, while importing 
 
 An optional optimization to exclude unnecessary files from the bundle shipped to users via npm. Note that **only files listed here will be included in your package**, so if you add or change files necessary for your package to work, you must update this list accordingly.
 
-`keywords`
+##### `keywords`
 
 [Section titled “keywords”](#keywords)
 
@@ -209,7 +211,7 @@ Add `astro-component`, `astro-integration`, or `withastro` as a special keyword 
 
 Keywords are also used by our [integrations library](https://astro.build/integrations/)! [See below](#integrations-library) for a full list of keywords we look for in npm.
 
-`index.js`
+#### `index.js`
 
 [Section titled “index.js”](#indexjs)
 
@@ -241,22 +243,22 @@ If you are extracting components from an existing project, you can even continue
 
 [Section titled “Testing your component”](#testing-your-component)
 
-Astro does not currently ship a test runner. *(If you are interested in helping out with this,  join us on Discord!)*
+Astro does not currently ship a test runner. *(If you are interested in helping out with this, [join us on Discord!](https://astro.build/chat))*
 
 In the meantime, our current recommendation for testing is:
 
-- 
-Add a test `fixtures`directory to your`demo/src/pages`directory.
-- 
-Add a new page for every test that you’d like to run. 
-- 
-Each page should include some different component usage that you’d like to test. 
-- 
-Run `astro build`to build your fixtures, then compare the output of the`dist/__fixtures__/`directory to what you expected.- ## Directorymy-project/demo/src/pages/__fixtures__/- test-name-01.astro
-- test-name-02.astro
-- test-name-03.astro
- 
- 
+1. 
+Add a test `fixtures` directory to your`demo/src/pages` directory.
+2. 
+Add a new page for every test that you’d like to run.
+3. 
+Each page should include some different component usage that you’d like to test.
+4. 
+Run `astro build` to build your fixtures, then compare the output of the`dist/__fixtures__/` directory to what you expected.
+  - ## Directorymy-project/demo/src/pages/__fixtures__/
+    - test-name-01.astro
+    - test-name-02.astro
+    - test-name-03.astro
 
 ### Publishing your component
 
@@ -276,7 +278,7 @@ Share your hard work by adding your integration to our [integrations library](ht
 
 Do you need some help building your integration, or just want to meet other integrations builders? We have a dedicated `#integrations` channel on our [Discord server](https://astro.build/chat). Come say hi!
 
-`package.json` data
+#### `package.json` data
 
 [Section titled “package.json data”](#packagejson-data)
 
@@ -296,16 +298,16 @@ In addition to the required `astro-component`, `astro-integration`, or `withastr
 
 | category | keywords | 
 |---|---|
-| Accessibility | `a11y`,`accessibility` | 
+| Accessibility | `a11y` ,`accessibility` | 
 | Adapters | `astro-adapter` | 
 | Analytics | `analytics` | 
-| CSS + UI | `css`,`ui`,`icon`,`icons`,`renderer` | 
+| CSS + UI | `css` ,`ui` ,`icon` ,`icons` ,`renderer` | 
 | Frameworks | `renderer` | 
 | Content Loaders | `astro-loader` | 
-| Images + Media | `media`,`image`,`images`,`video`,`audio` | 
-| Performance + SEO | `performance`,`perf`,`seo`,`optimization` | 
-| Dev Toolbar | `devtools`,`dev-overlay`,`dev-toolbar` | 
-| Utilities | `tooling`,`utils`,`utility` | 
+| Images + Media | `media` ,`image` ,`images` ,`video` ,`audio` | 
+| Performance + SEO | `performance` ,`perf` ,`seo` ,`optimization` | 
+| Dev Toolbar | `devtools` ,`dev-overlay` ,`dev-toolbar` | 
+| Utilities | `tooling` ,`utils` ,`utility` | 
 
 Packages that don’t include any keyword matching a category will be shown as `Uncategorized`.
 

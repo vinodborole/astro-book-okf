@@ -3,7 +3,7 @@ type: Web Page
 title: Markdown in Astro | Docs
 description: Learn about Astro's built-in support for Markdown.
 resource: https://docs.astro.build/en/guides/markdown-content
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Markdown in Astro
@@ -12,9 +12,7 @@ timestamp: '2026-07-13T09:18:12.222139+00:00'
 
 In Astro, you can author content in [GitHub Flavored Markdown](https://github.github.com/gfm/), then render it in `.astro` components. This combines a familiar writing format designed for content with the flexibility of Astro’s component syntax and architecture.
 
-For additional functionality, such as including components and JSX expressions in Markdown, add the [ @astrojs/mdx integration](/en/guides/integrations-guide/mdx/) to write your Markdown content using 
-
-[MDX](https://mdxjs.com/).
+For additional functionality, such as including components and JSX expressions in Markdown, add the [`@astrojs/mdx` integration](/en/guides/integrations-guide/mdx/) to write your Markdown content using [MDX](https://mdxjs.com/).
 
 ## Organizing Markdown files
 
@@ -28,11 +26,9 @@ Your Markdown content and frontmatter properties are available to use in compone
 
 [Section titled “File imports vs content collections queries”](#file-imports-vs-content-collections-queries)
 
-Local Markdown can be imported into `.astro` components using an `import` statement for a single file and [Vite’s  import.meta.glob()](/en/guides/imports/#importmetaglob) to query multiple files at once. The 
+Local Markdown can be imported into `.astro` components using an `import` statement for a single file and [Vite’s `import.meta.glob()`](/en/guides/imports/#importmetaglob) to query multiple files at once. The [exported data from these Markdown files](#importing-markdown) can then be used in the `.astro` component.
 
-[exported data from these Markdown files](#importing-markdown)can then be used in the
-
-`.astro` component.If you have groups of related Markdown files, consider [defining them as collections](/en/guides/content-collections/). This gives you several advantages, including the ability to store Markdown files anywhere on your filesystem or remotely.
+If you have groups of related Markdown files, consider [defining them as collections](/en/guides/content-collections/). This gives you several advantages, including the ability to store Markdown files anywhere on your filesystem or remotely.
 
 Collections use content-specific, optimized APIs for [querying and rendering your Markdown content](#markdown-from-content-collections-queries) instead of file imports. Collections are intended for sets of data that share the same structure, such as blog posts or product items. When you define that shape in a schema, you additionally get validation, type safety, and Intellisense in your editor.
 
@@ -54,7 +50,7 @@ After importing or querying Markdown files, you can write dynamic HTML templates
 
 When fetching data from your collections with the helper functions `getCollection()` or `getEntry()`, your Markdown’s frontmatter properties are available on a `data` object (e.g. `post.data.title`). Additionally, `body` contains the raw, uncompiled body content as a string.
 
-The [ render()](/en/reference/modules/astro-content/#render) function returns your Markdown body content, a generated list of headings, as well as a modified frontmatter object after any Markdown plugins have been applied.
+The [`render()`](/en/reference/modules/astro-content/#render) function returns your Markdown body content, a generated list of headings, as well as a modified frontmatter object after any Markdown plugins have been applied.
 
 [using content returned by a collections query](/en/guides/content-collections/#using-content-in-astro-templates).
 
@@ -64,13 +60,13 @@ The [ render()](/en/reference/modules/astro-content/#render) function returns yo
 
 The following exported properties are available in your `.astro` component when importing Markdown using `import` or `import.meta.glob()`:
 
-- `file`- `/home/user/projects/.../file.md`).
-- `url`- `/en/guides/markdown-content`).
-- `frontmatter`
-- `<Content />`
-- `rawContent()`
-- `compiledContent()`
-- `getHeadings()`- `<h1>`to- `<h6>`) in the file with the type:- `{ depth: number; slug: string; text: string }[]`. Each heading’s- `slug`corresponds to the generated ID for a given heading and can be used for anchor links.
+- **`file`** - The absolute file path (e.g.`/home/user/projects/.../file.md` ).
+- **`url`** - The URL of the page (e.g.`/en/guides/markdown-content` ).
+- **`frontmatter`** - Contains any data specified in the file’s YAML (or TOML) frontmatter.
+- **`<Content />`** - A component that returns the full, rendered contents of the file.
+- **`rawContent()`** - A function that returns the raw Markdown document as a string.
+- **`compiledContent()`** - An async function that returns the Markdown document compiled to an HTML string.
+- **`getHeadings()`** - An async function that returns an array of all headings (`<h1>` to`<h6>` ) in the file with the type:`{ depth: number; slug: string; text: string }[]` . Each heading’s`slug` corresponds to the generated ID for a given heading and can be used for anchor links.
 
 An example Markdown blog post may pass the following `Astro.props` object:
 
@@ -114,10 +110,10 @@ You can extend Markdown processing with plugins, enable additional parser featur
 
 [Section titled “Choosing a Markdown processor”](#choosing-a-markdown-processor)
 
-The [ markdown.processor option](/en/reference/configuration-reference/#markdownprocessor) controls which engine renders your 
+The [`markdown.processor` option](/en/reference/configuration-reference/#markdownprocessor) controls which engine renders your `.md` and `.mdx` files. Astro provides two official options:
 
-`.md` and `.mdx` files. Astro provides two official options:- `satteri()`- [Sätteri](https://satteri.bruits.org/)pipeline, a fast Markdown and MDX compiler with its own plugin model. Included with Astro, so no extra installation is needed.
-- `unified()`- [remark](https://remark.js.org/)and- [rehype](https://github.com/rehypejs/rehype)pipeline, with its large plugin ecosystem. Provided by- `@astrojs/markdown-remark`, which you install separately.
+- **`satteri()`** (default): the native[Sätteri](https://satteri.bruits.org/) pipeline, a fast Markdown and MDX compiler with its own plugin model. Included with Astro, so no extra installation is needed.
+- **`unified()`** : the[remark](https://remark.js.org/) and[rehype](https://github.com/rehypejs/rehype) pipeline, with its large plugin ecosystem. Provided by`@astrojs/markdown-remark` , which you install separately.
 
 ### Using Sätteri plugins and features
 
@@ -133,7 +129,7 @@ Import `satteri` from `@astrojs/markdown-satteri` and pass your options to it th
 
 To use [remark and rehype](https://unifiedjs.com/) instead of Sätteri, install `@astrojs/markdown-remark`, then import `unified` and pass it to `markdown.processor`:
 
-Switching processors replaces Sätteri for both `.md` and `.mdx` files. Any Sätteri plugins in your config will not apply. To use remark and rehype only for `.mdx` files, set the [ processor option on the MDX integration](/en/guides/integrations-guide/mdx/#processor) instead.
+Switching processors replaces Sätteri for both `.md` and `.mdx` files. Any Sätteri plugins in your config will not apply. To use remark and rehype only for `.mdx` files, set the [`processor` option on the MDX integration](/en/guides/integrations-guide/mdx/#processor) instead.
 
 #### Using remark and rehype plugins
 
@@ -143,34 +139,28 @@ The `unified()` processor accepts third-party [remark](https://github.com/remark
 
 We encourage you to browse [awesome-remark](https://github.com/remarkjs/awesome-remark) and [awesome-rehype](https://github.com/rehypejs/awesome-rehype) for popular plugins! See each plugin’s own README for specific installation instructions.
 
-After [switching to the  unified() processor](#switching-to-the-unified-processor), pass your plugins to it through 
+After [switching to the `unified()` processor](#switching-to-the-unified-processor), pass your plugins to it through `markdown.processor`. This example applies [`remark-toc`](https://github.com/remarkjs/remark-toc) and [`rehype-accessible-emojis`](https://www.npmjs.com/package/rehype-accessible-emojis) to Markdown files:
 
-`markdown.processor`. This example applies [and](https://github.com/remarkjs/remark-toc)
-
-`remark-toc`[to Markdown files:](https://www.npmjs.com/package/rehype-accessible-emojis)
-
-`rehype-accessible-emojis`#### Customizing a remark or rehype plugin
+#### Customizing a remark or rehype plugin
 
 [Section titled “Customizing a remark or rehype plugin”](#customizing-a-remark-or-rehype-plugin)
 
 In order to customize a plugin, provide an options object after it in a nested array.
 
-The example below adds the [heading option to the  remarkToc plugin](https://github.com/remarkjs/remark-toc#options) to change where the table of contents is placed, and the 
+The example below adds the [heading option to the `remarkToc` plugin](https://github.com/remarkjs/remark-toc#options) to change where the table of contents is placed, and the [`behavior` option to the `rehype-autolink-headings` plugin](https://github.com/rehypejs/rehype-autolink-headings#options) in order to add the anchor tag after the headline text.
 
-[in order to add the anchor tag after the headline text.](https://github.com/rehypejs/rehype-autolink-headings#options)
-
-`behavior` option to the `rehype-autolink-headings` plugin### Modifying frontmatter programmatically
+### Modifying frontmatter programmatically
 
 [Section titled “Modifying frontmatter programmatically”](#modifying-frontmatter-programmatically)
 
 When using the [remark/rehype processor](#using-remark-and-rehype-plugins), you can add frontmatter properties to all of your Markdown and MDX files with a remark or rehype plugin.
 
-- 
-Append a `customProperty`to the`data.astro.frontmatter`property from your plugin’s`file`argument:**Added in:**`astro@2.0.0``data.astro.frontmatter`contains all properties from a given Markdown or MDX document. This allows you to modify existing frontmatter properties, or compute new properties from this existing frontmatter.
-- 
-Apply this plugin to your `markdown`or`mdx`integration config:or 
+1. 
+Append a `customProperty` to the`data.astro.frontmatter` property from your plugin’s`file` argument:**Added in:**`astro@2.0.0``data.astro.frontmatter` contains all properties from a given Markdown or MDX document. This allows you to modify existing frontmatter properties, or compute new properties from this existing frontmatter.
+2. 
+Apply this plugin to your `markdown` or`mdx` integration config:or
 
-Now, every Markdown or MDX file will have `customProperty` in its frontmatter, making it available when [importing your markdown](#importing-markdown) and from [the  Astro.props.frontmatter property in your layouts](#frontmatter-layout-property).
+Now, every Markdown or MDX file will have `customProperty` in its frontmatter, making it available when [importing your markdown](#importing-markdown) and from [the `Astro.props.frontmatter` property in your layouts](#frontmatter-layout-property).
 
 **Related recipe:**
 
@@ -184,17 +174,17 @@ Astro’s MDX integration will extend [your project’s existing Markdown config
 
 The following example uses a different syntax highlighter and a different set of plugins for `.mdx` files than for `.md` files:
 
-To avoid extending your Markdown config from MDX, set [the  extendMarkdownConfig option](/en/guides/integrations-guide/mdx/#extendmarkdownconfig) (enabled by default) to 
+To avoid extending your Markdown config from MDX, set [the `extendMarkdownConfig` option](/en/guides/integrations-guide/mdx/#extendmarkdownconfig) (enabled by default) to `false`:
 
-`false`:## Individual Markdown pages
+## Individual Markdown pages
 
 [Section titled “Individual Markdown pages”](#individual-markdown-pages)
 
-[Content collections](/en/guides/content-collections/) and [importing Markdown into  .astro components](#dynamic-jsx-like-expressions) provide more features for rendering your Markdown and are the recommended way to handle most of your content. However, there may be times when you want the convenience of just adding a file to 
+[Content collections](/en/guides/content-collections/) and [importing Markdown into `.astro` components](#dynamic-jsx-like-expressions) provide more features for rendering your Markdown and are the recommended way to handle most of your content. However, there may be times when you want the convenience of just adding a file to `src/pages/` and having a simple page automatically created for you.
 
-`src/pages/` and having a simple page automatically created for you.Astro treats [any supported file inside of the  /src/pages/ directory](/en/basics/astro-pages/#supported-page-files) as a page, including 
+Astro treats [any supported file inside of the `/src/pages/` directory](/en/basics/astro-pages/#supported-page-files) as a page, including `.md` and other Markdown file types.
 
-`.md` and other Markdown file types.Placing a file in this directory, or any sub-directory, will automatically build a page route using the pathname of the file and display the Markdown content rendered to HTML. Astro will automatically add a `<meta charset="utf-8">` tag to your page to allow easier authoring of non-ASCII content.
+Placing a file in this directory, or any sub-directory, will automatically build a page route using the pathname of the file and display the Markdown content rendered to HTML. Astro will automatically add a `<meta charset="utf-8">` tag to your page to allow easier authoring of non-ASCII content.
 
 ### Frontmatter `layout` property
 
@@ -216,13 +206,14 @@ When using the frontmatter `layout` property, you must include the `<meta charse
 
 Astro’s internal Markdown processor is not available for processing remote Markdown.
 
-To fetch remote Markdown for use in [content collections](/en/guides/content-collections/), you can [build a custom loader](/en/guides/content-collections/#custom-build-time-loaders) with access to a [ renderMarkdown() function](/en/reference/content-loader-reference/#loadercontextrendermarkdown).
+To fetch remote Markdown for use in [content collections](/en/guides/content-collections/), you can [build a custom loader](/en/guides/content-collections/#custom-build-time-loaders) with access to a [`renderMarkdown()` function](/en/reference/content-loader-reference/#loadercontextrendermarkdown).
 
 To fetch remote Markdown directly and render it to HTML, you will need to install and configure your own Markdown parser from NPM. This will not inherit from any of Astro’s built-in Markdown settings that you have configured.
 
 Be sure that you understand these limitations before implementing this in your project, and consider fetching your remote Markdown using a content collections loader instead.
 
-Learn[Contribute](/en/contribute/)
+Learn
+[Contribute](/en/contribute/)
 
 [Community](https://astro.build/chat)
 

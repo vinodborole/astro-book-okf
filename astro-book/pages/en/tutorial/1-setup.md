@@ -5,7 +5,7 @@ description: 'Tutorial: Build your first Astro blog —
 
   Prepare your development environment, and create and deploy your first Astro site'
 resource: https://docs.astro.build/en/tutorial/1-setup
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Check in: Unit 1 - Setup
@@ -20,14 +20,14 @@ Want to complete this tutorial in an online code editor instead? Follow the inst
 
 **Set up StackBlitz**
 
-- 
-Follow the external link to [open the “Empty Project” template on StackBlitz](https://astro.new/minimal?on=stackblitz).
-- 
-Click “Sign in” on the top right to log in using your GitHub credentials. 
-- 
-In the upper left of the StackBlitz editor window, click to “fork” the template (save to your own account dashboard). 
-- 
-Wait for the project to load, and you will see a live preview of the “Empty Project” starter. 
+1. 
+Follow the external link to [open the “Empty Project” template on StackBlitz](https://astro.new/minimal?on=stackblitz) .
+2. 
+Click “Sign in” on the top right to log in using your GitHub credentials.
+3. 
+In the upper left of the StackBlitz editor window, click to “fork” the template (save to your own account dashboard).
+4. 
+Wait for the project to load, and you will see a live preview of the “Empty Project” starter.
 
 **Make a Change**
 
@@ -35,10 +35,10 @@ In the file pane, you should see `src/pages/index.astro`. Click to open it, and 
 
 **Create a GitHub Repository**
 
-- 
-Press the `Connect Repository`button at the top of your list of files, enter a new name for your repository, and click`Create repo & push`.
-- 
-When you have changes to be committed back to GitHub, a “Commit” button will appear at the top left of your workspace. Clicking on this will allow you to enter a commit message, and update your repository. 
+1. 
+Press the `Connect Repository` button at the top of your list of files, enter a new name for your repository, and click`Create repo & push` .
+2. 
+When you have changes to be committed back to GitHub, a “Commit” button will appear at the top left of your workspace. Clicking on this will allow you to enter a commit message, and update your repository.
 
 **Deploy your Site**
 

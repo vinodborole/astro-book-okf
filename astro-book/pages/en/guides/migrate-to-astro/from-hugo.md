@@ -3,7 +3,7 @@ type: Web Page
 title: Migrating from Hugo | Docs
 description: Tips for migrating an existing Hugo project to Astro
 resource: https://docs.astro.build/en/guides/migrate-to-astro/from-hugo
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Migrating from Hugo
@@ -17,11 +17,11 @@ timestamp: '2026-07-13T09:18:12.222139+00:00'
 Hugo and Astro share some similarities that will help you migrate your project:
 
 - 
-Hugo and Astro are both modern static-site generators, ideally suited to [content-driven websites](/en/concepts/why-astro/#content-driven)like blogs.
+Hugo and Astro are both modern static-site generators, ideally suited to [content-driven websites](/en/concepts/why-astro/#content-driven) like blogs.
 - 
-Hugo and Astro both allow you to [author your content in Markdown](/en/guides/markdown-content/). However, Hugo includes several special frontmatter properties and allows you to write frontmatter in YAML, TOML or JSON. Even though many of your existing Hugo frontmatter properties will not be “special” in Astro, you can continue to use your existing Markdown files and YAML (or TOML) frontmatter values.
+Hugo and Astro both allow you to [author your content in Markdown](/en/guides/markdown-content/) . However, Hugo includes several special frontmatter properties and allows you to write frontmatter in YAML, TOML or JSON. Even though many of your existing Hugo frontmatter properties will not be “special” in Astro, you can continue to use your existing Markdown files and YAML (or TOML) frontmatter values.
 - 
-Hugo and Astro both allow you to enhance your site with a variety of [integrations and external packages](https://astro.build/integrations/).
+Hugo and Astro both allow you to enhance your site with a variety of [integrations and external packages](https://astro.build/integrations/) .
 
 ## Key Differences between Hugo and Astro
 
@@ -30,11 +30,11 @@ Hugo and Astro both allow you to enhance your site with a variety of [integratio
 When you rebuild your Hugo site in Astro, you will notice some important differences:
 
 - 
-Hugo uses Go Templating for page templating. [Astro syntax](/en/basics/astro-components/)is a JSX-like superset of HTML.
+Hugo uses Go Templating for page templating. [Astro syntax](/en/basics/astro-components/) is a JSX-like superset of HTML.
 - 
-Astro does not use shortcodes for dynamic content in standard Markdown files, but [Astro’s MDX integration](/en/guides/integrations-guide/mdx/)does allow you to use JSX and import components in MDX files.
+Astro does not use shortcodes for dynamic content in standard Markdown files, but [Astro’s MDX integration](/en/guides/integrations-guide/mdx/) does allow you to use JSX and import components in MDX files.
 - 
-While Hugo can use “partials” for reusable layout elements, [Astro is entirely component-based](/en/basics/astro-components/). Any`.astro`file can be a component, a layout or an entire page, and can import and render any other Astro components. Astro components can also include[other UI framework components (e.g. React, Svelte, Vue, Solid)](/en/guides/framework-components/)as well as content or metadata from[other files in your project](/en/guides/imports/), such as Markdown or MDX.
+While Hugo can use “partials” for reusable layout elements, [Astro is entirely component-based](/en/basics/astro-components/) . Any`.astro` file can be a component, a layout or an entire page, and can import and render any other Astro components. Astro components can also include[other UI framework components (e.g. React, Svelte, Vue, Solid)](/en/guides/framework-components/) as well as content or metadata from[other files in your project](/en/guides/imports/) , such as Markdown or MDX.
 
 ## Switch from Hugo to Astro
 

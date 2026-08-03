@@ -4,7 +4,7 @@ title: Dynamically import images | Docs
 description: Learn how to dynamically import images using Vite's import.meta.glob
   function.
 resource: https://docs.astro.build/en/recipes/dynamically-importing-images
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Dynamically import images
@@ -17,25 +17,26 @@ In this recipe, you will learn how to dynamically import your images using Vite�
 
 [Section titled “Recipe”](#recipe)
 
-- 
-Create a new `assets`folder under the`src`directory and add your images inside that new folder.- ## Directorysrc/- ## Directoryassets/- avatar-1.jpg
-- avatar-2.png
-- avatar-3.jpeg
- 
- 
- `assets`is a popular folder name convention for placing images but you are free to name the folder whatever you like.
-- 
-Create a new Astro component for your card and import the `<Image />`component.
-- 
-Specify the `props`that your component will receive in order to display the necessary information on each card. You can optionally define their types, if you are using TypeScript in your project.
-- 
-Create a new `images`variable and use the`import.meta.glob`function which returns an object of all of the image paths inside the`assets`folder. You will also need to import`ImageMetadata`type to help define the type of the`images`variable.
-- 
-Use the props to create the markup for your card component. 
-- 
-Inside the `src`attribute, pass in the`images`object and use bracket notation for the image path. Then make sure to invoke the glob function.Since you are accessing the `images`object which has an unknown type, you should also`throw`an error in case an invalid file path is passed as a prop.`images`is an object that contains all of the image paths inside the`assets`folder.The `imagePath`prop is a string that contains the path to the image that you want to display. The`import.meta.glob()`is doing the work of finding the image path that matches the`imagePath`prop and handling the import for you.
-- 
-Import and use the card component inside an Astro page, passing in the values for the `props`.
+1. 
+Create a new `assets` folder under the`src` directory and add your images inside that new folder.
+  - ## Directorysrc/
+    - ## Directoryassets/
+      - avatar-1.jpg
+      - avatar-2.png
+      - avatar-3.jpeg
+ `assets` is a popular folder name convention for placing images but you are free to name the folder whatever you like.
+2. 
+Create a new Astro component for your card and import the `<Image />` component.
+3. 
+Specify the `props` that your component will receive in order to display the necessary information on each card. You can optionally define their types, if you are using TypeScript in your project.
+4. 
+Create a new `images` variable and use the`import.meta.glob` function which returns an object of all of the image paths inside the`assets` folder. You will also need to import`ImageMetadata` type to help define the type of the`images` variable.
+5. 
+Use the props to create the markup for your card component.
+6. 
+Inside the `src` attribute, pass in the`images` object and use bracket notation for the image path. Then make sure to invoke the glob function.Since you are accessing the `images` object which has an unknown type, you should also`throw` an error in case an invalid file path is passed as a prop.`images` is an object that contains all of the image paths inside the`assets` folder.The `imagePath` prop is a string that contains the path to the image that you want to display. The`import.meta.glob()` is doing the work of finding the image path that matches the`imagePath` prop and handling the import for you.
+7. 
+Import and use the card component inside an Astro page, passing in the values for the `props` .
 
 [Contribute](/en/contribute/)
 

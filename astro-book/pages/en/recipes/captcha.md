@@ -3,7 +3,7 @@ type: Web Page
 title: Verify a Captcha | Docs
 description: Learn how to create an API route and fetch it from the client.
 resource: https://docs.astro.build/en/recipes/captcha
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Verify a Captcha
@@ -16,16 +16,16 @@ In this recipe, an API route is used to verify Google reCAPTCHA v3 without expos
 
 [Section titled “Prerequisites”](#prerequisites)
 
-- A project with [SSR](/en/guides/on-demand-rendering/)(`output: 'server'`) enabled
+- A project with [SSR](/en/guides/on-demand-rendering/) (`output: 'server'` ) enabled
 
 ## Recipe
 
 [Section titled “Recipe”](#recipe)
 
-- 
-Create a `POST`endpoint that accepts recaptcha data, then verifies it with reCAPTCHA’s API. Here, you can safely define secret values or read environment variables.
-- 
-Access your endpoint using `fetch`from a client script:
+1. 
+Create a `POST` endpoint that accepts recaptcha data, then verifies it with reCAPTCHA’s API. Here, you can safely define secret values or read environment variables.
+2. 
+Access your endpoint using `fetch` from a client script:
 
 [Contribute](/en/contribute/)
 

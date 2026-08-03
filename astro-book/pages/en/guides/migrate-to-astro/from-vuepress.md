@@ -3,7 +3,7 @@ type: Web Page
 title: Migrating from VuePress | Docs
 description: Tips for migrating an existing VuePress project to Astro
 resource: https://docs.astro.build/en/guides/migrate-to-astro/from-vuepress
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Migrating from VuePress
@@ -17,11 +17,11 @@ timestamp: '2026-07-13T09:18:12.222139+00:00'
 VuePress and Astro share some similarities that will help you migrate your project:
 
 - 
-Both VuePress and Astro are modern JavaScript static-site generators with similar project file structures. Both use a [special](/en/basics/astro-pages/). Creating and managing pages for your site should feel familiar.`src/pages/`folder for file-based routing
+Both VuePress and Astro are modern JavaScript static-site generators with similar project file structures. Both use a [special `src/pages/` folder for file-based routing](/en/basics/astro-pages/) . Creating and managing pages for your site should feel familiar.
 - 
-Astro and VuePress are both designed for [content-driven websites](/en/concepts/why-astro/#content-driven), with excellent built-in support for Markdown files. Writing in Markdown will feel familiar, and you will be able to keep your existing content.
+Astro and VuePress are both designed for [content-driven websites](/en/concepts/why-astro/#content-driven) , with excellent built-in support for Markdown files. Writing in Markdown will feel familiar, and you will be able to keep your existing content.
 - 
-Astro has [an official integration for using Vue components](/en/guides/integrations-guide/vue/)and supports[installing NPM packages](/en/guides/imports/#npm-packages), including several for Vue. You will be able to write Vue UI components, and may be able to keep some or all of your existing Vue components and dependencies.
+Astro has [an official integration for using Vue components](/en/guides/integrations-guide/vue/) and supports[installing NPM packages](/en/guides/imports/#npm-packages) , including several for Vue. You will be able to write Vue UI components, and may be able to keep some or all of your existing Vue components and dependencies.
 
 ## Key Differences between VuePress and Astro
 
@@ -30,11 +30,11 @@ Astro has [an official integration for using Vue components](/en/guides/integrat
 When you rebuild your VuePress site in Astro, you will notice some important differences.
 
 - 
-VuePress is a Vue-based single-page application (SPA). Astro sites are multi-page apps built using `.astro`components[React, Preact, Vue.js, Svelte, SolidJS, AlpineJS](/en/guides/framework-components/)and raw HTML templating.
+VuePress is a Vue-based single-page application (SPA). Astro sites are multi-page apps built using [`.astro` components](/en/basics/astro-components/) , but can also support[React, Preact, Vue.js, Svelte, SolidJS, AlpineJS](/en/guides/framework-components/) and raw HTML templating.
 - 
-[Layout templates](/en/basics/layouts/): VuePress sites are created using Markdown (`.md`) files for page content and HTML (`.html`) templates for layout. Astro is component-based, and uses Astro components, which include HTML templating for pages, layouts and individual UI elements. Astro can also create[pages from](/en/guides/markdown-content/), using an Astro layout component for wrapping Markdown content in a page template.`.md`and`.mdx`files
+[Layout templates](/en/basics/layouts/) : VuePress sites are created using Markdown (`.md` ) files for page content and HTML (`.html` ) templates for layout. Astro is component-based, and uses Astro components, which include HTML templating for pages, layouts and individual UI elements. Astro can also create[pages from `.md` and `.mdx` files](/en/guides/markdown-content/) , using an Astro layout component for wrapping Markdown content in a page template.
 - 
-VuePress was designed to build content-heavy, Markdown-centric sites and has some built-in, documentation-specific website features that you would have to build yourself in Astro. Instead, Astro offers some documentation-specific features through an [official docs theme](https://starlight.astro.build). This website was the inspiration for that template! You can also find more[community docs themes](https://astro.build/themes?search=&categories%5B%5D=docs)with built-in features in our Themes Showcase.
+VuePress was designed to build content-heavy, Markdown-centric sites and has some built-in, documentation-specific website features that you would have to build yourself in Astro. Instead, Astro offers some documentation-specific features through an [official docs theme](https://starlight.astro.build) . This website was the inspiration for that template! You can also find more[community docs themes](https://astro.build/themes?search=&categories%5B%5D=docs) with built-in features in our Themes Showcase.
 
 ## Switch from VuePress to Astro
 

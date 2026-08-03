@@ -3,7 +3,7 @@ type: Web Page
 title: Migrating from WordPress | Docs
 description: Tips for migrating an existing WordPress project to Astro
 resource: https://docs.astro.build/en/guides/migrate-to-astro/from-wordpress
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Migrating from WordPress
@@ -19,9 +19,9 @@ You can [use WordPress as a headless CMS for your Astro project](/en/guides/cms/
 WordPress and Astro share some similarities that will help you migrate your project:
 
 - 
-Both WordPress and Astro are ideal for [content-driven websites](/en/concepts/why-astro/#content-driven)like blogs and support writing your content in Markdown (requires a plugin in WordPress). Although the process for adding new content is different,[writing in Markdown files](/en/guides/markdown-content/)for your Astro blog should feel familiar if you have used Markdown syntax in your WordPress editor.
+Both WordPress and Astro are ideal for [content-driven websites](/en/concepts/why-astro/#content-driven) like blogs and support writing your content in Markdown (requires a plugin in WordPress). Although the process for adding new content is different,[writing in Markdown files](/en/guides/markdown-content/) for your Astro blog should feel familiar if you have used Markdown syntax in your WordPress editor.
 - 
-Both WordPress and Astro encourage you to [think about the design of your site in “blocks”](/en/concepts/islands/)(components). In Astro you will probably[write more of your own code to create these blocks](/en/basics/astro-components/)rather than rely on pre-built plugins. But thinking about the individual pieces of your site and how they are presented on the page should feel familiar.
+Both WordPress and Astro encourage you to [think about the design of your site in “blocks”](/en/concepts/islands/) (components). In Astro you will probably[write more of your own code to create these blocks](/en/basics/astro-components/) rather than rely on pre-built plugins. But thinking about the individual pieces of your site and how they are presented on the page should feel familiar.
 
 ## Key Differences between WordPress and Astro
 
@@ -30,11 +30,11 @@ Both WordPress and Astro encourage you to [think about the design of your site i
 When you rebuild your WordPress site in Astro, you will notice some important differences:
 
 - 
-A WordPress site is edited using an online dashboard. In Astro, you will use a [code editor](/en/editor-setup/)and development environment to maintain your site. You can develop locally on your machine, or choose a cloud editor/development environment like StackBlitz or CodeSandbox.
+A WordPress site is edited using an online dashboard. In Astro, you will use a [code editor](/en/editor-setup/) and development environment to maintain your site. You can develop locally on your machine, or choose a cloud editor/development environment like StackBlitz or CodeSandbox.
 - 
-WordPress has an extensive plugin and theme market. In Astro, you will find some themes and [integrations](https://astro.build/integrations/)available, but you may now have to build many of your existing features yourself instead of looking for third-party solutions. Or, you can choose to start with an[Astro theme](https://astro.build/themes)with built-in features!
+WordPress has an extensive plugin and theme market. In Astro, you will find some themes and [integrations](https://astro.build/integrations/) available, but you may now have to build many of your existing features yourself instead of looking for third-party solutions. Or, you can choose to start with an[Astro theme](https://astro.build/themes) with built-in features!
 - 
-WordPress stores your content in a database. In Astro, you will have individual files (typically Markdown or MDX) in your [project directory](/en/basics/project-structure/)for each page’s content. Or, you can choose to use a[CMS for your content](/en/guides/cms/), even your existing WordPress site, and use Astro to fetch and present the data.
+WordPress stores your content in a database. In Astro, you will have individual files (typically Markdown or MDX) in your [project directory](/en/basics/project-structure/) for each page’s content. Or, you can choose to use a[CMS for your content](/en/guides/cms/) , even your existing WordPress site, and use Astro to fetch and present the data.
 
 ## Switch from WordPress to Astro
 

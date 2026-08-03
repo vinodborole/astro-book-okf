@@ -3,7 +3,7 @@ type: Web Page
 title: Add an RSS feed | Docs
 description: Add an RSS feed to your Astro site to let users subscribe to your content.
 resource: https://docs.astro.build/en/recipes/rss
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Add an RSS feed
@@ -14,24 +14,19 @@ Astro supports fast, automatic RSS feed generation for blogs and other content w
 
 [Section titled “Setting up @astrojs/rss”](#setting-up-astrojsrss)
 
-The package [ @astrojs/rss](https://github.com/withastro/astro/tree/main/packages/astro-rss) provides helpers for generating RSS feeds using 
+The package [`@astrojs/rss`](https://github.com/withastro/astro/tree/main/packages/astro-rss) provides helpers for generating RSS feeds using [API endpoints](/en/guides/endpoints/#static-file-endpoints). This unlocks both static builds *and* on-demand generation when using an [SSR adapter](/en/guides/on-demand-rendering/).
 
-[API endpoints](/en/guides/endpoints/#static-file-endpoints). This unlocks both static builds
-
-*and*on-demand generation when using an
-
-[SSR adapter](/en/guides/on-demand-rendering/).
-
-- 
-Install `@astrojs/rss`using your preferred package manager:Ensure you’ve [configured a](/en/reference/configuration-reference/#site)in your project’s`site``astro.config`. This will be used to generate links to your RSS articles.
-- 
-Create a file in `src/pages/`with a name of your choice and the extension`.xml.js`to be used as the output URL for your feed. Some common RSS feed URL names are`feed.xml`or`rss.xml`.The example file below `src/pages/rss.xml.js`will create an RSS feed at`site/rss.xml`.
-- 
-Import the `rss()`helper from the`@astrojs/rss`package into your`.xml.js`file and export a function that returns it using the following parameters:
+1. 
+Install `@astrojs/rss` using your preferred package manager:Ensure you’ve [configured a `site`](/en/reference/configuration-reference/#site) in your project’s`astro.config` . This will be used to generate links to your RSS articles.
+2. 
+Create a file in `src/pages/` with a name of your choice and the extension`.xml.js` to be used as the output URL for your feed. Some common RSS feed URL names are`feed.xml` or`rss.xml` .The example file below `src/pages/rss.xml.js` will create an RSS feed at`site/rss.xml` .
+3. 
+Import the `rss()` helper from the`@astrojs/rss` package into your`.xml.js` file and export a function that returns it using the following parameters:
 
 [for the full configuration reference.](https://github.com/withastro/astro/tree/main/packages/astro-rss)
 
-`@astrojs/rss` README## Generating `items`
+`@astrojs/rss` README
+## Generating `items`
 
 [Section titled “Generating items”](#generating-items)
 
@@ -39,15 +34,16 @@ The `items` field accepts a list of RSS feed objects, which can be generated fro
 
 The RSS feed standard format includes metadata for each published item, including values such as:
 
-- `title`: The title of the entry. Optional only if a- `description`is set. Otherwise, required.
-- `description`: A short excerpt from or describing the entry. Optional only if a- `title`is set. Otherwise, required.
-- `link`: A URL to the original source of the entry. (optional)
-- `pubDate`: The date of publication of the entry. (optional)
-- `content`: The full content of your post. (optional)
+- `title` : The title of the entry. Optional only if a`description` is set. Otherwise, required.
+- `description` : A short excerpt from or describing the entry. Optional only if a`title` is set. Otherwise, required.
+- `link` : A URL to the original source of the entry. (optional)
+- `pubDate` : The date of publication of the entry. (optional)
+- `content` : The full content of your post. (optional)
 
 [for a complete list of options.](https://github.com/withastro/astro/tree/main/packages/astro-rss#items)
 
-`items` configuration reference### Using content collections
+`items` configuration reference
+### Using content collections
 
 [Section titled “Using content collections”](#using-content-collections)
 
@@ -66,9 +62,7 @@ To ensure that every blog entry produces a valid RSS feed item, you can optional
 	
 	
 
-To create an RSS feed from documents in `src/pages/`, use the `pagesGlobToRssItems()` helper. This accepts an [ import.meta.glob](https://vite.dev/guide/features.html#glob-import) result and outputs an array of valid RSS feed items (see 
-
-[more about writing glob patterns](/en/guides/imports/#glob-patterns)for specifying which pages to include).
+To create an RSS feed from documents in `src/pages/`, use the `pagesGlobToRssItems()` helper. This accepts an [`import.meta.glob`](https://vite.dev/guide/features.html#glob-import) result and outputs an array of valid RSS feed items (see [more about writing glob patterns](/en/guides/imports/#glob-patterns) for specifying which pages to include).
 
 This function assumes, but does not verify, that all necessary feed properties are present in each document’s frontmatter. If you encounter errors, verify each page frontmatter manually.
 
@@ -91,11 +85,11 @@ When rendering full post content, you will have to consider images, relative lin
 
 You can see [one specific community implementation](https://github.com/delucis/astro-blog-full-text-rss/blob/latest/src/pages/rss.xml.ts) that addresses some of these concerns for an example of how to proceed.
 
-A package like [ sanitize-html](https://www.npmjs.com/package/sanitize-html) will make sure that your content is properly sanitized, escaped, and encoded. In the process, such a package might also remove some harmless elements and attributes, so make sure to verify the output and configure the package according to your needs.
+A package like [`sanitize-html`](https://www.npmjs.com/package/sanitize-html) will make sure that your content is properly sanitized, escaped, and encoded. In the process, such a package might also remove some harmless elements and attributes, so make sure to verify the output and configure the package according to your needs.
 
-When using content collections, render the post `body` using a standard Markdown parser like [ markdown-it](https://github.com/markdown-it/markdown-it) and sanitize the result, including any extra tags (e.g. 
+When using content collections, render the post `body` using a standard Markdown parser like [`markdown-it`](https://github.com/markdown-it/markdown-it) and sanitize the result, including any extra tags (e.g. `<img>`) needed to render your content:
 
-`<img>`) needed to render your content:When using glob imports with Markdown, you may use the `compiledContent()` helper to retrieve the rendered HTML for sanitization. Note: this feature is **not** supported for MDX files.
+When using glob imports with Markdown, you may use the `compiledContent()` helper to retrieve the rendered HTML for sanitization. Note: this feature is **not** supported for MDX files.
 
 ## Removing trailing slashes
 

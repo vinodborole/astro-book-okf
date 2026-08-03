@@ -3,7 +3,7 @@ type: Web Page
 title: Migrate an existing project to Astro | Docs
 description: Some tips and tricks for converting your site to Astro.
 resource: https://docs.astro.build/en/guides/migrate-to-astro
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Migrate an existing project to Astro
@@ -27,13 +27,13 @@ Migrating may be less work than you think!
 Depending on your existing project, you may be able to use your existing:
 
 - 
-[UI framework components](/en/guides/framework-components/)directly in Astro.
+[UI framework components](/en/guides/framework-components/) directly in Astro.
 - 
-[CSS stylesheets or libraries](/en/guides/styling/)including Tailwind.
+[CSS stylesheets or libraries](/en/guides/styling/) including Tailwind.
 - 
-[Markdown/MDX files](/en/guides/markdown-content/), with a[configurable Markdown processor](/en/guides/markdown-content/#markdown-plugins)that supports plugins.
+[Markdown/MDX files](/en/guides/markdown-content/) , with a[configurable Markdown processor](/en/guides/markdown-content/#markdown-plugins) that supports plugins.
 - 
-[Content from a CMS](/en/guides/cms/)through an integration or API.
+[Content from a CMS](/en/guides/cms/) through an integration or API.
 
 ## Which projects can I convert to Astro?
 
@@ -50,11 +50,11 @@ Astro allows you have a fully statically-generated website, a dynamic app with r
 Depending on your existing project, you may need to think differently about:
 
 - 
-Designing in [Astro Islands](/en/concepts/islands/#what-is-an-island)to avoid sending unnecessary JavaScript to the browser.
+Designing in [Astro Islands](/en/concepts/islands/#what-is-an-island) to avoid sending unnecessary JavaScript to the browser.
 - 
-Providing client-side interactivity with [client-side](/en/guides/client-side-scripts/)or`<script>`tags[UI framework components](/en/guides/framework-components/).
+Providing client-side interactivity with [client-side `<script>` tags](/en/guides/client-side-scripts/) or[UI framework components](/en/guides/framework-components/) .
 - 
-Managing [shared state](/en/recipes/sharing-state-islands/)with Nano Stores or local storage instead of app-wide hooks or wrappers.
+Managing [shared state](/en/recipes/sharing-state-islands/) with Nano Stores or local storage instead of app-wide hooks or wrappers.
 
 [Contribute](/en/contribute/)
 

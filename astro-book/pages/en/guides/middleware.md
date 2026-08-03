@@ -3,7 +3,7 @@ type: Web Page
 title: Middleware | Docs
 description: Learn how to use middleware in Astro.
 resource: https://docs.astro.build/en/guides/middleware
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Middleware
@@ -16,20 +16,20 @@ Middleware also allows you to set and share request-specific information across 
 
 [Section titled “Basic Usage”](#basic-usage)
 
-- 
-Create `src/middleware.js|ts`(Alternatively, you can create`src/middleware/index.js|ts`.)
-- 
-Inside this file, export an `onRequest()``context`object`next()`function. This must not be a default export.
-- 
-Inside any `.astro`file, access response data using`Astro.locals`.
+1. 
+Create `src/middleware.js|ts` (Alternatively, you can create`src/middleware/index.js|ts` .)
+2. 
+Inside this file, export an [`onRequest()`](/en/reference/modules/astro-middleware/#onrequest) function that can be passed a[`context` object](#the-context-object) and`next()` function. This must not be a default export.
+3. 
+Inside any `.astro` file, access response data using`Astro.locals` .
 
 ### The `context` object
 
 [Section titled “The context object”](#the-context-object)
 
-The [ context](/en/reference/api-reference/) object includes information to be made available to other middleware, API routes and 
+The [`context`](/en/reference/api-reference/) object includes information to be made available to other middleware, API routes and `.astro` routes during the rendering process.
 
-`.astro` routes during the rendering process.This is an optional argument passed to `onRequest()` that may contain the `locals` object as well as any additional properties to be shared during rendering. For example, the `context` object may include cookies used in authentication.
+This is an optional argument passed to `onRequest()` that may contain the `locals` object as well as any additional properties to be shared during rendering. For example, the `context` object may include cookies used in authentication.
 
 ### Storing data in `context.locals`
 
@@ -37,11 +37,9 @@ The [ context](/en/reference/api-reference/) object includes information to be m
 
 `context.locals` is an object that can be manipulated inside the middleware.
 
-This `locals` object is forwarded across the request handling process and is available as a property to [ APIContext](/en/reference/api-reference/#locals) and 
+This `locals` object is forwarded across the request handling process and is available as a property to [`APIContext`](/en/reference/api-reference/#locals) and [`AstroGlobal`](/en/reference/api-reference/#locals). This allows data to be shared between middlewares, API routes, and `.astro` pages. This is useful for storing request-specific data, such as user data, across the rendering step.
 
-[. This allows data to be shared between middlewares, API routes, and](/en/reference/api-reference/#locals)
-
-`AstroGlobal``.astro` pages. This is useful for storing request-specific data, such as user data, across the rendering step.[Integrations](/en/guides/integrations/) may set properties and provide functionality through the `locals` object. If you are using an integration, check its documentation to ensure you are not overriding any of its properties or doing unnecessary work.
+[Integrations](/en/guides/integrations/) may set properties and provide functionality through the `locals` object. If you are using an integration, check its documentation to ensure you are not overriding any of its properties or doing unnecessary work.
 
 You can store any type of data inside `locals`: strings, numbers, and even complex data types such as functions and maps.
 
@@ -61,7 +59,7 @@ The example below uses middleware to replace “PRIVATE INFO” with the word �
 
 [Section titled “Middleware types”](#middleware-types)
 
-You can import and use the utility function [ defineMiddleware()](/en/reference/modules/astro-middleware/#definemiddleware) to take advantage of type safety:
+You can import and use the utility function [`defineMiddleware()`](/en/reference/modules/astro-middleware/#definemiddleware) to take advantage of type safety:
 
 Instead, if you’re using JsDoc to take advantage of type safety, you can use `MiddlewareHandler`:
 
@@ -73,7 +71,7 @@ Then, inside the middleware file, you can take advantage of autocompletion and t
 
 [Section titled “Chaining middleware”](#chaining-middleware)
 
-Multiple middlewares can be joined in a specified order using [ sequence()](/en/reference/modules/astro-middleware/#sequence):
+Multiple middlewares can be joined in a specified order using [`sequence()`](/en/reference/modules/astro-middleware/#sequence):
 
 This will result in the following console order:
 
@@ -86,17 +84,15 @@ This will result in the following console order:
 	
 	
 
-The `APIContext` exposes a method called [ rewrite()](/en/reference/api-reference/#rewrite) which works the same way as 
-
-[Astro.rewrite](/en/guides/routing/#rewrites).
+The `APIContext` exposes a method called [`rewrite()`](/en/reference/api-reference/#rewrite) which works the same way as [Astro.rewrite](/en/guides/routing/#rewrites).
 
 Use `context.rewrite()` inside middleware to display a different page’s content without [redirecting](/en/guides/routing/#dynamic-redirects) your visitor to a new page. This will trigger a new rendering phase, causing any middleware to be re-executed.
 
 You can also pass the `next()` function an optional URL path parameter to rewrite the current `Request` without retriggering a new rendering phase. The location of the rewrite path can be provided as a string, URL, or `Request`:
 
-The `next()` function accepts the same payload as [the  Astro.rewrite() function](/en/reference/api-reference/#rewrite). The location of the rewrite path can be provided as a string, URL, or 
+The `next()` function accepts the same payload as [the `Astro.rewrite()` function](/en/reference/api-reference/#rewrite). The location of the rewrite path can be provided as a string, URL, or `Request`.
 
-`Request`.When you have multiple middleware functions chained via [sequence()](#chaining-middleware), submitting a path to `next()` will rewrite the `Request` in place and the middleware will not execute again. The next middleware function in the chain will receive the new `Request` with its updated `context`.
+When you have multiple middleware functions chained via [sequence()](#chaining-middleware), submitting a path to `next()` will rewrite the `Request` in place and the middleware will not execute again. The next middleware function in the chain will receive the new `Request` with its updated `context`.
 
 Calling `next()` with this signature will create a new `Request` object using the old `ctx.request`. This means that trying to consume `Request.body`, either before or after this rewrite, will throw a runtime error. This error is often raised with [Astro Actions that use HTML forms](/en/guides/actions/#call-actions-from-an-html-form-action). In these cases, we recommend handling rewrites from your Astro templates using `Astro.rewrite()` instead of using middleware.
 

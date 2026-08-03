@@ -3,7 +3,7 @@ type: Web Page
 title: Migrating from Pelican | Docs
 description: Tips for migrating an existing Pelican project to Astro
 resource: https://docs.astro.build/en/guides/migrate-to-astro/from-pelican
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Migrating from Pelican
@@ -17,9 +17,9 @@ timestamp: '2026-07-13T09:18:12.222139+00:00'
 Pelican and Astro share some similarities that will help you migrate your project:
 
 - 
-Pelican and Astro are both static-site generators, ideally suited to [content-driven websites](/en/concepts/why-astro/#content-driven)like blogs.
+Pelican and Astro are both static-site generators, ideally suited to [content-driven websites](/en/concepts/why-astro/#content-driven) like blogs.
 - 
-Pelican and Astro both have built-in support for [writing in Markdown](/en/guides/markdown-content/), including frontmatter YAML properties for page metadata. However, Astro has very few reserved frontmatter properties compared to Pelican. Even though many of your existing Pelican frontmatter properties will not be “special” in Astro, you can continue to use your existing Markdown files and frontmatter values.
+Pelican and Astro both have built-in support for [writing in Markdown](/en/guides/markdown-content/) , including frontmatter YAML properties for page metadata. However, Astro has very few reserved frontmatter properties compared to Pelican. Even though many of your existing Pelican frontmatter properties will not be “special” in Astro, you can continue to use your existing Markdown files and frontmatter values.
 
 ## Key Differences between Pelican and Astro
 
@@ -28,11 +28,11 @@ Pelican and Astro both have built-in support for [writing in Markdown](/en/guide
 When you rebuild your Pelican site in Astro, you will notice some important differences:
 
 - 
-Pelican supports writing content in Markdown and reStructured Text ( `.rst`). Astro supports[creating pages from Markdown and MDX](/en/guides/markdown-content/)files, but does not support reStructured Text.
+Pelican supports writing content in Markdown and reStructured Text ( `.rst` ). Astro supports[creating pages from Markdown and MDX](/en/guides/markdown-content/) files, but does not support reStructured Text.
 - 
-Pelican uses HTML files and Jinja syntax for templating. [Astro syntax](/en/basics/astro-components/)is a JSX-like superset of HTML. All valid HTML is valid`.astro`syntax.
+Pelican uses HTML files and Jinja syntax for templating. [Astro syntax](/en/basics/astro-components/) is a JSX-like superset of HTML. All valid HTML is valid`.astro` syntax.
 - 
-Pelican was designed to build content-rich websites like blogs and has some built-in, blog features that you would have to build yourself in Astro. Instead, Astro offers some of these features included in an [official blog theme](https://github.com/withastro/astro/tree/latest/examples/blog).
+Pelican was designed to build content-rich websites like blogs and has some built-in, blog features that you would have to build yourself in Astro. Instead, Astro offers some of these features included in an [official blog theme](https://github.com/withastro/astro/tree/latest/examples/blog) .
 
 ## Switch from Pelican to Astro
 

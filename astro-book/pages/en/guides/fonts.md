@@ -4,7 +4,7 @@ title: Using custom fonts | Docs
 description: Looking to add some custom typefaces to an Astro website? Use Google
   Fonts with Fontsource or add a font of your choice.
 resource: https://docs.astro.build/en/guides/fonts
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Using custom fonts
@@ -21,7 +21,7 @@ The Fonts API focuses on performance and privacy by downloading and caching font
 
 [Section titled “Configuring custom fonts”](#configuring-custom-fonts)
 
-Registering custom fonts for your Astro project is done through [the  fonts option](/en/reference/configuration-reference/#fonts) in your Astro config.
+Registering custom fonts for your Astro project is done through [the `fonts` option](/en/reference/configuration-reference/#fonts) in your Astro config.
 
 For each font you want to use, you must specify its [name](/en/reference/configuration-reference/#fontname), a [CSS variable](/en/reference/configuration-reference/#fontcssvariable), and an Astro font provider.
 
@@ -33,12 +33,12 @@ Astro provides [built-in support for the most popular font providers](/en/refere
 
 This example will demonstrate adding a custom font using the font file `DistantGalaxy.woff2`.
 
-- 
-Add your font file inside the `src/`directory`src/assets/fonts/`.
-- 
-Create a new font family in your Astro config file using the [local font provider](/en/reference/font-provider-reference/#local)and specify the variants to be included:
-- 
-Your font is now configured and ready to be [added to your page head](#applying-custom-fonts)so that it can be used in your project.
+1. 
+Add your font file inside the [`src/` directory](/en/basics/project-structure/#src) , for example`src/assets/fonts/` .
+2. 
+Create a new font family in your Astro config file using the [local font provider](/en/reference/font-provider-reference/#local) and specify the variants to be included:
+3. 
+Your font is now configured and ready to be [added to your page head](#applying-custom-fonts) so that it can be used in your project.
 
 ### Using Fontsource
 
@@ -48,12 +48,12 @@ Astro supports [several font providers](/en/reference/font-provider-reference/#b
 
 The following example will use Fontsource to add custom font support, but the process is similar for any of Astro’s built-in font providers (e.g. [Adobe](https://fonts.adobe.com/), [Bunny](https://fonts.bunny.net/)).
 
-- 
-Find the font you want to use in [Fontsource’s catalog](https://fontsource.org/). This example will use[Roboto](https://fontsource.org/fonts/roboto).
-- 
-Create a new font family in your Astro config file using the [Fontsource provider](/en/reference/font-provider-reference/#fontsource):
-- 
-Your font is now configured and ready to be [added to your page head](#applying-custom-fonts)so that it can be used in your project.
+1. 
+Find the font you want to use in [Fontsource’s catalog](https://fontsource.org/) . This example will use[Roboto](https://fontsource.org/fonts/roboto) .
+2. 
+Create a new font family in your Astro config file using the [Fontsource provider](/en/reference/font-provider-reference/#fontsource) :
+3. 
+Your font is now configured and ready to be [added to your page head](#applying-custom-fonts) so that it can be used in your project.
 
 ## Applying custom fonts
 
@@ -61,10 +61,10 @@ Your font is now configured and ready to be [added to your page head](#applying-
 
 After [a font is configured](#configuring-custom-fonts), it must be added to your page head with an identifying CSS variable. Then, you can use this variable when defining your page styles.
 
-- 
-Import and include the `<Font />``cssVariable`property in the head of your page, usually in a dedicated`Head.astro`component or in a[layout](/en/basics/layouts/)component directly:
-- 
-In any page rendered with that layout, including the layout component itself, you can now define styles with your font’s `cssVariable`to apply your custom font.In the following example, the `<h1>`heading will have the custom font applied, while the paragraph`<p>`will not.
+1. 
+Import and include the [`<Font />`](/en/reference/modules/astro-assets/#font-) component with the required`cssVariable` property in the head of your page, usually in a dedicated`Head.astro` component or in a[layout](/en/basics/layouts/) component directly:
+2. 
+In any page rendered with that layout, including the layout component itself, you can now define styles with your font’s `cssVariable` to apply your custom font.In the following example, the `<h1>` heading will have the custom font applied, while the paragraph`<p>` will not.
 
 ## Preloading fonts
 
@@ -72,9 +72,9 @@ In any page rendered with that layout, including the layout component itself, yo
 
 Font preloading should be done sparingly, as it can block the loading of other important resources or download fonts that are unnecessary for the current page. Consider preloading only the most essential fonts, necessary for displaying content visible above the fold.
 
-To preload a font, pass the [ preload property](/en/reference/modules/astro-assets/#preload) to the corresponding 
+To preload a font, pass the [`preload` property](/en/reference/modules/astro-assets/#preload) to the corresponding `<Font />` component. If multiple files correspond to a font, you can also specify which one to preload by passing an array.
 
-`<Font />` component. If multiple files correspond to a font, you can also specify which one to preload by passing an array.## Register fonts in Tailwind
+## Register fonts in Tailwind
 
 [Section titled “Register fonts in Tailwind”](#register-fonts-in-tailwind)
 
@@ -90,11 +90,11 @@ See [Tailwind’s docs on adding custom font families](https://tailwindcss.com/d
 
 To use [variable fonts](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_fonts/Variable_fonts_guide) in your project, specify the available weight range instead of individual weights in your provider’s configuration.
 
-When [using a local font file](#using-a-local-font-file), you can specify that the font is variable by setting the [ weight property of the variant](/en/reference/font-provider-reference/#weight) to a string corresponding to the exact weight range available for the font.
+When [using a local font file](#using-a-local-font-file), you can specify that the font is variable by setting the [`weight` property of the variant](/en/reference/font-provider-reference/#weight) to a string corresponding to the exact weight range available for the font.
 
 The following example configures Inter as a local variable font with the available weight range:
 
-When using [other providers (e.g. Fontsource)](#using-fontsource), that support variable fonts, you can request the variable version of a font by setting the [ weights property](/en/reference/configuration-reference/#fontweights) with an array containing the exact range of weights available for the font.
+When using [other providers (e.g. Fontsource)](#using-fontsource), that support variable fonts, you can request the variable version of a font by setting the [`weights` property](/en/reference/configuration-reference/#fontweights) with an array containing the exact range of weights available for the font.
 
 The following example downloads [Fira Code from Fontsource](https://fontsource.org/fonts/fira-code) as a variable font with the available weight range:
 
@@ -106,16 +106,16 @@ Fallback fonts are used when the primary font has not yet loaded, contains missi
 
 To avoid this, Astro automatically tries to generate optimized fallback fonts from the last [defined fallback](/en/reference/configuration-reference/#fontfallbacks) if it is a [generic font family](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/font-family#generic-name). It uses `sans-serif` by default, but it may not match the desired appearance of your primary font. You can adjust it in your font configuration:
 
-You can also opt out of the default optimization by setting [ font.optimizedFallbacks](/en/reference/configuration-reference/#fontoptimizedfallbacks) to 
+You can also opt out of the default optimization by setting [`font.optimizedFallbacks`](/en/reference/configuration-reference/#fontoptimizedfallbacks) to `false` in your font configuration. Astro will then use the fallback fonts specified in your configuration without any additional automatic processing.
 
-`false` in your font configuration. Astro will then use the fallback fonts specified in your configuration without any additional automatic processing.## Accessing font data programmatically
+## Accessing font data programmatically
 
 [Section titled “Accessing font data programmatically”](#accessing-font-data-programmatically)
 
 Astro exposes low-level APIs for accessing data programmatically:
 
-- Font family data through the `fontData`
-- Font file URLs with the `experimental_getFontFileURL()`
+- Font family data through the [`fontData`](/en/reference/modules/astro-assets/#fontdata) object
+- Font file URLs with the [`experimental_getFontFileURL()`](/en/reference/modules/astro-assets/#experimental_getfontfileurl) function.
 
 This can be useful for advanced use cases where you need direct access to font files, such as generating OpenGraph images with [Satori](https://github.com/vercel/satori) in an [API Route](/en/guides/endpoints/#server-endpoints-api-routes).
 
@@ -145,7 +145,8 @@ To clear the cache in development, remove the `.astro/fonts` directory. To clear
 
 Astro’s font feature is based on flexible configuration options. Your own project’s font configuration may look different from simplified examples, so the following are provided to show what various font configurations might look like when used in production.
 
-Learn[Contribute](/en/contribute/)
+Learn
+[Contribute](/en/contribute/)
 
 [Community](https://astro.build/chat)
 

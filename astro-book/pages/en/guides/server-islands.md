@@ -3,7 +3,7 @@ type: Web Page
 title: Server islands | Docs
 description: Combine high performance static HTML with dynamic server-rendered content.
 resource: https://docs.astro.build/en/guides/server-islands
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Server islands
@@ -20,7 +20,7 @@ A server island is a normal server-rendered [Astro component](/en/basics/astro-c
 
 Your page will be rendered immediately with any specified [fallback content as a placeholder](#server-island-fallback-content). Then, the component’s own contents are fetched on the client and displayed when available.
 
-With [an adapter installed](/en/guides/on-demand-rendering/#server-adapters) to perform the delayed rendering, add the [ server:defer directive](/en/reference/directives-reference/#server-directives) to any component on your page to turn it into its own island:
+With [an adapter installed](/en/guides/on-demand-rendering/#server-adapters) to perform the delayed rendering, add the [`server:defer` directive](/en/reference/directives-reference/#server-directives) to any component on your page to turn it into its own island:
 
 These components can do [anything you normally would in an on-demand rendered page](/en/guides/on-demand-rendering/#on-demand-rendering-features) using an adapter, such as fetch content, and access cookies:
 
@@ -69,9 +69,9 @@ This rendering pattern was built to be portable. It does not depend on any serve
 
 [Section titled “Caching”](#caching)
 
-The data for server islands is retrieved via a `GET` request, passing props as an encrypted string in the URL query. This allows caching data with the [ Cache-Control HTTP header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Cache-Control) using standard 
+The data for server islands is retrieved via a `GET` request, passing props as an encrypted string in the URL query. This allows caching data with the [`Cache-Control` HTTP header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Cache-Control) using standard `Cache-Control` directives.
 
-`Cache-Control` directives.However, [the browser limits URLs to a maximum length of 2048 bytes](https://chromium.googlesource.com/chromium/src/+/master/docs/security/url_display_guidelines/url_display_guidelines.md#url-length) for practical reasons and to avoid causing denial-of-service problems. If your query string causes your URL to exceed this limit, Astro will instead send a `POST` request that contains all props in the body.
+However, [the browser limits URLs to a maximum length of 2048 bytes](https://chromium.googlesource.com/chromium/src/+/master/docs/security/url_display_guidelines/url_display_guidelines.md#url-length) for practical reasons and to avoid causing denial-of-service problems. If your query string causes your URL to exceed this limit, Astro will instead send a `POST` request that contains all props in the body.
 
 `POST` requests are not cached by browsers because they are used to submit data, and could cause data integrity or security issues. Therefore, any existing caching logic in your project will break. Whenever possible, pass only necessary props to your server islands and avoid sending entire data objects and arrays to keep your query small.
 

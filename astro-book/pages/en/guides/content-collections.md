@@ -3,7 +3,7 @@ type: Web Page
 title: Content collections | Docs
 description: Manage your content with type safety.
 resource: https://docs.astro.build/en/guides/content-collections
-timestamp: '2026-07-20T08:50:58.675619+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Content collections
@@ -23,21 +23,21 @@ Astro provides performant, scalable APIs to load, query, and render content from
 
 A content collection is a set of related, structurally identical data. This data can be stored in one or several files locally (e.g. a folder of individual Markdown files of blog posts, a single JSON file of product descriptions) or fetched from remote sources such as a database, CMS, or API endpoint. Each member of the collection is called an entry.
 
-- ## Directorysrc/- …
- 
-- ## Directory- **newsletter/**the “newsletter” collection- week-1.md a collection entry
-- week-2.md a collection entry
-- week-3.md a collection entry
- 
-- ## Directory- **authors/**the “author” collection- authors.json a single file containing all collection entries
- 
+- ## Directorysrc/
+  - …
+- ## Directory**newsletter/** the “newsletter” collection
+  - week-1.md a collection entry
+  - week-2.md a collection entry
+  - week-3.md a collection entry
+- ## Directory**authors/** the “author” collection
+  - authors.json a single file containing all collection entries
 
 Collections are defined by the location and shape of its entries and provide a convenient way to query and render your content and associated metadata. You can create a collection any time you have a group of related data or content, stored in the same location, that shares a common structure.
 
 [Two types of content collections](#types-of-collections) are available to allow you to work with data fetched either at build time or at request time. Both build-time collections and live updating collections use:
 
-- A required `loader`to retrieve your content and metadata from wherever it is stored and make it available to your project through content-focused APIs.
-- An optional collection `schema`that allows you to define the expected shape of each entry for type safety, autocomplete, and validation in your editor.
+- A required `loader` to retrieve your content and metadata from wherever it is stored and make it available to your project through content-focused APIs.
+- An optional collection `schema` that allows you to define the expected shape of each entry for type safety, autocomplete, and validation in your editor.
 
 Collections stored locally in your project or on your filesystem can use one of Astro’s [provided build-time loaders](#build-time-collection-loaders) to fetch data from Markdown, MDX, Markdoc, YAML, TOML, or JSON files. Point Astro to the location of your content, define your data shape, and you’re good to go with a blog or similarly content-heavy, mostly static site in no time!
 
@@ -51,25 +51,23 @@ With [community-built loaders](https://astro.build/integrations/?search=&categor
 
 For the best performance and scalability, use build-time content collections when one or more of these is true:
 
-- **Performance is critical**and you want to prerender data at build time.
-- **Your data is relatively static**(e.g., blog posts, documentation, product descriptions).
-- **You want to benefit from build-time optimization**and caching.
-- **You need to process MDX**or- **perform image optimization**.
-- **Your data can be fetched once and reused**across multiple builds.
+- **Performance is critical** and you want to prerender data at build time.
+- **Your data is relatively static** (e.g., blog posts, documentation, product descriptions).
+- **You want to benefit from build-time optimization** and caching.
+- **You need to process MDX** or**perform image optimization** .
+- **Your data can be fetched once and reused** across multiple builds.
 
-See [the official Astro blog starter template](https://github.com/withastro/astro/tree/latest/examples/blog) to get up and running quickly with an example of using the [built-in  glob() loader](#the-glob-loader) and 
-
-[defining a schema](#defining-the-collection-schema)for a collection of local Markdown or MDX blog posts.
+See [the official Astro blog starter template](https://github.com/withastro/astro/tree/latest/examples/blog) to get up and running quickly with an example of using the [built-in `glob()` loader](#the-glob-loader) and [defining a schema](#defining-the-collection-schema) for a collection of local Markdown or MDX blog posts.
 
 [Live content collections](#live-content-collections) fetch their data at runtime rather than build time. This allows you to access frequently updated data from CMSs, APIs, databases, or other sources using a unified API, without needing to rebuild your site when the data changes. However, this can come at a performance cost since data is fetched at each request and returned directly with no data store persistence.
 
 Live content collections are designed for data that changes frequently and needs to be up-to-date when a page is requested. Consider using them when one or more of these is true:
 
-- **You need real-time information**(e.g. user-specific data, current stock levels).
-- **You want to avoid constant rebuilds**for content that changes often.
-- **Your data updates frequently**(e.g. up-to-the-minute product inventory, prices, availability).
-- **You need to pass dynamic filters**to your data source based on user input or request parameters.
-- **You’re building preview functionality**for a CMS where editors need to see draft content immediately.
+- **You need real-time information** (e.g. user-specific data, current stock levels).
+- **You want to avoid constant rebuilds** for content that changes often.
+- **Your data updates frequently** (e.g. up-to-the-minute product inventory, prices, availability).
+- **You need to pass dynamic filters** to your data source based on user input or request parameters.
+- **You’re building preview functionality** for a CMS where editors need to see draft content immediately.
 
 Both kinds of collections can exist in the same project, so you can always choose the best type of collection for each individual data source. For example, a build-time collection can manage product descriptions, while a live collection can manage content inventory.
 
@@ -77,10 +75,10 @@ Both types of collections use similar APIs (e.g. `getCollection()` and `getLiveC
 
 We suggest using build-time content collections whenever possible, and using live collections when your content needs updating in real time and the performance tradeoffs are acceptable. Additionally, live content collections have some limitations compared to build-time collections:
 
-- **No MDX support**: MDX cannot be rendered at runtime
-- **No image optimization**: Images cannot be processed at runtime
-- **Performance considerations**: Data is fetched on each request (unless cached)
-- **No data store persistence**: Data is not saved to the content layer data store
+- **No MDX support** : MDX cannot be rendered at runtime
+- **No image optimization** : Images cannot be processed at runtime
+- **Performance considerations** : Data is fetched on each request (unless cached)
+- **No data store persistence** : Data is not saved to the content layer data store
 
 ### When to create a collection
 
@@ -89,14 +87,14 @@ We suggest using build-time content collections whenever possible, and using liv
 Define your data as a collection when:
 
 - You have multiple files or data to organize that share the same overall structure (e.g. a directory of blog posts written in Markdown which all have the same frontmatter properties).
-- You have existing content stored remotely, such as in a CMS, and want to take advantage of the collections helper functions instead of using `fetch()`or SDKs.
+- You have existing content stored remotely, such as in a CMS, and want to take advantage of the collections helper functions instead of using `fetch()` or SDKs.
 - You need to fetch (tens of) thousands of related pieces of data at build time, and need a querying and caching method that handles at scale.
 
 Much of the benefit of using collections comes from:
 
 - Defining a common data shape to validate that an individual entry is “correct” or “complete”, avoiding errors in production.
-- Content-focused APIs designed to make querying intuitive (e.g. `getCollection()`instead of`import.meta.glob()`) when importing and rendering content on your pages.
-- Access to both built-in loaders and access to the low-level [Content Loader API](/en/reference/content-loader-reference/)for retrieving your content. There are additionally several third-party and community-built loaders available, and you can build your own custom loader to fetch data from anywhere.
+- Content-focused APIs designed to make querying intuitive (e.g. `getCollection()` instead of`import.meta.glob()` ) when importing and rendering content on your pages.
+- Access to both built-in loaders and access to the low-level [Content Loader API](/en/reference/content-loader-reference/) for retrieving your content. There are additionally several third-party and community-built loaders available, and you can build your own custom loader to fetch data from anywhere.
 - Performance and scalability. Build-time content collections data can be cached between builds and is suitable for tens of thousands of content entries.
 
 ### When not to create a collection
@@ -107,17 +105,17 @@ Collections provide excellent structure, safety, and organization when you have 
 
 Collections may not be your solution if:
 
-- You have only one or a small number of different content pages. Consider [making individual page components](/en/basics/astro-pages/)such as`src/pages/about.astro`with your content directly instead.
-- You are displaying files that are not processed by Astro, such as PDFs. Place these static assets in the `public/`directory
+- You have only one or a small number of different content pages. Consider [making individual page components](/en/basics/astro-pages/) such as`src/pages/about.astro` with your content directly instead.
+- You are displaying files that are not processed by Astro, such as PDFs. Place these static assets in the [`public/` directory](/en/basics/project-structure/#public) of your project instead.
 - Your data source has its own SDK/client library for imports that is incompatible with or does not offer a content loader, and you prefer to use it directly.
 
 ## TypeScript configuration for collections
 
 [Section titled “TypeScript configuration for collections”](#typescript-configuration-for-collections)
 
-Content collections rely on TypeScript to provide Zod validation, Intellisense, and type checking in your editor. By default, Astro configures a [ strict TypeScript template](/en/guides/typescript/#tsconfig-templates) when you create a new project using the 
+Content collections rely on TypeScript to provide Zod validation, Intellisense, and type checking in your editor. By default, Astro configures a [`strict` TypeScript template](/en/guides/typescript/#tsconfig-templates) when you create a new project using the `create astro` CLI command. Both of Astro’s `strict` and `strictest` templates include the TypeScript settings your project needs for content collections.
 
-`create astro` CLI command. Both of Astro’s `strict` and `strictest` templates include the TypeScript settings your project needs for content collections.If you changed this setting to `base` because you are not writing TypeScript in your project, or are not using any of Astro’s built-in templates, you will need to also add the following `compilerOptions` in your `tsconfig.json` to use content collections:
+If you changed this setting to `base` because you are not writing TypeScript in your project, or are not using any of Astro’s built-in templates, you will need to also add the following `compilerOptions` in your `tsconfig.json` to use content collections:
 
 ## Defining build-time content collections
 
@@ -127,8 +125,8 @@ All of your build-time content collections are defined in a special `src/content
 
 Each individual collection configures:
 
-- [a build-time](#build-time-collection-loaders)for a data source (required)- `loader`
-- [a build-time](#defining-the-collection-schema)for type safety (optional, but highly recommended!)- `schema`
+- [a build-time `loader`](#build-time-collection-loaders) for a data source (required)
+- [a build-time `schema`](#defining-the-collection-schema) for type safety (optional, but highly recommended!)
 
 You can then use the dedicated `getCollection()` and `getEntry()` functions to [query your content collections data](#querying-build-time-collections) and render your content.
 
@@ -146,31 +144,27 @@ To fetch remote data at build time, you can [build a custom loader](#custom-buil
 
 [Section titled “The glob() loader”](#the-glob-loader)
 
-The [ glob() loader](/en/reference/content-loader-reference/#glob-loader) fetches entries from directories of Markdown, MDX, Markdoc, JSON, YAML, or TOML files from anywhere on the filesystem. If you store your content entries locally as separate files, such as a directory of blog posts, then the 
+The [`glob()` loader](/en/reference/content-loader-reference/#glob-loader) fetches entries from directories of Markdown, MDX, Markdoc, JSON, YAML, or TOML files from anywhere on the filesystem. If you store your content entries locally as separate files, such as a directory of blog posts, then the `glob()` loader is all you need to access your content.
 
-`glob()` loader is all you need to access your content.This loader requires a `pattern` of entry files to match using glob patterns supported by [micromatch](https://github.com/micromatch/micromatch#matching-features), and a `base` file path of where your files are located. A unique `id` for each entry will be automatically generated from its file name, but you can [define custom IDs](#defining-custom-ids) if needed.
+This loader requires a `pattern` of entry files to match using glob patterns supported by [micromatch](https://github.com/micromatch/micromatch#matching-features), and a `base` file path of where your files are located. A unique `id` for each entry will be automatically generated from its file name, but you can [define custom IDs](#defining-custom-ids) if needed.
 
 #### Defining custom IDs
 
 [Section titled “Defining custom IDs”](#defining-custom-ids)
 
-When using the [ glob() loader](#the-glob-loader) with Markdown, MDX, Markdoc, JSON, or TOML files, every content entry 
-
-[is automatically generated in an URL-friendly format based on the content filename. This unique](/en/reference/modules/astro-content/#collectionentryid)
-
-`id``id` is used to query the entry directly from your collection. It is also useful when [creating new pages and URLs from your content](#generating-routes-from-content).
+When using the [`glob()` loader](#the-glob-loader) with Markdown, MDX, Markdoc, JSON, or TOML files, every content entry [`id`](/en/reference/modules/astro-content/#collectionentryid) is automatically generated in an URL-friendly format based on the content filename. This unique `id` is used to query the entry directly from your collection. It is also useful when [creating new pages and URLs from your content](#generating-routes-from-content).
 
 You can override a single entry’s generated `id` by adding your own `slug` property to the file frontmatter or data object for JSON files. This is similar to the “permalink” feature of other web frameworks.
 
-You can also pass options to the `glob()` loader’s [ generateID() helper function](/en/reference/content-loader-reference/#generateid) when you define your build-time collection to adjust how 
+You can also pass options to the `glob()` loader’s [`generateID()` helper function](/en/reference/content-loader-reference/#generateid) when you define your build-time collection to adjust how `id`s are generated. For example, you may wish to revert the default behavior of converting uppercase letters to lowercase for each collection entry:
 
-`id`s are generated. For example, you may wish to revert the default behavior of converting uppercase letters to lowercase for each collection entry:### The `file()` loader
+### The `file()` loader
 
 [Section titled “The file() loader”](#the-file-loader)
 
-The [ file() loader](/en/reference/content-loader-reference/#file-loader) fetches multiple entries from a single local file defined in your collection. The 
+The [`file()` loader](/en/reference/content-loader-reference/#file-loader) fetches multiple entries from a single local file defined in your collection. The `file()` loader will automatically detect and parse (based on the file extension) a single array of objects from JSON and YAML files, and will treat each top-level table as an independent entry in TOML files.
 
-`file()` loader will automatically detect and parse (based on the file extension) a single array of objects from JSON and YAML files, and will treat each top-level table as an independent entry in TOML files.Each entry object in the file must have a unique `id` key property so that the entry can be identified and queried. Unlike the `glob()` loader, the `file()` loader will not automatically generate IDs for each entry.
+Each entry object in the file must have a unique `id` key property so that the entry can be identified and queried. Unlike the `glob()` loader, the `file()` loader will not automatically generate IDs for each entry.
 
 You can provide your entries as an array of objects with an `id` property, or in object form where the unique `id` is the key:
 
@@ -228,7 +222,8 @@ To use Zod in Astro, import the `z` utility from `"astro/zod"`. This is a re-exp
 
 [for a cheatsheet of common datatypes and to learn how Zod works and what features are available.](/en/reference/modules/astro-zod/)
 
-`z` utility reference#### Zod schema methods
+`z` utility reference
+#### Zod schema methods
 
 [Section titled “Zod schema methods”](#zod-schema-methods)
 
@@ -240,9 +235,9 @@ All [Zod schema methods](/en/reference/modules/astro-zod/#using-zod-methods) (e.
 
 Collection entries can also “reference” other related entries.
 
-With the [ reference() function](/en/reference/modules/astro-content/#reference), you can define a property in a collection schema as an entry from another collection. For example, you can require that every 
+With the [`reference()` function](/en/reference/modules/astro-content/#reference), you can define a property in a collection schema as an entry from another collection. For example, you can require that every `space-shuttle` entry includes a `pilot` property which uses the `pilot` collection’s own schema for type checking, autocomplete, and validation.
 
-`space-shuttle` entry includes a `pilot` property which uses the `pilot` collection’s own schema for type checking, autocomplete, and validation.A common example is a blog post that references reusable author profiles stored as JSON, or related post URLs stored in the same collection:
+A common example is a blog post that references reusable author profiles stored as JSON, or related post URLs stored in the same collection:
 
 This example blog post specifies the `id`s of related posts and the `id` of the post author:
 
@@ -254,8 +249,8 @@ These references will be transformed into objects containing a `collection` key 
 
 Astro provides helper functions to query a build-time collection and return one or more content entries.
 
-- `getCollection()`
-- `getEntry()`
+- [`getCollection()`](/en/reference/modules/astro-content/#getcollection) fetches an entire collection and returns an array of entries.
+- [`getEntry()`](/en/reference/modules/astro-content/#getentry) fetches a single entry from a collection.
 
 These return entries with a unique `id`, a `data` object with all defined properties, and will also return a `body` containing the raw, uncompiled body of a Markdown, MDX, or Markdoc document.
 
@@ -263,7 +258,8 @@ The sort order of generated collections is non-deterministic and platform-depend
 
 [.](/en/reference/modules/astro-content/#collectionentry)
 
-`CollectionEntry` type### Using content in Astro templates
+`CollectionEntry` type
+### Using content in Astro templates
 
 [Section titled “Using content in Astro templates”](#using-content-in-astro-templates)
 
@@ -275,17 +271,18 @@ For example, you can create a list of links to your blog posts, displaying infor
 
 [Section titled “Rendering body content”](#rendering-body-content)
 
-Once queried, you can render Markdown and MDX entries to HTML using the [ render()](/en/reference/modules/astro-content/#render) function from 
+Once queried, you can render Markdown and MDX entries to HTML using the [`render()`](/en/reference/modules/astro-content/#render) function from `astro:content`. Calling this function gives you access to rendered HTML content, including both a `<Content />` component and a list of all rendered headings.
 
-`astro:content`. Calling this function gives you access to rendered HTML content, including both a `<Content />` component and a list of all rendered headings.[pass your own components to](/en/guides/integrations-guide/mdx/#passing-components-to-mdx-content)to replace HTML elements with custom alternatives.
+[pass your own components to](/en/guides/integrations-guide/mdx/#passing-components-to-mdx-content)to replace HTML elements with custom alternatives.
 
-`<Content />`#### Passing content as props
+`<Content />`
+#### Passing content as props
 
 [Section titled “Passing content as props”](#passing-content-as-props)
 
 A component can also pass an entire collection entry as a prop.
 
-You can use the [ CollectionEntry](/en/reference/modules/astro-content/#collectionentry) utility to correctly type your component’s props using TypeScript. This utility takes a string argument that matches the name of your collection schema and will inherit all of the properties of that collection’s schema.
+You can use the [`CollectionEntry`](/en/reference/modules/astro-content/#collectionentry) utility to correctly type your component’s props using TypeScript. This utility takes a string argument that matches the name of your collection schema and will inherit all of the properties of that collection’s schema.
 
 ### Filtering collection queries
 
@@ -321,22 +318,22 @@ The exact method for generating routes will depend on whether your pages are pre
 
 [Section titled “Building for static output (default)”](#building-for-static-output-default)
 
-If you are building a static website (Astro’s default behavior) with build-time collections, use the [ getStaticPaths()](/en/reference/routing-reference/#getstaticpaths) function to create multiple pages from a single page component (e.g. 
+If you are building a static website (Astro’s default behavior) with build-time collections, use the [`getStaticPaths()`](/en/reference/routing-reference/#getstaticpaths) function to create multiple pages from a single page component (e.g. `src/pages/[id].astro`) during your build.
 
-`src/pages/[id].astro`) during your build.Call `getCollection()` inside of `getStaticPaths()` to have your collection data available for building static routes. Then, create the individual URL paths using the `id` property of each content entry. Each page receives the entire collection entry as a prop for [use in your page template](#using-content-in-astro-templates).
+Call `getCollection()` inside of `getStaticPaths()` to have your collection data available for building static routes. Then, create the individual URL paths using the `id` property of each content entry. Each page receives the entire collection entry as a prop for [use in your page template](#using-content-in-astro-templates).
 
 This will generate a page route for every entry in the `blog` collection. For example, an entry at `src/blog/hello-world.md` will have an `id` of `hello-world`, and therefore its final URL will be `/posts/hello-world/`.
 
-If your custom slugs contain the `/` character to produce URLs with multiple path segments, you must use a [rest parameter (e.g.  [...id])](/en/guides/routing/#rest-parameters) in the 
+If your custom slugs contain the `/` character to produce URLs with multiple path segments, you must use a [rest parameter (e.g. `\[...id\]`)](/en/guides/routing/#rest-parameters) in the `.astro` filename for this dynamic routing page.
 
-`.astro` filename for this dynamic routing page.### Building routes on demand at request time
+### Building routes on demand at request time
 
 [Section titled “Building routes on demand at request time”](#building-routes-on-demand-at-request-time)
 
 With an adapter installed for [on-demand rendering](/en/guides/on-demand-rendering/), you can generate your dynamic page routes at request time. First, examine the request (using `Astro.request` or `Astro.params`) to find the slug on demand, and then fetch it using one of Astro’s content collection helper functions:
 
-- `getEntry()`
-- `getLiveEntry()`
+- [`getEntry()`](/en/reference/modules/astro-content/#getentry) for build-time collection pages that are generated once, upon first request.
+- [`getLiveEntry()`](/en/reference/modules/astro-content/#getliveentry) for live collection pages where data is (re)fetched at each request time.
 
 Explore the `src/pages/` folder of the [blog tutorial demo code on GitHub](https://github.com/withastro/blog-tutorial-demo/tree/content-collections/src/pages) to see full examples of creating dynamic pages from your collections for blog features like a list of blog posts, tags pages, and more!
 
@@ -348,12 +345,12 @@ Live collections use a different API than build-time content collections, althou
 
 Key differences include:
 
-- **Execution time**: Run at request time instead of build time
-- **Configuration file**: Use- `src/live.config.ts`instead of- `src/content.config.ts`
-- **Collection definition**: Use- `defineLiveCollection()`instead of- `defineCollection()`
-- **Loader API**: Implement- `loadCollection`and- `loadEntry`methods instead of the- `load`method
-- **Data return**: Return data directly instead of storing in the data store
-- **User-facing functions**: Use- `getLiveCollection()`/- `getLiveEntry()`instead of- `getCollection()`/- `getEntry()`
+1. **Execution time** : Run at request time instead of build time
+2. **Configuration file** : Use`src/live.config.ts` instead of`src/content.config.ts`
+3. **Collection definition** : Use`defineLiveCollection()` instead of`defineCollection()`
+4. **Loader API** : Implement`loadCollection` and`loadEntry` methods instead of the`load` method
+5. **Data return** : Return data directly instead of storing in the data store
+6. **User-facing functions** : Use`getLiveCollection()` /`getLiveEntry()` instead of`getCollection()` /`getEntry()`
 
 Additionally, you must have an adapter configured for [on-demand rendering](/en/guides/on-demand-rendering/) of live collection data.
 
@@ -361,12 +358,12 @@ Define your live collections in the special file `src/live.config.ts` (separate 
 
 Each individual collection configures:
 
-- a [live](#creating-a-live-loader)for your data source, and optionally for type safety (required)`loader`
-- a [live collection](#using-zod-schemas-with-live-collections)for type safety (optional)`schema`
+- a [live `loader`](#creating-a-live-loader) for your data source, and optionally for type safety (required)
+- a [live collection `schema`](#using-zod-schemas-with-live-collections) for type safety (optional)
 
 Unlike for build-time collections, there are no built-in live loaders available. You will need to [create a custom live loader](#creating-a-live-loader) for your specific data source or find a third-party loader to pass to your live collection’s `loader` property.
 
-You can optionally [include type safety in your live loaders](/en/reference/content-loader-reference/#the-liveloader-object). Therefore, [defining a Zod  schema](#using-zod-schemas-with-live-collections) for live collections is optional. However, if you provide one, it will take precedence over the live loader’s types.
+You can optionally [include type safety in your live loaders](/en/reference/content-loader-reference/#the-liveloader-object). Therefore, [defining a Zod `schema`](#using-zod-schemas-with-live-collections) for live collections is optional. However, if you provide one, it will take precedence over the live loader’s types.
 
 You can then use the dedicated `getLiveCollection()` and `getLiveEntry()` functions to [access your live data](#accessing-live-data) and render your content.
 
@@ -402,8 +399,8 @@ When using Zod schemas with live collections, validation errors are automaticall
 
 Astro provides live collection helper functions to access live data on each request and return one (or more) content entries. These can be used similarly to their [build-time collection counterparts](#querying-build-time-collections).
 
-- `getLiveCollection()`
-- `getLiveEntry()`
+- [`getLiveCollection()`](/en/reference/modules/astro-content/#getlivecollection) fetches an entire collection and returns an array of entries.
+- [`getLiveEntry()`](/en/reference/modules/astro-content/#getliveentry) fetches a single entry from a collection.
 
 These return entries with a unique `id`, and `data` object with all defined properties from the live loader. When using third-party or community loaders distributed as npm packages, check their own documentation for the expected shape of data returned.
 
@@ -413,11 +410,9 @@ You can use these functions to access your live data, passing the name of the co
 
 [Section titled “Rendering content”](#rendering-content)
 
-If your live loader [returns a  rendered property](/en/reference/content-loader-reference/#livedataentryrendered), you can use 
+If your live loader [returns a `rendered` property](/en/reference/content-loader-reference/#livedataentryrendered), you can use [the `render()` function and `<Content />` component](#rendering-body-content) to render your content directly in your pages, using the same method as build-time collections.
 
-[the](#rendering-body-content)to render your content directly in your pages, using the same method as build-time collections.
-
-`render()` function and `<Content />` componentYou also have access to any [error returned by the live loader](/en/reference/content-loader-reference/#error-handling-in-live-loaders), for example, to rewrite to a 404 page when content cannot be displayed:
+You also have access to any [error returned by the live loader](/en/reference/content-loader-reference/#error-handling-in-live-loaders), for example, to rewrite to a 404 page when content cannot be displayed:
 
 #### Error handling
 
@@ -428,10 +423,10 @@ Live loaders can fail due to network issues, API errors, or validation problems.
 When you call `getLiveCollection()` or `getLiveEntry()`, the error will be one of:
 
 - The error type defined by the loader (if it returned an error)
-- A `LiveEntryNotFoundError`if the entry was not found
-- A `LiveCollectionValidationError`if the collection data does not match the expected schema
-- A `LiveCollectionCacheHintError`if the cache hint is invalid
-- A `LiveCollectionError`for other errors, such as uncaught errors thrown in the loader
+- A `LiveEntryNotFoundError` if the entry was not found
+- A `LiveCollectionValidationError` if the collection data does not match the expected schema
+- A `LiveCollectionCacheHintError` if the cache hint is invalid
+- A `LiveCollectionError` for other errors, such as uncaught errors thrown in the loader
 
 You can use `instanceof` to check the type of an error at runtime:
 
@@ -446,11 +441,7 @@ You can use `instanceof` to check the type of an error at runtime:
 
 When live loaders provide [cache hints](/en/reference/content-loader-reference/#live-loaders), `getLiveEntry()` and `getLiveCollection()` return a `cacheHint` object. This allows you to control the [caching behavior](/en/guides/caching/) of your routes without manually setting headers.
 
-Cache hints include [ tags](/en/reference/content-loader-reference/#cachehinttags) for targeted invalidation and 
-
-[to keep cached data fresh. You can also combine the cache hints with your own](/en/reference/content-loader-reference/#cachehintlastmodified)
-
-`lastModified`[cache options](/en/reference/cache-provider-reference/#cacheoptions)to further customize caching behavior.
+Cache hints include [`tags`](/en/reference/content-loader-reference/#cachehinttags) for targeted invalidation and [`lastModified`](/en/reference/content-loader-reference/#cachehintlastmodified) to keep cached data fresh. You can also combine the cache hints with your own [cache options](/en/reference/cache-provider-reference/#cacheoptions) to further customize caching behavior.
 
 See the [Content Loader Reference](/en/reference/content-loader-reference/) for more about implementing cache hints in your live loaders.
 
@@ -458,13 +449,13 @@ See the [Content Loader Reference](/en/reference/content-loader-reference/) for 
 
 [Section titled “Entry-level cache hints”](#entry-level-cache-hints)
 
-Pass the `cacheHint` returned by `getLiveEntry()` to [ Astro.cache.set()](/en/reference/api-reference/#cacheset) to apply the loader’s recommended caching strategy.
+Pass the `cacheHint` returned by `getLiveEntry()` to [`Astro.cache.set()`](/en/reference/api-reference/#cacheset) to apply the loader’s recommended caching strategy.
 
 The following example passes the loader’s cache hint and adds a `maxAge` to control how long the response stays fresh:
 
-You can also pass a [ LiveDataEntry](/en/reference/content-loader-reference/#livedataentry) directly to let Astro extract its 
+You can also pass a [`LiveDataEntry`](/en/reference/content-loader-reference/#livedataentry) directly to let Astro extract its `cacheHint` automatically:
 
-`cacheHint` automatically:#### Collection-level cache hints
+#### Collection-level cache hints
 
 [Section titled “Collection-level cache hints”](#collection-level-cache-hints)
 
@@ -476,7 +467,7 @@ The following example passes the merged cache hint from a collection and sets a 
 
 [Section titled “Invalidating by entry”](#invalidating-by-entry)
 
-You can invalidate cached entries by passing a `LiveDataEntry` to [ cache.invalidate()](/en/reference/api-reference/#cacheinvalidate). This allows you to target specific cached responses for invalidation based on the entry’s cache tags, without needing to clear the entire cache.
+You can invalidate cached entries by passing a `LiveDataEntry` to [`cache.invalidate()`](/en/reference/api-reference/#cacheinvalidate). This allows you to target specific cached responses for invalidation based on the entry’s cache tags, without needing to clear the entire cache.
 
 The following example invalidates the cached response for a specific product entry:
 
@@ -502,10 +493,10 @@ In the following example, a data file in `src/data/authors/` uses the schema gen
 
 #### Use a schema for a group of JSON files in VS Code
 
-In VS Code, you can configure a schema to apply to all files in a collection using the [ json.schemas setting](https://code.visualstudio.com/docs/languages/json#_json-schemas-and-settings).
-In the following example, all files in the 
+In VS Code, you can configure a schema to apply to all files in a collection using the [`json.schemas` setting](https://code.visualstudio.com/docs/languages/json#_json-schemas-and-settings).
+In the following example, all files in the `src/data/authors/` directory will use the schema generated for the `authors` collection:
 
-`src/data/authors/` directory will use the schema generated for the `authors` collection:### Use schemas in YAML files in VS Code
+### Use schemas in YAML files in VS Code
 
 In VS Code, you can add support for using JSON schemas in YAML files using the [Red Hat YAML](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml) extension.
 With this extension installed, you can reference a schema in a YAML file using a special comment syntax:

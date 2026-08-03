@@ -3,7 +3,7 @@ type: Web Page
 title: Build your Astro site with Docker | Docs
 description: Learn how to build your Astro site using Docker.
 resource: https://docs.astro.build/en/recipes/docker
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Build your Astro site with Docker
@@ -16,8 +16,8 @@ Docker images and containers can be deployed to many different platforms, like A
 
 [Section titled “Prerequisites”](#prerequisites)
 
-- Docker installed on your local machine. You can find [installation instructions for your operating system here](https://docs.docker.com/get-docker/).
-- A Dockerfile in your project. You can [learn more about Dockerfiles here](https://docs.docker.com/engine/reference/builder/)and use the Dockerfiles in the following section as a starting point.
+- Docker installed on your local machine. You can find [installation instructions for your operating system here](https://docs.docker.com/get-docker/) .
+- A Dockerfile in your project. You can [learn more about Dockerfiles here](https://docs.docker.com/engine/reference/builder/) and use the Dockerfiles in the following section as a starting point.
 
 ## Creating a Dockerfile
 
@@ -37,7 +37,7 @@ These are just examples of Dockerfiles. You can customize them to your needs. Fo
 
 Adding a `.dockerignore` file to your project is best practice. This file describes which files or folders should be ignored in the Docker `COPY` or `ADD` commands, very similar to how `.gitignore` works. This speeds up the build process and reduces the size of the final image.
 
-This file should go in the same directory as the `Dockerfile` itself. [Read the  .dockerignore documentation for extra info](https://docs.docker.com/engine/reference/builder/#dockerignore-file)
+This file should go in the same directory as the `Dockerfile` itself. [Read the `.dockerignore` documentation for extra info](https://docs.docker.com/engine/reference/builder/#dockerignore-file)
 
 ### Static
 
@@ -63,12 +63,12 @@ Here’s an example of a more advanced Dockerfile that, thanks to Docker’s [mu
 
 [Section titled “Recipe”](#recipe)
 
-- 
-Build your container by running the following command in your project’s root directory. Use any name for `<your-astro-image-name>`:This will output an image, which you can run locally or deploy to a platform of your choice. 
-- 
-To run your image as a local container, use the following command. Replace `<local-port>`with an open port on your machine. Replace`<container-port>`with the port exposed by your Docker container (`4321`,`80`, or`8080`in the above examples.)You should be able to access your site at `http://localhost:<local-port>`.
-- 
-Now that your website is successfully built and packaged in a container, you can deploy it to a cloud provider. See the [Google Cloud](/en/guides/deploy/google-cloud/#cloud-run-ssr-and-static)deployment guide for one example, and the[Deploy your app](https://docs.docker.com/language/nodejs/deploy/)page in the Docker docs.
+1. 
+Build your container by running the following command in your project’s root directory. Use any name for `<your-astro-image-name>` :This will output an image, which you can run locally or deploy to a platform of your choice.
+2. 
+To run your image as a local container, use the following command. Replace `<local-port>` with an open port on your machine. Replace`<container-port>` with the port exposed by your Docker container (`4321` ,`80` , or`8080` in the above examples.)You should be able to access your site at `http://localhost:<local-port>` .
+3. 
+Now that your website is successfully built and packaged in a container, you can deploy it to a cloud provider. See the [Google Cloud](/en/guides/deploy/google-cloud/#cloud-run-ssr-and-static) deployment guide for one example, and the[Deploy your app](https://docs.docker.com/language/nodejs/deploy/) page in the Docker docs.
 
 [Contribute](/en/contribute/)
 

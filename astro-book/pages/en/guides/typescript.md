@@ -3,12 +3,12 @@ type: Web Page
 title: TypeScript | Docs
 description: Learn how to use Astro's built-in TypeScript support.
 resource: https://docs.astro.build/en/guides/typescript
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # TypeScript
 
-Astro ships with built-in support for [TypeScript](https://www.typescriptlang.org/). You can import `.ts` and `.tsx` files in your Astro project, write TypeScript code directly inside your [Astro component](/en/basics/astro-components/#the-component-script), and even use an [ astro.config.ts](/en/guides/configuring-astro/#the-astro-config-file) file for your Astro configuration if you like.
+Astro ships with built-in support for [TypeScript](https://www.typescriptlang.org/). You can import `.ts` and `.tsx` files in your Astro project, write TypeScript code directly inside your [Astro component](/en/basics/astro-components/#the-component-script), and even use an [`astro.config.ts`](/en/guides/configuring-astro/#the-astro-config-file) file for your Astro configuration if you like.
 
 Using TypeScript, you can prevent errors at runtime by defining the shapes of objects and components in your code. For example, if you use TypeScript to [type your component’s props](#component-props), you’ll get an error in your editor if you set a prop that your component doesn’t accept.
 
@@ -24,7 +24,7 @@ Astro starter projects include a `tsconfig.json` file in your project. Even if y
 
 Three extensible `tsconfig.json` templates are included in Astro: `base`, `strict`, and `strictest`. The `base` template enables support for modern JavaScript features and is also used as a basis for the other templates. We recommend using `strict` or `strictest` if you plan to write TypeScript in your project. You can view and compare the three template configurations at [astro/tsconfigs/](https://github.com/withastro/astro/blob/main/packages/astro/tsconfigs/).
 
-To inherit from one of the templates, use [the  extends setting](https://www.typescriptlang.org/tsconfig#extends):
+To inherit from one of the templates, use [the `extends` setting](https://www.typescriptlang.org/tsconfig#extends):
 
 Additionally, we recommend setting `include` and `exclude` as follows to benefit from Astro types and avoid checking built files:
 
@@ -34,9 +34,9 @@ Additionally, we recommend setting `include` and `exclude` as follows to benefit
 
 The [Astro TypeScript plugin](https://www.npmjs.com/package/@astrojs/ts-plugin) can be installed separately when you are not using the [official Astro VS Code extension](https://marketplace.visualstudio.com/items?itemName=astro-build.astro-vscode). This plugin is automatically installed and configured by the VS Code extension, and you do not need to install both.
 
-This plugin runs only in the editor. When running `tsc` in the terminal, `.astro` files are ignored entirely. Instead, you can use [the  astro check CLI command](/en/reference/cli-reference/#astro-check) to check both 
+This plugin runs only in the editor. When running `tsc` in the terminal, `.astro` files are ignored entirely. Instead, you can use [the `astro check` CLI command](/en/reference/cli-reference/#astro-check) to check both `.astro` and `.ts` files.
 
-`.astro` and `.ts` files.This plugin also supports importing `.astro` files from `.ts` files (which can be useful for re-exporting).
+This plugin also supports importing `.astro` files from `.ts` files (which can be useful for re-exporting).
 
 Then, add the following to your `tsconfig.json`:
 
@@ -56,9 +56,9 @@ Use explicit type imports and exports whenever possible.
 
 This way, you avoid edge cases where Astro’s bundler may try to incorrectly bundle your imported types as if they were JavaScript.
 
-You can configure TypeScript to enforce type imports in your `tsconfig.json` file. Set [ verbatimModuleSyntax](https://www.typescriptlang.org/tsconfig#verbatimModuleSyntax) to 
+You can configure TypeScript to enforce type imports in your `tsconfig.json` file. Set [`verbatimModuleSyntax`](https://www.typescriptlang.org/tsconfig#verbatimModuleSyntax) to `true`. TypeScript will check your imports and tell you when `import type` should be used. This setting is enabled by default in all our presets.
 
-`true`. TypeScript will check your imports and tell you when `import type` should be used. This setting is enabled by default in all our presets.## Import Aliases
+## Import Aliases
 
 [Section titled “Import Aliases”](#import-aliases)
 
@@ -70,7 +70,7 @@ Astro supports import aliases that you define in your `tsconfig.json` `paths` co
 
 You can create `src/env.d.ts` as a convention for adding custom types declarations, or to benefit from Astro types if you don’t have a `tsconfig.json`:
 
-`window` and `globalThis`
+### `window` and `globalThis`
 
 [Section titled “window and globalThis”](#window-and-globalthis)
 
@@ -108,8 +108,8 @@ Astro supports typing your component props via TypeScript. To enable, add a Type
 
 [Section titled “Common prop type patterns”](#common-prop-type-patterns)
 
-- If your component takes no props or slotted content, you can use `type Props = Record<string, never>`.
-- If your component must be passed children to its default slot, you can enforce this by using `type Props = { children: any; };`.
+- If your component takes no props or slotted content, you can use `type Props = Record<string, never>` .
+- If your component must be passed children to its default slot, you can enforce this by using `type Props = { children: any; };` .
 
 ## Type Utilities
 
@@ -130,7 +130,7 @@ Astro provides the `HTMLAttributes` type to check that your markup is using vali
 
 For example, if you were building a `<Link>` component, you could do the following to mirror the default HTML attributes for `<a>` tags in your component’s prop types.
 
-`ComponentProps` type
+### `ComponentProps` type
 
 [Section titled “ComponentProps type”](#componentprops-type)
 
@@ -154,9 +154,9 @@ The following example shows using the `ComponentProps` utility from `astro/types
 
 Astro includes a helper to make it easier to build components that can render as different HTML elements with full type safety. This is useful for components like `<Link>` that can render as either `<a>` or `<button>` depending on the props passed to it.
 
-The example below implements a fully-typed, polymorphic component that can render as any HTML element. The [ HTMLTag](#built-in-html-attributes) type is used to ensure that the 
+The example below implements a fully-typed, polymorphic component that can render as any HTML element. The [`HTMLTag`](#built-in-html-attributes) type is used to ensure that the `as` prop is a valid HTML element.
 
-`as` prop is a valid HTML element.### Infer `getStaticPaths()` types
+### Infer `getStaticPaths()` types
 
 [Section titled “Infer getStaticPaths() types”](#infer-getstaticpaths-types)
 
@@ -165,25 +165,22 @@ The example below implements a fully-typed, polymorphic component that can rende
 	
 	
 
-Astro includes helpers for working with the types returned by your [ getStaticPaths()](/en/reference/routing-reference/#getstaticpaths) function for dynamic routes.
+Astro includes helpers for working with the types returned by your [`getStaticPaths()`](/en/reference/routing-reference/#getstaticpaths) function for dynamic routes.
 
-You can get the type of [ Astro.params](/en/reference/api-reference/#params) with 
+You can get the type of [`Astro.params`](/en/reference/api-reference/#params) with `InferGetStaticParamsType` and the type of [`Astro.props`](/en/reference/api-reference/#props) with `InferGetStaticPropsType` or you can use `GetStaticPaths` to infer both at once:
 
-`InferGetStaticParamsType` and the type of [with](/en/reference/api-reference/#props)
-
-`Astro.props``InferGetStaticPropsType` or you can use `GetStaticPaths` to infer both at once:## Type checking
+## Type checking
 
 [Section titled “Type checking”](#type-checking)
 
 To see type errors in your editor, please make sure that you have the [Astro VS Code extension](/en/editor-setup/) installed. Please note that the `astro start` and `astro build` commands will transpile the code with esbuild, but will not run any type checking. To prevent your code from building if it contains TypeScript errors, change your “build” script in `package.json` to the following:
 
-`astro check` checks all the files included in your TypeScript project. To check types within Svelte and Vue files, you can use the [ svelte-check](https://www.npmjs.com/package/svelte-check) and the 
+`astro check` checks all the files included in your TypeScript project. To check types within Svelte and Vue files, you can use the [`svelte-check`](https://www.npmjs.com/package/svelte-check) and the [`vue-tsc`](https://www.npmjs.com/package/vue-tsc) packages respectively.
 
-[packages respectively.](https://www.npmjs.com/package/vue-tsc)
+[in Astro.](/en/guides/imports/#typescript)
 
-`vue-tsc`[in Astro.](/en/guides/imports/#typescript)
-
-`.ts` file imports[TypeScript Configuration](https://www.typescriptlang.org/tsconfig/).
+`.ts` file imports
+[TypeScript Configuration](https://www.typescriptlang.org/tsconfig/).
 
 ## Troubleshooting
 
@@ -195,9 +192,7 @@ To see type errors in your editor, please make sure that you have the [Astro VS 
 
 An issue may arise when using multiple JSX frameworks in the same project, as each framework requires different, sometimes conflicting, settings inside `tsconfig.json`.
 
-**Solution**: Set the [ jsxImportSource setting](https://www.typescriptlang.org/tsconfig#jsxImportSource) to 
-
-`react` (default), `preact` or `solid-js` depending on your most-used framework. Then, use a [pragma comment](https://www.typescriptlang.org/docs/handbook/jsx.html#configuring-jsx)inside any conflicting file from a different framework.
+**Solution**: Set the [`jsxImportSource` setting](https://www.typescriptlang.org/tsconfig#jsxImportSource) to `react` (default), `preact` or `solid-js` depending on your most-used framework. Then, use a [pragma comment](https://www.typescriptlang.org/docs/handbook/jsx.html#configuring-jsx) inside any conflicting file from a different framework.
 
 For the default setting of `jsxImportSource: react`, you would use:
 

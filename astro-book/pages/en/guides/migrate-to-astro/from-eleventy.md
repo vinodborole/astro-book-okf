@@ -3,7 +3,7 @@ type: Web Page
 title: Migrating from Eleventy | Docs
 description: Tips for migrating an existing Eleventy project to Astro
 resource: https://docs.astro.build/en/guides/migrate-to-astro/from-eleventy
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Migrating from Eleventy
@@ -17,9 +17,9 @@ timestamp: '2026-07-13T09:18:12.222139+00:00'
 Eleventy (11ty) and Astro share some similarities that will help you migrate your project:
 
 - 
-Both Astro and Eleventy are modern, JavaScript-based (Jamstack) site builders. 
+Both Astro and Eleventy are modern, JavaScript-based (Jamstack) site builders.
 - 
-Astro and Eleventy both allow you to use a [headless CMS, APIs or Markdown files for data](/en/guides/data-fetching/). You can continue to use your preferred content authoring system, and will be able to keep your existing content.
+Astro and Eleventy both allow you to use a [headless CMS, APIs or Markdown files for data](/en/guides/data-fetching/) . You can continue to use your preferred content authoring system, and will be able to keep your existing content.
 
 ## Key Differences between Eleventy (11ty) and Astro
 
@@ -28,13 +28,13 @@ Astro and Eleventy both allow you to use a [headless CMS, APIs or Markdown files
 When you rebuild your Eleventy (11ty) site in Astro, you will notice some important differences:
 
 - 
-Eleventy supports a variety of templating languages. Astro supports [including components from several popular JS Frameworks (e.g. React, Svelte, Vue, Solid)](/en/guides/framework-components/), but uses[Astro layouts, pages and components](/en/basics/astro-components/)for most page templating.
+Eleventy supports a variety of templating languages. Astro supports [including components from several popular JS Frameworks (e.g. React, Svelte, Vue, Solid)](/en/guides/framework-components/) , but uses[Astro layouts, pages and components](/en/basics/astro-components/) for most page templating.
 - 
-Astro uses a `src/`directory[special](/en/basics/astro-pages/).`src/pages/`folder for file-based routing
+Astro uses a [`src/` directory](/en/basics/project-structure/#src) for all files, including site metadata, that are available for querying and processing during site build. Within this is a[special `src/pages/` folder for file-based routing](/en/basics/astro-pages/) .
 - 
-Astro uses a `public/`folder for static assets
+Astro uses a [`public/` folder for static assets](/en/basics/project-structure/#public) that do not need to be processed nor transformed during the build.
 - 
-In Eleventy, bundling CSS, JavaScript, and other assets needs to be configured manually. [Astro handles this for you out-of-the-box](/en/concepts/why-astro/#easy-to-use).
+In Eleventy, bundling CSS, JavaScript, and other assets needs to be configured manually. [Astro handles this for you out-of-the-box](/en/concepts/why-astro/#easy-to-use) .
 
 ## Switch from Eleventy to Astro
 

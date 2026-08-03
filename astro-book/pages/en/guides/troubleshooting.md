@@ -3,7 +3,7 @@ type: Web Page
 title: Troubleshooting | Docs
 description: Need help? Stuck on something? We've got you covered.
 resource: https://docs.astro.build/en/guides/troubleshooting
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Troubleshooting
@@ -52,7 +52,7 @@ Here are some common error messages you might see in the terminal, what they mig
 
 [Section titled “Cannot use import statement outside a module”](#cannot-use-import-statement-outside-a-module)
 
-In Astro components, `<script>` tags are loaded as [JS modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) by default. If you have included the [ is:inline directive](/en/reference/directives-reference/#isinline) or any other attribute in your tag, this default behavior is removed.
+In Astro components, `<script>` tags are loaded as [JS modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) by default. If you have included the [`is:inline` directive](/en/reference/directives-reference/#isinline) or any other attribute in your tag, this default behavior is removed.
 
 **Solution**: If you have added any attributes to your `<script>` tag, you must also add the `type="module"` attribute to be able to use import statements.
 
@@ -62,7 +62,7 @@ In Astro components, `<script>` tags are loaded as [JS modules](https://develope
 
 Check to see if anyone else has reported [this issue](https://github.com/withastro/astro/issues?q=is%3Aissue+is%3Aopen+Cannot+use+import+statement)!
 
-`document` (or `window`) is not defined
+### `document` (or `window`) is not defined
 
 [Section titled “document (or window) is not defined”](#document-or-window-is-not-defined)
 
@@ -75,9 +75,9 @@ Framework components run on the server by default, so this error can occur when 
 **Solution**: Determine the code that calls `document` or `window`. If you aren’t using `document` or `window` directly and still getting this error, check to see if any packages you’re importing are meant to run on the client.
 
 - 
-If the code is in an Astro component, move it to a `<script>`tag outside of the frontmatter. This tells Astro to run this code on the client, where`document`and`window`are available.
+If the code is in an Astro component, move it to a `<script>` tag outside of the frontmatter. This tells Astro to run this code on the client, where`document` and`window` are available.
 - 
-If the code is in a framework component, try to access these objects after rendering using lifecycle methods (e.g. `useEffect()``onMounted()``onMount()`[client:](/en/reference/directives-reference/#client-directives)directive, like`client:load`, to run these lifecycle methods. You can also prevent the component from rendering on the server at all by adding the`client:only`
+If the code is in a framework component, try to access these objects after rendering using lifecycle methods (e.g. [`useEffect()`](https://react.dev/reference/react/useEffect) in React,[`onMounted()`](https://vuejs.org/api/composition-api-lifecycle.html#onmounted) in Vue, and[`onMount()`](https://svelte.dev/docs#run-time-svelte-onmount) in Svelte). Tell the framework component to hydrate client-side by using a[client:](/en/reference/directives-reference/#client-directives) directive, like`client:load` , to run these lifecycle methods. You can also prevent the component from rendering on the server at all by adding the[`client:only`](/en/reference/directives-reference/#clientonly) directive.
 
 **Status**: Expected Astro behavior, as intended.
 
@@ -101,7 +101,7 @@ Refused to execute inline script because it violates the following Content Secur
 
 This means that your site’s [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) (CSP) disallows running inline `<script>` tags, which Astro outputs by default.
 
-**Solution:** Update your CSP to include `script-src: 'unsafe-inline'` to allow inline scripts to run. Alternatively, you can use a third-party integration such as [ astro-shield](https://github.com/KindSpells/astro-shield) to generate the CSP headers for you.
+**Solution:** Update your CSP to include `script-src: 'unsafe-inline'` to allow inline scripts to run. Alternatively, you can use a third-party integration such as [`astro-shield`](https://github.com/KindSpells/astro-shield) to generate the CSP headers for you.
 
 ## Common gotchas
 
@@ -111,24 +111,22 @@ This means that your site’s [Content Security Policy](https://developer.mozill
 
 [Section titled “My component is not rendering”](#my-component-is-not-rendering)
 
-First, check to see that you have **imported the component** in your [ .astro component script](/en/basics/astro-components/#the-component-script) or 
+First, check to see that you have **imported the component** in your [`.astro` component script](/en/basics/astro-components/#the-component-script) or [`.mdx` file](/en/guides/integrations-guide/mdx/#using-components-in-mdx).
 
-[.](/en/guides/integrations-guide/mdx/#using-components-in-mdx)
-
-`.mdx` fileThen check your import statement:
+Then check your import statement:
 
 - 
-Is your import linking to the wrong place? (Check your import path.) 
+Is your import linking to the wrong place? (Check your import path.)
 - 
-Does your import have the same name as the imported component? (Check your component name and that it [follows the](/en/reference/astro-syntax/#differences-between-astro-and-jsx).)`.astro`syntax
+Does your import have the same name as the imported component? (Check your component name and that it [follows the `.astro` syntax](/en/reference/astro-syntax/#differences-between-astro-and-jsx) .)
 - 
-Have you included the extension in the import? (Check that your imported file contains an extension. e.g. `.astro`,`.md`,`.vue`,`.svelte`. Note: File extensions are**not**required for`.js(x)`and`.ts(x)`files only.)
+Have you included the extension in the import? (Check that your imported file contains an extension. e.g. `.astro` ,`.md` ,`.vue` ,`.svelte` . Note: File extensions are**not** required for`.js(x)` and`.ts(x)` files only.)
 
 ### My component is not interactive
 
 [Section titled “My component is not interactive”](#my-component-is-not-interactive)
 
-If your component is rendering (see above) but is not responding to user interaction, then you may be missing a [ client:* directive](/en/reference/directives-reference/#client-directives) to hydrate your component.
+If your component is rendering (see above) but is not responding to user interaction, then you may be missing a [`client:*` directive](/en/reference/directives-reference/#client-directives) to hydrate your component.
 
 By default, a [UI Framework component is not hydrated in the client](/en/guides/framework-components/#hydrating-interactive-components). If no `client:*` directive is provided, its HTML is rendered onto the page without JavaScript.
 
@@ -148,9 +146,9 @@ See [Astro’s integration guide](/en/guides/integrations/) for instructions on 
 
 [Section titled “Using Astro with Yarn 2+ (Berry)”](#using-astro-with-yarn-2-berry)
 
-Yarn 2+, a.k.a. Berry, uses a technique called [Plug’n’Play (PnP)](https://yarnpkg.com/features/pnp) to store and manage Node modules, which can [cause problems](https://github.com/withastro/astro/issues/3450) while initializing a new Astro project using `create astro` or while working with Astro. A workaround is to set the [ nodeLinker property](https://yarnpkg.com/configuration/yarnrc#nodeLinker) in 
+Yarn 2+, a.k.a. Berry, uses a technique called [Plug’n’Play (PnP)](https://yarnpkg.com/features/pnp) to store and manage Node modules, which can [cause problems](https://github.com/withastro/astro/issues/3450) while initializing a new Astro project using `create astro` or while working with Astro. A workaround is to set the [`nodeLinker` property](https://yarnpkg.com/configuration/yarnrc#nodeLinker) in `.yarnrc.yml` to `node-modules`:
 
-`.yarnrc.yml` to `node-modules`:### Adding dependencies to Astro in a monorepo
+### Adding dependencies to Astro in a monorepo
 
 [Section titled “Adding dependencies to Astro in a monorepo”](#adding-dependencies-to-astro-in-a-monorepo)
 

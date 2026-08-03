@@ -3,7 +3,7 @@ type: Web Page
 title: Routing | Docs
 description: An intro to routing with Astro.
 resource: https://docs.astro.build/en/guides/routing
-timestamp: '2026-07-20T08:50:58.675619+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Routing
@@ -14,15 +14,15 @@ Astro uses **file-based routing** to generate your build URLs based on the file 
 
 [Section titled “Navigating between pages”](#navigating-between-pages)
 
-Astro uses standard HTML [ <a> elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a) to navigate between routes. There is no framework-specific 
+Astro uses standard HTML [`<a>` elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a) to navigate between routes. There is no framework-specific `<Link>` component provided.
 
-`<Link>` component provided.## Static routes
+## Static routes
 
 [Section titled “Static routes”](#static-routes)
 
 `.astro` [page components](/en/basics/astro-pages/) as well as Markdown and MDX Files (`.md`, `.mdx`) within the `src/pages/` directory **automatically become pages on your website**. Each page’s route corresponds to its path and filename within the `src/pages/` directory.
 
-There is no separate “routing config” to maintain in an Astro project! When you add a file to the `src/pages/` directory, a new route is automatically created for you. In static builds, you can customize the file output format using the [ build.format](/en/reference/configuration-reference/#buildformat) configuration option.
+There is no separate “routing config” to maintain in an Astro project! When you add a file to the `src/pages/` directory, a new route is automatically created for you. In static builds, you can customize the file output format using the [`build.format`](/en/reference/configuration-reference/#buildformat) configuration option.
 
 ## Dynamic routes
 
@@ -52,11 +52,12 @@ Parameters can be included in separate parts of the path. For example, the file 
 
 [Section titled “Decoding params”](#decoding-params)
 
-`params` returned by a `getStaticPaths()` function are not decoded. Use [ decodeURI()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/decodeURI) when you need to decode parameter values.
+`params` returned by a `getStaticPaths()` function are not decoded. Use [`decodeURI()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/decodeURI) when you need to decode parameter values.
 
 [.](/en/reference/routing-reference/#getstaticpaths)
 
-`getStaticPaths()`**Related recipe:**
+`getStaticPaths()`
+**Related recipe:**
 
 [Add i18n features](/en/recipes/i18n/)
 
@@ -76,9 +77,9 @@ In this example, a request for `/withastro/astro/tree/main/docs/public/favicon.s
 
 [Section titled “Example: Dynamic pages at multiple levels”](#example-dynamic-pages-at-multiple-levels)
 
-In the following example, a rest parameter (`[...slug]`) and the [ props](/en/reference/routing-reference/#data-passing-with-props) feature of 
+In the following example, a rest parameter (`[...slug]`) and the [`props`](/en/reference/routing-reference/#data-passing-with-props) feature of `getStaticPaths()` generate pages for slugs of different depths.
 
-`getStaticPaths()` generate pages for slugs of different depths.### On-demand dynamic routes
+### On-demand dynamic routes
 
 [Section titled “On-demand dynamic routes”](#on-demand-dynamic-routes)
 
@@ -90,7 +91,7 @@ This page will be served for any value of `resource` and `id`: `resources/users/
 
 #### Modifying the `[...slug]` example for SSR
 
-[Section titled “Modifying the [...slug] example for SSR”](#modifying-the-slug-example-for-ssr)
+[Section titled “Modifying the \[...slug\] example for SSR”](#modifying-the-slug-example-for-ssr)
 
 Because SSR pages can’t use `getStaticPaths()`, they can’t receive props. The [previous example](#example-dynamic-pages-at-multiple-levels) can be adapted for SSR mode by looking up the value of the `slug` param in an object. If the route is at the root (“/”), the `slug` param will be `undefined`. If the value doesn’t exist in the object, we redirect to a 404 page.
 
@@ -111,7 +112,7 @@ You can define rules to [redirect users to permanently-moved pages](#configured-
 	
 	
 
-You can specify a mapping of permanent redirects in your Astro config with the [ redirects](/en/reference/configuration-reference/#redirects) value.
+You can specify a mapping of permanent redirects in your Astro config with the [`redirects`](/en/reference/configuration-reference/#redirects) value.
 
 For internal redirects, this is a mapping of an old route path to the new route. As of Astro v5.2.0, it is also possible to redirect to external URLs that start with `http` or `https` and [can be parsed](https://developer.mozilla.org/en-US/docs/Web/API/URL/canParse_static):
 
@@ -142,7 +143,7 @@ Because Astro uses [HTML streaming](/en/guides/on-demand-rendering/#html-streami
 	
 	
 
-A rewrite allows you to serve a different route without redirecting the browser to a different page. The browser will show the original address in the URL bar, but will instead display the content of the URL provided to [ Astro.rewrite()](/en/reference/api-reference/#rewrite).
+A rewrite allows you to serve a different route without redirecting the browser to a different page. The browser will show the original address in the URL bar, but will instead display the content of the URL provided to [`Astro.rewrite()`](/en/reference/api-reference/#rewrite).
 
 For content that has permanently moved, or to direct your user to a different page with a new URL (e.g. a user dashboard after logging in), use a [redirect](#redirects) instead.
 
@@ -164,26 +165,27 @@ Before displaying the content from the specified rewrite path, the function `Ast
 
 [for more information.](/en/reference/api-reference/#rewrite)
 
-`Astro.rewrite()` API reference## Route Priority Order
+`Astro.rewrite()` API reference
+## Route Priority Order
 
 [Section titled “Route Priority Order”](#route-priority-order)
 
 It’s possible for multiple defined routes to attempt to build the same URL path. For example, all of these routes could build `/posts/create`:
 
-- ## Directorysrc/pages/- […slug].astro
-- ## Directoryposts/- create.astro
-- [page].astro
-- [pid].ts
-- […slug].astro
- 
- 
+- ## Directorysrc/pages/
+  - […slug].astro
+  - ## Directoryposts/
+    - create.astro
+    - [page].astro
+    - [pid].ts
+    - […slug].astro
 
 Astro needs to know which route should be used to build the page. To do so, it sorts them according to the following rules in order:
 
 - Astro [reserved routes](#reserved-routes)
-- Routes with more path segments will take precedence over less specific routes. In the example above, all routes under `/posts/`take precedence over`/[...slug].astro`at the root.
-- Static routes without path parameters will take precedence over dynamic routes. E.g. `/posts/create.astro`takes precedence over all the other routes in the example.
-- Dynamic routes using named parameters take precedence over rest parameters. E.g. `/posts/[page].astro`takes precedence over`/posts/[...slug].astro`.
+- Routes with more path segments will take precedence over less specific routes. In the example above, all routes under `/posts/` take precedence over`/[...slug].astro` at the root.
+- Static routes without path parameters will take precedence over dynamic routes. E.g. `/posts/create.astro` takes precedence over all the other routes in the example.
+- Dynamic routes using named parameters take precedence over rest parameters. E.g. `/posts/[page].astro` takes precedence over`/posts/[...slug].astro` .
 - Pre-rendered dynamic routes take precedence over server dynamic routes.
 - Endpoints take precedence over pages.
 - File-based routes take precedence over redirects.
@@ -191,11 +193,11 @@ Astro needs to know which route should be used to build the page. To do so, it s
 
 Given the example above, here are a few examples of how the rules will match a requested URL to the route used to build the HTML:
 
-- `pages/posts/create.astro`- Will build only- `/posts/create`
-- `pages/posts/[pid].ts`- Will build- `/posts/abc`,- `/posts/xyz`, etc. But not- `/posts/create`
-- `pages/posts/[page].astro`- Will build- `/posts/1`,- `/posts/2`, etc. But not- `/posts/create`,- `/posts/abc`nor- `/posts/xyz`
-- `pages/posts/[...slug].astro`- Will build- `/posts/1/2`,- `/posts/a/b/c`, etc. But not- `/posts/create`,- `/posts/1`,- `/posts/abc`, etc.
-- `pages/[...slug].astro`- Will build- `/abc`,- `/xyz`,- `/abc/xyz`, etc. But not- `/posts/create`,- `/posts/1`,- `/posts/abc`, etc.
+- `pages/posts/create.astro` - Will build only`/posts/create`
+- `pages/posts/[pid].ts` - Will build`/posts/abc` ,`/posts/xyz` , etc. But not`/posts/create`
+- `pages/posts/[page].astro` - Will build`/posts/1` ,`/posts/2` , etc. But not`/posts/create` ,`/posts/abc` nor`/posts/xyz`
+- `pages/posts/[...slug].astro` - Will build`/posts/1/2` ,`/posts/a/b/c` , etc. But not`/posts/create` ,`/posts/1` ,`/posts/abc` , etc.
+- `pages/[...slug].astro` - Will build`/abc` ,`/xyz` ,`/abc/xyz` , etc. But not`/posts/create` ,`/posts/1` ,`/posts/abc` , etc.
 
 ### Reserved routes
 
@@ -203,9 +205,9 @@ Given the example above, here are a few examples of how the rules will match a r
 
 Internal routes take priority over any user-defined or integration-defined routes as they are required for Astro features to work. The following are Astro’s reserved routes:
 
-- `_astro/`: Serves all of the static assets to the client, including CSS documents, bundled client scripts, optimized images, and any Vite assets.
-- `_server_islands/`: Serves the dynamic components deferred into a- [server island](/en/guides/server-islands/).
-- `_actions/`: Serves any defined- [actions](/en/guides/actions/).
+- `_astro/` : Serves all of the static assets to the client, including CSS documents, bundled client scripts, optimized images, and any Vite assets.
+- `_server_islands/` : Serves the dynamic components deferred into a[server island](/en/guides/server-islands/) .
+- `_actions/` : Serves any defined[actions](/en/guides/actions/) .
 
 ## Pagination
 
@@ -219,8 +221,8 @@ You can use the `paginate()` function to generate these pages for an array of va
 
 This generates the following pages, with 2 items to a page:
 
-- `/astronauts/1`- Page 1: Displays “Neil Armstrong” and “Buzz Aldrin”
-- `/astronauts/2`- Page 2: Displays “Sally Ride” and “John Glenn”
+- `/astronauts/1` - Page 1: Displays “Neil Armstrong” and “Buzz Aldrin”
+- `/astronauts/2` - Page 2: Displays “Sally Ride” and “John Glenn”
 
 ### The `page` prop
 
@@ -232,7 +234,8 @@ The following example displays current information for the page along with links
 
 [the pagination](/en/reference/routing-reference/#the-pagination-page-prop).
 
-`page` prop### Nested Pagination
+`page` prop
+### Nested Pagination
 
 [Section titled “Nested Pagination”](#nested-pagination)
 
@@ -240,10 +243,10 @@ A more advanced use-case for pagination is **nested pagination.** This is when p
 
 For example, if you want to group your paginated Markdown posts by some tag, you would use nested pagination by creating a `/src/pages/[tag]/[page].astro` page that would match the following URLs:
 
-- `/red/1`(tag=red)
-- `/red/2`(tag=red)
-- `/blue/1`(tag=blue)
-- `/green/1`(tag=green)
+- `/red/1` (tag=red)
+- `/red/2` (tag=red)
+- `/blue/1` (tag=blue)
+- `/green/1` (tag=green)
 
 Nested pagination works by returning an array of `paginate()` results from `getStaticPaths()`, one for each grouping.
 
@@ -259,16 +262,16 @@ You can use this to temporarily disable pages, and also to put tests, utilities,
 
 In this example, only `src/pages/index.astro` and `src/pages/projects/project1.md` will be built as page routes and HTML files.
 
-- ## Directorysrc/pages/- ## Directory_hidden-directory/- page1.md
-- page2.md
- 
-- _hidden-page.astro
-- **index.astro**
-- ## Directoryprojects/- _SomeComponent.astro
-- _utils.js
-- **project1.md**
- 
- 
+- ## Directorysrc/pages/
+  - ## Directory_hidden-directory/
+    - page1.md
+    - page2.md
+  - _hidden-page.astro
+  - **index.astro**
+  - ## Directoryprojects/
+    - _SomeComponent.astro
+    - _utils.js
+    - **project1.md**
 
 ## Advanced routing
 
@@ -295,7 +298,7 @@ Astro supports several file formats for its advanced routing entrypoint: `.ts`, 
 
 [Section titled “Changing the entrypoint filename”](#changing-the-entrypoint-filename)
 
-By default, Astro looks for `src/fetch.ts` as the advanced routing entrypoint. You can change this by setting the [ fetchFile](/en/reference/configuration-reference/#fetchfile) option in your Astro config file.
+By default, Astro looks for `src/fetch.ts` as the advanced routing entrypoint. You can change this by setting the [`fetchFile`](/en/reference/configuration-reference/#fetchfile) option in your Astro config file.
 
 The following example tells Astro to look for `src/handler.ts` instead of `src/fetch.ts`:
 
@@ -309,36 +312,32 @@ The main benefit of advanced routing is the ability to insert custom logic into 
 
 You can do this in two ways:
 
-- Use the `astro()`handler
-- Compose individual handlers from `astro/fetch``astro/hono`
+- Use the [`astro()` handler](/en/reference/modules/astro-fetch/#astro) to run the full built-in pipeline, and add logic before or after it.
+- Compose individual handlers from [`astro/fetch`](/en/reference/modules/astro-fetch/) or[`astro/hono`](/en/reference/modules/astro-hono/) for more control over execution order.
 
 #### Running the full pipeline with `astro()`
 
 [Section titled “Running the full pipeline with astro()”](#running-the-full-pipeline-with-astro)
 
-Use [ astro()](/en/reference/modules/astro-fetch/#astro) when you want to keep Astro’s built-in routing behavior, but need custom logic around it. This approach preserves the default pipeline order and lets you add pre-processing and post-processing in one place. For many use cases, such as adding auth guards, request logging, and custom headers, 
+Use [`astro()`](/en/reference/modules/astro-fetch/#astro) when you want to keep Astro’s built-in routing behavior, but need custom logic around it. This approach preserves the default pipeline order and lets you add pre-processing and post-processing in one place. For many use cases, such as adding auth guards, request logging, and custom headers, `astro()` is all you need.
 
-`astro()` is all you need.The following example checks if a user can access a dashboard before running the Astro pipeline, and adds a custom header to the response once Astro has finished running:
+The following example checks if a user can access a dashboard before running the Astro pipeline, and adds a custom header to the response once Astro has finished running:
 
 #### Composing individual handlers
 
 [Section titled “Composing individual handlers”](#composing-individual-handlers)
 
-When you need more control over the pipeline execution order, or want to omit certain features, you can compose individual handler functions from [ astro/fetch](/en/reference/modules/astro-fetch/). Each handler operates on a 
+When you need more control over the pipeline execution order, or want to omit certain features, you can compose individual handler functions from [`astro/fetch`](/en/reference/modules/astro-fetch/). Each handler operates on a [`FetchState` object](/en/reference/modules/astro-fetch/#fetchstate) that tracks per-request data, such as the matched route, cookies, and session. You can call handlers in any order and insert custom logic between stages.
 
-[that tracks per-request data, such as the matched route, cookies, and session. You can call handlers in any order and insert custom logic between stages.](/en/reference/modules/astro-fetch/#fetchstate)
-
-`FetchState` objectThe following example runs only the handlers used in the project and adds custom logic after actions and before page rendering:
+The following example runs only the handlers used in the project and adds custom logic after actions and before page rendering:
 
 ### Using with Hono
 
 [Section titled “Using with Hono”](#using-with-hono)
 
-Astro also provides Hono-compatible wrappers for all handler functions via [ astro/hono](/en/reference/modules/astro-hono/). If you prefer to use 
+Astro also provides Hono-compatible wrappers for all handler functions via [`astro/hono`](/en/reference/modules/astro-hono/). If you prefer to use [Hono](https://hono.dev/) as your routing framework, you can export a Hono app from `src/fetch.ts`:
 
-[Hono](https://hono.dev/)as your routing framework, you can export a Hono app from
-
-`src/fetch.ts`:[Contribute](/en/contribute/)
+[Contribute](/en/contribute/)
 
 [Community](https://astro.build/chat)
 

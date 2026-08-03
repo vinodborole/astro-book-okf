@@ -3,7 +3,7 @@ type: Web Page
 title: On-demand rendering | Docs
 description: Generate server-rendered pages and routes on demand with an adapter.
 resource: https://docs.astro.build/en/guides/on-demand-rendering
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # On-demand rendering
@@ -52,13 +52,11 @@ Then, add `export const prerender = false` at the top of the individual page or 
 
 The following example shows opting out of prerendering in order to display a random number each time the endpoint is hit:
 
-`'server'` mode
+### `'server'` mode
 
 [Section titled “'server' mode”](#server-mode)
 
-For a **highly dynamic app**, after adding an adapter, you can [set your build output configuration to  output: 'server'](/en/reference/configuration-reference/#output) to 
-
-**server-render all your pages by default**. This is the equivalent of opting out of prerendering on every page.
+For a **highly dynamic app**, after adding an adapter, you can [set your build output configuration to `output: 'server'`](/en/reference/configuration-reference/#output) to **server-render all your pages by default**. This is the equivalent of opting out of prerendering on every page.
 
 Then, if needed, you can choose to prerender any individual pages that do not require a server to execute, such as a privacy policy or about page.
 
@@ -70,7 +68,8 @@ The `'server'` output mode does not bring any additional functionality. It only 
 
 [in the configuration reference.](/en/reference/configuration-reference/#output)
 
-`output` setting## On-demand rendering features
+`output` setting
+## On-demand rendering features
 
 [Section titled “On-demand rendering features”](#on-demand-rendering-features)
 
@@ -94,19 +93,17 @@ A page or API endpoint rendered on demand can check, set, get, and delete cookie
 
 The example below updates the value of a cookie for a page view counter:
 
-See more details about [ Astro.cookies and the AstroCookie type](/en/reference/api-reference/#cookies) in the API reference.
+See more details about [`Astro.cookies` and the `AstroCookie` type](/en/reference/api-reference/#cookies) in the API reference.
 
-`Response`
+### `Response`
 
 [Section titled “Response”](#response)
 
-[ Astro.response](/en/reference/api-reference/#response) is a standard 
+[`Astro.response`](/en/reference/api-reference/#response) is a standard [`ResponseInit`](https://developer.mozilla.org/en-US/docs/Web/API/Response/Response#options) object. It can be used to set the response status and headers.
 
-[object. It can be used to set the response status and headers.](https://developer.mozilla.org/en-US/docs/Web/API/Response/Response#options)
+The example below sets a response status and status text for a product page when the product does not exist:
 
-`ResponseInit`The example below sets a response status and status text for a product page when the product does not exist:
-
-`Astro.response.headers`
+#### `Astro.response.headers`
 
 [Section titled “Astro.response.headers”](#astroresponseheaders)
 
@@ -116,11 +113,11 @@ You can set headers using the `Astro.response.headers` object:
 
 [Section titled “Return a Response object”](#return-a-response-object)
 
-You can also return a [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response) object directly from any page using on-demand rendering either manually or with [ Astro.redirect](/en/reference/api-reference/#redirect).
+You can also return a [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response) object directly from any page using on-demand rendering either manually or with [`Astro.redirect`](/en/reference/api-reference/#redirect).
 
 The example below looks up an ID in the database on a dynamic page and either it returns a 404 if the product does not exist, or it redirects the user to another page if the product is no longer available, or it displays the product:
 
-`Request`
+### `Request`
 
 [Section titled “Request”](#request)
 
@@ -128,21 +125,19 @@ The example below looks up an ID in the database on a dynamic page and either it
 
 You can access additional information from this object for pages that are not statically generated.
 
-`Astro.request.headers`
+#### `Astro.request.headers`
 
 [Section titled “Astro.request.headers”](#astrorequestheaders)
 
-The headers for the request are available on `Astro.request.headers`. This works like the browser’s [ Request.headers](https://developer.mozilla.org/en-US/docs/Web/API/Request/headers). It is a 
+The headers for the request are available on `Astro.request.headers`. This works like the browser’s [`Request.headers`](https://developer.mozilla.org/en-US/docs/Web/API/Request/headers). It is a [Headers](https://developer.mozilla.org/en-US/docs/Web/API/Headers) object where you can retrieve headers such as the cookie.
 
-[Headers](https://developer.mozilla.org/en-US/docs/Web/API/Headers)object where you can retrieve headers such as the cookie.
-
-`Astro.request.method`
+#### `Astro.request.method`
 
 [Section titled “Astro.request.method”](#astrorequestmethod)
 
-The HTTP method used in the request is available as `Astro.request.method`. This works like the browser’s [ Request.method](https://developer.mozilla.org/en-US/docs/Web/API/Request/method). It returns the string representation of the HTTP method used in the request.
+The HTTP method used in the request is available as `Astro.request.method`. This works like the browser’s [`Request.method`](https://developer.mozilla.org/en-US/docs/Web/API/Request/method). It returns the string representation of the HTTP method used in the request.
 
-See more details about [ Astro.request](/en/reference/api-reference/#request) in the API reference.
+See more details about [`Astro.request`](/en/reference/api-reference/#request) in the API reference.
 
 ### Server Endpoints
 

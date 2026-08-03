@@ -4,7 +4,7 @@ title: Customize file names in the build output | Docs
 description: Learn how to change the default naming pattern for your built assets
   like JavaScript, CSS, and images in Astro using Vite's Rollup options.
 resource: https://docs.astro.build/en/recipes/customizing-output-filenames
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Customize file names in the build output
@@ -21,32 +21,33 @@ This recipe configures `vite.environments.client.build.rollupOptions` to output 
 
 - JavaScript entry files (e.g. scripts directly associated with your pages or layouts): `dist/js/[name]-[hash].js`
 - JavaScript code-split chunks (e.g. dynamically imported components or shared modules): `dist/js/chunks/[name]-[hash].js`
-- Other assets (e.g. CSS, images, fonts): `dist/static/[name]-[hash][extname]`(e.g.`dist/static/styles-a1b2c3d4.css`,`dist/static/logo-e5f6g7h8.svg`)
+- Other assets (e.g. CSS, images, fonts): `dist/static/[name]-[hash][extname]` (e.g.`dist/static/styles-a1b2c3d4.css` ,`dist/static/logo-e5f6g7h8.svg` )
 
-- 
-Add Vite Rollup Output Options. Modify your `astro.config.mjs`to include the following`vite.environments.client.build.rollupOptions.output`configuration. This is where you can define the custom naming patterns for your assets using Rollup’s`entryFileNames``chunkFileNames``assetFileNames`This example uses the following file name placeholders: - `[name]`: The original name of the file (without the extension and path).
-- `[hash]`: A content-based hash generated for the file, crucial for cache busting. You can also specify a length, e.g.- `[hash:8]`. This ensures that when you update an asset, the filename changes, forcing browsers to download the new version instead of serving a stale cached version.
-- `[extname]`: The original file extension, including the leading dot (e.g.- `.js`,- `.css`,- `.svg`).
- For a full list of available placeholders and advanced patterns for these options, refer to the [Rollup configuration documentation](https://rollupjs.org/configuration-options/).
-- 
-Build your project. Since these filename customizations apply to the production build output only, you will need to run your project’s build command: 
-- 
-After the build completes, inspect your [output directory](/en/reference/configuration-reference/#outdir)(`dist/`by default).Verify that the build assets from your project `src`are named and organized according to the new patterns. (Files from[your](/en/basics/project-structure/#public)are copied directly to the output directory and are not affected by these Rollup naming options.)`public/`directoryDepending on your project’s specific contents, your build folder will now look something like this: - ## Directorydist/- ## Directoryjs/- index-a1b2c3d4.js
-- ## Directorychunks/- common-e5f6g7h8.js
- 
- 
-- ## Directoryimg/- logo-i9j0k1l2.png
- 
-- ## Directoryfonts/- myfont-q2w3e4r5.woff2
- 
-- ## Directorystatic_assets/- styles-m3n4o5p6.css
- 
-- index.html
-- ## Directoryabout/- index.html
- 
-- … (other HTML files and public assets)
- 
- 
+1. 
+Add Vite Rollup Output Options. Modify your `astro.config.mjs` to include the following`vite.environments.client.build.rollupOptions.output` configuration. This is where you can define the custom naming patterns for your assets using Rollup’s[`entryFileNames`](https://rollupjs.org/configuration-options/#output-entryfilenames) ,[`chunkFileNames`](https://rollupjs.org/configuration-options/#output-chunkfilenames) , and[`assetFileNames`](https://rollupjs.org/configuration-options/#output-assetfilenames) :This example uses the following file name placeholders: 
+  - `[name]` : The original name of the file (without the extension and path).
+  - `[hash]` : A content-based hash generated for the file, crucial for cache busting. You can also specify a length, e.g.`[hash:8]` . This ensures that when you update an asset, the filename changes, forcing browsers to download the new version instead of serving a stale cached version.
+  - `[extname]` : The original file extension, including the leading dot (e.g.`.js` ,`.css` ,`.svg` ).
+ For a full list of available placeholders and advanced patterns for these options, refer to the [Rollup configuration documentation](https://rollupjs.org/configuration-options/) .
+2. 
+Build your project. Since these filename customizations apply to the production build output only, you will need to run your project’s build command:
+3. 
+After the build completes, inspect your [output directory](/en/reference/configuration-reference/#outdir) (`dist/` by default).Verify that the build assets from your project `src` are named and organized according to the new patterns. (Files from[your `public/` directory](/en/basics/project-structure/#public) are copied directly to the output directory and are not affected by these Rollup naming options.)Depending on your project’s specific contents, your build folder will now look something like this: 
+  - ## Directorydist/
+    - ## Directoryjs/
+      - index-a1b2c3d4.js
+      - ## Directorychunks/
+        - common-e5f6g7h8.js
+    - ## Directoryimg/
+      - logo-i9j0k1l2.png
+    - ## Directoryfonts/
+      - myfont-q2w3e4r5.woff2
+    - ## Directorystatic_assets/
+      - styles-m3n4o5p6.css
+    - index.html
+    - ## Directoryabout/
+      - index.html
+    - … (other HTML files and public assets)
 
 [Contribute](/en/contribute/)
 

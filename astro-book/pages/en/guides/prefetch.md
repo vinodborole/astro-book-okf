@@ -3,7 +3,7 @@ type: Web Page
 title: Prefetch | Docs
 description: Prefetch links for snappier navigation between pages.
 resource: https://docs.astro.build/en/guides/prefetch
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Prefetch
@@ -32,31 +32,31 @@ The `prefetch` config also accepts an option object to further customize prefetc
 
 Astro supports 4 prefetch strategies for various use cases:
 
-- `hover`(default): Prefetch when you hover over or focus on the link.
-- `tap`: Prefetch just before you click on the link.
-- `viewport`: Prefetch as the links enter the viewport.
-- `load`: Prefetch all links on the page after the page is loaded.
+- `hover` (default): Prefetch when you hover over or focus on the link.
+- `tap` : Prefetch just before you click on the link.
+- `viewport` : Prefetch as the links enter the viewport.
+- `load` : Prefetch all links on the page after the page is loaded.
 
 You can specify a strategy for an individual link by passing it to the `data-astro-prefetch` attribute:
 
 Each strategy is fine-tuned to only prefetch when needed and save your users’ bandwidth. For example:
 
-- If a visitor is using [data saver mode](https://developer.mozilla.org/en-US/docs/Web/API/NetworkInformation/saveData)or has a[slow connection](https://developer.mozilla.org/en-US/docs/Web/API/NetworkInformation/effectiveType), prefetch will fallback to the`tap`strategy.
+- If a visitor is using [data saver mode](https://developer.mozilla.org/en-US/docs/Web/API/NetworkInformation/saveData) or has a[slow connection](https://developer.mozilla.org/en-US/docs/Web/API/NetworkInformation/effectiveType) , prefetch will fallback to the`tap` strategy.
 - Quickly hovering or scrolling over links will not prefetch them.
 
 ### Default prefetch strategy
 
 [Section titled “Default prefetch strategy”](#default-prefetch-strategy)
 
-The default prefetch strategy when adding the `data-astro-prefetch` attribute is `hover`. To change it, you can configure [ prefetch.defaultStrategy](/en/reference/configuration-reference/#prefetchdefaultstrategy) in your 
+The default prefetch strategy when adding the `data-astro-prefetch` attribute is `hover`. To change it, you can configure [`prefetch.defaultStrategy`](/en/reference/configuration-reference/#prefetchdefaultstrategy) in your `astro.config.mjs` file:
 
-`astro.config.mjs` file:### Prefetch all links by default
+### Prefetch all links by default
 
 [Section titled “Prefetch all links by default”](#prefetch-all-links-by-default)
 
-If you want to prefetch all links, including those without the `data-astro-prefetch` attribute, you can set [ prefetch.prefetchAll](/en/reference/configuration-reference/#prefetchprefetchall) to 
+If you want to prefetch all links, including those without the `data-astro-prefetch` attribute, you can set [`prefetch.prefetchAll`](/en/reference/configuration-reference/#prefetchprefetchall) to `true`:
 
-`true`:You can then opt-out of prefetching for individual links by setting `data-astro-prefetch="false"`:
+You can then opt-out of prefetching for individual links by setting `data-astro-prefetch="false"`:
 
 The default prefetch strategy for all links can be changed with `prefetch.defaultStrategy` as shown in the [Default prefetch strategy section](#default-prefetch-strategy).
 
@@ -70,7 +70,7 @@ The `prefetch()` API includes the same [data saver mode](https://developer.mozil
 
 To ignore slow connection detection, you can use the `ignoreSlowConnection` option:
 
-`eagerness`
+### `eagerness`
 
 [Section titled “eagerness”](#eagerness)
 
@@ -83,13 +83,13 @@ To ignore slow connection detection, you can use the `ignoreSlowConnection` opti
 `astro@5.6.0`
 	
 	
-With the experimental [ clientPrerender](/en/reference/experimental-flags/client-prerender/) flag enabled, you can use the 
+With the experimental [`clientPrerender`](/en/reference/experimental-flags/client-prerender/) flag enabled, you can use the `eagerness` option on `prefetch()` to suggest to the browser how eagerly it should prefetch/prerender link targets.
 
-`eagerness` option on `prefetch()` to suggest to the browser how eagerly it should prefetch/prerender link targets.This follows the same API described in the [Speculation Rules API](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/speculationrules#eagerness) and defaults to `immediate` (the most eager option). In decreasing order of eagerness, the other options are `eager`, `moderate`, and `conservative`.
+This follows the same API described in the [Speculation Rules API](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/speculationrules#eagerness) and defaults to `immediate` (the most eager option). In decreasing order of eagerness, the other options are `eager`, `moderate`, and `conservative`.
 
 The `eagerness` option allows you to balance the benefit of reduced wait times against bandwidth, memory, and CPU costs for your site visitors. Some browsers, such as Chrome, have [limits in place to guard against over-speculating](https://developer.chrome.com/blog/speculation-rules-improvements#chrome-limits)  (prerendering/prefetching too many links).
 
-To use `prefetch()` programmatically with large sets of links, you can set `eagerness: 'moderate'` to take advantage of [First In, First Out (FIFO)](https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)) strategies and browser heuristics to let the browser decide when to prerender/prefetch them and in what order:
+To use `prefetch()` programmatically with large sets of links, you can set `eagerness: 'moderate'` to take advantage of [First In, First Out (FIFO)](<https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)>) strategies and browser heuristics to let the browser decide when to prerender/prefetch them and in what order:
 
 Make sure to only import `prefetch()` in client-side scripts as it relies on browser APIs.
 
@@ -97,9 +97,7 @@ Make sure to only import `prefetch()` in client-side scripts as it relies on bro
 
 [Section titled “Using with View Transitions”](#using-with-view-transitions)
 
-When you use [Astro’s  <ClientRouter />](/en/guides/view-transitions/#enabling-view-transitions-spa-mode)  on a page, prefetching will also be enabled by default. It sets a default configuration of 
-
-`{ prefetchAll: true }` which enables [prefetching for all links](#prefetch-all-links-by-default)on the page.
+When you use [Astro’s `<ClientRouter />`](/en/guides/view-transitions/#enabling-view-transitions-spa-mode)  on a page, prefetching will also be enabled by default. It sets a default configuration of `{ prefetchAll: true }` which enables [prefetching for all links](#prefetch-all-links-by-default) on the page.
 
 You can customize the prefetch configuration in `astro.config.mjs` to override the default. For example:
 
@@ -107,11 +105,9 @@ You can customize the prefetch configuration in `astro.config.mjs` to override t
 
 [Section titled “Browser support”](#browser-support)
 
-Astro’s prefetching uses [ <link rel="prefetch">](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/prefetch) if supported by the browser, and falls back to the 
+Astro’s prefetching uses [`<link rel="prefetch">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/prefetch) if supported by the browser, and falls back to the [`fetch()` API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) otherwise.
 
-[otherwise.](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
-
-`fetch()` APIThe most common browsers support Astro’s prefetching with subtle differences:
+The most common browsers support Astro’s prefetching with subtle differences:
 
 ### Chrome
 
@@ -119,29 +115,25 @@ Astro’s prefetching uses [ <link rel="prefetch">](https://developer.mozilla.or
 
 Chrome supports `<link rel="prefetch">`. Prefetching works as intended.
 
-It also fully supports `<script type="speculationrules">` from the [Speculation Rules API](https://developer.mozilla.org/en-US/docs/Web/API/Speculation_Rules_API), which can be used to further describe [prefetching strategies and rules](#eagerness), enhancing user experience for your Chrome users. You’ll need to enable [ clientPrerender](/en/reference/experimental-flags/client-prerender/) experiment to utilize this functionality with 
+It also fully supports `<script type="speculationrules">` from the [Speculation Rules API](https://developer.mozilla.org/en-US/docs/Web/API/Speculation_Rules_API), which can be used to further describe [prefetching strategies and rules](#eagerness), enhancing user experience for your Chrome users. You’ll need to enable [`clientPrerender`](/en/reference/experimental-flags/client-prerender/) experiment to utilize this functionality with `prefetch()`
 
-`prefetch()`### Firefox
+### Firefox
 
 [Section titled “Firefox”](#firefox)
 
 Firefox supports `<link rel="prefetch">` but may display errors or fail entirely:
 
-- Without an explicit cache header (e.g. `Cache-Control``Expires``NS_BINDING_ABORTED`.
-- Even in the event of an error, if the response has a proper `ETag`
+- Without an explicit cache header (e.g. [`Cache-Control`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control) or[`Expires`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Expires) ), prefetching will error with`NS_BINDING_ABORTED` .
+- Even in the event of an error, if the response has a proper [`ETag`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag) header, it will be re-used on navigation.
 - Otherwise, if it errors with no other cache headers, the prefetch will not work.
 
 ### Safari
 
 [Section titled “Safari”](#safari)
 
-Safari does not support `<link rel="prefetch">` and will fall back to the `fetch()` API which requires cache headers (e.g. [ Cache-Control](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control), 
+Safari does not support `<link rel="prefetch">` and will fall back to the `fetch()` API which requires cache headers (e.g. [`Cache-Control`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control), [`Expires`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Expires), and [`ETag`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag)) to be set. Otherwise, the prefetch will not work.
 
-[, and](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Expires)
-
-`Expires`[) to be set. Otherwise, the prefetch will not work.](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag)
-
-`ETag`**Edge case:** `ETag` headers do not work in private windows.
+**Edge case:** `ETag` headers do not work in private windows.
 
 ### Recommendations
 
@@ -159,17 +151,17 @@ For dynamic and server-side rendered pages, set the appropriate cache headers yo
 
 The `@astrojs/prefetch` integration was deprecated in v3.5.0 and is no longer maintained. Use the following instructions to migrate to Astro’s built-in prefetching which replaces this integration.
 
-- 
-Remove the `@astrojs/prefetch`integration and enable the`prefetch`config in`astro.config.mjs`:
-- 
-Convert from `@astrojs/prefetch`’s configuration options:- 
-The deprecated integration used the `selector`config option to specify which links should be prefetched upon entering the viewport.Add `data-astro-prefetch="viewport"`to these individual links instead.
-- 
-The deprecated integration used the `intentSelector`config option to specify which links should be prefetched when they were hovered over or focused.Add `data-astro-prefetch`or`data-astro-prefetch="hover"`to these individual links instead:
-- 
-The `throttles`option from`@astrojs/prefetch`is no longer needed as the new prefetch feature will automatically schedule and prefetch optimally.
- 
-- 
+1. 
+Remove the `@astrojs/prefetch` integration and enable the`prefetch` config in`astro.config.mjs` :
+2. 
+Convert from `@astrojs/prefetch` ’s configuration options:
+  - 
+The deprecated integration used the `selector` config option to specify which links should be prefetched upon entering the viewport.Add `data-astro-prefetch="viewport"` to these individual links instead.
+  - 
+The deprecated integration used the `intentSelector` config option to specify which links should be prefetched when they were hovered over or focused.Add `data-astro-prefetch` or`data-astro-prefetch="hover"` to these individual links instead:
+  - 
+The `throttles` option from`@astrojs/prefetch` is no longer needed as the new prefetch feature will automatically schedule and prefetch optimally.
+3. 
 
 [Contribute](/en/contribute/)
 

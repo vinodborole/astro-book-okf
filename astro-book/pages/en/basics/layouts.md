@@ -3,7 +3,7 @@ type: Web Page
 title: Layouts | Docs
 description: An introduction to layouts in Astro.
 resource: https://docs.astro.build/en/basics/layouts
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Layouts
@@ -12,14 +12,14 @@ timestamp: '2026-07-13T09:18:12.222139+00:00'
 
 We conventionally use the term “layout” for Astro components that provide common UI elements shared across pages such as headers, navigation bars, and footers. A typical Astro layout component provides [Astro, Markdown or MDX pages](/en/basics/astro-pages/) with:
 
-- a **page shell**(`<html>`,`<head>`and`<body>`tags)
-- a `<slot />`
+- a **page shell** (`<html>` ,`<head>` and`<body>` tags)
+- a [**`<slot />`**](/en/basics/astro-components/#slots) to specify where individual page content should be injected.
 
 But, there is nothing special about a layout component! They can [accept props](/en/basics/astro-components/#component-props) and [import and use other components](/en/basics/astro-components/#component-structure) like any other Astro component. They can include [UI frameworks components](/en/guides/framework-components/) and [client-side scripts](/en/guides/client-side-scripts/). They do not even have to provide a full page shell, and can instead be used as partial UI templates.
 
 However, if a layout component does contain a page shell, its `<html>` element must be the parent of all other elements in the component.
 
-Layout components are commonly placed in a `src/layouts` directory in your project for organization, but this is not a requirement; you can choose to place them anywhere in your project. You can even colocate layout components alongside your pages by [prefixing the layout names with  _](/en/guides/routing/#excluding-pages).
+Layout components are commonly placed in a `src/layouts` directory in your project for organization, but this is not a requirement; you can choose to place them anywhere in your project. You can even colocate layout components alongside your pages by [prefixing the layout names with `_`](/en/guides/routing/#excluding-pages).
 
 ## Sample Layout
 
@@ -39,38 +39,38 @@ Any Astro layout can be modified to introduce type safety & autocompletion by pr
 
 Page layouts are especially useful for individual Markdown pages which otherwise would not have any page formatting.
 
-Astro provides a special `layout` frontmatter property intended for [individual  .md files located within src/pages/ using file-based routing](/en/guides/markdown-content/#individual-markdown-pages) to specify which 
+Astro provides a special `layout` frontmatter property intended for [individual `.md` files located within `src/pages/` using file-based routing](/en/guides/markdown-content/#individual-markdown-pages) to specify which `.astro` component to use as the page layout. This component allows you to provide `<head>` content like meta tags (e.g. `<meta charset="utf-8">`) and styles for the Markdown page. By default, this specified component can automatically access data from the Markdown file.
 
-`.astro` component to use as the page layout. This component allows you to provide `<head>` content like meta tags (e.g. `<meta charset="utf-8">`) and styles for the Markdown page. By default, this specified component can automatically access data from the Markdown file.This is not recognized as a special property when using [content collections](/en/guides/content-collections/) to query and render your content.
+This is not recognized as a special property when using [content collections](/en/guides/content-collections/) to query and render your content.
 
 A typical layout for a Markdown page includes:
 
-- The `frontmatter`prop to access the Markdown page’s frontmatter and other data.
-- A default `<slot />`
+1. The `frontmatter` prop to access the Markdown page’s frontmatter and other data.
+2. A default [`<slot />`](/en/basics/astro-components/#slots) to indicate where the page’s Markdown content should be rendered.
 
-You can set a layout’s [ Props type](/en/guides/typescript/#component-props) with the 
+You can set a layout’s [`Props` type](/en/guides/typescript/#component-props) with the `MarkdownLayoutProps` helper:
 
-`MarkdownLayoutProps` helper:### Markdown Layout Props
+### Markdown Layout Props
 
 [Section titled “Markdown Layout Props”](#markdown-layout-props)
 
 A Markdown layout will have access to the following information via `Astro.props`:
 
-- `file`- `/home/user/projects/.../file.md`).
-- `url`- `/en/guides/markdown-content`).
-- `frontmatter`- `frontmatter.file`- `file`property.
-- `frontmatter.url`- `url`property.
- 
-- `headings`- `h1 -> h6`) in the Markdown or MDX document with associated metadata. This list follows the type:- `{ depth: number; slug: string; text: string }[]`.
-- `rawContent()`
-- `compiledContent()`
+- **`file`** - The absolute path of this file (e.g.`/home/user/projects/.../file.md` ).
+- **`url`** - The URL of the page (e.g.`/en/guides/markdown-content` ).
+- **`frontmatter`** - All frontmatter from the Markdown or MDX document.
+  - **`frontmatter.file`** - The same as the top-level`file` property.
+  - **`frontmatter.url`** - The same as the top-level`url` property.
+- **`headings`** - A list of headings (`h1 -> h6` ) in the Markdown or MDX document with associated metadata. This list follows the type:`{ depth: number; slug: string; text: string }[]` .
+- **`rawContent()`** - A function that returns the raw Markdown document as a string.
+- **`compiledContent()`** - An async function that returns the Markdown document compiled to an HTML string.
 
 A Markdown layout will have access to all the Markdown file’s [available properties](/en/guides/markdown-content/#available-properties) from `Astro.props` **with two key differences:**
 
 - 
-Heading information (i.e. `h1 -> h6`elements) is available via the`headings`array, rather than a`getHeadings()`function.
+Heading information (i.e. `h1 -> h6` elements) is available via the`headings` array, rather than a`getHeadings()` function.
 - 
-`file`and`url`are*also*available as nested`frontmatter`properties (i.e.`frontmatter.url`and`frontmatter.file`).
+`file` and`url` are*also* available as nested`frontmatter` properties (i.e.`frontmatter.url` and`frontmatter.file` ).
 
 ### Importing Layouts Manually (MDX)
 

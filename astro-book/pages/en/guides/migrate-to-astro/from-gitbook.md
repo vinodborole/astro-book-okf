@@ -3,7 +3,7 @@ type: Web Page
 title: Migrating from GitBook | Docs
 description: Tips for migrating an existing GitBook project to Astro
 resource: https://docs.astro.build/en/guides/migrate-to-astro/from-gitbook
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Migrating from GitBook
@@ -17,9 +17,9 @@ timestamp: '2026-07-13T09:18:12.222139+00:00'
 GitBook and Astro share some similarities that will help you migrate your project:
 
 - 
-Both Astro and GitBook support [Markdown](/en/guides/markdown-content/). You can migrate all your existing documentation utilizing GitBook’s Git Sync feature.
+Both Astro and GitBook support [Markdown](/en/guides/markdown-content/) . You can migrate all your existing documentation utilizing GitBook’s Git Sync feature.
 - 
-Both Astro and GitBook use some form of [file-based routing](/en/guides/routing/). Using Astro’s file structure for your existing content and when adding new pages should feel familiar.
+Both Astro and GitBook use some form of [file-based routing](/en/guides/routing/) . Using Astro’s file structure for your existing content and when adding new pages should feel familiar.
 
 ## Key Differences between GitBook and Astro
 
@@ -28,11 +28,11 @@ Both Astro and GitBook use some form of [file-based routing](/en/guides/routing/
 When you migrate your GitBook docs to Astro, you will notice some important differences:
 
 - 
-A GitBook site is edited using an online dashboard. In Astro, you will use a [code editor](/en/editor-setup/)and development environment to maintain your site. You can develop locally on your machine, or choose a cloud editor/development environment like StackBlitz or CodeSandbox.
+A GitBook site is edited using an online dashboard. In Astro, you will use a [code editor](/en/editor-setup/) and development environment to maintain your site. You can develop locally on your machine, or choose a cloud editor/development environment like StackBlitz or CodeSandbox.
 - 
-GitBook stores your content in a database. In Astro, you will have individual files (typically Markdown or MDX) in your [project directory](/en/basics/project-structure/)for each page’s content. Or, you can choose to use a[CMS for your content](/en/guides/cms/)and use Astro to fetch and present the data.
+GitBook stores your content in a database. In Astro, you will have individual files (typically Markdown or MDX) in your [project directory](/en/basics/project-structure/) for each page’s content. Or, you can choose to use a[CMS for your content](/en/guides/cms/) and use Astro to fetch and present the data.
 - 
-GitBook uses a custom syntax on top of Markdown for content. Astro supports Markdoc via the optional [Markdoc integration](/en/guides/integrations-guide/markdoc/), which features a similar syntax to the one you would use in GitBook.
+GitBook uses a custom syntax on top of Markdown for content. Astro supports Markdoc via the optional [Markdoc integration](/en/guides/integrations-guide/markdoc/) , which features a similar syntax to the one you would use in GitBook.
 
 ## Switch from GitBook to Astro
 
@@ -52,9 +52,9 @@ After syncing the content, you will now have a copy of your GitBook content in y
 
 Note that although you now have your content migrated to your Astro project, it will not be immediately usable. To use this content in your Astro site, you will need to spend some time manually changing GitBook’s syntax into a format compatible with Astro. In particular:
 
-- Astro’s [Markdoc integration](/en/guides/integrations-guide/markdoc/)requires that the file extension be`.mdoc`. This is to avoid conflicts with other Markdown extensions like`.mdx`and`.md`.
-- GitBook syntax differs from Markdoc where the `/`prefix denoting a closing tag is replaced with`end`for GitBook files. You will need to update this notation throughout your files.
-- Some features of GitBook rely on custom components. These components will not exist in Astro and must be created and added to your project through [Markdoc’s config](/en/guides/integrations-guide/markdoc/#use-astro-components-as-markdoc-tags)or removed from your files.`tags`attribute
+- Astro’s [Markdoc integration](/en/guides/integrations-guide/markdoc/) requires that the file extension be`.mdoc` . This is to avoid conflicts with other Markdown extensions like`.mdx` and`.md` .
+- GitBook syntax differs from Markdoc where the `/` prefix denoting a closing tag is replaced with`end` for GitBook files. You will need to update this notation throughout your files.
+- Some features of GitBook rely on custom components. These components will not exist in Astro and must be created and added to your project through [Markdoc’s config `tags` attribute](/en/guides/integrations-guide/markdoc/#use-astro-components-as-markdoc-tags) or removed from your files.
 
 ## Community Resources
 

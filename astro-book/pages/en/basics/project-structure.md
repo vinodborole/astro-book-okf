@@ -3,7 +3,7 @@ type: Web Page
 title: Project structure | Docs
 description: An introduction to the basic file structure of an Astro project.
 resource: https://docs.astro.build/en/basics/project-structure
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Project structure
@@ -18,11 +18,11 @@ Here’s how an Astro project is organized, and some files you will find in your
 
 Astro leverages an opinionated folder layout for your project. Every Astro project root should include the following directories and files:
 
-- `src/*`- Your project source code (components, pages, styles, images, etc.)
-- `public/*`- Your non-code, unprocessed assets (fonts, icons, etc.)
-- `package.json`- A project manifest.
-- `astro.config.mjs`- An Astro configuration file. (recommended)
-- `tsconfig.json`- A TypeScript configuration file. (recommended)
+- `src/*` - Your project source code (components, pages, styles, images, etc.)
+- `public/*` - Your non-code, unprocessed assets (fonts, icons, etc.)
+- `package.json` - A project manifest.
+- `astro.config.mjs` - An Astro configuration file. (recommended)
+- `tsconfig.json` - A TypeScript configuration file. (recommended)
 
 ### Example Project Tree
 
@@ -30,46 +30,38 @@ Astro leverages an opinionated folder layout for your project. Every Astro proje
 
 A common Astro project directory might look like this:
 
-- ## Directorypublic/- robots.txt
-- favicon.svg
-- my-cv.pdf
- 
-- ## Directorysrc/- ## Directoryblog/- post1.md
-- post2.md
-- post3.md
- 
-- ## Directorycomponents/- Header.astro
-- Button.jsx
- 
-- ## Directoryimages/- image1.jpg
-- image2.jpg
-- image3.jpg
- 
-- ## Directorylayouts/- PostLayout.astro
- 
-- ## Directorypages/- ## Directoryposts/- [post].astro
- 
-- about.astro
-- **index.astro**
-- rss.xml.js
- 
-- ## Directorystyles/- global.css
- 
-- content.config.ts
- 
+- ## Directorypublic/
+  - robots.txt
+  - favicon.svg
+  - my-cv.pdf
+- ## Directorysrc/
+  - ## Directoryblog/
+    - post1.md
+    - post2.md
+    - post3.md
+  - ## Directorycomponents/
+    - Header.astro
+    - Button.jsx
+  - ## Directoryimages/
+    - image1.jpg
+    - image2.jpg
+    - image3.jpg
+  - ## Directorylayouts/
+    - PostLayout.astro
+  - ## Directorypages/
+    - ## Directoryposts/
+      - [post].astro
+    - about.astro
+    - **index.astro**
+    - rss.xml.js
+  - ## Directorystyles/
+    - global.css
+  - content.config.ts
 - astro.config.mjs
 - package.json
 - tsconfig.json
 
 The `src/` folder is where most of your project source code lives. This includes:
-
-- [Pages](/en/basics/astro-pages/)
-- [Layouts](/en/basics/layouts/)
-- [Astro components](/en/basics/astro-components/)
-- [UI framework components (React, etc.)](/en/guides/framework-components/)
-- [Styles (CSS, Sass)](/en/guides/styling/)
-- [Markdown](/en/guides/markdown-content/)
-- [Images to be optimized and processed by Astro](/en/guides/images/)
 
 Astro processes, optimizes, and bundles your `src/` files to create the final website that is shipped to the browser.  Unlike the static `public/` directory, your `src/` files are built and handled for you by Astro.
 
@@ -77,7 +69,7 @@ Some files (like Astro components) are not even sent to the browser as written b
 
 While this guide describes some popular conventions used in the Astro community, the only directory reserved by Astro is `src/pages/`. You are free to rename and reorganize any other directories in a way that works best for you.
 
-`src/pages`
+### `src/pages`
 
 [Section titled “src/pages”](#srcpages)
 
@@ -85,7 +77,7 @@ Pages routes are created for your site by adding [supported file types](/en/basi
 
 `src/pages` is a **required** sub-directory in your Astro project. Without it, your site will have no pages or routes!
 
-`src/components`
+### `src/components`
 
 [Section titled “src/components”](#srccomponents)
 
@@ -93,7 +85,7 @@ Pages routes are created for your site by adding [supported file types](/en/basi
 
 This is a common convention in Astro projects, but it is not required. Feel free to organize your components however you like!
 
-`src/layouts`
+### `src/layouts`
 
 [Section titled “src/layouts”](#srclayouts)
 
@@ -101,13 +93,13 @@ This is a common convention in Astro projects, but it is not required. Feel free
 
 Just like `src/components`, this directory is a common convention but not required.
 
-`src/styles`
+### `src/styles`
 
 [Section titled “src/styles”](#srcstyles)
 
 It is a common convention to store your CSS or Sass files in a `src/styles` directory, but this is not required. As long as your styles live somewhere in the `src/` directory and are imported correctly, Astro will handle and optimize them.
 
-`public/`
+### `public/`
 
 [Section titled “public/”](#public)
 
@@ -119,7 +111,7 @@ You can place CSS and JavaScript in your `public/` directory, but be aware that 
 
 As a general rule, any CSS or JavaScript that you write yourself should live in your `src/` directory.
 
-`package.json`
+### `package.json`
 
 [Section titled “package.json”](#packagejson)
 
@@ -129,7 +121,7 @@ There are [two kinds of dependencies](https://docs.npmjs.com/specifying-dependen
 
 For help creating a new `package.json` file for your project, check out the [manual setup](/en/install-and-setup/#manual-setup) instructions.
 
-`astro.config.mjs`
+### `astro.config.mjs`
 
 [Section titled “astro.config.mjs”](#astroconfigmjs)
 
@@ -137,11 +129,11 @@ This file is generated in every starter template and includes configuration opti
 
 Astro supports several file formats for its JavaScript configuration file: `astro.config.js`, `astro.config.mjs` and `astro.config.ts`. We recommend using `.mjs` in most cases or `.ts` if you want to write TypeScript in your config file.
 
-TypeScript config file loading is handled using [ tsm](https://github.com/lukeed/tsm) and will respect your project’s 
+TypeScript config file loading is handled using [`tsm`](https://github.com/lukeed/tsm) and will respect your project’s `tsconfig` options.
 
-`tsconfig` options.See the [configuration reference](/en/reference/configuration-reference/) for complete details.
+See the [configuration reference](/en/reference/configuration-reference/) for complete details.
 
-`tsconfig.json`
+### `tsconfig.json`
 
 [Section titled “tsconfig.json”](#tsconfigjson)
 

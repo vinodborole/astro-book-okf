@@ -3,7 +3,7 @@ type: Web Page
 title: Editor setup | Docs
 description: Set up your code editor to build with Astro.
 resource: https://docs.astro.build/en/editor-setup
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Editor setup
@@ -18,9 +18,9 @@ Customize your code editor to improve the Astro developer experience and unlock 
 
 Astro works with any code editor. However, VS Code is our recommended editor for Astro projects. We maintain an official [Astro VS Code Extension](https://marketplace.visualstudio.com/items?itemName=astro-build.astro-vscode) that unlocks several key features and developer experience improvements for Astro projects.
 
-- Syntax highlighting for `.astro`files.
-- TypeScript type information for `.astro`files.
-- [VS Code Intellisense](https://code.visualstudio.com/docs/editor/intellisense)for code completion, hints and more.
+- Syntax highlighting for `.astro` files.
+- TypeScript type information for `.astro` files.
+- [VS Code Intellisense](https://code.visualstudio.com/docs/editor/intellisense) for code completion, hints and more.
 
 To get started, install the [Astro VS Code Extension](https://marketplace.visualstudio.com/items?itemName=astro-build.astro-vscode) today.
 
@@ -44,12 +44,12 @@ For more information on Astro support in Webstorm, check out [the official Webst
 
 Our amazing community maintains several extensions for other popular editors, including:
 
-- [VS Code Extension on Open VSX](https://open-vsx.org/extension/astro-build/astro-vscode)Official - The official Astro VS Code Extension, available on the Open VSX registry for editors like- [Cursor](https://cursor.com)or- [VSCodium](https://vscodium.com/).
-- [Vim Plugin](https://github.com/wuelnerdotexe/vim-astro)Community - Provides syntax highlighting, indentation, and code folding support for Astro inside of Vim or Neovim
-- Neovim [LSP](https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#astro)and[TreeSitter](https://github.com/virchau13/tree-sitter-astro)Plugins Community - Provides syntax highlighting, treesitter parsing, and code completion for Astro inside of Neovim
-- Emacs - See instructions for [Configuring Emacs and Eglot](https://medium.com/@jrmjrm/configuring-emacs-and-eglot-to-work-with-astro-language-server-9408eb709ab0)Community to work with Astro
-- [Astro syntax highlighting for Sublime Text](https://packagecontrol.io/packages/Astro)Community - The Astro package for Sublime Text, available on the Sublime Text package manager.
-- [Nova Extension](https://extensions.panic.com/extensions/sciencefidelity/sciencefidelity.astro/)Community - Provides syntax highlighting and code completion for Astro inside of Nova
+- [VS Code Extension on Open VSX](https://open-vsx.org/extension/astro-build/astro-vscode) Official - The official Astro VS Code Extension, available on the Open VSX registry for editors like[Cursor](https://cursor.com) or[VSCodium](https://vscodium.com/) .
+- [Vim Plugin](https://github.com/wuelnerdotexe/vim-astro) Community - Provides syntax highlighting, indentation, and code folding support for Astro inside of Vim or Neovim
+- Neovim [LSP](https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#astro) and[TreeSitter](https://github.com/virchau13/tree-sitter-astro) Plugins Community - Provides syntax highlighting, treesitter parsing, and code completion for Astro inside of Neovim
+- Emacs - See instructions for [Configuring Emacs and Eglot](https://medium.com/@jrmjrm/configuring-emacs-and-eglot-to-work-with-astro-language-server-9408eb709ab0) Community to work with Astro
+- [Astro syntax highlighting for Sublime Text](https://packagecontrol.io/packages/Astro) Community - The Astro package for Sublime Text, available on the Sublime Text package manager.
+- [Nova Extension](https://extensions.panic.com/extensions/sciencefidelity/sciencefidelity.astro/) Community - Provides syntax highlighting and code completion for Astro inside of Nova
 
 ## In-Browser Editors
 
@@ -57,8 +57,8 @@ Our amazing community maintains several extensions for other popular editors, in
 
 In addition to local editors, Astro also runs well on in-browser hosted editors, including:
 
-- [StackBlitz](https://stackblitz.com/)and- [CodeSandbox](https://codesandbox.io/)- online editors that run in your browser, with built-in syntax highlighting support for- `.astro`files. No installation or configuration required!
-- [GitHub.dev](https://github.dev/)- allows you to install the Astro VS Code extension as a- [web extension](https://code.visualstudio.com/api/extension-guides/web-extensions), which gives you access to only some of the full extension features. Currently, only syntax highlighting is supported.
+- [StackBlitz](https://stackblitz.com/) and[CodeSandbox](https://codesandbox.io/) - online editors that run in your browser, with built-in syntax highlighting support for`.astro` files. No installation or configuration required!
+- [GitHub.dev](https://github.dev/) - allows you to install the Astro VS Code extension as a[web extension](https://code.visualstudio.com/api/extension-guides/web-extensions) , which gives you access to only some of the full extension features. Currently, only syntax highlighting is supported.
 
 ## Other tools
 
@@ -80,9 +80,9 @@ See [the project’s User Guide](https://ota-meshi.github.io/eslint-plugin-astro
 
 Installation instructions, editor integration, and additional information can be found in the project’s README.
 
-[Biome](https://biomejs.dev/) is an all-in-one linter and formatter for the web. [Biome currently has experimental support for  .astro files](https://biomejs.dev/internals/language-support/#html-super-languages-support), and can be used to lint and format the frontmatter in 
+[Biome](https://biomejs.dev/) is an all-in-one linter and formatter for the web. [Biome currently has experimental support for `.astro` files](https://biomejs.dev/internals/language-support/#html-super-languages-support), and can be used to lint and format the frontmatter in `.astro` files.
 
-`.astro` files.### Prettier
+### Prettier
 
 [Section titled “Prettier”](#prettier)
 
@@ -90,14 +90,14 @@ Installation instructions, editor integration, and additional information can be
 
 To add support for formatting `.astro` files outside of the editor (e.g. CLI) or inside editors that don’t support our editor tooling, install [the official Astro Prettier plugin](https://github.com/withastro/prettier-plugin-astro).
 
-- 
-Install `prettier`and`prettier-plugin-astro`.
-- 
-Create a `.prettierrc`configuration file (or`.prettierrc.json`,`.prettierrc.mjs`, or[other supported formats](https://prettier.io/docs/configuration)) in the root of your project and add`prettier-plugin-astro`to it.In this file, also manually specify the parser for Astro files. 
-- 
-Optionally, install other Prettier plugins for your project, and add them to the configuration file. These additional plugins may need to be listed in a specific order. For example, if you use Tailwind, `prettier-plugin-tailwindcss`must be[the last Prettier plugin in the plugins array](https://github.com/tailwindlabs/prettier-plugin-tailwindcss#compatibility-with-other-prettier-plugins).
-- 
-Run the following command in your terminal to format your files. 
+1. 
+Install `prettier` and`prettier-plugin-astro` .
+2. 
+Create a `.prettierrc` configuration file (or`.prettierrc.json` ,`.prettierrc.mjs` , or[other supported formats](https://prettier.io/docs/configuration) ) in the root of your project and add`prettier-plugin-astro` to it.In this file, also manually specify the parser for Astro files.
+3. 
+Optionally, install other Prettier plugins for your project, and add them to the configuration file. These additional plugins may need to be listed in a specific order. For example, if you use Tailwind, `prettier-plugin-tailwindcss` must be[the last Prettier plugin in the plugins array](https://github.com/tailwindlabs/prettier-plugin-tailwindcss#compatibility-with-other-prettier-plugins) .
+4. 
+Run the following command in your terminal to format your files.
 
 See the [Prettier plugin’s README](https://github.com/withastro/prettier-plugin-astro/blob/main/README.md) for more information about its supported options, how to set up Prettier inside VS Code, and more.
 

@@ -4,7 +4,7 @@ title: Configuration overview | Docs
 description: Get to know the ways you can configure and customize your new project
   and your development experience.
 resource: https://docs.astro.build/en/guides/configuring-astro
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Configuration overview
@@ -59,11 +59,9 @@ Here are some first steps you might choose to take with a new Astro project.
 
 [Section titled “Add your deployment domain”](#add-your-deployment-domain)
 
-For generating your sitemap and creating canonical URLs, configure your deployment URL in the [ site](/en/reference/configuration-reference/#site) option. If you are deploying to a path (e.g. 
+For generating your sitemap and creating canonical URLs, configure your deployment URL in the [`site`](/en/reference/configuration-reference/#site) option. If you are deploying to a path (e.g. `www.example.com/docs`), you can also configure a [`base`](/en/reference/configuration-reference/#base) for the root of your project.
 
-`www.example.com/docs`), you can also configure a [for the root of your project.](/en/reference/configuration-reference/#base)
-
-`base`Additionally, different deployment hosts may have different behavior regarding trailing slashes at the end of your URLs. (e.g. `example.com/about` vs `example.com/about/`). Once your site is deployed, you may need to configure your [ trailingSlash](/en/reference/configuration-reference/#trailingslash) preference.
+Additionally, different deployment hosts may have different behavior regarding trailing slashes at the end of your URLs. (e.g. `example.com/about` vs `example.com/about/`). Once your site is deployed, you may need to configure your [`trailingSlash`](/en/reference/configuration-reference/#trailingslash) preference.
 
 ### Add site metadata
 
@@ -73,9 +71,7 @@ Astro does not use its configuration file for common SEO or meta data, only for 
 
 Instead, this information is added to your page `<head>` using standard HTML `<link>` and `<meta>` tags, just as if you were writing plain HTML pages.
 
-One common pattern for Astro sites is to create a `<Head />` [ .astro component](/en/basics/astro-components/) that can be added to a common 
-
-[layout component](/en/basics/layouts/)so it can apply to all your pages.
+One common pattern for Astro sites is to create a `<Head />` [`.astro` component](/en/basics/astro-components/) that can be added to a common [layout component](/en/basics/layouts/) so it can apply to all your pages.
 
 Because `Head.astro` is just a regular Astro component, you can import files and receive props passed from other components, such as a specific page title.
 

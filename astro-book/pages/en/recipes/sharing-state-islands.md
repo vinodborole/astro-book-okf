@@ -3,7 +3,7 @@ type: Web Page
 title: Share state between islands | Docs
 description: Learn how to share state across framework components with Nano Stores.
 resource: https://docs.astro.build/en/recipes/sharing-state-islands
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Share state between islands
@@ -12,7 +12,7 @@ When building an Astro website with [islands architecture / partial hydration](/
 
 UI frameworks like React or Vue may encourage [“context” providers](https://react.dev/learn/passing-data-deeply-with-context) for other components to consume. But when [partially hydrating components](/en/guides/framework-components/#hydrating-interactive-components) within Astro or Markdown, you can’t use these context wrappers.
 
-Astro recommends a different solution for shared client-side storage: [ Nano Stores](https://github.com/nanostores/nanostores).
+Astro recommends a different solution for shared client-side storage: [**Nano Stores**](https://github.com/nanostores/nanostores).
 
 **Related recipe:**
 
@@ -24,35 +24,34 @@ Astro recommends a different solution for shared client-side storage: [ Nano Sto
 
 The [Nano Stores](https://github.com/nanostores/nanostores) library allows you to author stores that any component can interact with. We recommend Nano Stores because:
 
-- **They’re lightweight.**Nano Stores ship the bare minimum JS you’ll need (less than 1 KB) with zero dependencies.
-- **They’re framework-agnostic.**This means sharing state between frameworks will be seamless! Astro is built on flexibility, so we love solutions that offer a similar developer experience no matter your preference.
+- **They’re lightweight.** Nano Stores ship the bare minimum JS you’ll need (less than 1 KB) with zero dependencies.
+- **They’re framework-agnostic.** This means sharing state between frameworks will be seamless! Astro is built on flexibility, so we love solutions that offer a similar developer experience no matter your preference.
 
 Still, there are a number of alternatives you can explore. These include:
 
 - [Svelte’s built-in stores](https://svelte.dev/tutorial/writable-stores)
-- [Solid signals](https://www.solidjs.com/docs/latest)outside of a component context
+- [Solid signals](https://www.solidjs.com/docs/latest) outside of a component context
 - [Vue’s reactivity API](https://vuejs.org/guide/scaling-up/state-management.html#simple-state-management-with-reactivity-api)
-- [Sending custom browser events](https://developer.mozilla.org/en-US/docs/Web/Events/Creating_and_triggering_events)between components
+- [Sending custom browser events](https://developer.mozilla.org/en-US/docs/Web/Events/Creating_and_triggering_events) between components
 
-**🙋 Can I use Nano Stores in **`.astro` files or other server-side components?
+## **🙋 Can I use Nano Stores in `.astro` files or other server-side components?**
 
-`.astro` files or other server-side components?Nano Stores can be used in `<script>` tags to [share state between  .astro components](/en/recipes/sharing-state/). However, Using Nano Stores in the frontmatter of server-side components is not recommended because of the following restrictions:
+`.astro` files or other server-side components?
+Nano Stores can be used in `<script>` tags to [share state between `.astro` components](/en/recipes/sharing-state/). However, Using Nano Stores in the frontmatter of server-side components is not recommended because of the following restrictions:
 
-- Writing to a store from a `.astro`file or[non-hydrated component](/en/guides/framework-components/#hydrating-interactive-components)will*not*affect the value received by[client-side components](/en/reference/directives-reference/#client-directives).
+- Writing to a store from a `.astro` file or[non-hydrated component](/en/guides/framework-components/#hydrating-interactive-components) will*not* affect the value received by[client-side components](/en/reference/directives-reference/#client-directives) .
 - You cannot pass a Nano Store as a “prop” to client-side components.
-- You cannot subscribe to store changes from a `.astro`file, since Astro components do not re-render.
+- You cannot subscribe to store changes from a `.astro` file, since Astro components do not re-render.
 
 If you understand these restrictions and still find a use case, you can give Nano Stores a try! Just remember that Nano Stores are built for reactivity to changes on the **client** specifically.
 
-**🙋 How do Svelte stores compare to Nano Stores?**
+## **🙋 How do Svelte stores compare to Nano Stores?**
 
-**Nano Stores and  Svelte stores are very similar!** In fact, 
+**Nano Stores and [Svelte stores](https://svelte.dev/tutorial/writable-stores) are very similar!** In fact, [nanostores allow you to use the same `$` shortcut](https://github.com/nanostores/nanostores#svelte) for subscriptions that you might use with Svelte stores.
 
-[nanostores allow you to use the same](https://github.com/nanostores/nanostores#svelte)for subscriptions that you might use with Svelte stores.
+If you want to avoid third-party libraries, [Svelte stores](https://svelte.dev/tutorial/writable-stores) are a great cross-island communication tool on their own. Still, you might prefer Nano Stores if a) you like their add-ons for [“objects”](https://github.com/nanostores/nanostores#maps) and [async state](https://github.com/nanostores/nanostores#lazy-stores), or b) you want to communicate between Svelte and other UI frameworks like Preact or Vue.
 
-`$` shortcutIf you want to avoid third-party libraries, [Svelte stores](https://svelte.dev/tutorial/writable-stores) are a great cross-island communication tool on their own. Still, you might prefer Nano Stores if a) you like their add-ons for [“objects”](https://github.com/nanostores/nanostores#maps) and [async state](https://github.com/nanostores/nanostores#lazy-stores), or b) you want to communicate between Svelte and other UI frameworks like Preact or Vue.
-
-**🙋 How do Solid signals compare to Nano Stores?**
+## **🙋 How do Solid signals compare to Nano Stores?**
 
 If you’ve used Solid for a while, you may have tried moving [signals](https://www.solidjs.com/docs/latest#createsignal) or [stores](https://www.solidjs.com/docs/latest#createstore) outside of your components. This is a great way to share state between Solid islands! Try exporting signals from a shared file:
 
@@ -78,7 +77,7 @@ Let’s say we’re building a simple ecommerce interface with three interactive
 - A cart flyout to display those added items
 - A cart flyout toggle
 
-[ Try the completed example](https://github.com/withastro/astro/tree/main/examples/with-nanostores) on your machine or online via StackBlitz.
+[**Try the completed example**](https://github.com/withastro/astro/tree/main/examples/with-nanostores) on your machine or online via StackBlitz.
 
 Your base Astro file may look like this:
 
@@ -98,20 +97,21 @@ Then, we can read `isCartOpen` from our `CartFlyout` component:
 
 [Section titled “Using “maps””](#using-maps)
 
-** Maps are a great choice for objects you write to regularly!** Alongside the standard 
+**[Maps](https://github.com/nanostores/nanostores#maps) are a great choice for objects you write to regularly!** Alongside the standard `get()` and `set()` helpers an `atom` provides, you’ll also have a `.setKey()` function to efficiently update individual object keys.
 
-`get()` and `set()` helpers an `atom` provides, you’ll also have a `.setKey()` function to efficiently update individual object keys.Now, let’s keep track of the items inside your cart. To avoid duplicates and keep track of “quantity,” we can store your cart as an object with the item’s ID as a key. We’ll use a [Map](https://github.com/nanostores/nanostores#maps) for this.
+Now, let’s keep track of the items inside your cart. To avoid duplicates and keep track of “quantity,” we can store your cart as an object with the item’s ID as a key. We’ll use a [Map](https://github.com/nanostores/nanostores#maps) for this.
 
 Let’s add a `cartItem` store to our `cartStore.js` from earlier. You can also switch to a TypeScript file to define the shape if you’re so inclined.
 
 Now, let’s export an `addCartItem` helper for our components to use.
 
-- **If that item doesn’t exist in your cart**, add the item with a starting quantity of 1.
-- **If that item**, bump the quantity by 1.- *does*already exist
+- **If that item doesn’t exist in your cart** , add the item with a starting quantity of 1.
+- **If that item *does* already exist** , bump the quantity by 1.
 
-**🙋 Why use **`.get()` here instead of a `useStore` helper?
+## **🙋 Why use `.get()` here instead of a `useStore` helper?**
 
-`.get()` here instead of a `useStore` helper?You may have noticed we’re calling `cartItems.get()` here, instead of grabbing that `useStore` helper from our React / Preact / Solid / Vue examples. This is because **useStore is meant to trigger component re-renders.** In other words, `useStore` should be used whenever the store value is being rendered to the UI. Since we’re reading the value when an **event** is triggered (`addToCart` in this case), and we aren’t trying to render that value, we don’t need `useStore` here.
+`.get()` here instead of a `useStore` helper?
+You may have noticed we’re calling `cartItems.get()` here, instead of grabbing that `useStore` helper from our React / Preact / Solid / Vue examples. This is because **useStore is meant to trigger component re-renders.** In other words, `useStore` should be used whenever the store value is being rendered to the UI. Since we’re reading the value when an **event** is triggered (`addToCart` in this case), and we aren’t trying to render that value, we don’t need `useStore` here.
 
 With our store in place, we can call this function inside our `AddToCartForm` whenever that form is submitted. We’ll also open the cart flyout so you can see a full cart summary.
 
@@ -119,7 +119,7 @@ Finally, we’ll render those cart items inside our `CartFlyout`:
 
 Now, you should have a fully interactive ecommerce example with the smallest JS bundle in the galaxy 🚀
 
-[ Try the completed example](https://github.com/withastro/astro/tree/main/examples/with-nanostores) on your machine or online via StackBlitz!
+[**Try the completed example**](https://github.com/withastro/astro/tree/main/examples/with-nanostores) on your machine or online via StackBlitz!
 
 [Contribute](/en/contribute/)
 

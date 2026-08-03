@@ -3,7 +3,7 @@ type: Web Page
 title: Islands architecture | Docs
 description: Learn about how Astro's islands architecture helps keep sites fast.
 resource: https://docs.astro.build/en/concepts/islands
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Islands architecture
@@ -34,11 +34,9 @@ Astro became popular as the first mainstream JavaScript web framework with selec
 
 In Astro, an island is an enhanced UI component on an otherwise static page of HTML.
 
-A [ client island](#client-islands) is an interactive JavaScript UI component that is hydrated separately from the rest of the page, while a 
+A [**client island**](#client-islands) is an interactive JavaScript UI component that is hydrated separately from the rest of the page, while a [**server island**](#server-islands) is a UI component that server-renders its dynamic content separately from the rest of the page.
 
-[is a UI component that server-renders its dynamic content separately from the rest of the page.](#server-islands)
-
-**server island**Both islands run expensive or slower processes independently, on a per-component basis, for optimized page loads.
+Both islands run expensive or slower processes independently, on a per-component basis, for optimized page loads.
 
 ## Island components
 
@@ -97,7 +95,7 @@ In Astro, it’s up to you as the developer to explicitly tell Astro which compo
 
 Server islands are a way to move expensive or slow server-side code out of the way of the main rendering process, making it easy to combine high-performance static HTML and dynamic server-generated components.
 
-Add the [ server:defer directive](/en/reference/directives-reference/#server-directives) to any Astro component on your page to turn it into its own server island:
+Add the [`server:defer` directive](/en/reference/directives-reference/#server-directives) to any Astro component on your page to turn it into its own server island:
 
 This breaks up your page with smaller areas of server-rendered content that each load in parallel.
 

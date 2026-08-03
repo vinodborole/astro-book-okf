@@ -2,7 +2,7 @@
   "generator": "okf-kit",
   "okf_version": "0.1",
   "root_url": "https://docs.astro.build/en/getting-started",
-  "updated_at": "2026-07-27T09:42:27.177009+00:00",
+  "updated_at": "2026-08-03T09:35:37.204965+00:00",
   "config": {
     "max_depth": 3,
     "max_pages": 90,
@@ -22,475 +22,475 @@
       "path": "pages/en/basics/astro-components.md",
       "url": "https://docs.astro.build/en/basics/astro-components",
       "title": "Components | Docs",
-      "hash": "87e36fa2334e2b5abd162b8439ac78d96703e53ca8c392d071e9313920fcfffe"
+      "hash": "05e7cf42b2b0e73c25c637f3f2d8429ff66a7a0369755c35f20cd558adb78849"
     },
     {
       "path": "pages/en/basics/astro-pages.md",
       "url": "https://docs.astro.build/en/basics/astro-pages",
       "title": "Pages | Docs",
-      "hash": "53a6f274212894ae046291c2807d98d0031e7265ccc40c52cfb49f4cb1b2c68f"
+      "hash": "e906825f34b5631854f0fd0da859492a5a313e5def518ee3cd6ea7da37d01e6a"
     },
     {
       "path": "pages/en/basics/layouts.md",
       "url": "https://docs.astro.build/en/basics/layouts",
       "title": "Layouts | Docs",
-      "hash": "adf44fa960b341ef4116240678867804c5cc3b13a7dd360b5be7a048d47c05c5"
+      "hash": "a62db81b19f3423b4932d51dadb619ee24306107a564bd82cd7937a19fc54bc7"
     },
     {
       "path": "pages/en/basics/project-structure.md",
       "url": "https://docs.astro.build/en/basics/project-structure",
       "title": "Project structure | Docs",
-      "hash": "273252bd8dc562cf79ad7fec98275bd0bce52300365cc0df6d942149094e031f"
+      "hash": "d88b3b6e5bf1020f0223f8a44cd0e6f8bb2897968d08d5e68ece039763b798b8"
     },
     {
       "path": "pages/en/concepts/islands.md",
       "url": "https://docs.astro.build/en/concepts/islands",
       "title": "Islands architecture | Docs",
-      "hash": "d06a4326cd76e2192f6117786f43fd398eeeaae66b5a8b68d9e222f5f5f6afe3"
+      "hash": "a0b81e0d304bbab32ab1769455ccad2151a3e8cd97746c3992bde255a4079187"
     },
     {
       "path": "pages/en/concepts/why-astro.md",
       "url": "https://docs.astro.build/en/concepts/why-astro",
       "title": "Why Astro? | Docs",
-      "hash": "03cc68cba242834b8baaf52575334136ed54cc79a3e3b73e4cfa935da3e3564e"
+      "hash": "5352c030fcb428f7ef9d1b1c224ad4dc16db6049503052dcbbb1f27a17d0f48b"
     },
     {
       "path": "pages/en/develop-and-build.md",
       "url": "https://docs.astro.build/en/develop-and-build",
       "title": "Develop and build | Docs",
-      "hash": "cfadec262d2be117465bfcf61afa8dca6b4c5e0147de5dad8d754a1e9860860c"
+      "hash": "1564d959e4b0dc2c7a58028f6919531d84d0e99d04b8d858cd611c654ee8fa4f"
     },
     {
       "path": "pages/en/editor-setup.md",
       "url": "https://docs.astro.build/en/editor-setup",
       "title": "Editor setup | Docs",
-      "hash": "bc6d108aa509ab1473e2007db80c2d99a5790ae85008074a9924a42570584229"
+      "hash": "ed32827e810cf54fb3de49463f6c1ff11a6fcf7e13e1b96d47daeec84de279e2"
     },
     {
       "path": "pages/en/getting-started.md",
       "url": "https://docs.astro.build/en/getting-started",
       "title": "Getting started | Docs",
-      "hash": "17b3d998fdbaee8ec541c84305caba34226196718379a3aa1f87ad6ce1c2b3f4"
+      "hash": "6d2df67441fcd18bb32c8d4d35e9bffd91f7de0b1f763fcc0c32161bed6adc6b"
     },
     {
       "path": "pages/en/guides/actions.md",
       "url": "https://docs.astro.build/en/guides/actions",
       "title": "Actions | Docs",
-      "hash": "242de1304e397a1d3eaa16f69ca25ccb62573bf3a90fbf7b3aa86da1f488b94f"
+      "hash": "bd0a0a82e35270f7496f54e896b813bbac782bfe8192562941665961f6723a15"
     },
     {
       "path": "pages/en/guides/build-with-ai.md",
       "url": "https://docs.astro.build/en/guides/build-with-ai",
       "title": "Building Astro sites with AI tools | Docs",
-      "hash": "24067e02bdd5caed4607e423176495ac1231d683784aee96c11b100bfc1a33a6"
+      "hash": "3e812e942172d223f3f2cc3fed6da14db613a29d26a7a558940b7c6b0294241b"
     },
     {
       "path": "pages/en/guides/caching.md",
       "url": "https://docs.astro.build/en/guides/caching",
       "title": "Route caching | Docs",
-      "hash": "7c96afba7f41db7faca91f88bd7f4faa365c918b2ad567ebf0469daba4c94bfe"
+      "hash": "f5eeab5720fa6f8d30d6188c7462ee193c5300627b9b0f34982abe1764a711ab"
     },
     {
       "path": "pages/en/guides/client-side-scripts.md",
       "url": "https://docs.astro.build/en/guides/client-side-scripts",
       "title": "Scripts and event handling | Docs",
-      "hash": "0877d901cc5c5542725686ee0e4d630aa1b47f0a8e23aa6922ab29f75649c412"
+      "hash": "5ef7c48c1ab5f38b643560fc662eb9cba6eceb74d3fbe6bfbc377f72bb6bf822"
     },
     {
       "path": "pages/en/guides/configuring-astro.md",
       "url": "https://docs.astro.build/en/guides/configuring-astro",
       "title": "Configuration overview | Docs",
-      "hash": "7affb6d79522c7aa03af24bac2b2f2fed3f325c10e84683da236b23abfda23fb"
+      "hash": "bce8858965bb6bdd291808e55199a4011b3232a3946830dc4a90ec7205195bd5"
     },
     {
       "path": "pages/en/guides/content-collections.md",
       "url": "https://docs.astro.build/en/guides/content-collections",
       "title": "Content collections | Docs",
-      "hash": "435554c42624640d4bc61cc8f8ae72dadd188b0aeb9c20d04a4f971d66832d4f"
+      "hash": "43c9c5b4b387ca19f019e6be7639d5caf4547ed4a8ca557bd1ef0916917128c1"
     },
     {
       "path": "pages/en/guides/data-fetching.md",
       "url": "https://docs.astro.build/en/guides/data-fetching",
       "title": "Data fetching | Docs",
-      "hash": "ab4d8473ec82d1db9606c724250f8fc0e480d294af54131a61e033f58497e8a9"
+      "hash": "8081d705109cc98bad787e4d3eb9bf0e008a0e5abfd3a3459defc2fc1d65eb23"
     },
     {
       "path": "pages/en/guides/dev-toolbar.md",
       "url": "https://docs.astro.build/en/guides/dev-toolbar",
       "title": "Dev toolbar | Docs",
-      "hash": "f95caa90d128b0ffe76a47011e7a20c6665b03b488b12c2a92fa8261bccd7845"
+      "hash": "c63fb91af603b6bf88482615c056d419fa5c8fbec1837718ce0389c82013c68c"
     },
     {
       "path": "pages/en/guides/endpoints.md",
       "url": "https://docs.astro.build/en/guides/endpoints",
       "title": "Endpoints | Docs",
-      "hash": "d0905b9470eadff4122518097cf675363586f7064190c98bea5b034359f865ac"
+      "hash": "509a4bc1ea53f502d735928fd3ac49afe26c1e8e0ef6396dcc2ed30905f554f1"
     },
     {
       "path": "pages/en/guides/environment-variables.md",
       "url": "https://docs.astro.build/en/guides/environment-variables",
       "title": "Using environment variables | Docs",
-      "hash": "f7644b1c253d18041ec9094dc428e02a86238b7970ace80b9053fb42b55e99be"
+      "hash": "d091550df3be8248c0e02dcb1632dcdd5533ea02eafa780329c1d1420fae9508"
     },
     {
       "path": "pages/en/guides/fonts.md",
       "url": "https://docs.astro.build/en/guides/fonts",
       "title": "Using custom fonts | Docs",
-      "hash": "8a99336b667e9e655837ee66651eb5da745ed538974a22b3251ebef841e2024e"
+      "hash": "35b0521fd57aa6dfaea5c0327d5bd44b9105eb231005d17aa011795e8057791d"
     },
     {
       "path": "pages/en/guides/framework-components.md",
       "url": "https://docs.astro.build/en/guides/framework-components",
       "title": "Front-end frameworks | Docs",
-      "hash": "4d359f4b13b94544090c64d852aa2e655eafe31c41f8c620393db04499ae104e"
+      "hash": "cdee5aede7ea1097fa05663d393586b982927386f950596cd00664a569b99d4c"
     },
     {
       "path": "pages/en/guides/images.md",
       "url": "https://docs.astro.build/en/guides/images",
       "title": "Images | Docs",
-      "hash": "b47b0ab89511330cb037090acf7fdd1d267e17c17bb93b4edebe695d0a163ae1"
+      "hash": "c0da0589f85fdc9b816412d5b161295be39fe89123e5cade8af62a89cf9aee02"
     },
     {
       "path": "pages/en/guides/integrations.md",
       "url": "https://docs.astro.build/en/guides/integrations",
       "title": "Working with integrations | Docs",
-      "hash": "a78bf7f8b6f267bd68125241fae2856b771c045b6bac901e968196b13458a296"
+      "hash": "f22ee9f83491af322488750ed53d688745d6bcecdeed9598395d7fa5469358cb"
     },
     {
       "path": "pages/en/guides/internationalization.md",
       "url": "https://docs.astro.build/en/guides/internationalization",
       "title": "Internationalization (i18n) Routing | Docs",
-      "hash": "c25edf17fe1c6d0894c958e269f5d9768155675ecd384f10b9d6cf987f52b3fb"
+      "hash": "f85964495c090031032e32233bc3a0237074e863ee49c1783cb2a5f4018dde1a"
     },
     {
       "path": "pages/en/guides/markdown-content.md",
       "url": "https://docs.astro.build/en/guides/markdown-content",
       "title": "Markdown in Astro | Docs",
-      "hash": "8b009fcd7ca861b6fbb6117174eba43ae7b4bd2289d58c02cce84f0998d7f4c1"
+      "hash": "9a310232f048168a2ef2b8c98334e79b5e3b31cac144543d4918bd40ffa6f96d"
     },
     {
       "path": "pages/en/guides/middleware.md",
       "url": "https://docs.astro.build/en/guides/middleware",
       "title": "Middleware | Docs",
-      "hash": "25aa72d1487d46fbf4959c47ba0d9e03d1b8dfd66cf5eed62aee313c5f3c5d99"
+      "hash": "736cf806a5552c6ac3a9a522ae183d4eeb83e1b6bec4337b5003d958fed4f19b"
     },
     {
       "path": "pages/en/guides/migrate-to-astro.md",
       "url": "https://docs.astro.build/en/guides/migrate-to-astro",
       "title": "Migrate an existing project to Astro | Docs",
-      "hash": "19561f3bd8a545a5709c872c8c5f866c7e6c917c0eaa16d2f5ded4f2b7df8cae"
+      "hash": "b29ab43fba6816ab39cc21cbdd8771ce95f61b9fb58887b0c7c20c09065053ac"
     },
     {
       "path": "pages/en/guides/migrate-to-astro/from-create-react-app.md",
       "url": "https://docs.astro.build/en/guides/migrate-to-astro/from-create-react-app",
       "title": "Migrating from Create React App (CRA) | Docs",
-      "hash": "6c6d76fd9488fa7e497a509ff2936df1c4f08621a069a393fdeb03a114ff061f"
+      "hash": "61498d2426a5232e53483f5afb6efe40faa5327a587f9048f079d199b9ee9087"
     },
     {
       "path": "pages/en/guides/migrate-to-astro/from-docusaurus.md",
       "url": "https://docs.astro.build/en/guides/migrate-to-astro/from-docusaurus",
       "title": "Migrating from Docusaurus | Docs",
-      "hash": "60de8916c3ca2e81f4b9e5d7372f22530626eecc11325eeac1cf35f1639f0659"
+      "hash": "f98ce4be50978c021b553bf9ebec1da210b9d30571ef8526f9d2d0633c3f6e54"
     },
     {
       "path": "pages/en/guides/migrate-to-astro/from-eleventy.md",
       "url": "https://docs.astro.build/en/guides/migrate-to-astro/from-eleventy",
       "title": "Migrating from Eleventy | Docs",
-      "hash": "1ef3073bb221349f655f705397a7b36ca35d39ebfcf26fcbf70d282fa4da65d4"
+      "hash": "1ad4374bc555333abc28bdbfaf122af19c5e70bbeede4905a57e5f4c2c133867"
     },
     {
       "path": "pages/en/guides/migrate-to-astro/from-gatsby.md",
       "url": "https://docs.astro.build/en/guides/migrate-to-astro/from-gatsby",
       "title": "Migrating from Gatsby | Docs",
-      "hash": "abe13ed04160f330679dc041d9ef8ee9b836c6d1eec7816293f5339d1950f210"
+      "hash": "584eb4d7f45957eba3651409b8131038966bded87841f4371de38dfb35258cfc"
     },
     {
       "path": "pages/en/guides/migrate-to-astro/from-gitbook.md",
       "url": "https://docs.astro.build/en/guides/migrate-to-astro/from-gitbook",
       "title": "Migrating from GitBook | Docs",
-      "hash": "eb4ba4f7aed5dc5512c11ae30136128f634b786218d360b81a704470211aab06"
+      "hash": "94a19ffae69dceccd3377ebe8ed2d3b69c1e9a6e72e8bd773f0f2fdadf8ec269"
     },
     {
       "path": "pages/en/guides/migrate-to-astro/from-gridsome.md",
       "url": "https://docs.astro.build/en/guides/migrate-to-astro/from-gridsome",
       "title": "Migrating from Gridsome | Docs",
-      "hash": "1e4e5dede51fd3c214e0be926f23438e99d25d361189f6466ea494b2bd6ae677"
+      "hash": "9417e6e4f8b486424b9d2e359614a543eec005f9a2d7183b32321e7aed71f6e5"
     },
     {
       "path": "pages/en/guides/migrate-to-astro/from-hugo.md",
       "url": "https://docs.astro.build/en/guides/migrate-to-astro/from-hugo",
       "title": "Migrating from Hugo | Docs",
-      "hash": "15ca0f1b1a703fb64f756139435c8ce99809e27b0f3cf6f571df92023c19b7ed"
+      "hash": "2c4a90bdee40f17af41fbeb8c188a09312589b7601e39819b996957e4f641772"
     },
     {
       "path": "pages/en/guides/migrate-to-astro/from-jekyll.md",
       "url": "https://docs.astro.build/en/guides/migrate-to-astro/from-jekyll",
       "title": "Migrating from Jekyll | Docs",
-      "hash": "3c555084fe191ba2bc77c6bba629191dc6c897796313030760303a105dbe70ab"
+      "hash": "231831c88122663dc42bb8cce106505e7b878ab25ac5eba665236b675b9e979a"
     },
     {
       "path": "pages/en/guides/migrate-to-astro/from-nextjs.md",
       "url": "https://docs.astro.build/en/guides/migrate-to-astro/from-nextjs",
       "title": "Migrating from Next.js | Docs",
-      "hash": "09b2dfb6cb27271d85a81d5cccee4c08f8e774016c0dd5c10d10b1e2a97d84a3"
+      "hash": "e73ca092e3b5ec45a564d11cf0e7d9eb7a3f1713159eedc265c3b89ca6f98a09"
     },
     {
       "path": "pages/en/guides/migrate-to-astro/from-nuxtjs.md",
       "url": "https://docs.astro.build/en/guides/migrate-to-astro/from-nuxtjs",
       "title": "Migrating from NuxtJS | Docs",
-      "hash": "8d71e05c911da29cb69727b8ea6cad2aebb24056f25a8b2f705eaa0410d09ac7"
+      "hash": "c794bc6eccfa077c4e133afd7980ccb6610cc8239402326c629dca4d0d8f2fd0"
     },
     {
       "path": "pages/en/guides/migrate-to-astro/from-pelican.md",
       "url": "https://docs.astro.build/en/guides/migrate-to-astro/from-pelican",
       "title": "Migrating from Pelican | Docs",
-      "hash": "aa74660e4809fb28497597c006fa2db358c1a2f17a1c8f58d54de532ed0fdca1"
+      "hash": "fcf05820bf2a20254536b9ca4f2087f1d04144786fc4c568ed7a1f811d94704d"
     },
     {
       "path": "pages/en/guides/migrate-to-astro/from-sveltekit.md",
       "url": "https://docs.astro.build/en/guides/migrate-to-astro/from-sveltekit",
       "title": "Migrating from SvelteKit | Docs",
-      "hash": "e9e6ca80f20a6296cc30ed45099201ee5160d631dce4f5aaccf133d25762dde3"
+      "hash": "bebf267eda4a4ca7ff7f99b11e79039438fa8542f01f321f0251d9b0a2f923f3"
     },
     {
       "path": "pages/en/guides/migrate-to-astro/from-vuepress.md",
       "url": "https://docs.astro.build/en/guides/migrate-to-astro/from-vuepress",
       "title": "Migrating from VuePress | Docs",
-      "hash": "b2f1870bbf0c160d22fb1694fefc31800cc0cd76f62355bd2f8add1630d2f889"
+      "hash": "552f8e4f19b6167f015ab8527577eca2699aa2e6a43cb0cd84d6dfaea8d96990"
     },
     {
       "path": "pages/en/guides/migrate-to-astro/from-wordpress.md",
       "url": "https://docs.astro.build/en/guides/migrate-to-astro/from-wordpress",
       "title": "Migrating from WordPress | Docs",
-      "hash": "9c27e7f651c42a780eeff69e496135574e0177c3d0e9dc52647859711967c551"
+      "hash": "280d0dbdf34deac62b08fc9a76d5715dc2577610d7c954c197b81dc91032f658"
     },
     {
       "path": "pages/en/guides/on-demand-rendering.md",
       "url": "https://docs.astro.build/en/guides/on-demand-rendering",
       "title": "On-demand rendering | Docs",
-      "hash": "b1060c80b96273ea6904aa226156cba58002b199ed1651a61eb42cd70f69732d"
+      "hash": "f86d944ea8ae90a6abc77a7f4b5421aca9293a9a69572ab796ea1a791cb84410"
     },
     {
       "path": "pages/en/guides/prefetch.md",
       "url": "https://docs.astro.build/en/guides/prefetch",
       "title": "Prefetch | Docs",
-      "hash": "4146f4c5c5cfb7f5a20f671beabf54bceae4c1fd293c536c04f914efc6c3b8f6"
+      "hash": "27fbaceebb223711e6485a2af9427dfaff3b94a8ce165f1b17b1df6ac825f272"
     },
     {
       "path": "pages/en/guides/routing.md",
       "url": "https://docs.astro.build/en/guides/routing",
       "title": "Routing | Docs",
-      "hash": "ad59e6e2a3030bb32da921db4ec02c11409a10f360a77aea8b85f0016f965415"
+      "hash": "5b948abf37c5bfa04c38640fe6aa09ff8f0acf3a34ee81ff45c23f4d5a1fea23"
     },
     {
       "path": "pages/en/guides/server-islands.md",
       "url": "https://docs.astro.build/en/guides/server-islands",
       "title": "Server islands | Docs",
-      "hash": "8ee6ac268e8a9f9ca1fc58b8496e2c97a442eb959eddab80c2468a549b7f7acd"
+      "hash": "4aac41ed67ff4ae3e67fd27f85186adcdde7b83a5ad4ab562235a087b6e12c0a"
     },
     {
       "path": "pages/en/guides/sessions.md",
       "url": "https://docs.astro.build/en/guides/sessions",
       "title": "Sessions | Docs",
-      "hash": "ca94f8415f68c2d036c57a926bbcad3afd3a862f31ea525663a237d67901ab94"
+      "hash": "ac08772553fe6dedda50b042f774d56d83d49d2d73b2361dec60aeb5d45742e4"
     },
     {
       "path": "pages/en/guides/styling.md",
       "url": "https://docs.astro.build/en/guides/styling",
       "title": "Styles and CSS | Docs",
-      "hash": "c6989e4e4d8b23e9fa7ffe735b02ee43230e0a20527b776db3b10109b0dee5b0"
+      "hash": "b3f00e414ebefedbcd62d0492690b50f3318ab50c6e349fbf25f6a9bcd419f93"
     },
     {
       "path": "pages/en/guides/syntax-highlighting.md",
       "url": "https://docs.astro.build/en/guides/syntax-highlighting",
       "title": "Syntax Highlighting | Docs",
-      "hash": "3ad15ff65d729fe57c964b2f51b1797b043df66f5af6675f1485be6c53772849"
+      "hash": "dcaaac414930b29ecd0b95ac8a2ee8b4c83bf1ffe262a215ef86c6814ed9d8e5"
     },
     {
       "path": "pages/en/guides/troubleshooting.md",
       "url": "https://docs.astro.build/en/guides/troubleshooting",
       "title": "Troubleshooting | Docs",
-      "hash": "4afa25b43baf3b3a7c89b44f66a49c9747ee463cd8316e12aea617259f03c6b3"
+      "hash": "6c6f8863398f3b475c0d611c012f7cf237442cccd4f3a9622158c25d92d4dc48"
     },
     {
       "path": "pages/en/guides/typescript.md",
       "url": "https://docs.astro.build/en/guides/typescript",
       "title": "TypeScript | Docs",
-      "hash": "8b18502d9a91a435be4edffb65592675eca71cf327cc3b683c07e3d71f8a22dc"
+      "hash": "00280a665f6efc76cdc0da96a92bc522290546b13158d0ec98f4b6f638bb8ef5"
     },
     {
       "path": "pages/en/guides/upgrade-to/v1.md",
       "url": "https://docs.astro.build/en/guides/upgrade-to/v1",
       "title": "Legacy v0.x Upgrade Guide | Docs",
-      "hash": "d96979833e3672c0d7007f28573afb78093252000a48ccc155c18e3890c4c271"
+      "hash": "b675cc68d77a1c9b5b59f1e838887a0700fc83659139c50e03611d5be34f1a93"
     },
     {
       "path": "pages/en/guides/upgrade-to/v2.md",
       "url": "https://docs.astro.build/en/guides/upgrade-to/v2",
       "title": "Upgrade to Astro v2 | Docs",
-      "hash": "3433780d8344564d5751d08eb6798bfef2e9aecde86250f13903011e67594eba"
+      "hash": "4eb579032d9a6811d5da66f9974158d91b4afd54b8e7b60b49d881ef6027b14a"
     },
     {
       "path": "pages/en/guides/upgrade-to/v3.md",
       "url": "https://docs.astro.build/en/guides/upgrade-to/v3",
       "title": "Upgrade to Astro v3 | Docs",
-      "hash": "f615a56c1833dc6c9d83bac890833386809b0082d197b12b5991b021a9496143"
+      "hash": "34843277f2f8cc336a7bcd123fdcc58d0bea92bd0157eee422ebc0f2e4d83603"
     },
     {
       "path": "pages/en/guides/upgrade-to/v4.md",
       "url": "https://docs.astro.build/en/guides/upgrade-to/v4",
       "title": "Upgrade to Astro v4 | Docs",
-      "hash": "a0917feb643bfb5794fbf6f2938a5a1a8505df6112a37ddfc1b7f504f7661efa"
+      "hash": "1a159bf1d5eaca0c350f3f26e0afaa05afd3896f85fff4f08be91c32f1f6732e"
     },
     {
       "path": "pages/en/guides/upgrade-to/v5.md",
       "url": "https://docs.astro.build/en/guides/upgrade-to/v5",
       "title": "Upgrade to Astro v5 | Docs",
-      "hash": "94901d2f30f6aa2bec80ff8da4262b16bb4fe808d8562ca4a913854f3b375036"
+      "hash": "168f4966c2b574767490e098fcdea8926c7a3caefbb8641b06164ce28656d99d"
     },
     {
       "path": "pages/en/guides/upgrade-to/v6.md",
       "url": "https://docs.astro.build/en/guides/upgrade-to/v6",
       "title": "Upgrade to Astro v6 | Docs",
-      "hash": "a5ad696ac6562304a60f037ba06360e2a5bd4aedb70f95656709e8507e07e12e"
+      "hash": "a0bd3dbc83cc876c46bbc7df638eb098d6f547de3d10a4ba0c2f83f20361d80e"
     },
     {
       "path": "pages/en/guides/upgrade-to/v7.md",
       "url": "https://docs.astro.build/en/guides/upgrade-to/v7",
       "title": "Upgrade to Astro v7 | Docs",
-      "hash": "a345f10ac9fc91f02485e726d166ef13626cb34c9d1d2c099f7c2e8d442d1a02"
+      "hash": "427028c7d1ddd63bfa034ed2b97562ed39b3ffbf5e17fa599f57fdfd72befb29"
     },
     {
       "path": "pages/en/guides/view-transitions.md",
       "url": "https://docs.astro.build/en/guides/view-transitions",
       "title": "View transitions | Docs",
-      "hash": "02e83eee6d6a4b4d1e4d21f08c8236a2aab02198d82e72341b02257627a00af7"
+      "hash": "789642701e986e4d7a3e925febb3ba2aa74166f2de267432975962f64e7e6b81"
     },
     {
       "path": "pages/en/install-and-setup.md",
       "url": "https://docs.astro.build/en/install-and-setup",
       "title": "Install Astro | Docs",
-      "hash": "ec7e8ee7a6e15b91a3db82522b639bdaaae37f202e8cd6da39cd5557428aef0a"
+      "hash": "d2a5520a788e2ba59cf0e14c359b273d1d786bef073954da829d8825aff2d379"
     },
     {
       "path": "pages/en/recipes.md",
       "url": "https://docs.astro.build/en/recipes",
       "title": "Astro recipes | Docs",
-      "hash": "f60ac7a2c61b51f9628fcda69e388f08036c84d13e073c4562c5311c6539de66"
+      "hash": "cf56150ba73bdef0e1d58a2a6a9f7ae99ad34202b14dad0d76c9033f7d2d062c"
     },
     {
       "path": "pages/en/recipes/add-yaml-support.md",
       "url": "https://docs.astro.build/en/recipes/add-yaml-support",
       "title": "Installing a Vite or Rollup plugin | Docs",
-      "hash": "a920db3391922fa3595f5b45b467afa6809bd0a3eb598e571a8fab3450ca374d"
+      "hash": "883a43b0d72505161e88c5597290a7871ec63ec3238a1bf4b9bcccf7a66f448b"
     },
     {
       "path": "pages/en/recipes/analyze-bundle-size.md",
       "url": "https://docs.astro.build/en/recipes/analyze-bundle-size",
       "title": "Analyze bundle size | Docs",
-      "hash": "373363b6961d1129098ebf41e20d084e9164433456d5568b286dc315301a33b4"
+      "hash": "c40b5d64089c67e74688b697734206443733a17ee22dfdf4d93508a4a115d05d"
     },
     {
       "path": "pages/en/recipes/build-custom-img-component.md",
       "url": "https://docs.astro.build/en/recipes/build-custom-img-component",
       "title": "Build a custom image component | Docs",
-      "hash": "a17ef02df94b312f33413600d0e7e353e2eff57f7d88107f250d408b51acc79d"
+      "hash": "8b8965fede7d9e357deb104d59f0950569eecaed797f5c53302eff3affcb1a10"
     },
     {
       "path": "pages/en/recipes/build-forms-api.md",
       "url": "https://docs.astro.build/en/recipes/build-forms-api",
       "title": "Build forms with API routes | Docs",
-      "hash": "0b4bda7589f22c173014fc29b0697a18bc9905f1c3499fba5bf9937b0e09957e"
+      "hash": "e527f40bc6a9d3eecf4395414c9c178fc9339d38577b575106466805e17b5eda"
     },
     {
       "path": "pages/en/recipes/build-forms.md",
       "url": "https://docs.astro.build/en/recipes/build-forms",
       "title": "Build HTML forms in Astro pages | Docs",
-      "hash": "c804115c9cd5eeb452ff1cfecde5d25094171e00c93d0e0a4a792f9acfb507c7"
+      "hash": "a594ae66e00a0bf0f01617a73bc934b7e5b6bff246b61261b5aa2616ceb393dc"
     },
     {
       "path": "pages/en/recipes/bun.md",
       "url": "https://docs.astro.build/en/recipes/bun",
       "title": "Use Bun with Astro | Docs",
-      "hash": "7794dc9408ebf02b9cbf830679fd8f1a665a7cd6d15baf2e8462ddbf54e4caa3"
+      "hash": "f96db46293fe83618fd0fe0fce028498a56177298115c1d88af3d756cc80fd8b"
     },
     {
       "path": "pages/en/recipes/call-endpoints.md",
       "url": "https://docs.astro.build/en/recipes/call-endpoints",
       "title": "Call endpoints from the server | Docs",
-      "hash": "0d63d934b22844bb976110f390aebde7f383e434747aa751aa887aebcff14fb4"
+      "hash": "15ef2e3522594bd4332f096083128807e532b2060098aa6eee70aee763d92651"
     },
     {
       "path": "pages/en/recipes/captcha.md",
       "url": "https://docs.astro.build/en/recipes/captcha",
       "title": "Verify a Captcha | Docs",
-      "hash": "bccc0dd74d15f708e97c033c2bab073b9a74e0bd03531eb3dbcf41af30d2ff65"
+      "hash": "88b9dbec267eb7f2d80d55b37a65c30d4fc1f887207ad2cdfc6fde88036bda46"
     },
     {
       "path": "pages/en/recipes/customizing-output-filenames.md",
       "url": "https://docs.astro.build/en/recipes/customizing-output-filenames",
       "title": "Customize file names in the build output | Docs",
-      "hash": "d386d2b0dba36eb20974c70cda2cc1b72fa68ac22e03a2b3e0c4f509ae8eb7a2"
+      "hash": "5eaa79f65e5f8f4755bfe58218ad069b4bd30062c73802c09b8fd304bc04f46d"
     },
     {
       "path": "pages/en/recipes/docker.md",
       "url": "https://docs.astro.build/en/recipes/docker",
       "title": "Build your Astro site with Docker | Docs",
-      "hash": "002835eedea4ec45af16da281d7b67496acdda595f189691bf3cc0d362100897"
+      "hash": "1df4cb45a665b1b871fe8668aad40801fbe8eb2d0562725cf17f5d52db900efc"
     },
     {
       "path": "pages/en/recipes/dynamically-importing-images.md",
       "url": "https://docs.astro.build/en/recipes/dynamically-importing-images",
       "title": "Dynamically import images | Docs",
-      "hash": "19f0419f0454af7a4be30bb9320bb78edbdad7f30f36f86cae7ad634a132e1f4"
+      "hash": "2fced717df3848366598e73beab3091a222d25e82ffba8d7cc796aba674a3e60"
     },
     {
       "path": "pages/en/recipes/external-links.md",
       "url": "https://docs.astro.build/en/recipes/external-links",
       "title": "Add icons to external links | Docs",
-      "hash": "6a0fc50438da3a1677762b2e60197f2517454eb6fb547709d7d8e3cf87ec743f"
+      "hash": "a031dc679c143b77149166a6372971c0f46c421ecdc99ba7daf62938e9574b0e"
     },
     {
       "path": "pages/en/recipes/i18n.md",
       "url": "https://docs.astro.build/en/recipes/i18n",
       "title": "Add i18n features | Docs",
-      "hash": "619593c1e0f32d05bfc38a44c6f75efe139aae2c77c8c463ab53ee9c6fd1781a"
+      "hash": "f03d77f65c63dd88a9b01d3474ef3764b1c25d6fc0ca6f40873b757ceeaf0ab5"
     },
     {
       "path": "pages/en/recipes/making-toolbar-apps.md",
       "url": "https://docs.astro.build/en/recipes/making-toolbar-apps",
       "title": "Create a dev toolbar app | Docs",
-      "hash": "7730e58824369ebb0080e454f64fb89b223537b04b154136130ba05ae07b0ce2"
+      "hash": "9e023a3f3651d897e6066d25acc61037c4ebbe73020fe7d1f14b35522b57856a"
     },
     {
       "path": "pages/en/recipes/modified-time.md",
       "url": "https://docs.astro.build/en/recipes/modified-time",
       "title": "Add last modified time | Docs",
-      "hash": "95acb4182d915062b27f16d35d47e930e0a57006fd41649ac6f8984f69b8b024"
+      "hash": "69bc027c3d61bc312fc8b64f04aed746bfe25b487f16f7292738efd96db20ae1"
     },
     {
       "path": "pages/en/recipes/reading-time.md",
       "url": "https://docs.astro.build/en/recipes/reading-time",
       "title": "Add reading time | Docs",
-      "hash": "b819d10920da5081c477e68894deb324489ed4aab47ac8827f0fa3efe0b99cab"
+      "hash": "73b988082a180d826062b0d64fd737c5431daca86846c39d62d454ae97b76e05"
     },
     {
       "path": "pages/en/recipes/rss.md",
       "url": "https://docs.astro.build/en/recipes/rss",
       "title": "Add an RSS feed | Docs",
-      "hash": "b12a2e749e0da96f1a0c2bb23427b960e797c7c7207ec2e836388069a995aeb2"
+      "hash": "831ca8a2401a65a33e31905bc3d8bf8ba0e9b0c85d1b36558873ce93cf8aaecc"
     },
     {
       "path": "pages/en/recipes/sharing-state-islands.md",
       "url": "https://docs.astro.build/en/recipes/sharing-state-islands",
       "title": "Share state between islands | Docs",
-      "hash": "0b5590796affd150886b5059122a809ded836e6d044cf6912f3b20580166ab1b"
+      "hash": "296768e836f04301b1da01dd5034bcde31f1b819d4160b9ac1886db0aa80f9ce"
     },
     {
       "path": "pages/en/recipes/sharing-state.md",
       "url": "https://docs.astro.build/en/recipes/sharing-state",
       "title": "Share state between Astro components | Docs",
-      "hash": "3f64ee64f2e92decd25e681afc06927d1fc0dec0e9f0a2a195f344030d012812"
+      "hash": "3e3ccc892bf4461b0c5307d11740c86fcfd639718d408df34a2b677a4cb8e1d7"
     },
     {
       "path": "pages/en/recipes/streaming-improve-page-performance.md",
@@ -502,7 +502,7 @@
       "path": "pages/en/recipes/tailwind-rendered-markdown.md",
       "url": "https://docs.astro.build/en/recipes/tailwind-rendered-markdown",
       "title": "Style rendered Markdown with Tailwind Typography | Docs",
-      "hash": "4ef5dbe1fb4087404ce889ca0cbb3775bfcdd1c4c18f1006538a10964c99ff3b"
+      "hash": "091a25bc5e165f03222def30f5e80ebfcd6a483b570cf4c29bbec63ebbea5fea"
     },
     {
       "path": "pages/en/tutorial/0-introduction.md",
@@ -514,13 +514,13 @@
       "path": "pages/en/tutorial/1-setup.md",
       "url": "https://docs.astro.build/en/tutorial/1-setup",
       "title": "Build a blog tutorial: Unit 1 - Setup | Docs",
-      "hash": "ebabee4cf2b7397b81a7129fae0350dd55d3d855bdd1aa45fe8e868ba7482b1c"
+      "hash": "d907eb338bd60ab76ce504bd810e05238444cbeb6853c78a43872c4d962f5248"
     },
     {
       "path": "pages/en/tutorial/2-pages.md",
       "url": "https://docs.astro.build/en/tutorial/2-pages",
       "title": "Build a blog tutorial: Unit 2 - Pages | Docs",
-      "hash": "8ad56be825df8f6fb9708fa1de3711be949a02a56a18d5a9caf2224bbe614019"
+      "hash": "fcc3d30c53086c63a0ab196ba7665c30428b95cc7c13eed0c4bf8adfd7e80737"
     },
     {
       "path": "pages/en/tutorial/3-components.md",
@@ -538,19 +538,19 @@
       "path": "pages/en/tutorial/5-astro-api.md",
       "url": "https://docs.astro.build/en/tutorial/5-astro-api",
       "title": "Build a blog tutorial: Unit 5 - Astro API | Docs",
-      "hash": "b0b34acb5f3eeb20dbf5cb7a23acfbe82d10c91b9e63a9e8c61adfa23ae85c1b"
+      "hash": "4a196b828bf16ada8b44a3b1b3680c6ccb52ad5b0a0becff0e890c722f694b04"
     },
     {
       "path": "pages/en/tutorial/6-islands.md",
       "url": "https://docs.astro.build/en/tutorial/6-islands",
       "title": "Build a blog tutorial: Unit 6 - Astro Islands | Docs",
-      "hash": "527d00a205d25c6851fccec81d1671eea7c4d539f56b3df5a76c663da8dd73f7"
+      "hash": "9e7f989b0d6b74fab9b1b317c8751bbf5690b21506a21184917b6f7280a8869d"
     },
     {
       "path": "pages/en/upgrade-astro.md",
       "url": "https://docs.astro.build/en/upgrade-astro",
       "title": "Upgrade Astro | Docs",
-      "hash": "fcf5d81cc92af578836a8466e4778e073155a5b96fffb50ce1ccae13188bb247"
+      "hash": "652d72e810be35fddcc19811ee230e588a600eeeaa25b8b45e1f628137ec7cb5"
     }
   ],
   "edges": [
@@ -2936,9 +2936,9 @@
     ]
   ],
   "last_sync": {
-    "synced_at": "2026-07-27T09:42:27.110293+00:00",
+    "synced_at": "2026-08-03T09:35:37.149113+00:00",
     "added": 0,
-    "changed": 1,
+    "changed": 85,
     "removed": 0,
     "pages": 90
   }

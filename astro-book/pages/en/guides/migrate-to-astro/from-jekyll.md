@@ -3,7 +3,7 @@ type: Web Page
 title: Migrating from Jekyll | Docs
 description: Tips for migrating an existing Jekyll project to Astro
 resource: https://docs.astro.build/en/guides/migrate-to-astro/from-jekyll
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Migrating from Jekyll
@@ -17,11 +17,11 @@ timestamp: '2026-07-13T09:18:12.222139+00:00'
 Jekyll and Astro share some similarities that will help you migrate your project:
 
 - 
-Both Jekyll and Astro are static-site generators, commonly used to create blogs. 
+Both Jekyll and Astro are static-site generators, commonly used to create blogs.
 - 
-Both Jekyll and Astro allow you to write your content in Markdown and HTML. Jekyll and Astro both provide some special frontmatter YAML properties for page layout and unpublished draft posts. You can continue to use your existing Markdown files in Astro. 
+Both Jekyll and Astro allow you to write your content in Markdown and HTML. Jekyll and Astro both provide some special frontmatter YAML properties for page layout and unpublished draft posts. You can continue to use your existing Markdown files in Astro.
 - 
-Both Jekyll and Astro use [file-based routing](/en/guides/routing/)for creating pages from your blog posts. Astro provides a[special](/en/basics/project-structure/#srcpages). Jekyll uses a similar special folder called`src/pages/`directory for all pages and posts`_posts/`for your Markdown blog posts, however your site pages can exist elsewhere. Creating new blog posts should feel familiar.
+Both Jekyll and Astro use [file-based routing](/en/guides/routing/) for creating pages from your blog posts. Astro provides a[special `src/pages/` directory for all pages and posts](/en/basics/project-structure/#srcpages) . Jekyll uses a similar special folder called`_posts/` for your Markdown blog posts, however your site pages can exist elsewhere. Creating new blog posts should feel familiar.
 
 ## Key Differences between Jekyll and Astro
 
@@ -30,9 +30,9 @@ Both Jekyll and Astro use [file-based routing](/en/guides/routing/)for creating 
 When you rebuild your Jekyll site in Astro, you will notice some important differences:
 
 - 
-As Jekyll is primarily a blogging platform, several blog features are built-in that you may have to build yourself in Astro. Or, choose a [blog starter template theme](https://astro.build/themes?search=&categories%5B%5D=blog)that includes these features. For example, Jekyll has built-in support for tags and categories which you will find in several Astro blog themes, but is not included in a minimal Astro project.
+As Jekyll is primarily a blogging platform, several blog features are built-in that you may have to build yourself in Astro. Or, choose a [blog starter template theme](https://astro.build/themes?search=&categories%5B%5D=blog) that includes these features. For example, Jekyll has built-in support for tags and categories which you will find in several Astro blog themes, but is not included in a minimal Astro project.
 - 
-Jekyll uses Liquid templates for reusable layout elements and templating. Astro uses JSX-like `.astro`files for templating and components`.astro`file can be a component, a layout or an entire page, and can import and render any other Astro components. You can also build using[other UI framework components (e.g. React, Svelte, Vue, Solid)](/en/guides/framework-components/)as well as content or metadata from[other files in your project](/en/guides/imports/), such as Markdown or MDX.
+Jekyll uses Liquid templates for reusable layout elements and templating. Astro uses JSX-like [`.astro` files for templating and components](/en/basics/astro-components/) . Any`.astro` file can be a component, a layout or an entire page, and can import and render any other Astro components. You can also build using[other UI framework components (e.g. React, Svelte, Vue, Solid)](/en/guides/framework-components/) as well as content or metadata from[other files in your project](/en/guides/imports/) , such as Markdown or MDX.
 
 ## Switch from Jekyll to Astro
 

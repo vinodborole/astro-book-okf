@@ -3,7 +3,7 @@ type: Web Page
 title: Pages | Docs
 description: An introduction to Astro pages.
 resource: https://docs.astro.build/en/basics/astro-pages
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Pages
@@ -16,11 +16,11 @@ timestamp: '2026-07-13T09:18:12.222139+00:00'
 
 Astro supports the following file types in the `src/pages/` directory:
 
-- `.astro`
-- `.md`
-- `.mdx`(with the- [MDX Integration installed](/en/guides/integrations-guide/mdx/#installation))
-- `.html`
-- `.js`/- `.ts`(as- [endpoints](/en/guides/endpoints/))
+- [`.astro`](#astro-pages)
+- [`.md`](#markdownmdx-pages)
+- `.mdx` (with the[MDX Integration installed](/en/guides/integrations-guide/mdx/#installation) )
+- [`.html`](#html-pages)
+- `.js` /`.ts` (as[endpoints](/en/guides/endpoints/) )
 
 ## File-based routing
 
@@ -36,9 +36,7 @@ A single file can also generate multiple pages using [dynamic routing](/en/guide
 
 [Section titled “Link between pages”](#link-between-pages)
 
-Write standard HTML [ <a> elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a) in your Astro pages to link to other pages on your site. Use a 
-
-**URL path relative to your root domain**as your link, not a relative file path.
+Write standard HTML [`<a>` elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a) in your Astro pages to link to other pages on your site. Use a **URL path relative to your root domain** as your link, not a relative file path.
 
 For example, to link to `https://example.com/authors/sonali/` from any other page on `example.com`:
 
@@ -125,11 +123,11 @@ Like components located outside of this folder, these files do not automatically
 
 However, because they are located in the special `src/pages/` directory, the generated HTML is available at a URL corresponding to its file path. This allows a rendering library (e.g. [htmx](https://htmx.org/), [Stimulus](https://stimulus.hotwired.dev/), [jQuery](https://jquery.com/)) to access it on the client and load sections of HTML dynamically on a page without a browser refresh or page navigation.
 
-Partials, when combined with a rendering library, provide an alternative to [Astro islands](/en/concepts/islands/) and [ <script> tags](/en/guides/client-side-scripts/) for building dynamic content in Astro.
+Partials, when combined with a rendering library, provide an alternative to [Astro islands](/en/concepts/islands/) and [`<script>` tags](/en/guides/client-side-scripts/) for building dynamic content in Astro.
 
-Page files that can export a value for [ partial](/en/reference/routing-reference/#partial) (e.g. 
+Page files that can export a value for [`partial`](/en/reference/routing-reference/#partial) (e.g. `.astro` and `.mdx`, but not `.md`) can be marked as partials.
 
-`.astro` and `.mdx`, but not `.md`) can be marked as partials.### Using with a library
+### Using with a library
 
 [Section titled “Using with a library”](#using-with-a-library)
 

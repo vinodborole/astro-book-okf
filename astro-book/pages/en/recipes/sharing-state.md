@@ -3,7 +3,7 @@ type: Web Page
 title: Share state between Astro components | Docs
 description: Learn how to share state across Astro components with Nano Stores.
 resource: https://docs.astro.build/en/recipes/sharing-state
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Share state between Astro components
@@ -16,12 +16,12 @@ When building an Astro website, you may need to share state across components. A
 
 [Section titled “Recipe”](#recipe)
 
-- 
-Install Nano Stores: 
-- 
-Create a store. In this example, the store tracks whether a dialog is open or not: 
-- 
-Import and use the store in a `<script>`tag in the components that will share state.The following `Button`and`Dialog`components each use the shared`isOpen`state to control whether a particular`<div>`is hidden or displayed:
+1. 
+Install Nano Stores:
+2. 
+Create a store. In this example, the store tracks whether a dialog is open or not:
+3. 
+Import and use the store in a `<script>` tag in the components that will share state.The following `Button` and`Dialog` components each use the shared`isOpen` state to control whether a particular`<div>` is hidden or displayed:
 
 ## Resources
 

@@ -4,7 +4,7 @@ title: Styles and CSS | Docs
 description: Learn how to style components in Astro with scoped styles, external CSS,
   and tooling like Sass and PostCSS.
 resource: https://docs.astro.build/en/guides/styling
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Styles and CSS
@@ -113,7 +113,7 @@ You may also need to load stylesheets from an external npm package. This is espe
 
 If your package **does not suggest using a file extension** (i.e. `package-name/styles`), you’ll need to update your Astro config first!
 
-Say you are importing a CSS file from `package-name` called `normalize` (with the file extension omitted). To ensure we can prerender your page correctly, add `package-name` to [the  vite.ssr.noExternal array](https://vite.dev/config/ssr-options.html#ssr-noexternal):
+Say you are importing a CSS file from `package-name` called `normalize` (with the file extension omitted). To ensure we can prerender your page correctly, add `package-name` to [the `vite.ssr.noExternal` array](https://vite.dev/config/ssr-options.html#ssr-noexternal):
 
 This is a [Vite-specific setting](https://vite.dev/config/ssr-options.html#ssr-noexternal) that does *not* relate to (or require) [Astro SSR](/en/guides/on-demand-rendering/).
 
@@ -141,17 +141,15 @@ If two rules have the same specificity, then the *order of appearance* is evalua
 
 Astro CSS rules are evaluated in this order of appearance:
 
-- `<link>`tags in the head
+- **`<link>` tags in the head** (lowest precedence)
 - **imported styles**
-- **scoped styles**(highest precedence)
+- **scoped styles** (highest precedence)
 
 ### Scoped Styles
 
 [Section titled “Scoped Styles”](#scoped-styles-1)
 
-Depending on your chosen value for [ scopedStyleStrategy](/en/reference/configuration-reference/#scopedstylestrategy), scoped styles may or may not increase the 
-
-[CLASS column specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascade/Specificity#class_column).
+Depending on your chosen value for [`scopedStyleStrategy`](/en/reference/configuration-reference/#scopedstylestrategy), scoped styles may or may not increase the [CLASS column specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascade/Specificity#class_column).
 
 However, [scoped styles](#scoped-styles) will always come last in the order of appearance. These styles will therefore take precedence over other styles of the same specificity. For example, if you import a stylesheet that conflicts with a scoped style, the scoped style’s value will apply:
 
@@ -197,16 +195,16 @@ Import this file in the pages where you want Tailwind to apply. This is often do
 
 [Section titled “Upgrade from Tailwind 3”](#upgrade-from-tailwind-3)
 
-Follow the steps to update an existing Astro project using Tailwind v3 (using the `@astrojs/tailwind` integration) to Tailwind 4 (using [the  @tailwindcss/vite plugin](https://tailwindcss.com/docs/installation/framework-guides/astro)).
+Follow the steps to update an existing Astro project using Tailwind v3 (using the `@astrojs/tailwind` integration) to Tailwind 4 (using [the `@tailwindcss/vite` plugin](https://tailwindcss.com/docs/installation/framework-guides/astro)).
 
-- 
-[Add Tailwind 4 support to your project](#add-tailwind-4)through the CLI for the latest version of Astro, or by adding the Vite plugin manually.
-- 
-Uninstall the `@astrojs/tailwind`integration from your project:
-- 
-Remove the `@astrojs/tailwind`integration from your`astro.config.mjs`:
-- 
-Then, upgrade your project according to [Tailwind’s v4 upgrade guide](https://tailwindcss.com/docs/upgrade-guide#changes-from-v3).
+1. 
+[Add Tailwind 4 support to your project](#add-tailwind-4) through the CLI for the latest version of Astro, or by adding the Vite plugin manually.
+2. 
+Uninstall the `@astrojs/tailwind` integration from your project:
+3. 
+Remove the `@astrojs/tailwind` integration from your`astro.config.mjs` :
+4. 
+Then, upgrade your project according to [Tailwind’s v4 upgrade guide](https://tailwindcss.com/docs/upgrade-guide#changes-from-v3) .
 
 ### Legacy Tailwind 3 support
 
@@ -214,14 +212,14 @@ Then, upgrade your project according to [Tailwind’s v4 upgrade guide](https://
 
 To add (or keep) support for Tailwind 3, you will need to have both `tailwindcss@3` and the official Astro Tailwind integration `@astrojs/tailwind` installed. Installing these dependencies manually is only used for legacy Tailwind 3 compatibility, and is not required for Tailwind 4. You will also need a [legacy Tailwind configuration](https://v3.tailwindcss.com/docs/configuration#creating-your-configuration-file):
 
-- 
-Install Tailwind and the Astro Tailwind integration to your project dependencies using your preferred package manager: 
-- 
-Import the integration to your `astro.config.mjs`file, and add it to your`integrations[]`array:
-- 
-Create a `tailwind.config.mjs`file in your project’s root directory. You can use the following command to generate a basic configuration file for you:
-- 
-Add the following basic configuration to your `tailwind.config.mjs`file:
+1. 
+Install Tailwind and the Astro Tailwind integration to your project dependencies using your preferred package manager:
+2. 
+Import the integration to your `astro.config.mjs` file, and add it to your`integrations[]` array:
+3. 
+Create a `tailwind.config.mjs` file in your project’s root directory. You can use the following command to generate a basic configuration file for you:
+4. 
+Add the following basic configuration to your `tailwind.config.mjs` file:
 
 **Related recipe:**
 
@@ -259,9 +257,9 @@ Update your `vite` configuration in `astro.config.mjs`:
 
 You can also use all of the above CSS preprocessors within JS frameworks as well! Be sure to follow the patterns each framework recommends:
 
-- **React**/- **Preact**:- `import Styles from './styles.module.scss';`
-- **Vue**:- `<style lang="scss">`
-- **Svelte**:- `<style lang="scss">`
+- **React** /**Preact** :`import Styles from './styles.module.scss';`
+- **Vue** :`<style lang="scss">`
+- **Svelte** :`<style lang="scss">`
 
 ## PostCSS
 
@@ -293,9 +291,7 @@ Svelte in Astro also works exactly as expected: [Svelte Styling Docs](https://sv
 
 Any Astro styling methods are available to a [Markdown layout component](/en/basics/layouts/#markdown-layouts), but different methods will have different styling effects on your page.
 
-You can apply global styles to your Markdown content by adding [imported stylesheets](#external-styles) to the layout that wraps your page content. It is also possible to style your Markdown with [ <style is:global> tags](#global-styles) in the layout component.  Note that any styles added are subject to 
-
-[Astro’s cascading order](#cascading-order), and you should check your rendered page carefully to ensure your styles are being applied as intended.
+You can apply global styles to your Markdown content by adding [imported stylesheets](#external-styles) to the layout that wraps your page content. It is also possible to style your Markdown with [`<style is:global>` tags](#global-styles) in the layout component.  Note that any styles added are subject to [Astro’s cascading order](#cascading-order), and you should check your rendered page carefully to ensure your styles are being applied as intended.
 
 You can also add CSS integrations including [Tailwind](/en/recipes/tailwind-rendered-markdown/). If you are using Tailwind, the [typography plugin](https://tailwindcss.com/docs/typography-plugin) can be useful for styling Markdown.
 
@@ -323,7 +319,7 @@ You can also set this option to `'always'` which will inline all stylesheets.
 
 Be careful when bypassing Astro’s built-in CSS bundling! Styles won’t be automatically included in the built output, and it is your responsibility to make sure that the referenced file is properly included in the final page output.
 
-`?raw` CSS Imports
+### `?raw` CSS Imports
 
 [Section titled “?raw CSS Imports”](#raw-css-imports)
 
@@ -333,7 +329,7 @@ This is not recommended for most users.
 
 See [Vite’s docs](https://vite.dev/guide/assets.html#importing-asset-as-string) for full details.
 
-`?url` CSS Imports
+### `?url` CSS Imports
 
 [Section titled “?url CSS Imports”](#url-css-imports)
 
@@ -341,9 +337,9 @@ For advanced use cases, you can import a direct URL reference for a CSS file ins
 
 This is not recommended for most users. Instead, place your CSS files inside of `public/` to get a consistent URL reference.
 
-Importing a smaller CSS file with `?url` may return the base64 encoded contents of the CSS file as a data URL in your final build. Either write your code to support encoded data URLs (`data:text/css;base64,...`) or set the [ vite.build.assetsInlineLimit](https://vite.dev/config/#build-assetsinlinelimit) config option to 
+Importing a smaller CSS file with `?url` may return the base64 encoded contents of the CSS file as a data URL in your final build. Either write your code to support encoded data URLs (`data:text/css;base64,...`) or set the [`vite.build.assetsInlineLimit`](https://vite.dev/config/#build-assetsinlinelimit) config option to `0`  to disable this feature.
 
-`0`  to disable this feature.See [Vite’s docs](https://vite.dev/guide/assets.html#importing-asset-as-url) for full details.
+See [Vite’s docs](https://vite.dev/guide/assets.html#importing-asset-as-url) for full details.
 
 [Contribute](/en/contribute/)
 

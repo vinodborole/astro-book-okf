@@ -4,7 +4,7 @@ title: Scripts and event handling | Docs
 description: How to add client-side interactivity to Astro components using native
   browser JavaScript APIs.
 resource: https://docs.astro.build/en/guides/client-side-scripts
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Scripts and event handling
@@ -29,11 +29,11 @@ Astro automatically enhances the HTML standard `<script>` tag with bundling, Typ
 
 By default, Astro processes `<script>` tags that contain no attributes (other than `src`) in the following ways:
 
-- **TypeScript support:**All scripts are TypeScript by default.
-- **Import bundling:**Import local files or npm modules, which will be bundled together.
-- **Type Module:**Processed scripts become- `type="module"`
-- **Deduplication:**If a component that contains a- `<script>`is used multiple times on a page, the script will only be included once.
-- **Automatic inlining:**If the script is small enough, Astro will inline it directly into the HTML to reduce the number of requests.
+- **TypeScript support:** All scripts are TypeScript by default.
+- **Import bundling:** Import local files or npm modules, which will be bundled together.
+- **Type Module:** Processed scripts become[`type="module"`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) automatically.
+- **Deduplication:** If a component that contains a`<script>` is used multiple times on a page, the script will only be included once.
+- **Automatic inlining:** If the script is small enough, Astro will inline it directly into the HTML to reduce the number of requests.
 
 ### Unprocessed scripts
 
@@ -41,7 +41,7 @@ By default, Astro processes `<script>` tags that contain no attributes (other th
 
 Astro will not process a `<script>` tag if it has any attribute other than `src`.
 
-You can add the [ is:inline](/en/reference/directives-reference/#isinline) directive to intentionally opt out of processing for a script.
+You can add the [`is:inline`](/en/reference/directives-reference/#isinline) directive to intentionally opt out of processing for a script.
 
 ### Include JavaScript files on your page
 
@@ -75,9 +75,9 @@ To load scripts outside of your project’s `src/` folder, include the `is:inlin
 
 Some UI frameworks use custom syntax for event handling like `onClick={...}` (React/Preact) or `@click="..."` (Vue). Astro follows standard HTML more closely and does not use custom syntax for events.
 
-Instead, you can use [ addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) in a 
+Instead, you can use [`addEventListener`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) in a `<script>` tag to handle user interactions.
 
-`<script>` tag to handle user interactions.If you have multiple `<AlertButton />` components on a page, Astro will not run the script multiple times. Scripts are bundled and only included once per page. Using `querySelectorAll` ensures that this script attaches the event listener to every button with the `alert` class found on the page.
+If you have multiple `<AlertButton />` components on a page, Astro will not run the script multiple times. Scripts are bundled and only included once per page. Using `querySelectorAll` ensures that this script attaches the event listener to every button with the `alert` class found on the page.
 
 ### Web components with custom elements
 
@@ -89,10 +89,10 @@ In this example, we define a new `<astro-heart>` HTML element that tracks how ma
 
 There are two advantages to using a custom element here:
 
-- 
-Instead of searching the whole page using `document.querySelector()`, you can use`this.querySelector()`, which only searches within the current custom element instance. This makes it easier to work with only the children of one component instance at a time.
-- 
-Although a `<script>`only runs once, the browser will run our custom element’s`connectedCallback()`method each time it finds`<astro-heart>`on the page. This means you can safely write code for one component at a time, even if you intend to use this component multiple times on a page.
+1. 
+Instead of searching the whole page using `document.querySelector()` , you can use`this.querySelector()` , which only searches within the current custom element instance. This makes it easier to work with only the children of one component instance at a time.
+2. 
+Although a `<script>` only runs once, the browser will run our custom element’s`connectedCallback()` method each time it finds`<astro-heart>` on the page. This means you can safely write code for one component at a time, even if you intend to use this component multiple times on a page.
 
 [web.dev’s Reusable Web Components guide](https://web.dev/custom-elements-v1/)and
 
@@ -104,9 +104,9 @@ Although a `<script>`only runs once, the browser will run our custom element’s
 
 In Astro components, the code in [the frontmatter](/en/basics/astro-components/#the-component-script) (between the `---` fences) runs on the server and is not available in the browser.
 
-To pass server-side variables to client-side scripts, store them in [ data-* attributes](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes) on HTML elements. Scripts can then access these values using the 
+To pass server-side variables to client-side scripts, store them in [`data-*` attributes](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes) on HTML elements. Scripts can then access these values using the `dataset` property.
 
-`dataset` property.In this example component, a `message` prop is stored in a `data-message` attribute, so the custom element can read `this.dataset.message` and get the value of the prop in the browser.
+In this example component, a `message` prop is stored in a `data-message` attribute, so the custom element can read `this.dataset.message` and get the value of the prop in the browser.
 
 Now we can use our component multiple times and be greeted by a different message for each one.
 

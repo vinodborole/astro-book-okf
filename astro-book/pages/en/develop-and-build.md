@@ -3,7 +3,7 @@ type: Web Page
 title: Develop and build | Docs
 description: How to start working on a new project.
 resource: https://docs.astro.build/en/develop-and-build
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Develop and build
@@ -96,7 +96,8 @@ Build a fully functional Astro blog starting from a single blank page in our [in
 
 This is a great way to see how Astro works and walks you through the basics of pages, layouts, components, routing, islands, and more. It also includes an optional, beginner-friendly unit for those newer to web development concepts in general, which will guide you through installing the necessary applications on your computer, creating a GitHub account, and deploying your site.
 
-Learn[Contribute](/en/contribute/)
+Learn
+[Contribute](/en/contribute/)
 
 [Community](https://astro.build/chat)
 

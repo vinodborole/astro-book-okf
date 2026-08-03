@@ -6,7 +6,7 @@ description: 'Tutorial: Build your first Astro blog —
   Fetching and using data from project files to dynamically generate pages content
   and routes'
 resource: https://docs.astro.build/en/tutorial/5-astro-api
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Check in: Unit 5 - Astro API
@@ -21,8 +21,8 @@ In this unit, you’ll supercharge your blog with an index page, tag pages, and 
 
 Along the way, you’ll learn how to use:
 
-- `import.meta.glob()`to access data from files in your project
-- `getStaticPaths()`to create multiple pages (routes) at once
+- `import.meta.glob()` to access data from files in your project
+- `getStaticPaths()` to create multiple pages (routes) at once
 - The Astro RSS package to create an RSS feed
 
 ## Checklist

@@ -5,7 +5,7 @@ description: 'Tutorial: Build your first Astro blog —
 
   Use Astro islands to bring frontend framework components into your Astro site'
 resource: https://docs.astro.build/en/tutorial/6-islands
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Check in: Unit 6 - Astro Islands
@@ -22,7 +22,7 @@ You will:
 
 - Add a UI framework, Preact, to your Astro project
 - Use Preact to create an interactive greeting component
-- Learn when you might *not*choose islands for interactivity
+- Learn when you might *not* choose islands for interactivity
 
 ## Checklist
 

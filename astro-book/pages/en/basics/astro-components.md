@@ -3,7 +3,7 @@ type: Web Page
 title: Components | Docs
 description: An introduction to Astro components.
 resource: https://docs.astro.build/en/basics/astro-components
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Components
@@ -18,9 +18,7 @@ Astro components are extremely flexible. An Astro component can be as small as a
 
 The most important thing to know about Astro components is that they **don’t render on the client**. They render to HTML either at build-time or on-demand. You can include JavaScript code inside of your component frontmatter, and all of it will be stripped from the final page sent to your users’ browsers. The result is a faster site, with zero JavaScript footprint added by default.
 
-When your Astro component does need client-side interactivity, you can add [standard HTML  <script> tags](/en/guides/client-side-scripts/) or 
-
-[UI Framework components](/en/guides/framework-components/#hydrating-interactive-components)as “client islands”.
+When your Astro component does need client-side interactivity, you can add [standard HTML `<script>` tags](/en/guides/client-side-scripts/) or [UI Framework components](/en/guides/framework-components/#hydrating-interactive-components) as “client islands”.
 
 For components that need to render personalized or dynamic content, you can defer their server rendering by adding a [server directive](/en/reference/directives-reference/#server-directives). These “server islands” will render their content when it is available, without delaying the entire page load.
 
@@ -58,15 +56,9 @@ The component template is below the code fence and determines the HTML output of
 
 If you write plain HTML here, your component will render that HTML in any Astro page it is imported and used.
 
-However, [Astro’s component template syntax](/en/reference/astro-syntax/) also supports **JavaScript expressions**, Astro [ <style>](/en/guides/styling/#styling-in-astro) and 
+However, [Astro’s component template syntax](/en/reference/astro-syntax/) also supports **JavaScript expressions**, Astro [`<style>`](/en/guides/styling/#styling-in-astro) and [`<script>`](/en/guides/client-side-scripts/) tags, **imported components**, and [**special Astro directives**](/en/reference/directives-reference/). Data and values defined in the component script can be used in the component template to produce dynamically-created HTML.
 
-[tags,](/en/guides/client-side-scripts/)
-
-`<script>`**imported components**, and
-
-[. Data and values defined in the component script can be used in the component template to produce dynamically-created HTML.](/en/reference/directives-reference/)
-
-**special Astro directives**## Component-based design
+## Component-based design
 
 [Section titled “Component-based design”](#component-based-design)
 
@@ -96,7 +88,8 @@ This pattern is the basis of an [Astro layout component](/en/basics/layouts/): a
 
 [for more ways to access and render slot content.](/en/reference/astro-syntax/#astroslots)
 
-`Astro.slots` utility functions### Named Slots
+`Astro.slots` utility functions
+### Named Slots
 
 [Section titled “Named Slots”](#named-slots)
 
@@ -108,7 +101,7 @@ To inject HTML content into a particular slot, use the `slot` attribute on any c
 
 Use a `slot="my-slot"` attribute on the child element that you want to pass through to a matching `<slot name="my-slot" />` placeholder in your component.
 
-To pass multiple HTML elements into a component’s `<slot/>` placeholder without a wrapping `<div>`, use the `slot=""` attribute on [Astro’s  <Fragment/> component](/en/reference/astro-syntax/#fragments):
+To pass multiple HTML elements into a component’s `<slot/>` placeholder without a wrapping `<div>`, use the `slot=""` attribute on [Astro’s `<Fragment/>` component](/en/reference/astro-syntax/#fragments):
 
 Inject multiple rows and columns of HTML content using a `slot=""` attribute to specify the `"header"` and `"body"` content. Individual HTML elements can also be styled:
 
@@ -147,14 +140,12 @@ Astro supports importing and using `.html` files as components or placing these 
 HTML components must contain only valid HTML, and therefore lack key Astro component features:
 
 - They don’t support frontmatter, server-side imports, or dynamic expressions.
-- Any `<script>`tags are left unbundled, treated as if they had an`is:inline`directive
-- They can only [reference assets that are in the](/en/basics/project-structure/#public).`public/`folder
+- Any `<script>` tags are left unbundled, treated as if they had an[`is:inline` directive](/en/reference/directives-reference/#isinline) .
+- They can only [reference assets that are in the `public/` folder](/en/basics/project-structure/#public) .
 
-A [ <slot /> element](/en/basics/astro-components/#slots) inside an HTML component will work as it would in an Astro component. In order to use the 
+A [`<slot />` element](/en/basics/astro-components/#slots) inside an HTML component will work as it would in an Astro component. In order to use the [HTML Web Component Slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) element instead, add `is:inline` to your `<slot>` element.
 
-[HTML Web Component Slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot)element instead, add
-
-`is:inline` to your `<slot>` element.## Next Steps
+## Next Steps
 
 [Section titled “Next Steps”](#next-steps)
 

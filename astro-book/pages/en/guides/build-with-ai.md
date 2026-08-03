@@ -3,7 +3,7 @@ type: Web Page
 title: Building Astro sites with AI tools | Docs
 description: Resources and tips for building Astro sites with AI assistance
 resource: https://docs.astro.build/en/guides/build-with-ai
-timestamp: '2026-07-20T08:50:58.675619+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Building Astro sites with AI tools
@@ -28,9 +28,9 @@ The Astro Docs MCP server uses the [kapa.ai](https://www.kapa.ai/) API to mainta
 
 [Section titled “Server Details”](#server-details)
 
-- **Name**: Astro Docs
-- **URL**:- `https://mcp.docs.astro.build/mcp`
-- **Transport**: Streamable HTTP
+- **Name** : Astro Docs
+- **URL** :`https://mcp.docs.astro.build/mcp`
+- **Transport** : Streamable HTTP
 
 ### Installation
 
@@ -100,10 +100,10 @@ Install by clicking the button below:
 
 [Warp](https://warp.dev) (formerly Warp Terminal) is an agent development environment built for coding with multiple AI agents. Adding the Astro Docs MCP server allows Warp to access the latest Astro documentation when answering questions or performing coding tasks.
 
-- Open your Warp settings and go to AI > MCP Servers > Manage MCP Servers.
-- Click “Add”.
-- Enter the following configuration. You can optionally configure the Astro MCP server to activate on startup using the `start_on_launch`flag:
-- Click “Save”.
+1. Open your Warp settings and go to AI > MCP Servers > Manage MCP Servers.
+2. Click “Add”.
+3. Enter the following configuration. You can optionally configure the Astro MCP server to activate on startup using the `start_on_launch` flag:
+4. Click “Save”.
 
 [More info on using MCP servers with Warp](https://docs.warp.dev/knowledge-and-collaboration/mcp)
 
@@ -113,10 +113,10 @@ Install by clicking the button below:
 
 [Claude.ai](https://claude.ai) is a general-purpose AI assistant. Adding the Astro Docs MCP server allows it to access the latest documentation when answering Astro questions or generating Astro code.
 
-- Navigate to the [Claude.ai connector settings](https://claude.ai/settings/connectors).
-- Click “Add custom connector”. You may need to scroll down to find this option.
-- Enter the server URL: `https://mcp.docs.astro.build/mcp`.
-- Set the name to “Astro docs”.
+1. Navigate to the [Claude.ai connector settings](https://claude.ai/settings/connectors) .
+2. Click “Add custom connector”. You may need to scroll down to find this option.
+3. Enter the server URL: `https://mcp.docs.astro.build/mcp` .
+4. Set the name to “Astro docs”.
 
 [More info on using MCP servers with Claude.ai](https://support.anthropic.com/en/articles/10168395-setting-up-integrations-on-claude-ai#h_cda40ecb32)
 
@@ -128,12 +128,12 @@ Install by clicking the button below:
 
 Windsurf doesn’t support streaming HTTP, so it requires a local proxy configuration:
 
-- 
-Open `~/.codeium/windsurf/mcp_config.json`in your editor.
-- 
-Add the following configuration to your Windsurf MCP settings: 
-- 
-Save the configuration and restart Windsurf. 
+1. 
+Open `~/.codeium/windsurf/mcp_config.json` in your editor.
+2. 
+Add the following configuration to your Windsurf MCP settings:
+3. 
+Save the configuration and restart Windsurf.
 
 [More info on using MCP servers with Windsurf](https://docs.windsurf.com/windsurf/cascade/mcp#mcp-config-json)
 
@@ -153,18 +153,18 @@ You can configure MCP servers at the global level in the `~/.gemini/settings.jso
 
 [Google Antigravity](https://antigravity.google/) is an agentic development platform.
 
-- Open `~/.gemini/antigravity/mcp_config.json`by following the[Connecting Custom MCP Servers guide](https://antigravity.google/docs/mcp#connecting-custom-mcp-servers).
-- Add the following configuration to `mcp_config.json`:
-- Save the file and click “Refresh” in the “Manage MCPs” tab.
+1. Open `~/.gemini/antigravity/mcp_config.json` by following the[Connecting Custom MCP Servers guide](https://antigravity.google/docs/mcp#connecting-custom-mcp-servers) .
+2. Add the following configuration to `mcp_config.json` :
+3. Save the file and click “Refresh” in the “Manage MCPs” tab.
 
 [Zed](https://zed.dev) supports MCP servers when using its AI capabilities. It can use the Astro Docs MCP server to access documentation while performing coding tasks.
 
-- 
-Open `~/.config/zed/settings.json`in your editor.
-- 
-Add the following configuration to your Zed MCP settings: 
-- 
-Save the configuration. 
+1. 
+Open `~/.config/zed/settings.json` in your editor.
+2. 
+Add the following configuration to your Zed MCP settings:
+3. 
+Save the configuration.
 
 [More info on using MCP servers with Zed](https://zed.dev/docs/ai/mcp)
 
@@ -217,7 +217,7 @@ The Astro Docs MCP server provides access to current documentation, but your AI 
 If you encounter issues:
 
 - Verify that your tool supports streamable HTTP transport.
-- Check that the server URL is correct: `https://mcp.docs.astro.build/mcp`.
+- Check that the server URL is correct: `https://mcp.docs.astro.build/mcp` .
 - Ensure your tool has proper internet access.
 - Consult your specific tool’s MCP integration documentation.
 
@@ -261,10 +261,10 @@ The dev server exposes a `/_astro/status` endpoint that returns `{"ok": true}` a
 
 [Section titled “Tips for AI-Powered Astro Development”](#tips-for-ai-powered-astro-development)
 
-- **Start with templates**: Rather than building from scratch, ask AI tools to start with an existing- [Astro template](https://astro.build/themes/)or use- `npm create astro@latest`with a template option.
-- **Use**: Ask AI tools to use- `astro add`for integrations- `astro add`for official integrations (e.g.- `astro add tailwind`,- `astro add react`). For other packages, install using the command for your preferred package manager rather than editing- `package.json`directly.
-- **Verify current APIs**: AI tools may use outdated patterns. Ask them to check the latest documentation, especially for newer features like sessions and actions. This is also important for features that have seen significant changes since their initial launch, such as content collections, or previously experimental features that may no longer be experimental.
-- **Use project rules**: If your AI tool supports it, set up project rules to enforce best practices and coding standards, such as the ones listed above.
+- **Start with templates** : Rather than building from scratch, ask AI tools to start with an existing[Astro template](https://astro.build/themes/) or use`npm create astro@latest` with a template option.
+- **Use `astro add` for integrations** : Ask AI tools to use`astro add` for official integrations (e.g.`astro add tailwind` ,`astro add react` ). For other packages, install using the command for your preferred package manager rather than editing`package.json` directly.
+- **Verify current APIs** : AI tools may use outdated patterns. Ask them to check the latest documentation, especially for newer features like sessions and actions. This is also important for features that have seen significant changes since their initial launch, such as content collections, or previously experimental features that may no longer be experimental.
+- **Use project rules** : If your AI tool supports it, set up project rules to enforce best practices and coding standards, such as the ones listed above.
 
 [Contribute](/en/contribute/)
 

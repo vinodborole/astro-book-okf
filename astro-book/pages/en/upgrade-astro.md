@@ -3,7 +3,7 @@ type: Web Page
 title: Upgrade Astro | Docs
 description: Learn how to upgrade Astro
 resource: https://docs.astro.build/en/upgrade-astro
-timestamp: '2026-07-27T09:42:27.107910+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Upgrade Astro
@@ -14,7 +14,7 @@ This guide covers how to update your version of Astro and related dependencies, 
 
 [Section titled “What has changed?”](#what-has-changed)
 
-The latest release of Astro is v7.1.3.
+The latest release of Astro is v7.1.6.
 
 You can find an exhaustive list of all changes in [Astro’s changelog](https://github.com/withastro/astro/blob/main/packages/astro/CHANGELOG.md), and important instructions for upgrading to each new [major version](#major-changes) in our [upgrade guides](#upgrade-guides).
 
@@ -62,12 +62,6 @@ See the upgrade guides below for an explanation of changes, comparing the new ve
 
 Documentation for older versions of Astro is not maintained, but is available as a static snapshot. Use these versions of docs if you are unable to upgrade your project, but still wish to consult guides and reference:
 
-- [unmaintained v6.4.8 snapshot](https://v6.docs.astro.build/en/getting-started/)
-- [unmaintained v5.18.0 snapshot](https://v5.docs.astro.build/en/getting-started/)
-- [unmaintained v4.16.17 snapshot](https://v4.docs.astro.build/en/getting-started/)
-- [unmaintained v3.6.3 snapshot](https://web.archive.org/web/20231203051122/https://docs.astro.build/en/getting-started/)
-- [unmaintained v2.10.15 snapshot](https://web.archive.org/web/20230822134745/https://docs.astro.build/en/getting-started)
-
 ## Semantic versioning
 
 [Section titled “Semantic versioning”](#semantic-versioning)
@@ -87,11 +81,10 @@ When Astro issues a “patch” version, the last number increases. (e.g. `astro
 Patches may be released for reasons such as:
 
 - Internal changes that do not change Astro’s functionality:
-- refactors
-- performance improvements
-- increase or change in test coverage
-- aligning with stated documentation and expected behavior
- 
+  - refactors
+  - performance improvements
+  - increase or change in test coverage
+  - aligning with stated documentation and expected behavior
 - Improvements to logging and error messages.
 - Re-releases after a failed release.
 
@@ -105,10 +98,10 @@ Minor releases primarily introduce new features and improvements that you may wi
 
 Minor releases include changes such as:
 
-- **Deprecations**of existing features/options with a warning that they will be removed in an upcoming major release.
+- **Deprecations** of existing features/options with a warning that they will be removed in an upcoming major release.
 - Introduction of new functionalities.
 - Introduction of new options in the integration hooks.
-- Introduction of new functionalities in `astro/app`, notably used for creating new adapters.
+- Introduction of new functionalities in `astro/app` , notably used for creating new adapters.
 
 A minor release may also include smaller, patch changes at the same time.
 
@@ -125,7 +118,7 @@ Major releases include changes such as:
 - Removal of previously deprecated functionalities.
 - Changes of existing functionalities.
 - Changes of existing options in the integration hooks.
-- Changes of existing options and functionalities in `astro/app`, notably used for creating new adapters.
+- Changes of existing options and functionalities in `astro/app` , notably used for creating new adapters.
 
 A major release may also include some non-breaking changes and improvements that would normally be released separately in a minor or patch release.
 
@@ -134,9 +127,9 @@ A major release may also include some non-breaking changes and improvements that
 [Section titled “Exceptions”](#exceptions)
 
 - 
-**Experimental features**. Releasing versions of Astro without adhering to semantic versioning allows Astro developers the greatest flexibility to explore, and even radically change course, during the development of experimental features. Therefore, the behavior of these features can break in minor and patch changes.These features are usually accompanied by an ongoing, public [Request for Consideration (RFC) stage 3](https://github.com/withastro/roadmap#stage-3-rfc--development). It is expected that beta users will follow for updates, and leave early feedback on the discussion to help guide development of these features.Once these features are out of their experimental period, they will follow the normal semantic versioning contract. 
+**Experimental features** . Releasing versions of Astro without adhering to semantic versioning allows Astro developers the greatest flexibility to explore, and even radically change course, during the development of experimental features. Therefore, the behavior of these features can break in minor and patch changes.These features are usually accompanied by an ongoing, public [Request for Consideration (RFC) stage 3](https://github.com/withastro/roadmap#stage-3-rfc--development) . It is expected that beta users will follow for updates, and leave early feedback on the discussion to help guide development of these features.Once these features are out of their experimental period, they will follow the normal semantic versioning contract.
 - 
-**Improvements to the documentation**(e.g. reference and error messages). They are built from source for the`docs`repository. This allows Astro to quickly update docs fixes and improvements in the cases where documentation source content is stored in the main`astro`repository.
+**Improvements to the documentation** (e.g. reference and error messages). They are built from source for the`docs` repository. This allows Astro to quickly update docs fixes and improvements in the cases where documentation source content is stored in the main`astro` repository.
 
 ### Node.js support and upgrade policies
 
@@ -146,8 +139,8 @@ A major release may also include some non-breaking changes and improvements that
 
 [Section titled “Support”](#support)
 
-- Astro supports the **latest**version of Node.js*Maintenance*LTS
-- Astro supports the **current**version of Node.js*Active*LTS
+- Astro supports the [**latest *Maintenance* LTS** version of Node.js](https://nodejs.org/en/about/previous-releases#release-schedule) .
+- Astro supports the [**current *Active* LTS** version of Node.js](https://nodejs.org/en/about/previous-releases#release-schedule)
 - Astro can support odd versions of Node.js.
 
 #### Upgrade
@@ -156,12 +149,12 @@ A major release may also include some non-breaking changes and improvements that
 
 The following rules define when Astro may deprecate, drop, or add support for versions of Node.js:
 
-- Odd versions of Node.js can be deprecated and/or dropped when the next even version of Node.js published. This change can occur in a **minor**release of Astro, after a reasonable period of extended support as decided by the Astro Core team.
-- Upgrading the minimum *Maintenance*LTS`22.14.*`to`22.20.*`) version of Node.js can occur in a**minor**release of Astro.- Security exception: If a security flaw in Node.js that **affects Astro**is disclosed and fixed, the Core team can bump the minimum version of the*Maintenance*LTS**patch**release.
- 
+- Odd versions of Node.js can be deprecated and/or dropped when the next even version of Node.js published. This change can occur in a **minor** release of Astro, after a reasonable period of extended support as decided by the Astro Core team.
+- Upgrading the minimum ***Maintenance* LTS** (within the same major range, e.g. from`22.14.*` to`22.20.*` ) version of Node.js can occur in a**minor** release of Astro.
+  - Security exception: If a security flaw in Node.js that **affects Astro** is disclosed and fixed, the Core team can bump the minimum version of the***Maintenance* LTS** in a**patch** release.
 - Security exception: If a security flaw in Node.js that 
-- Upgrading minor or major versions of Node.js (**not**Maintenance LTS) occurs only in major versions of Astro.- Security exception: If a security flaw in Node.js that **affects Astro**is disclosed and fixed, the Core team can bump the minimum version in a**minor**release.
- 
+- Upgrading minor or major versions of Node.js (**not** Maintenance LTS) occurs only in major versions of Astro.
+  - Security exception: If a security flaw in Node.js that **affects Astro** is disclosed and fixed, the Core team can bump the minimum version in a**minor** release.
 - Security exception: If a security flaw in Node.js that 
 
 ### Extended maintenance

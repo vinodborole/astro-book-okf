@@ -3,7 +3,7 @@ type: Web Page
 title: Sessions | Docs
 description: Share data between requests for on-demand rendered pages.
 resource: https://docs.astro.build/en/guides/sessions
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Sessions
@@ -15,7 +15,7 @@ timestamp: '2026-07-13T09:18:12.222139+00:00'
 
 Sessions are used to share data between requests for [on-demand rendered pages](/en/guides/on-demand-rendering/).
 
-Unlike [ cookies](/en/guides/on-demand-rendering/#cookies), sessions are stored on the server, so you can store larger amounts of data without worrying about size limits or security issues. They are useful for storing things like user data, shopping carts, and form state, and they work without any client-side JavaScript:
+Unlike [`cookies`](/en/guides/on-demand-rendering/#cookies), sessions are stored on the server, so you can store larger amounts of data without worrying about size limits or security issues. They are useful for storing things like user data, shopping carts, and form state, and they work without any client-side JavaScript:
 
 ## Configuring sessions
 
@@ -23,7 +23,7 @@ Unlike [ cookies](/en/guides/on-demand-rendering/#cookies), sessions are stored 
 
 Sessions require a storage driver to store the session data. The [Node](/en/guides/integrations-guide/node/#sessions), [Cloudflare](/en/guides/integrations-guide/cloudflare/#sessions), and [Netlify](/en/guides/integrations-guide/netlify/#sessions) adapters automatically configure a default driver for you, but other adapters currently require you to [specify a driver manually](/en/reference/configuration-reference/#sessiondriver).
 
-See [the  session configuration option](/en/reference/configuration-reference/#session-options) for more details on setting a storage driver, and other configurable options.
+See [the `session` configuration option](/en/reference/configuration-reference/#session-options) for more details on setting a storage driver, and other configurable options.
 
 ### Overriding the configuration at runtime
 
@@ -35,28 +35,24 @@ When you need a different configuration (e.g. to connect to an external service)
 
 The following example takes advantage of [Unstorage compatibility](/en/reference/session-driver-reference/#unstorage-compatibility) to configure the Redis driver in its own entrypoint:
 
-- 
-Install the `unstorage`package
-- 
-Create a file for the driver configuration (e.g. `src/session-driver.ts`) and export a default function that returns the driver instance:
-- 
-Use this file as the driver’s entrypoint in your Astro configuration: 
+1. 
+Install the [`unstorage` package](https://unstorage.unjs.io/guide) :
+2. 
+Create a file for the driver configuration (e.g. `src/session-driver.ts` ) and export a default function that returns the driver instance:
+3. 
+Use this file as the driver’s entrypoint in your Astro configuration:
 
 ## Interacting with session data
 
 [Section titled “Interacting with session data”](#interacting-with-session-data)
 
-The [ session object](/en/reference/api-reference/#session) allows you to interact with the stored user state (e.g. adding items to a shopping cart) and the session ID (e.g. deleting the session ID cookie when logging out). The object is accessible as 
+The [`session` object](/en/reference/api-reference/#session) allows you to interact with the stored user state (e.g. adding items to a shopping cart) and the session ID (e.g. deleting the session ID cookie when logging out). The object is accessible as `Astro.session` in your Astro components and pages and as `context.session` object in API endpoints, middleware, and actions.
 
-`Astro.session` in your Astro components and pages and as `context.session` object in API endpoints, middleware, and actions.The session is generated automatically when it is first used and can be regenerated at any time with [ session.regenerate()](/en/reference/api-reference/#sessionregenerate) or destroyed with 
+The session is generated automatically when it is first used and can be regenerated at any time with [`session.regenerate()`](/en/reference/api-reference/#sessionregenerate) or destroyed with [`session.destroy()`](/en/reference/api-reference/#sessiondestroy).
 
-[.](/en/reference/api-reference/#sessiondestroy)
+For many use cases, you will only need to use [`session.get()`](/en/reference/api-reference/#sessionget) and [`session.set()`](/en/reference/api-reference/#sessionset).
 
-`session.destroy()`For many use cases, you will only need to use [ session.get()](/en/reference/api-reference/#sessionget) and 
-
-[.](/en/reference/api-reference/#sessionset)
-
-`session.set()`See [the Sessions API reference](/en/reference/api-reference/#session) for more details.
+See [the Sessions API reference](/en/reference/api-reference/#session) for more details.
 
 ### Astro components and pages
 

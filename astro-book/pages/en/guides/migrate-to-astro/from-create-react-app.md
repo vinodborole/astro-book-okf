@@ -3,7 +3,7 @@ type: Web Page
 title: Migrating from Create React App (CRA) | Docs
 description: Tips for migrating an existing Create React App project to Astro
 resource: https://docs.astro.build/en/guides/migrate-to-astro/from-create-react-app
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Migrating from Create React App (CRA)
@@ -23,15 +23,15 @@ Here are some key concepts and migration strategies to help you get started. Use
 [Section titled “Key Similarities between CRA and Astro”](#key-similarities-between-cra-and-astro)
 
 - 
-The [syntax of](/en/reference/astro-syntax/#differences-between-astro-and-jsx). Writing Astro should feel familiar.`.astro`files is similar to JSX
+The [syntax of `.astro` files is similar to JSX](/en/reference/astro-syntax/#differences-between-astro-and-jsx) . Writing Astro should feel familiar.
 - 
-Astro uses file-based routing, and [allows specially named pages to create dynamic routes](/en/guides/routing/#dynamic-routes).
+Astro uses file-based routing, and [allows specially named pages to create dynamic routes](/en/guides/routing/#dynamic-routes) .
 - 
-Astro is [component-based](/en/basics/astro-components/), and your markup structure will be similar before and after your migration.
+Astro is [component-based](/en/basics/astro-components/) , and your markup structure will be similar before and after your migration.
 - 
-Astro has [official integrations for React, Preact, and Solid](/en/guides/integrations-guide/react/)so you can use your existing JSX components. Note that in Astro, these files**must**have a`.jsx`or`.tsx`extension.
+Astro has [official integrations for React, Preact, and Solid](/en/guides/integrations-guide/react/) so you can use your existing JSX components. Note that in Astro, these files**must** have a`.jsx` or`.tsx` extension.
 - 
-Astro has support for [installing NPM packages](/en/guides/imports/#npm-packages), including React libraries. Many of your existing dependencies will work in Astro.
+Astro has support for [installing NPM packages](/en/guides/imports/#npm-packages) , including React libraries. Many of your existing dependencies will work in Astro.
 
 ## Key Differences between CRA and Astro
 
@@ -40,11 +40,11 @@ Astro has support for [installing NPM packages](/en/guides/imports/#npm-packages
 When you rebuild your CRA site in Astro, you will notice some important differences:
 
 - 
-CRA is a single-page application that uses `index.js`as your project’s root. Astro is a multi-page site, and`index.astro`is your home page.
+CRA is a single-page application that uses `index.js` as your project’s root. Astro is a multi-page site, and`index.astro` is your home page.
 - 
-`.astro`components
+[`.astro` components](/en/basics/astro-components/) are not written as exported functions that return page templating. Instead, you’ll split your code into a “code fence” for your JavaScript and a body exclusively for the HTML you generate.
 - 
-[content-driven](/en/concepts/why-astro/#content-driven): Astro was designed to showcase your content and to allow you to opt-in to interactivity only as needed. An existing CRA app might be built for high client-side interactivity and may require advanced Astro techniques to include items that are more challenging to replicate using`.astro`components, such as dashboards.
+[content-driven](/en/concepts/why-astro/#content-driven) : Astro was designed to showcase your content and to allow you to opt-in to interactivity only as needed. An existing CRA app might be built for high client-side interactivity and may require advanced Astro techniques to include items that are more challenging to replicate using`.astro` components, such as dashboards.
 
 ## Add your CRA to Astro
 
@@ -76,16 +76,16 @@ Do not include any configuration files. You will use Astro’s own `astro.config
 
 Move the contents of your app’s `public/` folder (e.g. static assets) into Astro’s `public/` folder.
 
-- ## Directorypublic/- logo.png
-- favicon.ico
-- …
- 
-- ## Directorysrc/- ## Directorycra-project/- App.jsx
-- …
- 
-- ## Directorypages/- index.astro
- 
- 
+- ## Directorypublic/
+  - logo.png
+  - favicon.ico
+  - …
+- ## Directorysrc/
+  - ## Directorycra-project/
+    - App.jsx
+    - …
+  - ## Directorypages/
+    - index.astro
 - astro.config.mjs
 - package.json
 - tsconfig.json
@@ -128,18 +128,18 @@ Compare the following CRA component and a corresponding Astro component:
 
 Here are some tips for converting a CRA `.js` component into a `.astro` component:
 
-- 
-Use the returned JSX of the existing CRA component function as the basis for your HTML template. 
-- 
-Change any [CRA or JSX syntax to Astro](#reference-convert-cra-syntax-to-astro)or to HTML web standards. This includes`{children}`and`className`, for example.
-- 
-Move any necessary JavaScript, including import statements, into a [“code fence” (](/en/basics/astro-components/#the-component-script). Note: JavaScript to`---`)[conditionally render content](/en/reference/astro-syntax/#dynamic-html)is often written inside the HTML template directly in Astro.
-- 
-Use `Astro.props`
-- 
-Decide whether any imported components also need to be converted to Astro. You can keep them as React components for now, or forever. But, you may eventually want to convert them to `.astro`components, especially if they do not need to be interactive!
-- 
-Replace `useEffect()`with import statements or`import.meta.glob()``fetch()`to fetch external data.
+1. 
+Use the returned JSX of the existing CRA component function as the basis for your HTML template.
+2. 
+Change any [CRA or JSX syntax to Astro](#reference-convert-cra-syntax-to-astro) or to HTML web standards. This includes`{children}` and`className` , for example.
+3. 
+Move any necessary JavaScript, including import statements, into a [“code fence” (`---`)](/en/basics/astro-components/#the-component-script) . Note: JavaScript to[conditionally render content](/en/reference/astro-syntax/#dynamic-html) is often written inside the HTML template directly in Astro.
+4. 
+Use [`Astro.props`](/en/reference/api-reference/#props) to access any additional props that were previously passed to your CRA function.
+5. 
+Decide whether any imported components also need to be converted to Astro. You can keep them as React components for now, or forever. But, you may eventually want to convert them to `.astro` components, especially if they do not need to be interactive!
+6. 
+Replace `useEffect()` with import statements or[`import.meta.glob()`](/en/guides/imports/#importmetaglob) to query your local files. Use`fetch()` to fetch external data.
 
 ### Migrating Tests
 
@@ -169,7 +169,7 @@ Convert any instances of `{children}` to an Astro `<slot />`. Astro does not nee
 
 React components that pass multiple sets of children can be migrated to an Astro component using [named slots](/en/basics/astro-components/#named-slots).
 
-See more about [specific  <slot /> usage in Astro](/en/basics/astro-components/#slots).
+See more about [specific `<slot />` usage in Astro](/en/basics/astro-components/#slots).
 
 ### CRA Data Fetching to Astro
 
@@ -183,11 +183,7 @@ To [fetch remote data](/en/guides/data-fetching/), use `fetch()`.
 
 These data requests are made in the frontmatter of the Astro component and use top-level await.
 
-See more about local files imports with [ import.meta.glob()](/en/guides/imports/#importmetaglob), 
-
-[querying with content collections](/en/guides/content-collections/#querying-build-time-collections)or
-
-[fetching remote data](/en/guides/data-fetching/).
+See more about local files imports with [`import.meta.glob()`](/en/guides/imports/#importmetaglob), [querying with content collections](/en/guides/content-collections/#querying-build-time-collections) or [fetching remote data](/en/guides/data-fetching/).
 
 ### CRA Styling to Astro
 
@@ -195,7 +191,7 @@ See more about local files imports with [ import.meta.glob()](/en/guides/imports
 
 You may need to replace any [CSS-in-JS libraries](https://github.com/withastro/astro/issues/4432) (e.g. styled-components) with other available CSS options in Astro.
 
-If necessary, convert any inline style objects (`style={{ fontWeight: "bold" }}`) to inline HTML style attributes (`style="font-weight:bold;"`). Or, use an [Astro  <style> tag](/en/guides/styling/#styling-in-astro) for scoped CSS styles.
+If necessary, convert any inline style objects (`style={{ fontWeight: "bold" }}`) to inline HTML style attributes (`style="font-weight:bold;"`). Or, use an [Astro `<style>` tag](/en/guides/styling/#styling-in-astro) for scoped CSS styles.
 
 Tailwind is supported after installing the [Tailwind Vite plugin](/en/guides/styling/#tailwind). No changes to your existing Tailwind code are required!
 

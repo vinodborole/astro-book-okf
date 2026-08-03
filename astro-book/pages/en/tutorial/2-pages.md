@@ -5,7 +5,7 @@ description: 'Tutorial: Build your first Astro blog —
 
   Create, style, and link to pages posts on your site'
 resource: https://docs.astro.build/en/tutorial/2-pages
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Check in: Unit 2 - Pages
@@ -18,12 +18,12 @@ Now that you have a working site on the web, it’s time to add pages and posts!
 
 In this unit, you will:
 
-- Create your first Astro pages with the `.astro`syntax
-- Add blog posts with Markdown (`.md`) files
+- Create your first Astro pages with the `.astro` syntax
+- Add blog posts with Markdown (`.md` ) files
 - Style an individual page with `<style>`
 - Apply global styles across pages
 
-Along the way, you’ll learn how the **two sections of a  .astro file**  work together to create a page, and how to use variables and conditional rendering on your pages.
+Along the way, you’ll learn how the **two sections of a `.astro` file**  work together to create a page, and how to use variables and conditional rendering on your pages.
 
 ## Checklist
 

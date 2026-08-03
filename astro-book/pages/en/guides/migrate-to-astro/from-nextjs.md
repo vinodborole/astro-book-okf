@@ -3,7 +3,7 @@ type: Web Page
 title: Migrating from Next.js | Docs
 description: Tips for migrating an existing Next.js project to Astro
 resource: https://docs.astro.build/en/guides/migrate-to-astro/from-nextjs
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Migrating from Next.js
@@ -16,12 +16,12 @@ Here are some key concepts and migration strategies to help you get started. Use
 
 Next.js and Astro share some similarities that will help you migrate your project:
 
-- The [syntax of](/en/reference/astro-syntax/#differences-between-astro-and-jsx). Writing Astro should feel familiar.`.astro`files is similar to JSX
-- Astro projects can also be SSG or [SSR with page-level prerendering](/en/guides/on-demand-rendering/).
-- Astro uses file-based routing, and [allows specially named pages to create dynamic routes](/en/guides/routing/#dynamic-routes).
-- Astro is [component-based](/en/basics/astro-components/), and your markup structure will be similar before and after your migration.
-- Astro has [official integrations for React, Preact, and Solid](/en/guides/integrations-guide/react/)so you can use your existing JSX components. Note that in Astro, these files**must**have a`.jsx`or`.tsx`extension.
-- Astro has support for [installing NPM packages](/en/guides/imports/#npm-packages), including React libraries. Many of your existing dependencies will work in Astro.
+- The [syntax of `.astro` files is similar to JSX](/en/reference/astro-syntax/#differences-between-astro-and-jsx) . Writing Astro should feel familiar.
+- Astro projects can also be SSG or [SSR with page-level prerendering](/en/guides/on-demand-rendering/) .
+- Astro uses file-based routing, and [allows specially named pages to create dynamic routes](/en/guides/routing/#dynamic-routes) .
+- Astro is [component-based](/en/basics/astro-components/) , and your markup structure will be similar before and after your migration.
+- Astro has [official integrations for React, Preact, and Solid](/en/guides/integrations-guide/react/) so you can use your existing JSX components. Note that in Astro, these files**must** have a`.jsx` or`.tsx` extension.
+- Astro has support for [installing NPM packages](/en/guides/imports/#npm-packages) , including React libraries. Many of your existing dependencies will work in Astro.
 
 ## Key Differences between Next.js and Astro
 
@@ -30,11 +30,11 @@ Next.js and Astro share some similarities that will help you migrate your projec
 When you rebuild your Next.js site in Astro, you will notice some important differences:
 
 - 
-Next.js is a React single-page app, and uses `index.js`as your project’s root. Astro is a multi-page site, and`index.astro`is your home page.
+Next.js is a React single-page app, and uses `index.js` as your project’s root. Astro is a multi-page site, and`index.astro` is your home page.
 - 
-`.astro`components
+[`.astro` components](/en/basics/astro-components/) are not written as exported functions that return page templating. Instead, you’ll split your code into a “code fence” for your JavaScript and a body exclusively for the HTML you generate.
 - 
-[content-driven](/en/concepts/why-astro/#content-driven): Astro was designed to showcase your content and to allow you to opt-in to interactivity only as needed. An existing Next.js app might be built for high client-side interactivity and may require advanced Astro techniques to include items that are more challenging to replicate using`.astro`components, such as dashboards.
+[content-driven](/en/concepts/why-astro/#content-driven) : Astro was designed to showcase your content and to allow you to opt-in to interactivity only as needed. An existing Next.js app might be built for high client-side interactivity and may require advanced Astro techniques to include items that are more challenging to replicate using`.astro` components, such as dashboards.
 
 ## Convert your Next.js Project
 
@@ -61,9 +61,9 @@ Visit [https://astro.new](https://astro.new) for the full list of official start
 You may find it useful to install some of [Astro’s optional integrations](/en/guides/integrations/) to use while converting your Next project to Astro:
 
 - 
-**@astrojs/react**: to reuse some existing React UI components in your new Astro site, or keep writing with React components.
+**@astrojs/react** : to reuse some existing React UI components in your new Astro site, or keep writing with React components.
 - 
-**@astrojs/mdx**: to bring existing MDX files from your Next project, or to use MDX in your new Astro site.
+**@astrojs/mdx** : to bring existing MDX files from your Next project, or to use MDX in your new Astro site.
 
 ### Put your source code in `src`
 
@@ -71,18 +71,16 @@ You may find it useful to install some of [Astro’s optional integrations](/en/
 
 Following [Astro’s project structure](/en/basics/project-structure/):
 
-- 
-**Keep**Next’s`public/`folder untouched.Astro uses the `public/`directory for static assets, just like Next. There is no change needed to this folder, nor its contents.
-- 
-**Copy or Move**Next’s other files and folders (e.g.`pages`,`styles`etc.) into Astro’s`src/`folder as you rebuild your site, following[Astro’s project structure](/en/basics/project-structure/).Like Next, Astro’s `src/pages/`folder is a special folder used for file-based routing. All other folders are optional, and you can organize the contents of your`src/`folder any way you like. Other common folders in Astro projects include`src/layouts/`,`src/components`,`src/styles`,`src/scripts`.
+1. 
+**Keep** Next’s`public/` folder untouched.Astro uses the `public/` directory for static assets, just like Next. There is no change needed to this folder, nor its contents.
+2. 
+**Copy or Move** Next’s other files and folders (e.g.`pages` ,`styles` etc.) into Astro’s`src/` folder as you rebuild your site, following[Astro’s project structure](/en/basics/project-structure/) .Like Next, Astro’s `src/pages/` folder is a special folder used for file-based routing. All other folders are optional, and you can organize the contents of your`src/` folder any way you like. Other common folders in Astro projects include`src/layouts/` ,`src/components` ,`src/styles` ,`src/scripts` .
 
 ### The Astro config file
 
 [Section titled “The Astro config file”](#the-astro-config-file)
 
-Astro has a configuration file at the root of your project called [ astro.config.mjs](/en/guides/configuring-astro/). This is used only for configuring your Astro project and any installed integrations, including 
-
-[SSR adapters](/en/guides/deploy/).
+Astro has a configuration file at the root of your project called [`astro.config.mjs`](/en/guides/configuring-astro/). This is used only for configuring your Astro project and any installed integrations, including [SSR adapters](/en/guides/deploy/).
 
 ### Tips: Convert JSX files to `.astro` files
 
@@ -90,20 +88,20 @@ Astro has a configuration file at the root of your project called [ astro.config
 
 Here are some tips for converting a Next `.js` component into a `.astro` component:
 
-- 
-Use the returned JSX of the existing Next.js component function as the basis for your HTML template. 
-- 
-Change any [Next or JSX syntax to Astro](#reference-convert-nextjs-syntax-to-astro)or to HTML web standards. This includes`<Link>`,`<Script>`,`{children}`, and`className`, for example.
-- 
-Move any necessary JavaScript, including import statements, into a [“code fence” (](/en/basics/astro-components/#the-component-script). Note: JavaScript to`---`)[conditionally render content](/en/reference/astro-syntax/#dynamic-html)is often written inside the HTML template directly in Astro.
-- 
-Use `Astro.props`
-- 
-Decide whether any imported components also need to be converted to Astro. With the official integration installed, you can [use existing React components in your Astro file](/en/guides/framework-components/). But, you may want to convert them to`.astro`components, especially if they do not need to be interactive!
-- 
-Replace `getStaticProps()`with import statements or`import.meta.glob()``fetch()`to fetch external data.
+1. 
+Use the returned JSX of the existing Next.js component function as the basis for your HTML template.
+2. 
+Change any [Next or JSX syntax to Astro](#reference-convert-nextjs-syntax-to-astro) or to HTML web standards. This includes`<Link>` ,`<Script>` ,`{children}` , and`className` , for example.
+3. 
+Move any necessary JavaScript, including import statements, into a [“code fence” (`---`)](/en/basics/astro-components/#the-component-script) . Note: JavaScript to[conditionally render content](/en/reference/astro-syntax/#dynamic-html) is often written inside the HTML template directly in Astro.
+4. 
+Use [`Astro.props`](/en/reference/api-reference/#props) to access any additional props that were previously passed to your Next function.
+5. 
+Decide whether any imported components also need to be converted to Astro. With the official integration installed, you can [use existing React components in your Astro file](/en/guides/framework-components/) . But, you may want to convert them to`.astro` components, especially if they do not need to be interactive!
+6. 
+Replace `getStaticProps()` with import statements or[`import.meta.glob()`](/en/guides/imports/#importmetaglob) to query your local files. Use`fetch()` to fetch external data.
 
-See [an example of a Next  .js file converted step-by-step](#guided-example-next-data-fetching-to-astro).
+See [an example of a Next `.js` file converted step-by-step](#guided-example-next-data-fetching-to-astro).
 
 #### Compare: JSX vs Astro
 
@@ -120,20 +118,22 @@ You may find it helpful to start by converting your Next.js layouts and template
 Next has two different methods for creating layout files, each of which handles layouts differently than Astro:
 
 - 
-The `pages`directory
+The `pages` directory
+- 
+[The `/app` directory](https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts#layouts)
 
-Each Astro page explicitly requires `<html>`, `<head>`, and `<body>` tags to be present, so it is common to reuse a layout file across pages. Astro uses a [ <slot />](/en/basics/astro-components/#slots) for page content, with no import statement required. Note the standard HTML templating, and direct access to 
+Each Astro page explicitly requires `<html>`, `<head>`, and `<body>` tags to be present, so it is common to reuse a layout file across pages. Astro uses a [`<slot />`](/en/basics/astro-components/#slots) for page content, with no import statement required. Note the standard HTML templating, and direct access to `<head>`:
 
-`<head>`:#### Migrating from Next.js’ `pages` directory
+#### Migrating from Next.js’ `pages` directory
 
 [Section titled “Migrating from Next.js’ pages directory”](#migrating-from-nextjs-pages-directory)
 
 Your Next project may have a `pages/_document.jsx` file that imports React components to customize your app’s `<head>`:
 
-- 
-Make a new Astro layout file using only the returned JSX. 
-- 
-Replace any React components with `<html>`,`<head>`,`<slot>`, and other HTML standard tags.
+1. 
+Make a new Astro layout file using only the returned JSX.
+2. 
+Replace any React components with `<html>` ,`<head>` ,`<slot>` , and other HTML standard tags.
 
 #### Migrating from Next.js’ `/app` directory
 
@@ -141,10 +141,10 @@ Replace any React components with `<html>`,`<head>`,`<slot>`, and other HTML sta
 
 Next.js’ `app/` directory layout files are created with two files: a `layout.jsx` file to customize the `<html>` and `<body>` contents, and a `head.jsx` file to customize the `<head>` element contents.
 
-- 
-Make a new Astro layout file using only the returned JSX. 
-- 
-Replace both these files with a single Astro layout file that contains a page shell ( `<html>`,`<head>`, and`<body>`tags) and a`<slot/>`instead of React’s`{children}`prop:
+1. 
+Make a new Astro layout file using only the returned JSX.
+2. 
+Replace both these files with a single Astro layout file that contains a page shell ( `<html>` ,`<head>` , and`<body>` tags) and a`<slot/>` instead of React’s`{children}` prop:
 
 ### Migrating Pages and Posts
 
@@ -158,17 +158,17 @@ In Astro, all your page content must live within `src/` unless you are using [co
 
 [Section titled “React pages”](#react-pages)
 
-Your existing Next JSX (`.js`) pages will need to be [converted from JSX files to  .astro pages](#tips-convert-jsx-files-to-astro-files). You cannot use an existing JSX page file in Astro.
+Your existing Next JSX (`.js`) pages will need to be [converted from JSX files to `.astro` pages](#tips-convert-jsx-files-to-astro-files). You cannot use an existing JSX page file in Astro.
 
-These [ .astro pages](/en/basics/astro-pages/) must be located within 
+These [`.astro` pages](/en/basics/astro-pages/) must be located within `src/pages/` and will have page routes generated automatically based on their file path.
 
-`src/pages/` and will have page routes generated automatically based on their file path.#### Markdown and MDX pages
+#### Markdown and MDX pages
 
 [Section titled “Markdown and MDX pages”](#markdown-and-mdx-pages)
 
-Astro has built-in support for Markdown and an optional integration for MDX files. You can reuse any existing [Markdown and MDX files](/en/guides/markdown-content/), but they may require some adjustments to their frontmatter, such as adding [Astro’s special  layout frontmatter property](/en/basics/layouts/#markdown-layouts). You will no longer need to manually create pages for each Markdown-generated route. These files can be placed within 
+Astro has built-in support for Markdown and an optional integration for MDX files. You can reuse any existing [Markdown and MDX files](/en/guides/markdown-content/), but they may require some adjustments to their frontmatter, such as adding [Astro’s special `layout` frontmatter property](/en/basics/layouts/#markdown-layouts). You will no longer need to manually create pages for each Markdown-generated route. These files can be placed within `src/pages/` to take advantage of automatic file-based routing.
 
-`src/pages/` to take advantage of automatic file-based routing.Alternatively, you can use [content collections](/en/guides/content-collections/) in Astro to store and manage your content. You will retrieve the content yourself and [generate those pages dynamically](/en/guides/content-collections/#generating-routes-from-content).
+Alternatively, you can use [content collections](/en/guides/content-collections/) in Astro to store and manage your content. You will retrieve the content yourself and [generate those pages dynamically](/en/guides/content-collections/#generating-routes-from-content).
 
 ### Migrating Tests
 
@@ -206,7 +206,7 @@ Convert any instances of `{children}` to an Astro `<slot />`. Astro does not nee
 
 React components that pass multiple sets of children can be migrated to an Astro component using [named slots](/en/basics/astro-components/#named-slots).
 
-See more about [specific  <slot /> usage in Astro](/en/basics/astro-components/#slots).
+See more about [specific `<slot />` usage in Astro](/en/basics/astro-components/#slots).
 
 ### Next Data Fetching to Astro
 
@@ -216,11 +216,7 @@ Convert any instances of `getStaticProps()` to either `import.meta.glob()` or `g
 
 These data requests are made in the frontmatter of the Astro component and use top-level await.
 
-See more about local files imports with [ import.meta.glob()](/en/guides/imports/#importmetaglob), 
-
-[querying with content collections](/en/guides/content-collections/#querying-build-time-collections)or
-
-[fetching remote data](/en/guides/data-fetching/).
+See more about local files imports with [`import.meta.glob()`](/en/guides/imports/#importmetaglob), [querying with content collections](/en/guides/content-collections/#querying-build-time-collections) or [fetching remote data](/en/guides/data-fetching/).
 
 ### Next Styling to Astro
 
@@ -228,7 +224,7 @@ See more about local files imports with [ import.meta.glob()](/en/guides/imports
 
 You may need to replace any [CSS-in-JS libraries](https://github.com/withastro/astro/issues/4432) (e.g. styled-components) with other available CSS options in Astro.
 
-If necessary, convert any inline style objects (`style={{ fontWeight: "bold" }}`) to inline HTML style attributes (`style="font-weight:bold;"`). Or, use an [Astro  <style> tag](/en/guides/styling/#styling-in-astro) for scoped CSS styles.
+If necessary, convert any inline style objects (`style={{ fontWeight: "bold" }}`) to inline HTML style attributes (`style="font-weight:bold;"`). Or, use an [Astro `<style>` tag](/en/guides/styling/#styling-in-astro) for scoped CSS styles.
 
 Tailwind is supported after installing the [Tailwind Vite plugin](/en/guides/styling/#tailwind). No changes to your existing Tailwind code are required!
 
@@ -238,7 +234,7 @@ See more about [Styling in Astro](/en/guides/styling/).
 
 [Section titled “Next Image Plugin to Astro”](#next-image-plugin-to-astro)
 
-Convert any Next `<Image />` components to [Astro’s own image component](/en/guides/images/) in `.astro` or `.mdx` files, or to a [standard HTML  <img> / JSX <img />](/en/guides/images/#images-in-ui-framework-components) tag as appropriate in your React components.
+Convert any Next `<Image />` components to [Astro’s own image component](/en/guides/images/) in `.astro` or `.mdx` files, or to a [standard HTML `<img>` / JSX `<img />`](/en/guides/images/#images-in-ui-framework-components) tag as appropriate in your React components.
 
 Astro’s `<Image />` component works in `.astro` and `.mdx` files only. See a [full list of its component attributes](/en/reference/modules/astro-assets/#image-) and note that several will differ from Next’s attributes.
 
@@ -256,26 +252,26 @@ Here is an example of Next.js Pokédex data fetch converted to Astro.
 
 Here’s how to recreate that in `src/pages/index.astro`, replacing `getStaticProps()` with `fetch()`.
 
-- 
-Identify the return() JSX. 
-- 
-Create `src/pages/index.astro`Use the return value of the Next function. Convert any Next or React syntax to Astro, including changing the case of any [HTML global attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes).Note that: - 
-`.map`just works!
-- 
-`className`becomes`class`.
-- 
-`<Link>`becomes`<a>`.
-- 
-The `<> </>`fragment is not required in Astro templating.
-- 
-`key`is a React attribute, and is not an attribute of`li`in Astro.
- 
-- 
-- 
-Add any needed imports, props, and JavaScript Note that: - the `getStaticProps`function is no longer needed. Data from the API is fetched directly in the code fence.
-- A `<Layout>`component is imported and wraps the page templating.
- 
-- the 
+1. 
+Identify the return() JSX.
+2. 
+Create `src/pages/index.astro`Use the return value of the Next function. Convert any Next or React syntax to Astro, including changing the case of any [HTML global attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes) .Note that: 
+  - 
+`.map` just works!
+  - 
+`className` becomes`class` .
+  - 
+`<Link>` becomes`<a>` .
+  - 
+The `<> </>` fragment is not required in Astro templating.
+  - 
+`key` is a React attribute, and is not an attribute of`li` in Astro.
+3. 
+4. 
+Add any needed imports, props, and JavaScript Note that: 
+  - the `getStaticProps` function is no longer needed. Data from the API is fetched directly in the code fence.
+  - A `<Layout>` component is imported and wraps the page templating.
+5. the 
 
 ## Community Resources
 

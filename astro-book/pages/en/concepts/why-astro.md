@@ -5,7 +5,7 @@ description: Astro is the web framework for building content-driven websites lik
   blogs, marketing, and e-commerce. Learn why Astro might be a good choice for your
   next website.
 resource: https://docs.astro.build/en/concepts/why-astro
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Why Astro?
@@ -20,12 +20,12 @@ timestamp: '2026-07-13T09:18:12.222139+00:00'
 
 Some highlights include:
 
-- [Islands](/en/concepts/islands/):
-- [UI-agnostic](/en/guides/framework-components/):
-- [Server-first](/en/guides/on-demand-rendering/):
-- [Zero JS, by default](/en/basics/astro-components/):
-- [Content collections](/en/guides/content-collections/):
-- [Customizable](/en/guides/integrations/):
+- **[Islands](/en/concepts/islands/):** A component-based web architecture optimized for content-driven websites.
+- **[UI-agnostic](/en/guides/framework-components/):** Supports React, Preact, Svelte, Vue, Solid, HTMX, web components, and more.
+- **[Server-first](/en/guides/on-demand-rendering/):** Moves expensive rendering off of your visitors’ devices.
+- **[Zero JS, by default](/en/basics/astro-components/):** Less client-side JavaScript to slow your site down.
+- **[Content collections](/en/guides/content-collections/):** Organize, validate, and provide TypeScript type-safety for your Markdown content.
+- **[Customizable](/en/guides/integrations/):** Partytown, MDX, and hundreds of integrations to choose from.
 
 ## Design Principles
 
@@ -35,11 +35,11 @@ Here are five core design principles to help explain why we built Astro, the pro
 
 Astro is…
 
-- [Content-driven](#content-driven):
-- [Server-first](#server-first):
-- [Fast by default](#fast-by-default):
-- [Easy to use](#easy-to-use):
-- [Developer-focused](#developer-focused):
+1. **[Content-driven](#content-driven):** Astro was designed to showcase your content.
+2. **[Server-first](#server-first):** Websites run faster when they render HTML on the server.
+3. **[Fast by default](#fast-by-default):** It should be impossible to build a slow website in Astro.
+4. **[Easy to use](#easy-to-use):** You don’t need to be an expert to build something with Astro.
+5. **[Developer-focused](#developer-focused):** You should have the resources you need to be successful.
 
 ### Content-driven
 
@@ -69,12 +69,12 @@ Astro’s server-first approach allows you to opt in to client-side rendering on
 
 Good performance is always important, but it is *especially* critical for websites whose success depends on displaying your content. It has been well-proven that poor performance loses you engagement, conversions, and money. For example:
 
-- Every 100ms faster → 1% more conversions ([Mobify](https://web.dev/why-speed-matters/), earning +$380,000/yr)
-- 50% faster → 12% more sales ([AutoAnything](https://www.digitalcommerce360.com/2010/08/19/web-accelerator-revs-conversion-and-sales-autoanything/))
-- 20% faster → 10% more conversions ([Furniture Village](https://www.thinkwithgoogle.com/intl/en-gb/marketing-strategies/app-and-mobile/furniture-village-and-greenlight-slash-page-load-times-boosting-user-experience/))
-- 40% faster → 15% more sign-ups ([Pinterest](https://medium.com/pinterest-engineering/driving-user-growth-with-performance-improvements-cfc50dafadd7))
-- 850ms faster → 7% more conversions ([COOK](https://web.dev/why-speed-matters/))
-- Every 1 second slower → 10% fewer users ([BBC](https://www.creativebloq.com/features/how-the-bbc-builds-websites-that-scale))
+- Every 100ms faster → 1% more conversions ([Mobify](https://web.dev/why-speed-matters/) , earning +$380,000/yr)
+- 50% faster → 12% more sales ([AutoAnything](https://www.digitalcommerce360.com/2010/08/19/web-accelerator-revs-conversion-and-sales-autoanything/) )
+- 20% faster → 10% more conversions ([Furniture Village](https://www.thinkwithgoogle.com/intl/en-gb/marketing-strategies/app-and-mobile/furniture-village-and-greenlight-slash-page-load-times-boosting-user-experience/) )
+- 40% faster → 15% more sign-ups ([Pinterest](https://medium.com/pinterest-engineering/driving-user-growth-with-performance-improvements-cfc50dafadd7) )
+- 850ms faster → 7% more conversions ([COOK](https://web.dev/why-speed-matters/) )
+- Every 1 second slower → 10% fewer users ([BBC](https://www.creativebloq.com/features/how-the-bbc-builds-websites-that-scale) )
 
 In many web frameworks, it is easy to build a website that looks great during development only to load painfully slow once deployed. JavaScript is often the culprit, since many phones and lower-powered devices rarely match the speed of a developer’s laptop.
 
@@ -108,7 +108,8 @@ Our welcoming, respectful, inclusive community on Discord is ready to provide su
 
 As an open-source project, we welcome contributions of all types and sizes from community members of all experience levels. You are invited to join in roadmap discussions to shape the future of Astro, and we hope you’ll contribute fixes and features to the core codebase, compiler, docs, language tools, websites, and other projects.
 
-Learn[Contribute](/en/contribute/)
+Learn
+[Contribute](/en/contribute/)
 
 [Community](https://astro.build/chat)
 

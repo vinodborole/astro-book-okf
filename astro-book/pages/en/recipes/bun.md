@@ -3,7 +3,7 @@ type: Web Page
 title: Use Bun with Astro | Docs
 description: Learn how to use Bun with your Astro site.
 resource: https://docs.astro.build/en/recipes/bun
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Use Bun with Astro
@@ -18,7 +18,7 @@ If you have any problems using Bun, please [open an Issue on GitHub with Bun dir
 
 [Section titled “Prerequisites”](#prerequisites)
 
-- Bun installed locally on your machine. See the [installation instructions](https://bun.sh/docs/installation)in Bun’s official documentation.
+- Bun installed locally on your machine. See the [installation instructions](https://bun.sh/docs/installation) in Bun’s official documentation.
 
 ## Create a new Astro project with Bun
 
@@ -36,7 +36,7 @@ If you skipped the “Install dependencies?” step during the CLI wizard, then 
 
 [Section titled “Add Types”](#add-types)
 
-Bun publishes the [ @types/bun](https://www.npmjs.com/package/@types/bun) package, containing the runtime types for Bun.
+Bun publishes the [`@types/bun`](https://www.npmjs.com/package/@types/bun) package, containing the runtime types for Bun.
 
 Install `@types/bun` using the following command:
 
@@ -76,9 +76,7 @@ When the build is finished, run the appropriate preview command (e.g. `bun run p
 
 [Section titled “Testing”](#testing)
 
-Bun ships with a fast, built-in, Jest-compatible test runner through the [ bun test command](https://bun.sh/docs/cli/test). You can also use any other 
-
-[testing tools for Astro](/en/guides/testing/).
+Bun ships with a fast, built-in, Jest-compatible test runner through the [`bun test` command](https://bun.sh/docs/cli/test). You can also use any other [testing tools for Astro](/en/guides/testing/).
 
 ## Official Resources
 
@@ -90,7 +88,7 @@ Bun ships with a fast, built-in, Jest-compatible test runner through the [ bun t
 
 Using Bun with Astro? Add your blog post or video to this page!
 
-- [Using Bun with Astro and Cloudflare Pages](https://handerson.hashnode.dev/using-bun-with-astro-and-cloudflare-pages)- blog post
+- [Using Bun with Astro and Cloudflare Pages](https://handerson.hashnode.dev/using-bun-with-astro-and-cloudflare-pages) - blog post
 
 [Contribute](/en/contribute/)
 

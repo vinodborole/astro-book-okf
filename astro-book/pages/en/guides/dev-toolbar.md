@@ -3,7 +3,7 @@ type: Web Page
 title: Dev toolbar | Docs
 description: A guide to using the dev toolbar in Astro
 resource: https://docs.astro.build/en/guides/dev-toolbar
-timestamp: '2026-07-13T09:18:12.222139+00:00'
+timestamp: '2026-08-03T09:35:37.104348+00:00'
 ---
 
 # Dev toolbar
@@ -24,7 +24,7 @@ This toolbar is enabled by default and appears when you hover over the bottom of
 
 The Astro Menu app provides easy access to various information about the current project and links to extra resources. Notably, it provides one-click access to the Astro documentation, GitHub repository, and Discord server.
 
-This app also includes a “Copy debug info” button which will run the [ astro info](/en/reference/cli-reference/#astro-info) command and copy the output to your clipboard. This can be useful when asking for help or reporting issues.
+This app also includes a “Copy debug info” button which will run the [`astro info`](/en/reference/cli-reference/#astro-info) command and copy the output to your clipboard. This can be useful when asking for help or reporting issues.
 
 ### Inspect
 
@@ -74,13 +74,14 @@ To enable the dev toolbar again, remove these lines from your configuration, or 
 
 [Section titled “Per-user”](#per-user)
 
-To disable the dev toolbar for yourself on a specific project, run the [ astro preferences](/en/reference/cli-reference/#astro-preferences) command.
+To disable the dev toolbar for yourself on a specific project, run the [`astro preferences`](/en/reference/cli-reference/#astro-preferences) command.
 
 To disable the dev toolbar in all Astro projects for a user on the current machine, add the `--global` flag when running `astro-preferences`:
 
 The dev toolbar can later be enabled with:
 
-Learn[Contribute](/en/contribute/)
+Learn
+[Contribute](/en/contribute/)
 
 [Community](https://astro.build/chat)
 
